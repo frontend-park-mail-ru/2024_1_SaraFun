@@ -109,3 +109,10 @@ button:hover {
     justify-content: center;
     align-items: center;
 }
+
+.description {
+    font-size: 24px;
+    font-weight: bold; 
+    text-align: center;
+    margin-bottom: 20px; 
+}
