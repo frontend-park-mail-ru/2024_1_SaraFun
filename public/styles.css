@@ -63,7 +63,7 @@
 body {
     font-family: 'Rubik', sans-serif;
     background-color: var(--primary);
-    background-image: url(../src/img/background.svg);
+    background-image: url(../img/background.svg);
     margin: 0;
     display: flex;
     justify-content: center;
