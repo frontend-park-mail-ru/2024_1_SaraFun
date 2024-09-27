@@ -1,122 +1,212 @@
-<div class="container"> 
-  <!-- Шаг 1 -->
-  <div class="form-section step step-1 active">
-    <div class="logo">
-      <img src="../assets/img/Logo.svg" alt="Logo">
+<div class="container">
+    <!-- Шаг 1 -->
+    <div class="form-section step step-1 active">
+        <div class="logo">
+            <img src="../assets/img/Logo.svg" alt="Logo">
+        </div>
+
+        <p class="description">Добро пожаловать!</p>
+        <p class="description">Создайте свой профиль, чтобы начать знакомства</p>
+
+        <div class="steps">
+            <span>Шаг 1</span>
+            <span>Шаг 2</span>
+            <span>Шаг 3</span>
+            <span>Шаг 4</span>
+            <span>Шаг 5</span>
+        </div>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Введите email">
+        <p class="error" id="email-error">Ошибка: Введите email</p>
+
+        <label for="password">Пароль</label>
+        <input type="password" id="password" placeholder="Введите пароль">
+        <p class="error" id="password-error">Ошибка: Введите пароль</p>
+
+        <label for="confirm-password">Подтвердите пароль</label>
+        <input type="password" id="confirm-password" placeholder="Введите пароль еще раз">
+        <p class="error" id="confirm-password-error">Ошибка: Введите пароль еще раз</p>
+
+        <button type="button" onclick="nextStep()">К следующему шагу</button>
+
+        <div class="footer-text">
+            У вас уже есть аккаунт? <a href="#">Войдите в аккаунт</a>
+        </div>
     </div>
 
-    <p class="description">Добро пожаловать!</p>
-    <p class="description">Создайте свой профиль, чтобы начать знакомства</p>
+    <!-- Шаг 2 -->
+    <div class="form-section step step-2">
+        <div class="logo">
+            <img src="../assets/img/Logo.svg" alt="Logo">
+        </div>
 
-    <div class="steps">
-      <span>Шаг 1</span>
-      <span>Шаг 2</span>
-      <span>Шаг 3</span>
-      <span>Шаг 4</span>
-      <span>Шаг 5</span>
+        <p class="description">Добро пожаловать!</p>
+        <p class="description">Создайте свой профиль, чтобы начать знакомства</p>
+
+        <label for="name">Укажите свое настоящее имя</label>
+        <input type="text" id="name" placeholder="Введите имя">
+        <p class="error" id="name-error">Ошибка: Введите имя</p>
+
+        <label>Укажите ваш пол</label>
+        <div class="gender-selection">
+            <input type="radio" id="female" name="gender" value="Женский">
+            <label for="female">Женский</label>
+            <input type="radio" id="male" name="gender" value="Мужской">
+            <label for="male">Мужской</label>
+        </div>
+        <p class="error" id="gender-error">Ошибка: Выберите пол</p>
+
+        <label>Укажите вашу дату рождения</label>
+        <div class="birth-date">
+            <select id="day">
+                <option value="">День</option>
+                <script>
+                    for (let i = 1; i <= 31; i++) {
+                        document.write('<option value="' + i + '">' + i + '</option>');
+                    }
+                </script>
+            </select>
+
+            <select id="month">
+                <option value="">Месяц</option>
+                <option value="1">Январь</option>
+                <option value="2">Февраль</option>
+                <option value="3">Март</option>
+                <option value="4">Апрель</option>
+                <option value="5">Май</option>
+                <option value="6">Июнь</option>
+                <option value="7">Июль</option>
+                <option value="8">Август</option>
+                <option value="9">Сентябрь</option>
+                <option value="10">Октябрь</option>
+                <option value="11">Ноябрь</option>
+                <option value="12">Декабрь</option>
+            </select>
+
+            <select id="year">
+                <option value="">Год</option>
+                <!-- Потом добавить диапазон  -->
+            </select>
+        </div>
+
+        <button type="button" onclick="nextStep()">К следующему шагу</button>
+
+        <div class="footer-text">
+            У вас уже есть аккаунт? <a href="#">Войдите в аккаунт</a>
+        </div>
     </div>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" placeholder="Введите email">
-    <p class="error" id="email-error">Ошибка: Введите email</p>
+    <!-- Шаг 3 -->
+    <div class="form-section step step-3">
+        <div class="logo">
+            <img src="../assets/img/Logo.svg" alt="Logo">
+        </div>
 
-    <label for="password">Пароль</label>
-    <input type="password" id="password" placeholder="Введите пароль">
-    <p class="error" id="password-error">Ошибка: Введите пароль</p>
+        <p class="description">Добро пожаловать!</p>
+        <p class="description">Создайте свой профиль, чтобы начать знакомства</p>
+        <p class="description">Добавьте минимум одну вашу фотографию</p>
 
-    <label for="confirm-password">Подтвердите пароль</label>
-    <input type="password" id="confirm-password" placeholder="Введите пароль еще раз">
-    <p class="error" id="confirm-password-error">Ошибка: Введите пароль еще раз</p>
+        <label for="photo1">Фотография 1</label>
+        <input type="file" id="photo1" accept="image/*">
+        <p class="error" id="photo1-error">Ошибка: Выберите фотографию</p>
 
-    <button type="button" onclick="nextStep()">К следующему шагу</button>
+        <label for="photo2">Фотография 2</label>
+        <input type="file" id="photo2" accept="image/*">
+        <p class="error" id="photo2-error">Ошибка: Выберите фотографию</p>
 
-    <div class="footer-text">
-      У вас уже есть аккаунт? <a href="#">Войдите в аккаунт</a>
-    </div>
-  </div>
+        <label for="photo3">Фотография 3</label>
+        <input type="file" id="photo3" accept="image/*">
+        <p class="error" id="photo3-error">Ошибка: Выберите фотографию</p>
 
-  <!-- Шаг 2 -->
-  <div class="form-section step step-2">
-    <div class="logo">
-      <img src="../assets/img/Logo.svg" alt="Logo">
-    </div>
+        <button type="button" onclick="nextStep()">К следующему шагу</button>
 
-    <p class="description">Добро пожаловать!</p>
-    <p class="description">Создайте свой профиль, чтобы начать знакомства</p>
-
-    <label for="name">Укажите свое настоящее имя</label>
-    <input type="text" id="name" placeholder="Введите имя">
-    <p class="error" id="name-error">Ошибка: Введите имя</p>
-
-    <label>Укажите ваш пол</label>
-    <div class="gender-selection">
-      <input type="radio" id="female" name="gender" value="Женский">
-      <label for="female">Женский</label>
-      <input type="radio" id="male" name="gender" value="Мужской">
-      <label for="male">Мужской</label>
-    </div>
-    <p class="error" id="gender-error">Ошибка: Выберите пол</p>
-
-    <label>Укажите вашу дату рождения</label>
-    <div class="birth-date">
-      <select id="day">
-        <option value="">День</option>
-        <script>
-          for (let i = 1; i <= 31; i++) {
-            document.write('<option value="' + i + '">' + i + '</option>');
-          }
-        </script>
-      </select>
-
-      <select id="month">
-        <option value="">Месяц</option>
-        <option value="1">Январь</option>
-        <option value="2">Февраль</option>
-        <option value="3">Март</option>
-        <option value="4">Апрель</option>
-        <option value="5">Май</option>
-        <option value="6">Июнь</option>
-        <option value="7">Июль</option>
-        <option value="8">Август</option>
-        <option value="9">Сентябрь</option>
-        <option value="10">Октябрь</option>
-        <option value="11">Ноябрь</option>
-        <option value="12">Декабрь</option>
-      </select>
-
-      <select id="year">
-        <option value="">Год</option>
-        <!-- Потом добавить диапазон  -->
-      </select>
+        <div class="footer-text">
+            У вас уже есть аккаунт? <a href="#">Войдите в аккаунт</a>
+        </div>
     </div>
 
-    <button type="button" onclick="nextStep()">К следующему шагу</button>
+    <!-- Шаг 4 -->
+    <div class="form-section step step-4">
+        <div class="logo">
+            <img src="../assets/img/Logo.svg" alt="Logo">
+        </div>
 
-    <div class="footer-text">
-      У вас уже есть аккаунт? <a href="#">Войдите в аккаунт</a>
+        <p class="description">Добро пожаловать!</p>
+        <p class="description">Создайте свой профиль, чтобы начать знакомства</p>
+        <p class="description">Расскажите для чего вы здесь</p>
+
+        <div class="goals">
+            <label>
+                <input type="radio" name="goal" value="Дружба">
+                Дружба — Новые друзья, знакомства и совместные встречи
+            </label>
+
+            <label>
+                <input type="radio" name="goal" value="Отношения">
+                Отношения — Поиск второй половинки
+            </label>
+
+            <label>
+                <input type="radio" name="goal" value="Свидания">
+                Свидания — Приятное совместное времяпрепровождение
+            </label>
+
+            <label>
+                <input type="radio" name="goal" value="Без определенной цели">
+                Без определенной цели — Просто общение, которое может вылиться куда угодно
+            </label>
+        </div>
+
+        <button type="button" onclick="nextStep()">К следующему шагу</button>
+
+        <div class="footer-text">
+            У вас уже есть аккаунт? <a href="#">Войдите в аккаунт</a>
+        </div>
     </div>
-  </div>
 
+    <!-- Шаг 5 -->
+    <div class="form-section step step-5">
+        <div class="logo">
+            <img src="../assets/img/Logo.svg" alt="Logo">
+        </div>
+
+        <p class="description">Добро пожаловать!</p>
+        <p class="description">Создайте свой профиль, чтобы начать знакомства</p>
+        <p class="description">Расскажите о себе</p>
+        
+        <label for="description">Description</label>
+        <textarea id="description" placeholder="Расскажите все самое интересное"></textarea>
+        <p class="error" id="description-error">Ошибка: Введите описание</p>
+
+        <button type="button" onclick="createAccount()">Создать аккаунт</button>
+
+        <div class="footer-text">
+            У вас уже есть аккаунт? <a href="#">Войдите в аккаунт</a>
+        </div>
+    </div>
 </div>
 
 <style>
-  .form-section {
-    display: none;
-  }
+    .form-section {
+        display: none;
+    }
 
-  .form-section.active {
-    display: block;
-  }
+    .form-section.active {
+        display: block;
+    }
 </style>
 
 <script>
-  let currentStep = 1;
+    let currentStep = 1;
 
-  function nextStep() {
-    document.querySelector('.step-' + currentStep).classList.remove('active');
+    function nextStep() {
+        document.querySelector('.step-' + currentStep).classList.remove('active');
+
+        currentStep++;
+
+        document.querySelector('.step-' + currentStep).classList.add('active');
+    }
+
     
-    currentStep++;
-    
-    document.querySelector('.step-' + currentStep).classList.add('active');
-  }
 </script>
