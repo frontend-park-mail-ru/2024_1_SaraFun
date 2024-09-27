@@ -3,3 +3,19 @@
     padding: 20px;
     box-sizing: border-box;
 }
+
+.container {
+    position: relative;
+    background-color: var(--white1);
+    border-radius: 12px;
+    width: calc(100vw * 2 / 3);
+    height: calc(100vh * 4 / 5);
+    display: flex;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.logo {
+    text-align: left;
+}
