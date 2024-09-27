@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true 
+    },
+    "root": true,
+    "extends": [ 
+        "eslint:recommended",
+        "prettier"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": true
+    },
+
+    "plugins": [
+        "prettier"
+    ],
+
+    "rules": {
+        "prettier/prettier": "error"
+    }
+}
