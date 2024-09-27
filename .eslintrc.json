@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es2021": true 
+        "es2021": true,
+        "node": true
     },
     "root": true,
     "extends": [ 
@@ -12,13 +13,13 @@
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module",
-        "project": true
+        "project": true,
+        "allowImportExportEverywhere": true
     },
-
+    "ignorePatterns": ["eslint.config.js"],
     "plugins": [
         "prettier"
     ],
-
     "rules": {
         "prettier/prettier": "error"
     }

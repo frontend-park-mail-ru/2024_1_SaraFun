@@ -36,7 +36,7 @@ export class Menu {
         const template = pug.compileFile('Menu.pug');
         const html = template({items});
         this.#parent.innerHTML = html;
-        
+
         this.#parent.querySelectorAll('a').forEach((element) => {
             this.state.menuElements[element.dataset.section] = element;
         })

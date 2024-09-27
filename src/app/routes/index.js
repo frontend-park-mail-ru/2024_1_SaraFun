@@ -16,4 +16,4 @@ export const createRouter = (root) => ({
       handle: 'Регистрация',
       componentName: new RegistrationPage(root)
     },
-  })
+})
