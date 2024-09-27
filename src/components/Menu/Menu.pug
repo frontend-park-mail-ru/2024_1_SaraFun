@@ -1,0 +1,4 @@
+ul.menu
+  each item in items
+    li.menu-item(class=item.className)
+      a(href=item.href, data-section=item.key) #{item.text}
