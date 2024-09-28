@@ -1,0 +1,205 @@
+@font-face {
+    font-family: 'Rubik';
+    src:  url('../assets/fonts/Rubik-Black.woff2') format('woff2'),
+          url('../assets/fonts/Rubik-Black.woff') format('woff');
+}
+
+body {
+    font-family: 'Rubik', Fallback, sans-serif;
+}
+
+/* Color Styles  */
+:root {
+    --primary: #B9F1D9FF;
+    --secondary: #49B2A6FF;
+    --red1: #FF1A1AFF;
+    --error: #FF6275FF;
+    --warning: #FAC748FF;
+    --success: #204E4AFF;
+    --white1: #FFFFFFFF;
+    --black1: #000000FF;
+    --grey1: #C4C4C4FF;
+    --grey2: #8C8C8CFF;
+}
+
+.h1 {
+    font-family: Rubik;
+    filter: blur(2.0000rem);
+    line-height: normal;
+    letter-spacing: 0.0000%;
+    font-weight: 700;
+}
+
+.text-base {
+    font-family: Rubik;
+    filter: blur(1.0000rem);
+    line-height: normal;
+    letter-spacing: 0.0000%;
+    font-weight: 400;
+}
+  
+.h2 {
+    font-family: Rubik;
+    filter: blur(1.5000rem);
+    line-height: normal;
+    letter-spacing: 0.0000%;
+    font-weight: 600;
+}
+  
+.h3 {
+    font-family: Rubik;
+    filter: blur(1.1875rem);
+    line-height: normal;
+    letter-spacing: 0.0000%;
+    font-weight: 500;
+}
+  
+.link {
+    font-family: Rubik;
+    filter: blur(1.0000rem);
+    line-height: normal;
+    letter-spacing: 0.0000%;
+    font-weight: 400;
+}
+  
+.text-base-medium {
+    font-family: Rubik;
+    filter: blur(1.0000rem);
+    line-height: normal;
+    letter-spacing: 0.0000%;
+    font-weight: 500;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: var(--primary);
+    background-image: url(/assets/img/background.svg);
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.image-section-wrapper {
+    width: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-section {
+    width: 50%; 
+    background-color: var(--secondary);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 8px;
+    display: block;
+    color: var(--black1);
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 16px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%; 
+    padding: 12px; 
+    background-color: var(--secondary);
+    color: var(--white1);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background-color: var(--success);
+}
+
+.error {
+    color: var(--error);
+    font-size: 12px;
+    margin-bottom: 8px;
+    display: none; 
+}
+
+.footer-text {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.footer-text a {
+    color: #333;
+    text-decoration: none;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+.image-section img {
+    height: 100%; 
+    object-fit: cover;
+    object-position: center; 
+}
+
+.description {
+    font-size: 24px;
+    font-weight: bold; 
+    text-align: center;
+    margin-bottom: 20px; 
+}
+
+.main-header {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: absolute; 
+    top: 0;
+    left: 0; 
+    width: 100%;
+    z-index: 1;
+}
+
+.logo-header {
+    width: 100px;
+    height: auto;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-right: 20px;
+}
+    
+.main-nav ul li:last-child {
+    margin-right: 0;
+}
+
+.main-nav ul li a {
+    color: #fff; 
+    text-decoration: none;
+}
