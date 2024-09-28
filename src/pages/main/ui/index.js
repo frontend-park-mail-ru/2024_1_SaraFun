@@ -17,4 +17,3 @@ export class MainPage {
         this.node.remove()
     }
 }
-

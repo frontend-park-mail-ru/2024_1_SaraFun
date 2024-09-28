@@ -6,24 +6,23 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = 3000;
+
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, '../src/pages/main/ui')); 
+
 
 app.use(express.static(path.join(__dirname, '../src')));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.get('/main', (req, res) => {
+  res.render('index', { title: 'Main Page', message: 'Welcome to the Main Page!' });
+});
 
-app.set('view engine', 'pug');
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../src', 'index.html'));
+  res.sendFile(path.join(__dirname, '../src/index.html'));
 });
 
-app.get('/pug-route', (req, res) => {
-  res.render('index', { title: 'My Web Page', message: 'Welcome to my website!' });
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
-
