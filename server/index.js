@@ -27,12 +27,23 @@ app.get('/login', (req, res) => {
   res.render('login/ui/index', { title: 'Login Page' });
 });
 
+app.get('/registration', (req, res) => {
+  res.render('registration/ui/index', { title: 'Registration Page' });
+});
+
 
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
  
   console.log(`Username: ${username}, Password: ${password}`);
   res.redirect('/main');
+});
+
+app.post('/registration', (req, res) => {
+  const { username, password } = req.body;
+  console.log(`Username: ${username}, Password: ${password}`);
+  
+  res.redirect('/login'); 
 });
 
 
