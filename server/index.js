@@ -7,14 +7,32 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, '../src/pages/main/ui')); 
+app.set('views', path.join(__dirname, '../src/pages')); 
+
+
+app.use(express.urlencoded({ extended: true }));
 
 
 app.use(express.static(path.join(__dirname, '../src')));
 
+
 app.get('/main', (req, res) => {
-  res.render('index', { title: 'Main Page', message: 'Welcome to the Main Page!' });
+  res.render('main/ui/index', { title: 'Main Page', message: 'Welcome to the Main Page!' });
+});
+
+
+app.get('/login', (req, res) => {
+  res.render('login/ui/index', { title: 'Login Page' });
+});
+
+
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+ 
+  console.log(`Username: ${username}, Password: ${password}`);
+  res.redirect('/main');
 });
 
 
