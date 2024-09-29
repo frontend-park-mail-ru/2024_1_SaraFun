@@ -23,7 +23,7 @@ export default class extends AbstractView {
             <input type="password" id="password" placeholder="Введите пароль">
             <p class="error" id="password-error">Ошибка: Введите пароль</p>
 
-            <button type="button">Зарегистрироваться</button>
+            <button type="button" id="register-button">Зарегистрироваться</button>
 
 
             <div class="footer-text">
@@ -36,4 +36,53 @@ export default class extends AbstractView {
     </div>
         `;
     }
+
+    async registerUser(login, password) {
+        try {
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ login, password }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Сервер вернул ошибку');
+            }
+
+            const result = await response.json();
+
+            console.log(result); 
+            window.location.assign('/feed');
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    };
+
+    async init() {
+        document.getElementById('register-button').addEventListener('click', () => {
+            const login = document.getElementById('login').value;
+            const password = document.getElementById('password').value;
+
+            let valid = true;
+            if (!login) {
+                document.getElementById('login-error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('login-error').style.display = 'none';
+            }
+
+            if (!password) {
+                document.getElementById('password-error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('password-error').style.display = 'none';
+            }
+
+            if (valid) {
+                this.registerUser(login, password);
+            }
+        });
+    };
 }
