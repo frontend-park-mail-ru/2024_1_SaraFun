@@ -17,13 +17,14 @@ export default class extends AbstractView {
 
             <label for="login" class=".text-base">Login</label>
             <input type="text" id="login" class=".text-base" placeholder="Введите логин">
-            <p class="error" id="login-error" style="display:none;">Ошибка: Введите правильный login</p>
+            <p class="error" id="login-error" style="display:none;">Логин должен быть длинее 5, короче 15, не может содержать спец символы, кроме (-, _), и они не могут быть в начале и в конце, цифры не могут быть в начале</p>
 
             <label for="password" class=".text-base">Пароль</label>
             <input type="password" id="password" placeholder="Введите пароль">
-            <p class="error" id="password-error" style="display:none;">Ошибка: Введите пароль</p>
-
+            <p class="error" id="password-error" style="display:none;">Пароль должен быть от 6 до 40 символов, содержать минимум одну цифру, разрешенные спец знаки (!?*-$)</p>
+            
             <button type="button" id="register-button">Зарегистрироваться</button>
+            
 
             <div class=".footer-text">
                 <div>У вас уже есть аккаунт?</div>
