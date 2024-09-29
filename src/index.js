@@ -145,8 +145,6 @@ const router = async () => {
             if (!response.ok) {
                 throw new Error('Ошибка входа');
             }
-    
-            
             
             // Здесь вы добавить логику для перенаправления пользователя или отображения сообщения об успехе
     
@@ -154,6 +152,74 @@ const router = async () => {
             console.error('Ошибка:', error);
             // Здесь можно показать сообщение об ошибке пользователю
         }
+    }
+
+    if (match.route.path === "/feed") {
+        async function fetchUsers() {
+            try {
+                const response = await fetch('http://5.188.140.7:8080/getusers');
+                if (!response.ok) {
+                    throw new Error('Ошибка при получении списка пользователей');
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('Ошибка при получении списка пользователей:', error);
+                return [];
+            }
+        }
+
+        function displayUser(user) {
+            const formSection = document.querySelector('.form-section');
+            if (user) {
+                formSection.innerHTML = `
+                    <h1 class="description">${user.login}</h1>
+                    <p>Информация о пользователе: ${user.info}</p>
+                    <div class="card-actions">
+                        <button class="btn custom-btn" id="dislike">
+                            <img src="../assets/img/X.svg" alt="X">
+                        </button>
+                        <button class="btn custom-btn" id="like">
+                            <img src="../assets/img/Heart.svg" alt="Heart">
+                        </button>
+                    </div>
+                `;
+            } else {
+                formSection.innerHTML = '<p>Нет больше пользователей</p>';
+            }
+        }
+
+        async function loadFeed() {
+            const users = await fetchUsers();
+            let currentIndex = 0;
+    
+            function showNextUser() {
+                if (currentIndex < users.length) {
+                    displayUser(users[currentIndex]);
+                    currentIndex++;
+                } else {
+                    displayUser(null);
+                }
+            }
+    
+            const root = document.getElementById('root');
+            root.innerHTML = `
+                <div class="container">
+                    <div class="form-section"></div>
+                    <div class="image-section">
+                        <img src="../assets/img/image.svg" alt="Image">
+                    </div>
+                </div>
+            `;
+    
+            showNextUser();
+    
+            root.addEventListener('click', (event) => {
+                if (event.target.closest('#like') || event.target.closest('#dislike')) {
+                    showNextUser();
+                }
+            });
+        }
+        loadFeed();
     }
 };
 

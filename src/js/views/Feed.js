@@ -13,10 +13,10 @@ export default class extends AbstractView {
                     <h1 class="description"><Логин></h1>
                     <p>Здесь будет информация о пользователе.</p>
                     <div class="card-actions">
-                    <button class="btn custom-btn">
+                    <button class="btn custom-btn" id="dislike">
                         <img src="../assets/img/X.svg" alt="X">
                     </button>
-                    <button class="btn custom-btn">
+                    <button class="btn custom-btn" id="like">
                         <img src="../assets/img/Heart.svg" alt="Heart">
                     </button>
                     </div>
