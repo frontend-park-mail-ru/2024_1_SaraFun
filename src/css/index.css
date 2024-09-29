@@ -292,23 +292,29 @@ button:hover {
     justify-content: center;
     align-items: center;
     gap: 20px; 
+    display: flex;
 }
 
 .custom-btn {
+    display: flex;
     background-color: #49B2A6;
     border: none;
     border-radius: 70%;
     width: 80px;
     height: 80px;
-    
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+    position: relative; 
 }
 
 .custom-btn img {
-    width: 80%;
-    height: 80%;
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+    position: absolute; /* Добавлено для абсолютного позиционирования */
+    top: 50%; /* Центрирование по вертикали */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translate(-50%, -50%);
 }
 
 
