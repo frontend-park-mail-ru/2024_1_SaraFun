@@ -15,7 +15,7 @@ export default class extends AbstractView {
             </div>
             <h1 class="description">Добро пожаловать!</h1>
 
-            <label for="login" class=".text-base">Login</label>
+            <label for="username" class=".text-base">Login</label>
             <input type="text" id="login" class=".text-base" placeholder="Введите login">
             <p class="error" id="login-error">Ошибка: Введите правильный login</p>
 
@@ -36,53 +36,4 @@ export default class extends AbstractView {
     </div>
         `;
     }
-
-    async registerUser(login, password) {
-        try {
-            const response = await fetch('/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ login, password }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Сервер вернул ошибку');
-            }
-
-            const result = await response.json();
-
-            console.log(result); 
-            window.location.assign('/feed');
-        } catch (error) {
-            console.error('Ошибка:', error);
-        }
-    };
-
-    async init() {
-        document.getElementById('register-button').addEventListener('click', () => {
-            const login = document.getElementById('login').value;
-            const password = document.getElementById('password').value;
-
-            let valid = true;
-            if (!login) {
-                document.getElementById('login-error').style.display = 'block';
-                valid = false;
-            } else {
-                document.getElementById('login-error').style.display = 'none';
-            }
-
-            if (!password) {
-                document.getElementById('password-error').style.display = 'block';
-                valid = false;
-            } else {
-                document.getElementById('password-error').style.display = 'none';
-            }
-
-            if (valid) {
-                this.registerUser(login, password);
-            }
-        });
-    };
 }

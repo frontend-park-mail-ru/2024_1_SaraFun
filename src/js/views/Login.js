@@ -23,7 +23,7 @@ export default class extends AbstractView {
             <input type="password" id="password" placeholder="Введите пароль">
             <p class="error" id="password-error">Ошибка: Введите пароль</p>
 
-            <button type="button">Войти в аккаунт</button>
+            <button type="button" id="login-button">Войти в аккаунт</button>
 
             <div class="footer-text">
                 <a href="#">Забыли пароль?</a>

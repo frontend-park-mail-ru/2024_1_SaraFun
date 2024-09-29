@@ -49,7 +49,57 @@ const router = async () => {
     const view = new match.route.view(getParams(match));
 
     root.innerHTML = await view.getHtml();
-    await view.init();
+
+    // обработчик события для кнопки регистрации
+    if (match.route.path === "/registration") {
+        document.getElementById('register-button').addEventListener('click', () => {
+            const login = document.getElementById('login').value;
+            const password = document.getElementById('password').value;
+
+            let valid = true;
+
+            if (!login) {
+                document.getElementById('login-error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('login-error').style.display = 'none';
+            }
+
+            if (!password) {
+                document.getElementById('password-error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('password-error').style.display = 'none';
+            }
+
+            if (valid) {
+                console.log('Логин:', login); // Выводим логин в консоль для проверки
+                this.registerUser(login, password);
+            }
+        });
+    }
+
+    async function registerUser(login, password) {
+        try {
+            const response = await fetch('/registration', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ login, password })
+            });
+    
+            if (!response.ok) {
+                throw new Error('Ошибка регистрации');
+            }
+    
+            const data = await response.json();
+            console.log('Регистрация успешна:', data);
+            
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    }
 };
 
 window.addEventListener("popstate", router);
