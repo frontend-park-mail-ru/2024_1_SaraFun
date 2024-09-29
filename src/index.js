@@ -22,6 +22,28 @@ const navigateTo = url => {
     router();
 };
 
+async function registerUser(login, password) {
+    try {
+        const response = await fetch('/registration', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ login, password })
+        });
+
+        if (!response.ok) {
+            throw new Error('Ошибка регистрации');
+        }
+
+        const data = await response.json();
+        console.log('Регистрация успешна:', data);
+        
+    } catch (error) {
+        console.error('Ошибка:', error);
+    }
+}
+
 const router = async () => {
     const routes = [
         { path: "/", view: Login },
@@ -74,31 +96,9 @@ const router = async () => {
 
             if (valid) {
                 console.log('Логин:', login); // Выводим логин в консоль для проверки
-                this.registerUser(login, password);
+                registerUser(login, password);
             }
         });
-    }
-
-    async function registerUser(login, password) {
-        try {
-            const response = await fetch('/registration', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ login, password })
-            });
-    
-            if (!response.ok) {
-                throw new Error('Ошибка регистрации');
-            }
-    
-            const data = await response.json();
-            console.log('Регистрация успешна:', data);
-            
-        } catch (error) {
-            console.error('Ошибка:', error);
-        }
     }
 };
 
