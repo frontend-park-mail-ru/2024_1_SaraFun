@@ -157,7 +157,10 @@ const router = async () => {
     if (match.route.path === "/feed") {
         async function fetchUsers() {
             try {
-                const response = await fetch('http://5.188.140.7:8080/getusers');
+                const response = await fetch('http://5.188.140.7:8080/getusers', {
+                        method: 'GET',
+                        credentials: 'include'
+                });
                 if (!response.ok) {
                     throw new Error('Ошибка при получении списка пользователей');
                 }

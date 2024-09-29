@@ -1,12 +1,26 @@
 const express = require("express");
 const path = require("path");
-
 const app = express();
+const cors = require("cors");
+const session = require("express-session");
+
+app.use(cors({
+  origin: 'http://localhost:3001', // Замените на ваш фронтенд URL
+  credentials: true
+}));
+
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Установите true, если используете HTTPS
+}));
 
 app.set('view engine', 'pug');
 app.use(express.static(path.resolve(__dirname, "../src")));
 
 app.use(express.urlencoded({ extended: true }));
+
 
 app.post('/register', (req, res) => {
   const { login, password } = req.body;
@@ -14,6 +28,20 @@ app.post('/register', (req, res) => {
     res.status(200).send('Регистрация успешна');
   } else {
     res.status(400).send('Ошибка регистрации');
+  }
+});
+
+app.get('/feed', (req, res) => {
+  if (req.session.user) {
+      // Пример списка пользователей
+      const users = [
+          { login: 'user1', info: 'Информация о пользователе 1' },
+          { login: 'user2', info: 'Информация о пользователе 2' },
+          { login: 'user3', info: 'Информация о пользователе 3' }
+      ];
+      res.status(200).json(users);
+  } else {
+      res.status(401).json({ message: 'Необходима авторизация' });
   }
 });
 
