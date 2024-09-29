@@ -22,28 +22,6 @@ const navigateTo = url => {
     router();
 };
 
-async function registerUser(login, password) {
-    try {
-        const response = await fetch('/registration', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ login, password })
-        });
-
-        if (!response.ok) {
-            throw new Error('Ошибка регистрации');
-        }
-
-        const data = await response.json();
-        console.log('Регистрация успешна:', data);
-        
-    } catch (error) {
-        console.error('Ошибка:', error);
-    }
-}
-
 const router = async () => {
     const routes = [
         { path: "/", view: Login },
@@ -72,7 +50,7 @@ const router = async () => {
 
     root.innerHTML = await view.getHtml();
 
-    // обработчик события для кнопки регистрации
+    // регистрация
     if (match.route.path === "/registration") {
         document.getElementById('register-button').addEventListener('click', () => {
             const login = document.getElementById('login').value;
@@ -99,6 +77,83 @@ const router = async () => {
                 registerUser(login, password);
             }
         });
+    }
+    async function registerUser(login, password) {
+        try {
+            console.log(login, password)
+            const response = await fetch('http://5.188.140.7:8080/signup', { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ login, password }),
+            });
+    
+            if (!response.ok) {
+                throw new Error('Ошибка регистрации');
+            }
+
+
+
+            
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    }
+    
+
+    // логин
+    if (match.route.path === "/") {
+        document.getElementById('login-button').addEventListener('click', () => {
+            const login = document.getElementById('login').value;
+            const password = document.getElementById('password').value;
+
+            let valid = true;
+
+            if (!login) {
+                document.getElementById('login-error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('login-error').style.display = 'none';
+            }
+
+            if (!password) {
+                document.getElementById('password-error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('password-error').style.display = 'none';
+            }
+
+            if (valid) {
+                console.log('Логин:', login); // Выводим логин в консоль для проверки
+                loginUser(login, password);
+            }
+        });
+    }
+    
+    async function loginUser(login, password) {
+        try {
+            console.log(login, password)
+            const response = await fetch('http://5.188.140.7:8080/signin', { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ login, password })
+            });
+    
+            if (!response.ok) {
+                throw new Error('Ошибка входа');
+            }
+    
+            
+            
+            // Здесь вы добавить логику для перенаправления пользователя или отображения сообщения об успехе
+    
+        } catch (error) {
+            console.error('Ошибка:', error);
+            // Здесь можно показать сообщение об ошибке пользователю
+        }
     }
 };
 
