@@ -3,7 +3,6 @@
     src:  url('../assets/fonts/Rubik-Black.woff2') format('woff2'),
           url('../assets/fonts/Rubik-Black.woff') format('woff');
 }
-
 body {
     font-family: 'Rubik', sans-serif;
     background-color: var(--primary);
@@ -16,7 +15,6 @@ body {
     align-items: center;
     height: 100vh;
 }
-
 :root {
     --primary: #B9F1D9FF;
     --secondary: #49B2A6FF;
@@ -29,7 +27,6 @@ body {
     --grey1: #C4C4C4FF;
     --grey2: #8C8C8CFF;
 }
-
 .h1 {
     font-family: Rubik;
     filter: blur(2.0000rem);
@@ -37,7 +34,6 @@ body {
     letter-spacing: 0.0000%;
     font-weight: 700;
 }
-
 .text-base {
     font-family: Rubik;
     filter: blur(1.0000rem);
@@ -77,7 +73,6 @@ body {
     letter-spacing: 0.0000%;
     font-weight: 500;
 }
-
 .nav {
     position: fixed;
     top: 0;
@@ -87,7 +82,6 @@ body {
     display: flex;
     background: #222222;
 }
-
 .nav__link {
     display: block;
     padding: 12px 18px;
@@ -95,132 +89,182 @@ body {
     color: #eeeeee;
     font-weight: 500;
 }
-
 .nav__link:hover {
     background: rgba(255, 255, 255, 0.05);
 }
-
 #app {
     margin: 2em;
     line-height: 1.5;
 }
-
 a {
     color: #009579;
 }
-
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center; 
     background-color: var(--white1);
     border-radius: 12px;
     width: 800px;
     height: 600px;
+    display: flex;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
     box-sizing: border-box;
 }
-
-
+.form-section {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+}
 .image-section-wrapper {
-    width: 100%;
+    width: 50%; 
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
 }
-
-.user-photo-placeholder img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid var(--grey2); 
+.logo {
+    text-align: center;
+    width: 80%;
+    height: auto;
 }
-
-
-.form-section {
-    width: 100%;
+.image-section {
+    width: 50%; 
+    background-color: var(--secondary);
+    border-radius: 12px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start; 
-    position: relative;
+    justify-content: center;
+    align-items: center;
 }
-
-
-.header-info {
-    position: absolute;
-    top: 0;
-    right: 0;
-    text-align: right;
-    width: 45%;
+label {
+    margin-bottom: 8px;
+    display: block;
+    color: var(--black1);
 }
-
-
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 16px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+button {
+    width: 100%; 
+    padding: 12px; 
+    background-color: var(--secondary);
+    color: var(--white1);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+button:hover {
+    background-color: var(--success);
+}
+.error {
+    color: var(--error);
+    font-size: 12px;
+    margin-bottom: 8px;
+    display: none; 
+}
+.footer-text {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 14px;
+}
+.footer-text a {
+    color: #333;
+    text-decoration: none;
+}
+.footer-text a:hover {
+    text-decoration: underline;
+}
+.image-section img {
+    height: 100%; 
+    object-fit: cover;
+    object-position: center; 
+}
 .description {
     font-size: 24px;
-    font-weight: bold;
-    text-align: right;
-    margin-bottom: 10px;
-    color: var(--black1);
+    font-weight: bold; 
+    text-align: center;
+    margin-bottom: 20px; 
 }
-
-
-.text-base {
-    font-family: Rubik;
-    filter: none; 
-    line-height: 1.5;
-    letter-spacing: 0%;
-    font-weight: 400;
-    color: var(--black1);
-    margin-bottom: 10px;
-    text-align: right; 
+.main-header {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: absolute; 
+    top: 0;
+    left: 0; 
+    width: 100%;
+    z-index: 1;
 }
-
-
-.form-section p {
-    text-align: left; 
-    margin-top: 60px;
-    color: var(--grey2);
-    width: 100%; 
+.logo-header {
+    width: 100px;
+    height: auto;
 }
-
-
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+.main-nav ul li {
+    margin-right: 20px;
+}
+    
+.main-nav ul li:last-child {
+    margin-right: 0;
+}
+.main-nav ul li a {
+    color: #fff; 
+    text-decoration: none;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Или установите конкретную высоту по необходимости */
+}
+.card-content {
+    flex: 1;
+    /* Дополнительные стили для основного содержимого */
+}
 .card-actions {
     display: flex;
     justify-content: space-around;
-    width: 100%;
-    padding: 10px 0;
-    border-top: 1px solid var(--grey1); 
+    padding: 16px;
+    background-color: var(--white1);
+   
 }
-
-
 .btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
+    padding: 8px 16px;
     background-color: var(--secondary);
     color: var(--white1);
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
+    box-sizing: border-box;
     transition: background-color 0.3s ease;
-    min-width: 120px; 
 }
-
 .btn:hover {
     background-color: var(--success);
 }
-
 .btn span {
-    margin-left: 8px;
+    margin-left: 8px; 
 }
-
-
+.error {
+    color: var(--error);
+    font-size: 12px;
+    margin-bottom: 8px;
+    display: none; 
+}
 .btn::before {
     content: '';
     display: inline-block;
@@ -230,27 +274,21 @@ a {
     background-repeat: no-repeat;
     margin-right: 8px;
 }
-
 .btn.skip::before {
     background-image: url('../assets/icons/skip.svg');
 }
-
 .btn.like::before {
     background-image: url('../assets/icons/like.svg');
 }
-
 .btn.photo::before {
     background-image: url('../assets/icons/photo.svg');
 }
-
 .btn.gift::before {
     background-image: url('../assets/icons/gift.svg');
 }
 
 
-
 .custom-buttons {
-    
     justify-content: center;
     align-items: center;
     gap: 20px; 
