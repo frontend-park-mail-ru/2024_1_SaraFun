@@ -16,24 +16,24 @@ export default class extends AbstractView {
             <h1 class="description">Добро пожаловать!</h1>
 
             <label for="login" class=".text-base">Login</label>
-            <input type="text" id="login" class=".text-base" placeholder="Введите логин">
-            <p class="error" id="login-error" style="display:none;">Ошибка: Введите правильный login</p>
+            <input type="text" id="login" class=".text-base" placeholder="Введите login">
+            <p class="error" id="login-error">Ошибка: Введите правильный login</p>
 
             <label for="password" class=".text-base">Пароль</label>
             <input type="password" id="password" placeholder="Введите пароль">
-            <p class="error" id="password-error" style="display:none;">Ошибка: Введите пароль</p>
+            <p class="error" id="password-error">Ошибка: Введите пароль</p>
 
-            <button type="button" id="register-button">Зарегистрироваться</button>
+            <button type="button">Зарегистрироваться</button>
 
-            <div class=".footer-text">
-                <div>У вас уже есть аккаунт?</div>
-                <a href="/login" class=".link">Войдите в аккаунт</a>
+
+            <div class="footer-text">
+                У вас уже есть аккаунт? <a href="#" class=".link">Войдите в аккаунт</a>
             </div>
         </div>
            <div class="image-section">
             <img src="../assets/img/image.svg" alt="Image">
         </div>
-    </div>`
-        ;
+    </div>
+        `;
     }
 }
