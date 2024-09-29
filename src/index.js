@@ -58,14 +58,14 @@ const router = async () => {
 
             let valid = true;
 
-            if (!login) {
+            if (!isValidLogin(login)) {
                 document.getElementById('login-error').style.display = 'block';
                 valid = false;
             } else {
                 document.getElementById('login-error').style.display = 'none';
             }
 
-            if (!password) {
+            if (!isValidPassword(password)) {
                 document.getElementById('password-error').style.display = 'block';
                 valid = false;
             } else {
@@ -73,11 +73,69 @@ const router = async () => {
             }
 
             if (valid) {
-                console.log('Логин:', login); // Выводим логин в консоль для проверки
-                registerUser(login, password);
+                registerUser(login, password)
             }
+            
         });
     }
+
+    function isValidLogin(login) {
+        // Проверка длины логина
+        if (login.length < 5 || login.length > 15) {
+            console.log("Логин должен содержать от 5 до 15 символов.");
+            return false;
+        }
+    
+        // Проверка на наличие недопустимых специальных символов
+        const invalidChars = /[^a-zA-Z0-9_-]/;
+        if (invalidChars.test(login)) {
+            console.log("Логин может содержать только буквы, цифры, '_' и '-'.");
+            return false;
+        }
+    
+        // Проверка на первую и последнюю позицию для специальных символов
+        if (login.startsWith('_') || login.startsWith('-') || login.endsWith('_') || login.endsWith('-')) {
+            console.log("Специальные символы '_' и '-' не могут быть первыми или последними символами.");
+            return false;
+        }
+    
+        // Проверка на первую позицию для цифр
+        if (/\d/.test(login.charAt(0))) {
+            console.log("Логин не может начинаться с цифры.");
+            return false;
+        }
+    
+        return true;
+    }
+
+    function isValidPassword(password) {
+        if (!password) {
+            return false;
+        }
+        // Проверка длины пароля
+        if (password.length < 6 || password.length > 40) {
+            console.log("Пароль должен содержать от 6 до 40 символов.");
+            return false;
+        }
+    
+        // Проверка на наличие хотя бы одной цифры
+        if (!/\d/.test(password)) {
+            console.log("Пароль должен содержать хотя бы одну цифру.");
+            return false;
+        }
+    
+        // Проверка на допустимые специальные символы
+        for (let char of password) {
+            if (!/[a-zA-Z0-9*?!$]/.test(char)) {
+                console.log("Пароль содержит недопустимые символы.");
+                return false;
+            }
+        }
+
+        return true;
+    }
+    
+
     async function registerUser(login, password) {
         try {
             console.log(login, password)
@@ -125,11 +183,13 @@ const router = async () => {
             }
 
             if (valid) {
-                console.log('Логин:', login); // Выводим логин в консоль для проверки
-                loginUser(login, password);
+                loginUser(login, password)
             }
         });
     }
+
+    
+    
     
     async function loginUser(login, password) {
         try {
