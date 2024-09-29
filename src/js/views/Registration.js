@@ -15,7 +15,7 @@ export default class extends AbstractView {
             </div>
             <h1 class="description">Добро пожаловать!</h1>
 
-            <label for="login" class=".text-base">Login</label>
+            <label for="username" class=".text-base">Login</label>
             <input type="text" id="login" class=".text-base" placeholder="Введите login">
             <p class="error" id="login-error">Ошибка: Введите правильный login</p>
 
@@ -23,7 +23,7 @@ export default class extends AbstractView {
             <input type="password" id="password" placeholder="Введите пароль">
             <p class="error" id="password-error">Ошибка: Введите пароль</p>
 
-            <button type="button">Зарегистрироваться</button>
+            <button type="button" id="register-button">Зарегистрироваться</button>
 
 
             <div class="footer-text">

@@ -15,15 +15,15 @@ export default class extends AbstractView {
             </div>
             <h1 class="description">С возвращением!</h1>
 
-            <label for="login" class=".text-base">Login</label>
-            <input type="text" id="login" class=".text-base" placeholder="Введите login">
-            <p class="error" id="login-error">Ошибка: Введите правильный login</p>
+            <label for="email" class=".text-base">Email</label>
+            <input type="text" id="email" class=".text-base" placeholder="Введите email">
+            <p class="error" id="email-error">Ошибка: Введите правильный email</p>
 
             <label for="password" class=".text-base">Пароль</label>
             <input type="password" id="password" placeholder="Введите пароль">
             <p class="error" id="password-error">Ошибка: Введите пароль</p>
 
-            <button type="button" id="login-button">Войти в аккаунт</button>
+            <button type="button">Войти в аккаунт</button>
 
             <div class="footer-text">
                 <a href="#">Забыли пароль?</a>
