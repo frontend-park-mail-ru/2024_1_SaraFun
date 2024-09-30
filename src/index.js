@@ -144,7 +144,8 @@ const router = async () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ login, password }),
+                credentials: "include",
+                body: JSON.stringify({ "username": login, "password": password }),
             });
     
             if (!response.ok) {
@@ -199,7 +200,8 @@ const router = async () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ login, password })
+                credentials: "include",
+                body: JSON.stringify({ "username": login, "password": password }),
             });
     
             if (!response.ok) {
@@ -219,7 +221,10 @@ const router = async () => {
             try {
                 const response = await fetch('http://5.188.140.7:8080/getusers', {
                         method: 'GET',
-                        credentials: 'include'
+                        credentials: "include",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
                 });
                 if (!response.ok) {
                     throw new Error('Ошибка при получении списка пользователей');
