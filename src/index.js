@@ -77,6 +77,11 @@ const router = async () => {
             }
             
         });
+
+        document.getElementById('link').addEventListener('click', (event) => {
+            event.preventDefault();
+            navigateTo(event.target.href);
+        });
     }
 
     function isValidLogin(login) {
@@ -185,6 +190,11 @@ const router = async () => {
             if (valid) {
                 loginUser(login, password)
             }
+        });
+        
+        document.getElementById('link').addEventListener('click', (event) => {
+            event.preventDefault();
+            navigateTo(event.target.href);
         });
     }
 

@@ -30,7 +30,7 @@ export default class extends AbstractView {
             </div>
 
             <div class=".footer-text">
-                У вас еще нет аккаунта? <a href="/registration" class=".link">Зарегистрируйтесь</a>
+                У вас еще нет аккаунта? <a id="link" href="/registration" class=".link">Зарегистрируйтесь</a>
             </div>
         </div>
            <div class="image-section">
