@@ -134,7 +134,6 @@ const router = async () => {
 
         return true;
     }
-    
 
     async function registerUser(login, password) {
         try {
@@ -144,13 +143,14 @@ const router = async () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ login, password }),
+                body: JSON.stringify({"username": login, "password": password}),
             });
     
             if (!response.ok) {
                 throw new Error('Ошибка регистрации');
             }
 
+            window.location.href = '/feed';
 
 
             
@@ -188,9 +188,6 @@ const router = async () => {
         });
     }
 
-    
-    
-    
     async function loginUser(login, password) {
         try {
             console.log(login, password)
@@ -199,18 +196,19 @@ const router = async () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ login, password })
+                body: JSON.stringify({"username": login, "password": password}),
             });
-    
+
             if (!response.ok) {
                 throw new Error('Ошибка входа');
             }
+    
             
-            // Здесь вы добавить логику для перенаправления пользователя или отображения сообщения об успехе
+            window.location.href = '/feed';
     
         } catch (error) {
             console.error('Ошибка:', error);
-            // Здесь можно показать сообщение об ошибке пользователю
+            
         }
     }
 
@@ -219,7 +217,8 @@ const router = async () => {
             try {
                 const response = await fetch('http://5.188.140.7:8080/getusers', {
                         method: 'GET',
-                        credentials: 'include'
+                        credentials: 'include',
+                        mode: 'cors'
                 });
                 if (!response.ok) {
                     throw new Error('Ошибка при получении списка пользователей');
