@@ -5,7 +5,7 @@ const cors = require("cors");
 const session = require("express-session");
 
 app.use(cors({
-  origin: 'http://localhost:3001', // Замените на ваш фронтенд URL
+  origin: 'http://localhost:3001', 
   credentials: true
 }));
 
@@ -13,7 +13,7 @@ app.use(session({
   secret: 'your-secret-key',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // Установите true, если используете HTTPS
+  cookie: { secure: false } // true, если  HTTPS
 }));
 
 app.set('view engine', 'pug');
