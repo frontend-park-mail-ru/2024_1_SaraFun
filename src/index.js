@@ -371,24 +371,10 @@ const router = async () => {
     return false;
   }
 
-  async function logout() {
-    const response = await fetch('http://5.188.140.7:8080/logout', {
-      method: 'GET',
-      credentials: 'include' 
-    });
-  
-    if (response.ok) {
-      const data = await response.json();
-      return !data.isAuthenticated;  
-    }
-    return false;
-  }
-
   if (match.route.path === '/feed') {
     if (!checkAuth()) {
       navigateTo('/');
-    }
-    else {
+    } else {
       async function fetchUsers() {
         try {
           const response = await fetch('http://5.188.140.7:8080/getusers', {
