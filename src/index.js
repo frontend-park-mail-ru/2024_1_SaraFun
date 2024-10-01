@@ -424,7 +424,7 @@ const router = async () => {
     }
   }
 
-  /*f (match.route.path === '/feed') {
+  if (match.route.path === '/cards') {
     if (!checkAuth()) {
       navigateTo('/');
     } else {
@@ -500,7 +500,7 @@ const router = async () => {
       }
       loadFeed();
     }
-  }*/
+  }
 };
 
 window.addEventListener('popstate', router);
