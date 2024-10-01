@@ -210,7 +210,7 @@ const router = async () => {
             // if (valid) {
             //     registerUser(login, password, gender, age)
             // }
-            registerUser(login, password, gender, age)
+            registerUser(login, password, gender, age);
             
         });
 
@@ -291,7 +291,7 @@ const router = async () => {
             if (!response.ok) {
                 throw new Error('Ошибка регистрации');
             }
-            console.log('Успешно зарегистрировался')
+            console.log('Успешно зарегистрировался');
             // window.location.href = '/feed';
     
         } catch (error) {
@@ -325,7 +325,7 @@ const router = async () => {
             // if (valid) {
             //     loginUser(login, password)
             // }
-            loginUser(login, password)
+            loginUser(login, password);
         });
         
         document.getElementById('link').addEventListener('click', (event) => {
@@ -336,7 +336,7 @@ const router = async () => {
 
     async function loginUser(login, password) {
         try {
-            console.log(login, password)
+            console.log(login, password);
             const response = await fetch('http://5.188.140.7:8080/signin', { 
                 method: 'POST',
                 headers: {
@@ -350,7 +350,7 @@ const router = async () => {
                 throw new Error('Ошибка входа');
             }
     
-            console.log('Успешно авторизовался')
+            console.log('Успешно авторизовался');
             // window.location.href = '/feed';
     
         } catch (error) {
