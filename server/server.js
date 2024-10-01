@@ -33,6 +33,7 @@ app.post('/register', (req, res) => {
 
 const checkAuth = async (req, res, next) => {
   try {
+    
     const response = await fetch('http://5.188.140.7:8080/checkauth', {
       method: 'GET',
       credentials: 'include',
@@ -40,6 +41,7 @@ const checkAuth = async (req, res, next) => {
         // Добавьте необходимые заголовки, если нужно
       }
     });
+    console.log(response)
 
     if (response.ok) {
       const data = await response.json();
