@@ -423,7 +423,7 @@ const router = async () => {
   }
 
   if (match.route.path === '/feed') {
-    if (!checkAuth()) {
+    if (checkAuth() != 'ok') {
       navigateTo('/');
     } else {
       async function fetchUsers() {
