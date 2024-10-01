@@ -160,7 +160,7 @@ const router = async () => {
               el.style.transform = 'translate(' + (initialX + deltaX) + 'px, ' + (initialY + deltaY) + 'px) rotate(' + rotate + 'deg)';
             }
       
-            function endDrag() { //была переменная event
+            function endDrag() { 
               if (!isDragging) {return;}
               isDragging = false;
           
@@ -520,26 +520,27 @@ document.addEventListener('DOMContentLoaded', async () => {
   const navBar = document.getElementById('nav-bar');
   const root = document.getElementById('root');
 
-  
-
-  function getUsername() {
-    const cookie = document.cookie.split(';').find(item => item.trim().startsWith('username='));
-    return cookie ? cookie.split('=')[1] : 'User';
+  function checkAuth() {
+      return document.cookie.split(';').some((item) => item.trim().startsWith('token='));
   }
 
-  async function renderNavBar() {
-    const isAuthenticated = await checkAuth();
-    if (isAuthenticated) {
-      navBar.innerHTML = `
-        <a href="/feed" class="nav__link" data-link>Feed</a>
-          <span class="nav__link">${getUsername()}</span>
-        <button id="logout-button" class="nav__link">Logout</button>
+  function getUsername() {
+      const cookie = document.cookie.split(';').find(item => item.trim().startsWith('username='));
+      return cookie ? cookie.split('=')[1] : 'User';
+  }
+
+  function renderNavBar() {
+      if (checkAuth()) {
+          navBar.innerHTML = `
+              <a href="/feed" class="nav__link" data-link>Главная страница</a>
+              <span class="nav__link">${getUsername()}</span>
+              <button id="logout-button" class="nav__link">Выйти из аккаунта</button>
           `;
-        document.getElementById('logout-button').addEventListener('click', logout);
+          document.getElementById('logout-button').addEventListener('click', logout);
       } else {
           navBar.innerHTML = `
-              <a href="/" class="nav__link" data-link>Login</a>
-              <a href="/registration" class="nav__link" data-link>Registration</a>
+              <a href="/" class="nav__link" data-link>Войти в аккаунт</a>
+              <a href="/registration" class="nav__link" data-link>Создать аккаунт</a>
           `;
       }
   }
@@ -551,7 +552,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       window.location.href = '/';
   }
 
-  await renderNavBar();
+  renderNavBar();
 
   router();
 });
