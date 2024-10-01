@@ -292,7 +292,7 @@ const router = async () => {
                 throw new Error('Ошибка регистрации');
             }
             console.log('Успешно зарегистрировался');
-            // window.location.href = '/feed';
+            navigateTo('/feed');
     
         } catch (error) {
             console.error('Ошибка:', error);
@@ -351,7 +351,7 @@ const router = async () => {
             }
     
             console.log('Успешно авторизовался');
-            window.location.href = '/feed';
+            navigateTo('/feed');
     
         } catch (error) {
             console.error('Ошибка:', error);
