@@ -284,6 +284,7 @@ const router = async () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials : 'include',
                 body: JSON.stringify({"username": login, "password": password, "gender": gender, "age": parseInt(age)}),
             });
     
@@ -341,6 +342,7 @@ const router = async () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials : 'include',
                 body: JSON.stringify({"username": login, "password": password}),
             });
 
