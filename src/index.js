@@ -324,8 +324,9 @@ const router = async () => {
 
             if (valid) {
                  loginUser(login, password)
+            } else {
+                console.error('Ошибка: авторизации');
             }
-            loginUser(login, password);
         });
         
         document.getElementById('link').addEventListener('click', (event) => {
