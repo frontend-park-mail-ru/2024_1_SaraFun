@@ -322,9 +322,9 @@ const router = async () => {
                 document.getElementById('password-error').style.display = 'none';
             }
 
-            // if (valid) {
-            //     loginUser(login, password)
-            // }
+            if (valid) {
+                 loginUser(login, password)
+            }
             loginUser(login, password);
         });
         
@@ -351,7 +351,7 @@ const router = async () => {
             }
     
             console.log('Успешно авторизовался');
-            // window.location.href = '/feed';
+            window.location.href = '/feed';
     
         } catch (error) {
             console.error('Ошибка:', error);
@@ -381,8 +381,9 @@ const router = async () => {
             const formSection = document.querySelector('.form-section');
             if (user) {
                 formSection.innerHTML = `
-                    <h1 class="description">${user.login}</h1>
-                    <p>Информация о пользователе: ${user.info}</p>
+                    <h1 class="description">${user.username}</h1>
+                    <p>Возраст: ${user.age}</p>
+                    <p>Пол: ${user.gender}</p>
                     <div class="card-actions">
                         <button class="btn custom-btn" id="dislike">
                             <img src="../assets/img/X.svg" alt="X">
@@ -396,9 +397,16 @@ const router = async () => {
                 formSection.innerHTML = '<p>Нет больше пользователей</p>';
             }
         }
+        /* {
+        "id": 1,
+        "username": "Andrey",
+        "age": 20,
+        "gender": "male"
+    }, */
 
         async function loadFeed() {
             const users = await fetchUsers();
+            console.log(users);
             let currentIndex = 0;
     
             function showNextUser() {
@@ -433,15 +441,3 @@ const router = async () => {
 };
 
 window.addEventListener("popstate", router);
-
-document.addEventListener("DOMContentLoaded", () => {
-    document.body.addEventListener("click", e => {
-        if (e.target.matches("[data-link]")) {
-            e.preventDefault();
-            navigateTo(e.target.href);
-        }
-    });
-
-    router();
-});
-
