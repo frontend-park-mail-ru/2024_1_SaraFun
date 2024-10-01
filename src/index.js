@@ -210,7 +210,6 @@ const router = async () => {
             if (valid) {
                 registerUser(login, password, gender, age)
             }
-            registerUser(login, password, gender, age);
             
         });
 
