@@ -5,7 +5,7 @@ const cors = require("cors");
 const session = require("express-session");
 
 app.use(cors({
-  origin: 'http://5.188.140.7:3001', // Замените на ваш фронтенд URL
+  origin: 'http://5.188.140.7:80', // Замените на ваш фронтенд URL
   credentials: true
 }));
 
