@@ -207,9 +207,9 @@ const router = async () => {
                 document.getElementById('password-error').style.display = 'none';
             }
 
-            // if (valid) {
-            //     registerUser(login, password, gender, age)
-            // }
+            if (valid) {
+                registerUser(login, password, gender, age)
+            }
             registerUser(login, password, gender, age);
             
         });
