@@ -283,7 +283,7 @@ const router = async () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({"username": login, "password": password, "gender": gender, "age": age}),
+                body: JSON.stringify({"username": login, "password": password, "gender": gender, "age": parseInt(age)}),
             });
     
             if (!response.ok) {
