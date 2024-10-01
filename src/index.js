@@ -414,6 +414,9 @@ const router = async () => {
         method: 'GET',
         credentials: 'include' 
       });
+      if (!response.ok) {
+        return false
+      }
       return true 
     }
     catch {
