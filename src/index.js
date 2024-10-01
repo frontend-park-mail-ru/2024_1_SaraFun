@@ -24,8 +24,7 @@ const navigateTo = url => {
 const router = async () => {
   const routes = [
     { path: '/', view: Login },
-    { path: '/feed', view: Feed },
-    { path: '/cards', view: CardView },
+    { path: '/feed', view: CardView },
     { path: '/registration', view: Registration }
   ];
 
@@ -231,7 +230,7 @@ const router = async () => {
         love.addEventListener('click', loveListener);
     }
     loadCards();
-}
+  }
 
   // регистрация
   if (match.route.path === '/registration') {
@@ -519,3 +518,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   router();
 }); 
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const navBar = document.getElementById('nav-bar');
+  const root = document.getElementById('root');
+
+  function checkAuth() {
+      return document.cookie.split(';').some((item) => item.trim().startsWith('token='));
+  }
+
+  function getUsername() {
+      const cookie = document.cookie.split(';').find(item => item.trim().startsWith('username='));
+      return cookie ? cookie.split('=')[1] : 'User';
+  }
+
+  function renderNavBar() {
+      if (checkAuth()) {
+          navBar.innerHTML = `
+              <a href="/feed" class="nav__link" data-link>Feed</a>
+              <span class="nav__link">${getUsername()}</span>
+              <button id="logout-button" class="nav__link">Logout</button>
+          `;
+          document.getElementById('logout-button').addEventListener('click', logout);
+      } else {
+          navBar.innerHTML = `
+              <a href="/" class="nav__link" data-link>Login</a>
+              <a href="/registration" class="nav__link" data-link>Registration</a>
+          `;
+      }
+  }
+
+  function logout() {
+      document.cookie = 'token=; Max-Age=0; path=/; secure; HttpOnly';
+      document.cookie = 'username=; Max-Age=0; path=/; secure; HttpOnly';
+      renderNavBar();
+      window.location.href = '/';
+  }
+
+  renderNavBar();
+
+  router();
+});
