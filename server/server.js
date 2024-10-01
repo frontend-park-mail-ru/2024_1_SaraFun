@@ -3,13 +3,6 @@ const path = require("path");
 const app = express();
 const cors = require("cors");
 const session = require("express-session");
-const http = require('http');
-
-//create a server object:
-http.createServer((req, res) => {
-  res.write('Hello World!'); //write a response to the client
-  res.end(); //end the response
-}).listen(3000);
 
 app.use(cors({
   origin: 'http://5.188.140.7:3001', // Замените на ваш фронтенд URL
@@ -65,7 +58,7 @@ app.get("/*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../src", "index.html"));
 });
 
-// const PORT = process.env.PORT || 3001;
-// app.listen(PORT, () => {
-//   console.log(`Server is running on http://localhost:${PORT}`);
-// });
+const PORT = process.env.PORT || 80;
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
