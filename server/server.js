@@ -1,8 +1,8 @@
-const express = require("express");
-const path = require("path");
+const express = require('express');
+const path = require('path');
 const app = express();
-const cors = require("cors");
-const session = require("express-session");
+const cors = require('cors');
+const session = require('express-session');
 
 app.use(cors({
   origin: 'http://localhost:80', 
@@ -17,7 +17,7 @@ app.use(session({
 }));
 
 app.set('view engine', 'pug');
-app.use(express.static(path.resolve(__dirname, "../src")));
+app.use(express.static(path.resolve(__dirname, '../src')));
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -33,15 +33,15 @@ app.post('/register', (req, res) => {
 
 app.get('/feed', (req, res) => {
   if (req.session.user) {
-      // Пример списка пользователей
-      const users = [
-          { login: 'user1', info: 'Информация о пользователе 1' },
-          { login: 'user2', info: 'Информация о пользователе 2' },
-          { login: 'user3', info: 'Информация о пользователе 3' }
-      ];
-      res.status(200).json(users);
+    // Пример списка пользователей
+    const users = [
+      { login: 'user1', info: 'Информация о пользователе 1' },
+      { login: 'user2', info: 'Информация о пользователе 2' },
+      { login: 'user3', info: 'Информация о пользователе 3' }
+    ];
+    res.status(200).json(users);
   } else {
-      res.status(401).json({ message: 'Необходима авторизация' });
+    res.status(401).json({ message: 'Необходима авторизация' });
   }
 });
 
@@ -54,8 +54,8 @@ app.post('/login', (req, res) => {
   }
 });
 
-app.get("/*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../src", "index.html"));
+app.get('/*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../src', 'index.html'));
 });
 
 const PORT = process.env.PORT || 80;

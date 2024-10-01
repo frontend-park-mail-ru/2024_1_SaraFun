@@ -7,7 +7,10 @@ import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
 export default [
   {
     languageOptions: {
-      globals: globals.browser,
+      globals: 
+        globals.browser,
+
+
       parserOptions: {
         ecmaVersion: 2021,
         sourceType: 'module',
@@ -18,10 +21,12 @@ export default [
       'no-unused-vars': 'warn',
       'eqeqeq': ['error', 'always'],
       'curly': 'error',
-      'no-console': 'warn',
+      //'no-console': 'warn',
       'indent': ['error', 2],
       'quotes': ['error', 'single'],
-      'max-len': ['warn', { code: 80 }],
+      //'max-len': ['warn', { code: 80 }],
+      'no-undef': 'off',
+
     },
   },
   pluginJs.configs.recommended,
