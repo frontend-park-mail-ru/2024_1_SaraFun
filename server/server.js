@@ -43,7 +43,7 @@ const checkAuth = async (req, res, next) => {
 
     if (response.ok) {
       const data = await response.json();
-      if (data.isAuthenticated) {
+      if (data.isAuthenticated == 'ok') {
         return next(); // Пользователь авторизован, продолжаем выполнение
       }
     }
