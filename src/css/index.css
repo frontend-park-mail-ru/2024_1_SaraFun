@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Rubik';
-    src:  url('../assets/fonts/Rubik-Black.woff2') format('woff2'),
-          url('../assets/fonts/Rubik-Black.woff') format('woff');
+    src:  url('../assets/fonts/Rubik-Regular.woff') format('woff2'),
+          url('../assets/fonts/Rubik-Regular.woff2') format('woff');
 }
 
 body {
@@ -98,7 +98,7 @@ a {
 
 .container {
     background-color: var(--white1);
-    border-radius: 12px;
+    border-radius: 25px;
     width: 70vw;
     min-width: 700px;
     height: 85vh;
@@ -129,6 +129,9 @@ a {
     width: 50%;
     padding-right: 20px;
     box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
 }
 .image-section-wrapper {
     width: 50%; 
@@ -142,7 +145,7 @@ a {
 .image-section {
     width: 50%; 
     background-color: var(--secondary);
-    border-radius: 12px;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -183,9 +186,11 @@ button:hover {
     display: none; 
 }
 .footer-text {
-    text-align: center;
-    margin-top: 16px;
+    display: flex;
+    margin-top: auto;
     font-size: 14px;
+    align-self: center;
+    justify-content: center;
 }
 .footer-text a {
     color: #333;
@@ -200,9 +205,7 @@ button:hover {
     object-position: center; 
 }
 .description {
-    font-size: 24px;
-    font-weight: bold; 
-    text-align: center;
+    align-self: center;
     margin-bottom: 20px; 
 }
 .main-header {
