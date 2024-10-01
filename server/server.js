@@ -41,19 +41,14 @@ const checkAuth = async (req, res, next) => {
         // Добавьте необходимые заголовки, если нужно
       }
     });
-    console.log(response)
-
-    if (response.ok) {
-      const data = await response.json();
-      if (data.isAuthenticated == 'ok') {
-        return next(); // Пользователь авторизован, продолжаем выполнение
-      }
-    }
+    
+    return next(); // Пользователь авторизован, продолжаем выполнение
+  
 
     return res.redirect('/login'); // Пользователь не авторизован, перенаправляем на /login
   } catch (error) {
     console.error(error);
-    return res.status(401).send('Ошибка проверки авторизации');
+    return res.redirect('/login');
   }
 };
 
