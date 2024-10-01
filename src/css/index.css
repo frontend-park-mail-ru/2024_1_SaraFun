@@ -246,13 +246,7 @@ button:hover {
     flex: 1;
     /* Дополнительные стили для основного содержимого */
 }
-.card-actions {
-    display: flex;
-    justify-content: space-around;
-    padding: 16px;
-    background-color: var(--white1);
-   
-}
+
 .btn {
     display: flex;
     align-items: center;
@@ -301,17 +295,9 @@ button:hover {
     background-image: url('../assets/icons/gift.svg');
 }
 
-
-.custom-buttons {
-    justify-content: center;
-    align-items: center;
-    gap: 20px; 
-    display: flex;
-}
-
 .custom-btn {
     display: flex;
-    background-color: #49B2A6;
+    background-color: var(--secondary);
     border: none;
     border-radius: 70%;
     width: 80px;
@@ -325,9 +311,9 @@ button:hover {
     width: 75%;
     height: 75%;
     object-fit: contain;
-    position: absolute; /* Добавлено для абсолютного позиционирования */
-    top: 50%; /* Центрирование по вертикали */
-    left: 50%; /* Центрирование по горизонтали */
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
     transform: translate(-50%, -50%);
 }
 
@@ -399,6 +385,14 @@ button:hover {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+}
+
+.card-actions {
+    display: flex;
+    gap: 20px; 
+    justify-content: center;
+    align-self: center;
+    margin-top: auto;
 }
 
 *, *:before, *:after {

@@ -16,7 +16,16 @@ export default class extends AbstractView {
                   </div>
                   <div class="form-section-tinder">
                     <h1>Антон</h1>
-                    <text-base>This is a demo for Tinder like swipe cards</text-base>
+                    <text-base>Пол: мужской</text-base>
+                    <text-base>Возраст: 27 лет</text-base>
+                    <div class="card-actions">
+                      <button class="btn custom-btn fa-remove" id="dislike">
+                          <img src="../assets/img/X.svg" alt="X">
+                      </button>
+                      <button class="btn custom-btn" id="like">
+                          <img src="../assets/img/Heart.svg" alt="Heart">
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <div class="tinder--card">
@@ -25,7 +34,16 @@ export default class extends AbstractView {
                   </div>
                   <div class="form-section-tinder">
                     <h1>Антон</h1>
-                    <text-base>This is a demo for Tinder like swipe cards</text-base>
+                    <text-base>Пол: мужской</text-base>
+                    <text-base>Возраст: 27 лет</text-base>
+                    <div class="card-actions">
+                      <button class="btn custom-btn" id="dislike">
+                          <img src="../assets/img/X.svg" alt="X">
+                      </button>
+                      <button class="btn custom-btn" id="like">
+                          <img src="../assets/img/Heart.svg" alt="Heart">
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <div class="tinder--card">
@@ -34,7 +52,16 @@ export default class extends AbstractView {
                   </div>
                   <div class="form-section-tinder">
                     <h1>Антон</h1>
-                    <text-base>This is a demo for Tinder like swipe cards</text-base>
+                    <text-base>Пол: мужской</text-base>
+                    <text-base>Возраст: 27 лет</text-base>
+                    <div class="card-actions">
+                      <button class="btn custom-btn" id="dislike">
+                          <img src="../assets/img/X.svg" alt="X">
+                      </button>
+                      <button class="btn custom-btn" id="like">
+                          <img src="../assets/img/Heart.svg" alt="Heart">
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <div class="tinder--card">
@@ -43,7 +70,16 @@ export default class extends AbstractView {
                   </div>
                   <div class="form-section-tinder">
                     <h1>Антон</h1>
-                    <text-base>This is a demo for Tinder like swipe cards</text-base>
+                    <text-base>Пол: мужской</text-base>
+                    <text-base>Возраст: 27 лет</text-base>
+                    <div class="card-actions">
+                      <button class="btn custom-btn" id="dislike">
+                          <img src="../assets/img/X.svg" alt="X">
+                      </button>
+                      <button class="btn custom-btn" id="like">
+                          <img src="../assets/img/Heart.svg" alt="Heart">
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <div class="tinder--card">
@@ -52,7 +88,16 @@ export default class extends AbstractView {
                   </div>
                   <div class="form-section-tinder">
                     <h1>Антон</h1>
-                    <text-base>This is a demo for Tinder like swipe cards</text-base>
+                    <text-base>Пол: мужской</text-base>
+                    <text-base>Возраст: 27 лет</text-base>
+                    <div class="card-actions">
+                      <button class="btn custom-btn" id="dislike">
+                          <img src="../assets/img/X.svg" alt="X">
+                      </button>
+                      <button class="btn custom-btn" id="like">
+                          <img src="../assets/img/Heart.svg" alt="Heart">
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
