@@ -1,13 +1,13 @@
-import AbstractView from "./AbstractView.js";
+import AbstractView from './AbstractView.js';
 
 export default class extends AbstractView {
-    constructor(params) {
-        super(params);
-        this.setTitle("Карточка пользователя");
-    }
+  constructor(params) {
+    super(params);
+    this.setTitle('Карточка пользователя');
+  }
 
-    async getHtml() {
-        return `
+  async getHtml() {
+    return `
             <div class="container">
                 <div class="form-section">
                     <h1 class="description"><Логин></h1>
@@ -26,6 +26,6 @@ export default class extends AbstractView {
                 </div>
             </div>
         `;
-    }
+  }
     
 }

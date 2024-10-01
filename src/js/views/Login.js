@@ -1,13 +1,13 @@
-import AbstractView from "./AbstractView.js";
+import AbstractView from './AbstractView.js';
 
 export default class extends AbstractView {
-    constructor(params) {
-        super(params);
-        this.setTitle("Login");
-    }
+  constructor(params) {
+    super(params);
+    this.setTitle('Login');
+  }
 
-    async getHtml() {
-        return `
+  async getHtml() {
+    return `
         <div class="container">
             <div class="form-section">
             <div class="logo">
@@ -38,5 +38,5 @@ export default class extends AbstractView {
         </div>
     </div>
         `;
-    }
+  }
 }

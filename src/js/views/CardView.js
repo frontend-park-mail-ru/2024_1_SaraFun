@@ -1,13 +1,13 @@
-import AbstractView from "./AbstractView.js";
+import AbstractView from './AbstractView.js';
 
 export default class extends AbstractView {
-    constructor(params) {
-        super(params);
-        this.setTitle("Viewing Card");
-    }
+  constructor(params) {
+    super(params);
+    this.setTitle('Viewing Card');
+  }
 
-    async getHtml() {
-        return `
+  async getHtml() {
+    return `
             <div class="tinder">
               <div class="tinder--cards">
                 <div class="tinder--card">
@@ -108,5 +108,5 @@ export default class extends AbstractView {
               </div>
             </div>
         `;
-    }
+  }
 }
