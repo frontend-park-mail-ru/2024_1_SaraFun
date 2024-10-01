@@ -32,6 +32,7 @@ app.post('/register', (req, res) => {
 });
 
 app.get('/feed', (req, res) => {
+  console.log(req.session);
   if (req.session.user) {
     // Пример списка пользователей
     const users = [
@@ -48,6 +49,7 @@ app.get('/feed', (req, res) => {
 app.post('/login', (req, res) => {
   const { login, password } = req.body;
   if (login && password) {
+    req.session.user = { login };
     res.status(200).send('Авторизация успешна');
   } else {
     res.status(400).send('Ошибка авторизации');
