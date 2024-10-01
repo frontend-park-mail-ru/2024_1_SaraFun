@@ -49,11 +49,23 @@ const checkAuth = async (req, res, next) => {
   }
 };
 
+const fetchFeed = async () => {
+  const response = await fetch('http://5.188.140.7:80/feed'); // URL для получения ленты
+  if (!response.ok) {
+    throw new Error('Ошибка при получении ленты');
+  }
+  return await response.json(); // Возвращаем данные ленты
+};
 
 app.get('/feed', checkAuth, async (req, res) => {
-  res.status(200).send('Пользователь авторизован'); 
+  try {
+    const feedData = await fetchFeed(); // Получаем данные ленты
+    res.status(200).json(feedData); // Возвращаем данные в формате JSON
+  } catch (error) {
+    console.error('Ошибка при получении ленты:', error);
+    res.status(500).json({ error: 'Ошибка при получении ленты' });
+  }
 });
-
 
 app.post('/login', (req, res) => {
   const { login, password } = req.body;
