@@ -5,7 +5,7 @@ const cors = require("cors");
 const session = require("express-session");
 
 app.use(cors({
-  origin: 'http://localhost:3001', 
+  origin: 'http://localhost:80', 
   credentials: true
 }));
 
@@ -58,7 +58,7 @@ app.get("/*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../src", "index.html"));
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
