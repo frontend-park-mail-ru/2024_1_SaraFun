@@ -322,7 +322,7 @@ button:hover {
 
 .tinder {
     width: 100vw;
-    height: 100vh;
+    height: 93vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -346,7 +346,6 @@ button:hover {
 }
 
 .tinder--status i {
-    font-size: 100px;
     opacity: 0;
     transform: scale(0.3);
     transition: all 0.2s ease-in-out;
@@ -367,7 +366,6 @@ button:hover {
 
 .tinder--cards {
     flex-grow: 1;
-    padding-top: 40px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -377,9 +375,9 @@ button:hover {
 
 .tinder--card {
     display: inline-block;
-    width: 70vw;
-    height: 70vh;
-    background: #FFFFFF;
+    width: 65vw;
+    height: 60vh;
+    background: var(--white1);
     padding-bottom: 40px;
     border-radius: 8px;
     overflow: hidden;
@@ -431,8 +429,9 @@ button:hover {
     border-radius: 50%;
     line-height: 60px;
     width: 60px;
+    height: 60px;
     border: 0;
-    background: #FFFFFF;
+    background: var(--success);
     display: inline-block;
     margin: 0 8px;
 }
@@ -448,6 +447,13 @@ button:hover {
   
 .fa-heart {
     color: #FFACE4;
+}
+
+.fa-heart img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    position: absolute;
 }
   
 .fa-remove {
