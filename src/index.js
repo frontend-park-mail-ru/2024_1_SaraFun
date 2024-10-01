@@ -332,7 +332,7 @@ const router = async () => {
             navigateTo(event.target.href);
         });
     }
-
+    
     async function loginUser(login, password) {
         try {
             console.log(login, password);
@@ -358,85 +358,103 @@ const router = async () => {
         }
     }
 
-    if (match.route.path === "/feed") {
-        async function fetchUsers() {
-            try {
-                const response = await fetch('http://5.188.140.7:8080/getusers', {
-                        method: 'GET',
-                        credentials: 'include',
-                        mode: 'cors'
-                });
-                if (!response.ok) {
-                    throw new Error('Ошибка при получении списка пользователей');
-                }
-                return await response.json();
-            } catch (error) {
-                console.error('Ошибка при получении списка пользователей:', error);
-                return [];
-            }
-        }
-
-        function displayUser(user) {
-            const formSection = document.querySelector('.form-section');
-            if (user) {
-                formSection.innerHTML = `
-                    <h1 class="description">${user.username}</h1>
-                    <p>Возраст: ${user.age}</p>
-                    <p>Пол: ${user.gender}</p>
-                    <div class="card-actions">
-                        <button class="btn custom-btn" id="dislike">
-                            <img src="../assets/img/X.svg" alt="X">
-                        </button>
-                        <button class="btn custom-btn" id="like">
-                            <img src="../assets/img/Heart.svg" alt="Heart">
-                        </button>
-                    </div>
-                `;
-            } else {
-                formSection.innerHTML = '<p>Нет больше пользователей</p>';
-            }
-        }
-        /* {
-        "id": 1,
-        "username": "Andrey",
-        "age": 20,
-        "gender": "male"
-    }, */
-
-        async function loadFeed() {
-            const users = await fetchUsers();
-            console.log(users);
-            let currentIndex = 0;
-    
-            function showNextUser() {
-                if (currentIndex < users.length) {
-                    displayUser(users[currentIndex]);
-                    currentIndex++;
-                } else {
-                    displayUser(null);
-                }
-            }
-    
-            const root = document.getElementById('root');
-            root.innerHTML = `
-                <div class="container">
-                    <div class="form-section"></div>
-                    <div class="image-section">
-                        <img src="../assets/img/image.svg" alt="Image">
-                    </div>
-                </div>
-            `;
-    
-            showNextUser();
-    
-            root.addEventListener('click', (event) => {
-                if (event.target.closest('#like') || event.target.closest('#dislike')) {
-                    showNextUser();
-                }
-            });
-        }
-        loadFeed();
+    async function checkAuth() {
+      const response = await fetch('http://5.188.140.7:8080/check-auth', {
+          method: 'GET',
+          credentials: 'include' 
+      });
+  
+      if (response.ok) {
+          const data = await response.json();
+          return data.isAuthenticated;  
+      }
+      return false;
     }
+
+    if (match.route.path === "/feed") {
+      if (!checkAuth()) {
+        navigateTo('/');
+      }
+      else{
+        async function fetchUsers() {
+          try {
+              const response = await fetch('http://5.188.140.7:8080/getusers', {
+                      method: 'GET',
+                      credentials: 'include',
+                      mode: 'cors'
+              });
+              if (!response.ok) {
+                  throw new Error('Ошибка при получении списка пользователей');
+              }
+              return await response.json();
+          } catch (error) {
+              console.error('Ошибка при получении списка пользователей:', error);
+              return [];
+          }
+      }
+
+      function displayUser(user) {
+          const formSection = document.querySelector('.form-section');
+          if (user) {
+              formSection.innerHTML = `
+                  <h1 class="description">${user.username}</h1>
+                  <p>Возраст: ${user.age}</p>
+                  <p>Пол: ${user.gender}</p>
+                  <div class="card-actions">
+                      <button class="btn custom-btn" id="dislike">
+                          <img src="../assets/img/X.svg" alt="X">
+                      </button>
+                      <button class="btn custom-btn" id="like">
+                          <img src="../assets/img/Heart.svg" alt="Heart">
+                      </button>
+                  </div>
+              `;
+          } else {
+              formSection.innerHTML = '<p>Нет больше пользователей</p>';
+          }
+      }
+      /* {
+      "id": 1,
+      "username": "Andrey",
+      "age": 20,
+      "gender": "male"
+      }, */
+
+      async function loadFeed() {
+          const users = await fetchUsers();
+          console.log(users);
+          let currentIndex = 0;
+
+          function showNextUser() {
+              if (currentIndex < users.length) {
+                  displayUser(users[currentIndex]);
+                  currentIndex++;
+              } else {
+                  displayUser(null);
+              }
+          }
+
+          const root = document.getElementById('root');
+          root.innerHTML = `
+              <div class="container">
+                  <div class="form-section"></div>
+                  <div class="image-section">
+                      <img src="../assets/img/image.svg" alt="Image">
+                  </div>
+              </div>
+          `;
+
+          showNextUser();
+
+          root.addEventListener('click', (event) => {
+              if (event.target.closest('#like') || event.target.closest('#dislike')) {
+                  showNextUser();
+              }
+          });
+      }
+      loadFeed();
+    }
+  }
 };
 
 window.addEventListener("popstate", router);
@@ -450,4 +468,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     router();
-});
+}); 
