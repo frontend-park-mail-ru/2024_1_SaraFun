@@ -49,31 +49,9 @@ const checkAuth = async (req, res, next) => {
   }
 };
 
-async function fetchUsers() {
-  try {
-    const response = await fetch('http://5.188.140.7:8080/getusers', {
-      method: 'GET',
-      credentials: 'include',
-      mode: 'cors'
-    });
-    if (!response.ok) {
-      throw new Error('Ошибка при получении списка пользователей');
-    }
-    return await response.json();
-  } catch (error) {
-    console.error('Ошибка при получении списка пользователей:', error);
-    return [];
-  }
-}
 
-app.get('/feed', checkAuth, async (req, res) => {
-  try {
-    const users = await fetchUsers(); // Вызов асинхронной функции
-    res.status(200).json(users); // Возвращаем список пользователей
-  } catch (error) {
-    console.error('Ошибка при получении списка пользователей:', error);
-    res.status(500).json({ error: 'Ошибка при получении списка пользователей' });
-  }
+app.post('/feed', checkAuth, async (req, res) => {
+  res.status(200).send('Пользователь авторизован'); 
 });
 
 
