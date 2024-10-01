@@ -291,7 +291,7 @@ const router = async () => {
             if (!response.ok) {
                 throw new Error('Ошибка регистрации');
             }
-    
+            console.log('Успешно зарегестрировался')
             // window.location.href = '/feed';
     
         } catch (error) {
@@ -350,7 +350,7 @@ const router = async () => {
                 throw new Error('Ошибка входа');
             }
     
-            
+            console.log('Успешно авторизовался')
             // window.location.href = '/feed';
     
         } catch (error) {
