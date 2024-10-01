@@ -92,7 +92,8 @@ const router = async () => {
 
     async function loadCards() {
         const users = await fetchUsers();
-        const tinderContainer = document.querySelector('.tinder');
+        //const users = [ { "id": 1, "username": "Andrey", "age": 20, "gender": "male"}, { "id": 2, "username": "Anton", "age": 20, "gender": "male"}, ];
+        const tinderContainer = document.querySelector('.tinder--cards');
         tinderContainer.innerHTML = users.map(user => createCard(user)).join('');
         showCards();
     }
