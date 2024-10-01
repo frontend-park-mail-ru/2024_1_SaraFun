@@ -23,12 +23,17 @@ export default class extends AbstractView {
             <input type="password" id="password" placeholder="Введите пароль">
             <p class="error" id="password-error" style="display:none;">Пароль должен быть от 6 до 40 символов, содержать минимум одну цифру, разрешенные спец знаки (!?*-$)</p>
             
+           <label for="gender" class=".text-base">Пол</label>
            <div class="gender-selection">
                 <input type="radio" id="male" name="gender" value="male">
                 <label for="male">Мужской</label>
                 <input type="radio" id="female" name="gender" value="female">
                 <label for="female">Женский</label>
             </div>
+            
+            <label for="age" class=".text-base">Возраст</label>
+            <input type="range" id="age" name="age" min="18" max="100" value="18" oninput="this.nextElementSibling.value = this.value">
+            <output>18</output>
            
             <button type="button" id="register-button">Зарегистрироваться</button>
 
@@ -44,5 +49,3 @@ export default class extends AbstractView {
         ;
     }
 }
-
-
