@@ -3,27 +3,13 @@ const path = require("path");
 const app = express();
 const cors = require("cors");
 const session = require("express-session");
-const http = require('http')
+const http = require('http');
 
-
-const hostname = '0.0.0.0'
-const port = 3000
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-
-  if (req.method === 'GET') {
-    res.end('Это GET-запрос\n');
-  } else if (req.method === 'POST') {
-    res.end('Это POST-запрос\n');
-  } else {
-    res.statusCode = 405; // Метод не разрешен
-    res.end('Метод не поддерживается\n');
-  }
-});
-server.listen(port, hostname, () => {
-  console.log(`Сервер запущен по адресу http://${hostname}:${port}/`);
-});
+//create a server object:
+http.createServer((req, res) => {
+  res.write('Hello World!'); //write a response to the client
+  res.end(); //end the response
+}).listen(3000);
 
 app.use(cors({
   origin: 'http://5.188.140.7:3001', // Замените на ваш фронтенд URL
