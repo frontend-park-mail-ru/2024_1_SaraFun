@@ -188,6 +188,7 @@ const router = async () => {
         document.getElementById('register-button').addEventListener('click', () => {
             const login = document.getElementById('login').value;
             const password = document.getElementById('password').value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
 
             let valid = true;
 
@@ -206,7 +207,7 @@ const router = async () => {
             }
 
             if (valid) {
-                registerUser(login, password)
+                registerUser(login, password, gender)
             }
             
         });
@@ -273,25 +274,23 @@ const router = async () => {
         return true;
     }
 
-    async function registerUser(login, password) {
+    async function registerUser(login, password, gender) {
         try {
-            console.log(login, password)
+            console.log(login, password, gender);
             const response = await fetch('http://5.188.140.7:8080/signup', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({"username": login, "password": password}),
+                body: JSON.stringify({"username": login, "password": password, "gender": gender}),
             });
     
             if (!response.ok) {
                 throw new Error('Ошибка регистрации');
             }
-
+    
             window.location.href = '/feed';
-
-
-            
+    
         } catch (error) {
             console.error('Ошибка:', error);
         }
@@ -440,3 +439,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     router();
 });
+

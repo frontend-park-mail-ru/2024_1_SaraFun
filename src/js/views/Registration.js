@@ -23,8 +23,14 @@ export default class extends AbstractView {
             <input type="password" id="password" placeholder="Введите пароль">
             <p class="error" id="password-error" style="display:none;">Пароль должен быть от 6 до 40 символов, содержать минимум одну цифру, разрешенные спец знаки (!?*-$)</p>
             
+           <div class="gender-selection">
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Мужской</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Женский</label>
+            </div>
+           
             <button type="button" id="register-button">Зарегистрироваться</button>
-            
 
             <div class=".footer-text">
                 <div>У вас уже есть аккаунт?</div>
@@ -38,3 +44,5 @@ export default class extends AbstractView {
         ;
     }
 }
+
+
