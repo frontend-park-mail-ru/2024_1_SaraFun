@@ -188,6 +188,8 @@ const router = async () => {
         document.getElementById('register-button').addEventListener('click', () => {
             const login = document.getElementById('login').value;
             const password = document.getElementById('password').value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const age = document.getElementById('age').value;
 
             let valid = true;
 
@@ -205,9 +207,10 @@ const router = async () => {
                 document.getElementById('password-error').style.display = 'none';
             }
 
-            if (valid) {
-                registerUser(login, password);
-            }
+            // if (valid) {
+            //     registerUser(login, password, gender, age)
+            // }
+            registerUser(login, password, gender, age)
             
         });
 
@@ -273,25 +276,23 @@ const router = async () => {
         return true;
     }
 
-    async function registerUser(login, password) {
+    async function registerUser(login, password, gender, age) {
         try {
-            console.log(login, password);
+            console.log(login, password, gender, age);
             const response = await fetch('http://5.188.140.7:8080/signup', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({"username": login, "password": password}),
+                body: JSON.stringify({"username": login, "password": password, "gender": gender, "age": parseInt(age)}),
             });
     
             if (!response.ok) {
                 throw new Error('Ошибка регистрации');
             }
-
-            window.location.href = '/feed';
-
-
-            
+    
+            // window.location.href = '/feed';
+    
         } catch (error) {
             console.error('Ошибка:', error);
         }
@@ -320,9 +321,10 @@ const router = async () => {
                 document.getElementById('password-error').style.display = 'none';
             }
 
-            if (valid) {
-                loginUser(login, password);
-            }
+            // if (valid) {
+            //     loginUser(login, password)
+            // }
+            loginUser(login, password)
         });
         
         document.getElementById('link').addEventListener('click', (event) => {
@@ -333,7 +335,7 @@ const router = async () => {
 
     async function loginUser(login, password) {
         try {
-            console.log(login, password);
+            console.log(login, password)
             const response = await fetch('http://5.188.140.7:8080/signin', { 
                 method: 'POST',
                 headers: {
@@ -347,7 +349,7 @@ const router = async () => {
             }
     
             
-            window.location.href = '/feed';
+            // window.location.href = '/feed';
     
         } catch (error) {
             console.error('Ошибка:', error);
@@ -440,3 +442,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     router();
 });
+

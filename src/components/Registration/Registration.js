@@ -1,16 +1,16 @@
 export class Registration {
     constructor(parent) {
-        this.parent = parent;
-        this.parent.innerHtml = '';
-        this.node = this.render();
-        this.parent.appendChild(this.node);
+        this.parent = parent
+        this.parent.innerHtml = ''
+        this.node = this.render()
+        this.parent.appendChild(this.node)
     }
 
     render() {
-        return template();
+        return template()
     }
 
     destroy() {
-        this.node.remove();
+        this.node.remove()
     }
 }
