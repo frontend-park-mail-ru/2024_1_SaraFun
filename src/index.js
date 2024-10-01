@@ -2,7 +2,6 @@ import Login from "./js/views/Login.js";
 import Feed from "./js/views/Feed.js";
 import CardView from "./js/views/CardView.js";
 import Registration from "./js/views/Registration.js";
-import App from './app/App.js';
 
 const root = document.querySelector('#root');
 
