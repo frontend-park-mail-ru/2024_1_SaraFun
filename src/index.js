@@ -520,18 +520,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const navBar = document.getElementById('nav-bar');
   const root = document.getElementById('root');
 
-  async function checkAuth() {
-    try {
-      const response = await fetch('http://5.188.140.7:8080/checkauth', {
-        method: 'GET',
-        credentials: 'include' 
-      });
-      return true 
-    }
-    catch {
-      return false;
-    }
-  }
+  
 
   function getUsername() {
     const cookie = document.cookie.split(';').find(item => item.trim().startsWith('username='));
