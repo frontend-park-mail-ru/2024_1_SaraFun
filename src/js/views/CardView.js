@@ -43,7 +43,8 @@ export default class extends AbstractView {
   </div>
 
   <div class="tinder--buttons">
-    <button id="nope"><i class="fa fa-remove"></i></button>
+    <button id="nope"><i class="fa fa-remove">
+    </i></button>
     <button id="love"><i class="fa fa-heart"></i></button>
   </div>
 </div>
