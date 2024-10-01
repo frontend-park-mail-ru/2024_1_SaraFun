@@ -9,11 +9,6 @@ export default class extends AbstractView {
     async getHtml() {
         return `
             <div class="tinder">
-  <div class="tinder--status">
-    <i class="fa fa-remove"></i>
-    <i class="fa fa-heart"></i>
-  </div>
-
   <div class="tinder--cards">
     <div class="tinder--card">
       <img src="../assets/img/logo.svg">
