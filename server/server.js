@@ -33,39 +33,47 @@ app.post('/register', (req, res) => {
 
 const checkAuth = async (req, res, next) => {
   try {
+    
     const response = await fetch('http://5.188.140.7:8080/checkauth', {
       method: 'GET',
       credentials: 'include',
       headers: {
-        // Добавьте необходимые заголовки, если нужно
       }
     });
-
-    if (response.ok) {
-      const data = await response.json();
-      if (data.isAuthenticated) {
-        return next(); // Пользователь авторизован, продолжаем выполнение
-      }
-    }
-
-    return res.redirect('/login'); // Пользователь не авторизован, перенаправляем на /login
+    
+    return next(); // Пользователь авторизован, продолжаем выполнение
+  
   } catch (error) {
     console.error(error);
-    return res.status(401).send('Ошибка проверки авторизации');
+    return res.redirect('/login');
   }
 };
 
-app.get('/feed', checkAuth, (req, res) => {
-  console.log(req.session); // Логируем информацию о сессии
+async function fetchUsers() {
+  try {
+    const response = await fetch('http://5.188.140.7:8080/getusers', {
+      method: 'GET',
+      credentials: 'include',
+      mode: 'cors'
+    });
+    if (!response.ok) {
+      throw new Error('Ошибка при получении списка пользователей');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Ошибка при получении списка пользователей:', error);
+    return [];
+  }
+}
 
-  // Пример списка пользователей
-  const users = [
-    { login: 'user1', info: 'Информация о пользователе 1' },
-    { login: 'user2', info: 'Информация о пользователе 2' },
-    { login: 'user3', info: 'Информация о пользователе 3' }
-  ];
-  
-  res.status(200).json(users); // Возвращаем список пользователей
+app.get('/feed', checkAuth, async (req, res) => {
+  try {
+    const users = await fetchUsers(); // Вызов асинхронной функции
+    res.status(200).json(users); // Возвращаем список пользователей
+  } catch (error) {
+    console.error('Ошибка при получении списка пользователей:', error);
+    res.status(500).json({ error: 'Ошибка при получении списка пользователей' });
+  }
 });
 
 

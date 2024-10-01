@@ -409,16 +409,16 @@ const router = async () => {
   }
 
   async function checkAuth() {
-    const response = await fetch('http://5.188.140.7:8080/checkauth', {
-      method: 'GET',
-      credentials: 'include' 
-    });
-  
-    if (response.ok) {
-      const data = await response.json();
-      return data.isAuthenticated;  
+    try {
+      const response = await fetch('http://5.188.140.7:8080/checkauth', {
+        method: 'GET',
+        credentials: 'include' 
+      });
+      return true 
     }
-    return false;
+    catch {
+      return false;
+    }
   }
 
   if (match.route.path === '/feed') {
