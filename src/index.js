@@ -189,6 +189,7 @@ const router = async () => {
             const login = document.getElementById('login').value;
             const password = document.getElementById('password').value;
             const gender = document.querySelector('input[name="gender"]:checked').value;
+            const age = document.getElementById('age').value;
 
             let valid = true;
 
@@ -207,7 +208,7 @@ const router = async () => {
             }
 
             if (valid) {
-                registerUser(login, password, gender)
+                registerUser(login, password, gender, age)
             }
             
         });
@@ -274,15 +275,15 @@ const router = async () => {
         return true;
     }
 
-    async function registerUser(login, password, gender) {
+    async function registerUser(login, password, gender, age) {
         try {
-            console.log(login, password, gender);
+            console.log(login, password, gender, age);
             const response = await fetch('http://5.188.140.7:8080/signup', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({"username": login, "password": password, "gender": gender}),
+                body: JSON.stringify({"username": login, "password": password, "gender": gender, "age": age}),
             });
     
             if (!response.ok) {
