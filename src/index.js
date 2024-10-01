@@ -48,7 +48,7 @@ const router = async () => {
 
   root.innerHTML = await view.getHtml();
 
-  if (match.route.path === '/cards') {
+  if (match.route.path === '/feed') {
     async function fetchUsers() {
         try {
           const response = await fetch('http://5.188.140.7:8080/getusers', {
@@ -421,7 +421,7 @@ const router = async () => {
     }
   }
 
-  if (match.route.path === '/feed') {
+  /*f (match.route.path === '/feed') {
     if (!checkAuth()) {
       navigateTo('/');
     } else {
@@ -462,12 +462,6 @@ const router = async () => {
           formSection.innerHTML = '<p>Нет больше пользователей</p>';
         }
       }
-      /* {
-      "id": 1,
-      "username": "Andrey",
-      "age": 20,
-      "gender": "male"
-      }, */
 
       async function loadFeed() {
         const users = await fetchUsers();
@@ -503,7 +497,7 @@ const router = async () => {
       }
       loadFeed();
     }
-  }
+  }*/
 };
 
 window.addEventListener('popstate', router);
@@ -523,23 +517,33 @@ document.addEventListener('DOMContentLoaded', async () => {
   const navBar = document.getElementById('nav-bar');
   const root = document.getElementById('root');
 
-  function checkAuth() {
-      return document.cookie.split(';').some((item) => item.trim().startsWith('token='));
+  async function checkAuth() {
+    try {
+      const response = await fetch('http://5.188.140.7:8080/checkauth', {
+        method: 'GET',
+        credentials: 'include' 
+      });
+      return true 
+    }
+    catch {
+      return false;
+    }
   }
 
   function getUsername() {
-      const cookie = document.cookie.split(';').find(item => item.trim().startsWith('username='));
-      return cookie ? cookie.split('=')[1] : 'User';
+    const cookie = document.cookie.split(';').find(item => item.trim().startsWith('username='));
+    return cookie ? cookie.split('=')[1] : 'User';
   }
 
-  function renderNavBar() {
-      if (checkAuth()) {
-          navBar.innerHTML = `
-              <a href="/feed" class="nav__link" data-link>Feed</a>
-              <span class="nav__link">${getUsername()}</span>
-              <button id="logout-button" class="nav__link">Logout</button>
+  async function renderNavBar() {
+    const isAuthenticated = await checkAuth();
+    if (isAuthenticated) {
+      navBar.innerHTML = `
+        <a href="/feed" class="nav__link" data-link>Feed</a>
+          <span class="nav__link">${getUsername()}</span>
+        <button id="logout-button" class="nav__link">Logout</button>
           `;
-          document.getElementById('logout-button').addEventListener('click', logout);
+        document.getElementById('logout-button').addEventListener('click', logout);
       } else {
           navBar.innerHTML = `
               <a href="/" class="nav__link" data-link>Login</a>
@@ -555,7 +559,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       window.location.href = '/';
   }
 
-  renderNavBar();
+  await renderNavBar();
 
   router();
 });
