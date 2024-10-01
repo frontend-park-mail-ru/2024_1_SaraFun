@@ -207,9 +207,10 @@ const router = async () => {
                 document.getElementById('password-error').style.display = 'none';
             }
 
-            if (valid) {
-                registerUser(login, password, gender, age)
-            }
+            // if (valid) {
+            //     registerUser(login, password, gender, age)
+            // }
+            registerUser(login, password, gender, age)
             
         });
 
@@ -290,7 +291,7 @@ const router = async () => {
                 throw new Error('Ошибка регистрации');
             }
     
-            window.location.href = '/feed';
+            // window.location.href = '/feed';
     
         } catch (error) {
             console.error('Ошибка:', error);
@@ -320,9 +321,10 @@ const router = async () => {
                 document.getElementById('password-error').style.display = 'none';
             }
 
-            if (valid) {
-                loginUser(login, password)
-            }
+            // if (valid) {
+            //     loginUser(login, password)
+            // }
+            loginUser(login, password)
         });
         
         document.getElementById('link').addEventListener('click', (event) => {
@@ -347,7 +349,7 @@ const router = async () => {
             }
     
             
-            window.location.href = '/feed';
+            // window.location.href = '/feed';
     
         } catch (error) {
             console.error('Ошибка:', error);
