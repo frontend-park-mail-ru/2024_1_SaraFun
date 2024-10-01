@@ -38,14 +38,11 @@ const checkAuth = async (req, res, next) => {
       method: 'GET',
       credentials: 'include',
       headers: {
-        // Добавьте необходимые заголовки, если нужно
       }
     });
     
     return next(); // Пользователь авторизован, продолжаем выполнение
   
-
-    return res.redirect('/login'); // Пользователь не авторизован, перенаправляем на /login
   } catch (error) {
     console.error(error);
     return res.redirect('/login');
@@ -53,15 +50,8 @@ const checkAuth = async (req, res, next) => {
 };
 
 app.get('/feed', checkAuth, (req, res) => {
-  console.log(req.session); // Логируем информацию о сессии
-
-  // Пример списка пользователей
-  const users = [
-    { login: 'user1', info: 'Информация о пользователе 1' },
-    { login: 'user2', info: 'Информация о пользователе 2' },
-    { login: 'user3', info: 'Информация о пользователе 3' }
-  ];
   
+  return res.redirect('/feed');
   res.status(200).json(users); // Возвращаем список пользователей
 });
 
