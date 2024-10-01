@@ -31,20 +31,43 @@ app.post('/register', (req, res) => {
   }
 });
 
-app.get('/feed', (req, res) => {
-  console.log(req.session);
-  if (req.session.user) {
-    // Пример списка пользователей
-    const users = [
-      { login: 'user1', info: 'Информация о пользователе 1' },
-      { login: 'user2', info: 'Информация о пользователе 2' },
-      { login: 'user3', info: 'Информация о пользователе 3' }
-    ];
-    res.status(200).json(users);
-  } else {
-    res.status(401).json({ message: 'Необходима авторизация' });
+const checkAuth = async (req, res, next) => {
+  try {
+    const response = await fetch('http://5.188.140.7:8080/checkauth', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        // Добавьте необходимые заголовки, если нужно
+      }
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data.isAuthenticated) {
+        return next(); // Пользователь авторизован, продолжаем выполнение
+      }
+    }
+
+    return res.redirect('/login'); // Пользователь не авторизован, перенаправляем на /login
+  } catch (error) {
+    console.error(error);
+    return res.status(401).send('Ошибка проверки авторизации');
   }
+};
+
+app.get('/feed', checkAuth, (req, res) => {
+  console.log(req.session); // Логируем информацию о сессии
+
+  // Пример списка пользователей
+  const users = [
+    { login: 'user1', info: 'Информация о пользователе 1' },
+    { login: 'user2', info: 'Информация о пользователе 2' },
+    { login: 'user3', info: 'Информация о пользователе 3' }
+  ];
+  
+  res.status(200).json(users); // Возвращаем список пользователей
 });
+
 
 app.post('/login', (req, res) => {
   const { login, password } = req.body;
