@@ -37,9 +37,8 @@ export default class extends AbstractView {
            
             <button type="button" id="register-button">Зарегистрироваться</button>
 
-            <div class=".footer-text">
-                <div>У вас уже есть аккаунт?</div>
-                <a href="/login" id="link" class=".link">Войдите в аккаунт</a>
+            <div class="footer-text">
+                У вас уже есть аккаунт? <a href="/login" id="link" class=".link">Войдите в аккаунт</a>
             </div>
         </div>
            <div class="image-section">

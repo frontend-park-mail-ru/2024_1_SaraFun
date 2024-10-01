@@ -93,7 +93,7 @@ body {
 }
 
 a {
-    color: var(--success);
+    color: var(--secondary);
 }
 
 .container {
@@ -102,7 +102,7 @@ a {
     width: 70vw;
     min-width: 700px;
     height: 85vh;
-    min-height: 550px;
+    min-height: 592px;
     display: flex;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -122,8 +122,29 @@ a {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.logo img {
+    width: 150px;
+}
 
 
+
+
+.form-section-tinder {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.card-actions {
+    display: flex;
+    gap: 20px; 
+    justify-content: center;
+    align-self: center;
+    margin-top: auto;
+}
 
 .form-section {
     width: 50%;
@@ -133,14 +154,31 @@ a {
     align-items: flex-start;
     flex-direction: column;
 }
+
+.footer-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin-top: auto;
+    gap: 1em;
+    color: var(--grey2);
+}
+
+.footer-text a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
 .image-section-wrapper {
     width: 50%; 
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.logo img {
-    width: 150px;
 }
 .image-section {
     width: 50%; 
@@ -184,20 +222,6 @@ button:hover {
     font-size: 12px;
     margin-bottom: 8px;
     display: none; 
-}
-.footer-text {
-    display: flex;
-    margin-top: auto;
-    font-size: 14px;
-    align-self: center;
-    justify-content: center;
-}
-.footer-text a {
-    color: #333;
-    text-decoration: none;
-}
-.footer-text a:hover {
-    text-decoration: underline;
 }
 .image-section img {
     height: 100%; 
@@ -379,23 +403,6 @@ button:hover {
     user-select: none;
     object-position: center; 
     pointer-events: none;
-}
-
-.form-section-tinder {
-    width: 50%;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-}
-
-.card-actions {
-    display: flex;
-    gap: 20px; 
-    justify-content: center;
-    align-self: center;
-    margin-top: auto;
 }
 
 *, *:before, *:after {
