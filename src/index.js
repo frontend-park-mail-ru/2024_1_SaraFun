@@ -434,7 +434,7 @@ const router = async () => {
       });
     
       if (!response.ok) {
-        throw new Error('Ошибка регистрации');
+        // throw new Error('Ошибка регистрации');
       }
       //console.log('Успешно зарегистрировался');
       await renderNavBar();
