@@ -18,10 +18,12 @@ export default class extends AbstractView {
                 <label for="login" class=".text-base">Логин</label>
                 <input type="text" id="login" class=".text-base" placeholder="Введите логин">
                 <p class="error" id="login-error">Ошибка: Введите правильный логин</p>
+                <p class="error" id="login-error2">Ошибка: Неправильный логин</p>
 
                 <label for="password" class=".text-base">Пароль</label>
                 <input type="password" id="password" placeholder="Введите пароль">
-                <p class="error" id="password-error">Ошибка: Введите пароль</p>
+
+                <p class="error" id="login-password-error">Ошибка: Неправильный логин или пароль</p>
 
                 <button type="button" id="login-button">Войти в аккаунт</button>
 
