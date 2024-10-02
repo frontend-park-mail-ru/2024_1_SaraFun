@@ -41,7 +41,7 @@ async function checkAuth() {
 async function logout() {
   try {
     const response = await fetch('http://5.188.140.7:8080/logout', {
-      method: 'POST',
+      method: 'GET',
       credentials: 'include' 
     });
     if (!response.ok) {
@@ -557,9 +557,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <button type="button" id="logout-button" style="width: 200px; height: fit-content">Выйти из аккаунта</button>
       `;
       document.getElementById('logout-button').addEventListener('click', async () => { 
-        await logout();
-        await renderNavBar();
-        navigateTo('/');
+        const isLogout = await logout();
+        if (isLogout) {
+          await renderNavBar();
+          navigateTo('/login');
+        }
       });
     } else {
       navMenu.innerHTML = `
