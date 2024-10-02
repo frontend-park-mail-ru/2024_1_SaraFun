@@ -381,7 +381,6 @@ const router = async () => {
         throw new Error('Ошибка регистрации');
       }
       console.log('Успешно зарегистрировался');
-      await renderNavBar();
       navigateTo('/feed');
     
     } catch (error) {
@@ -442,7 +441,6 @@ const router = async () => {
       }
     
       console.log('Успешно авторизовался');
-      await renderNavBar();
       navigateTo('/feed');
     
     } catch (error) {
