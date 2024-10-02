@@ -24,7 +24,8 @@ const navigateTo = url => {
 const router = async () => {
   const routes = [
     { path: '/', view: Login },
-    { path: '/feed', view: CardView },
+    { path: '/feed', view: Feed },
+    { path: '/cards', view: CardView },
     { path: '/registration', view: Registration }
   ];
 
@@ -48,7 +49,7 @@ const router = async () => {
 
   root.innerHTML = await view.getHtml();
 
-  if (match.route.path === '/feed') {
+  if (match.route.path === '/cards') {
     async function fetchUsers() {
         try {
           const response = await fetch('http://5.188.140.7:8080/getusers', {
@@ -160,7 +161,7 @@ const router = async () => {
               el.style.transform = 'translate(' + (initialX + deltaX) + 'px, ' + (initialY + deltaY) + 'px) rotate(' + rotate + 'deg)';
             }
       
-            function endDrag() { 
+            function endDrag() { //была переменная event
               if (!isDragging) {return;}
               isDragging = false;
           
@@ -230,7 +231,7 @@ const router = async () => {
         love.addEventListener('click', loveListener);
     }
     loadCards();
-  }
+}
 
   // регистрация
   if (match.route.path === '/registration') {
@@ -424,7 +425,7 @@ const router = async () => {
     }
   }
 
-  if (match.route.path === '/cards') {
+  if (match.route.path === '/feed') {
     if (!checkAuth()) {
       navigateTo('/');
     } else {
@@ -465,6 +466,12 @@ const router = async () => {
           formSection.innerHTML = '<p>Нет больше пользователей</p>';
         }
       }
+      /* {
+      "id": 1,
+      "username": "Andrey",
+      "age": 20,
+      "gender": "male"
+      }, */
 
       async function loadFeed() {
         const users = await fetchUsers();
@@ -515,44 +522,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   router();
 }); 
-
-document.addEventListener('DOMContentLoaded', async () => {
-  const navBar = document.getElementById('nav-bar');
-  const root = document.getElementById('root');
-
-  function checkAuth() {
-      return document.cookie.split(';').some((item) => item.trim().startsWith('token='));
-  }
-
-  function getUsername() {
-      const cookie = document.cookie.split(';').find(item => item.trim().startsWith('username='));
-      return cookie ? cookie.split('=')[1] : 'User';
-  }
-
-  function renderNavBar() {
-      if (checkAuth()) {
-          navBar.innerHTML = `
-              <a href="/feed" class="nav__link" data-link>Главная страница</a>
-              <span class="nav__link">${getUsername()}</span>
-              <button id="logout-button" class="nav__link">Выйти из аккаунта</button>
-          `;
-          document.getElementById('logout-button').addEventListener('click', logout);
-      } else {
-          navBar.innerHTML = `
-              <a href="/" class="nav__link" data-link>Войти в аккаунт</a>
-              <a href="/registration" class="nav__link" data-link>Создать аккаунт</a>
-          `;
-      }
-  }
-
-  function logout() {
-      document.cookie = 'token=; Max-Age=0; path=/; secure; HttpOnly';
-      document.cookie = 'username=; Max-Age=0; path=/; secure; HttpOnly';
-      renderNavBar();
-      window.location.href = '/';
-  }
-
-  renderNavBar();
-
-  router();
-});
