@@ -442,9 +442,6 @@ const router = async () => {
         if (!isLogedIn) {
           document.getElementById('login-password-error').style.display = 'block';
         }
-        else {
-          document.getElementById('login-password-error').style.display = 'none';
-        }
       } else {
         console.error('Ошибка: авторизации');
       }
