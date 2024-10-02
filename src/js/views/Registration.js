@@ -30,6 +30,7 @@ export default class extends AbstractView {
                 <input type="radio" id="female" name="gender" value="female">
                 <label for="female">Женский</label>
             </div>
+            <p class="error" id="gender-error" style="display:none;">Выберите пол</p>
             
             <label for="age" class=".text-base">Возраст</label>
             <input type="range" id="age" name="age" min="18" max="100" value="18" oninput="this.nextElementSibling.value = this.value">
