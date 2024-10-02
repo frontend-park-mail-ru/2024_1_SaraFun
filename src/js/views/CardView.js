@@ -103,8 +103,12 @@ export default class extends AbstractView {
               </div>
 
               <div class="tinder--buttons">
-                <button id="nope"><i class="fa fa-remove"></i></button>
-                <button id="love"><i class="fa fa-heart"></i></button>
+                <button id="nope"><i class="fa fa-remove">
+                  <img src="../assets/img/X.svg" alt="X">
+                </i></button>
+                <button id="love"><i class="fa fa-heart"></i>
+                  <img src="../assets/img/Heart.svg" alt="Heart">
+                </button>
               </div>
             </div>
         `;

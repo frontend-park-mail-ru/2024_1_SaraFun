@@ -138,14 +138,6 @@ a {
     flex-direction: column;
 }
 
-.card-actions {
-    display: flex;
-    gap: 20px; 
-    justify-content: center;
-    align-self: center;
-    margin-top: auto;
-}
-
 .form-section {
     width: 50%;
     padding-right: 20px;
@@ -322,6 +314,22 @@ button:hover {
     background-image: url('../assets/icons/gift.svg');
 }
 
+.card-actions {
+    display: flex;
+    gap: 20px; 
+    justify-content: center;
+    align-self: center;
+    margin-top: auto;
+}
+
+.tinder--buttons {
+    display:flex;
+    justify-content: center;
+    flex: 0 0 100px;
+    padding-top: 10px;
+    gap: 20px; 
+}
+
 .custom-btn {
     display: flex;
     background-color: var(--secondary);
@@ -332,6 +340,31 @@ button:hover {
     justify-content: center;
     align-items: center;
     position: relative; 
+}
+
+.tinder--buttons button {
+    border-radius: 50%;
+    line-height: 60px;
+    width: 80px;
+    height: 80px;
+    border: none;
+    background: var(--secondary);
+    display: inline-block;
+    margin: 0 8px;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tinder--buttons button img{
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
 }
 
 .custom-btn img {
@@ -372,7 +405,7 @@ button:hover {
     padding: 20px;
     display: inline-block;
     width: 65vw;
-    height: 70vh;
+    height: 75vh;
     background: var(--white1);
     border-radius: 12px;
     overflow: hidden;
@@ -420,24 +453,6 @@ button:hover {
     font-size: 20px;
     padding: 0 16px;
     pointer-events: none;
-}
-  
-.tinder--buttons {
-    flex: 0 0 100px;
-    text-align: center;
-    padding-top: 20px;
-}
-  
-.tinder--buttons button {
-    border-radius: 50%;
-    line-height: 60px;
-    width: 60px;
-    height: 60px;
-    border: 0;
-    background: var(--success);
-    display: inline-block;
-    margin: 0 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
   
 .tinder--buttons button:focus {
