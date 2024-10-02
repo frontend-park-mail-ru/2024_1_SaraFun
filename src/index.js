@@ -412,12 +412,13 @@ const router = async () => {
       }
 
       if (valid) {
-        document.getElementById('login-error2').style.display = 'none';
-        document.getElementById('password-error2').style.display = 'none';
+        
         const isLogedIn = loginUser(login, password);
         if (!isLogedIn) {
-          document.getElementById('login-error2').style.display = 'block';
-          document.getElementById('password-error2').style.display = 'block';
+          document.getElementById('login-password-error').style.display = 'block';
+        }
+        else {
+          document.getElementById('login-password-error').style.display = 'none';
         }
       } else {
         console.error('Ошибка: авторизации');
