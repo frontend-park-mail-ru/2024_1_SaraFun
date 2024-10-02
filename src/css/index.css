@@ -114,6 +114,7 @@ a {
     top: 0;
     left: 0;
     width: 100%;
+    gap: 40px;
     height: var(--nav-width);
     display: flex;
     justify-content: center;
@@ -244,6 +245,7 @@ button:hover {
 .main-nav ul {
     list-style: none;
     display: flex;
+    gap: 20px;
 }
 .main-nav ul li {
     margin-right: 20px;

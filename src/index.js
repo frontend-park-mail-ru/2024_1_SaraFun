@@ -21,6 +21,40 @@ const navigateTo = url => {
   router();
 };
 
+async function checkAuth() {
+  try {
+    const response = await fetch('http://5.188.140.7:8080/checkauth', {
+      method: 'GET',
+      credentials: 'include' 
+    });
+    if (!response.ok) {
+      return false;
+    }
+    return true;
+  }
+  catch (error){
+    console.log('error auth')
+    return false;
+  }
+}
+
+async function logout() {
+  try {
+    const response = await fetch('http://5.188.140.7:8080/logout', {
+      method: 'POST',
+      credentials: 'include' 
+    });
+    if (!response.ok) {
+      return false;
+    }
+    return true;
+  }
+  catch (error){
+    console.log('error logout')
+    return false;
+  }
+}
+
 const router = async () => {
   const routes = [
     { path: '/', view: Login },
@@ -47,23 +81,6 @@ const router = async () => {
   const view = new match.route.view(getParams(match));
 
   root.innerHTML = await view.getHtml();
-
-  async function checkAuth() {
-    try {
-      const response = await fetch('http://5.188.140.7:8080/checkauth', {
-        method: 'GET',
-        credentials: 'include' 
-      });
-      if (!response.ok) {
-        return false
-      }
-      return true 
-    }
-    catch (error){
-      console.log('error auth')
-      return false;
-    }
-  }
 
   if (match.route.path === '/feed') {
     const isAuth = await checkAuth()
@@ -528,5 +545,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  const navMenu = document.querySelector('#nav-bar');
+  const renderNavBar = async () => {
+    navMenu.innerHTML = '';
+
+    const isAuthenticated = await checkAuth();
+
+    if (isAuthenticated) {
+      console.log('auth');
+      navMenu.innerHTML = `
+        <a href='/feed' class="nav__link" data-link>Главная</a>
+        <button type="button" id="logout-button" style="width: 200px; height: fit-content">Выйти из аккаунта</button>
+      `;
+      document.getElementById('logout-button').addEventListener('click', () => { 
+        logout();
+      });
+    } else {
+      navMenu.innerHTML = `
+        <a href='/' class="nav__link" data-link>Войти в аккаунт</a>
+        <a href='/registration' class="nav__link" data-link>Создать аккаунт</a>
+      `;
+    }
+  }
+  
+  renderNavBar();
   router();
 }); 

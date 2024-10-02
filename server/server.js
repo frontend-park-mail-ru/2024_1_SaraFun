@@ -53,6 +53,27 @@ const checkAuth = async (req, res, next) => {
   }
 };
 
+const logout = async (req, res, next) => {
+  try {
+    const response = await fetch('http://5.188.140.7:8080/logout', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+      }
+    });
+
+    if (!response.ok) {
+      return next();
+    }
+
+    return res.redirect('/login');
+  
+  } catch (error) {
+    console.error(error);
+    return next();
+  }
+};
+
 
 app.post('/feed', checkAuth, async (req, res) => {
   res.status(200).send('Пользователь авторизован'); 
