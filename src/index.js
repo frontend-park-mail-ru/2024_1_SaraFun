@@ -412,8 +412,8 @@ const router = async () => {
       }
 
       if (valid) {
-        
         const isLogedIn = loginUser(login, password);
+        console.log(isLogedIn)
         if (!isLogedIn) {
           document.getElementById('login-password-error').style.display = 'block';
         }
@@ -451,9 +451,8 @@ const router = async () => {
       navigateTo('/feed');
       return true
     } catch (error) {
-      console.error('Ошибка:', error);
+      // console.error('Ошибка:', error);
       return false
-            
     }
   }
 
