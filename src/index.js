@@ -21,6 +21,30 @@ const navigateTo = url => {
   router();
 };
 
+const navMenu = document.querySelector('#nav-bar');
+const renderNavBar = async () => {
+  navMenu.innerHTML = '';
+  const isAuthenticated = await checkAuth();
+
+  if (isAuthenticated) {
+    console.log('auth');
+    navMenu.innerHTML = `
+      <a href='/feed' class="nav__link" data-link>Главная</a>
+      <button type="button" id="logout-button" style="width: 200px; height: fit-content">Выйти из аккаунта</button>
+    `;
+    document.getElementById('logout-button').addEventListener('click', async () => { 
+      await logout();
+      await renderNavBar();
+      navigateTo('/');
+    });
+  } else {
+    navMenu.innerHTML = `
+      <a href='/' class="nav__link" data-link>Войти в аккаунт</a>
+      <a href='/registration' class="nav__link" data-link>Создать аккаунт</a>
+    `;
+  }
+}
+
 async function loginUser(login, password) {
   try {
     console.log(login, password);
@@ -38,6 +62,7 @@ async function loginUser(login, password) {
     }
   
     console.log('Успешно авторизовался');
+    await renderNavBar();
     navigateTo('/feed');
     return true
   } catch (error) {
@@ -406,6 +431,7 @@ const router = async () => {
         throw new Error('Ошибка регистрации');
       }
       console.log('Успешно зарегистрировался');
+      await renderNavBar();
       navigateTo('/feed');
     
     } catch (error) {
@@ -441,12 +467,9 @@ const router = async () => {
           const isLogedIn = await loginUser(login, password);
           if (!isLogedIn) {
             document.getElementById('login-password-error').style.display = 'block';
-          } else {
-            document.getElementById('login-password-error').style.display = 'none';
           }
         } catch (error) {
           console.error('Ошибка при входе:', error);
-          document.getElementById('login-password-error').style.display = 'block';
         }
       } else {
         console.error('Ошибка: авторизации');
@@ -550,7 +573,7 @@ const router = async () => {
 
 window.addEventListener('popstate', router);
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   document.body.addEventListener('click', e => {
     if (e.target.matches('[data-link]')) {
       e.preventDefault();
@@ -558,29 +581,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  const navMenu = document.querySelector('#nav-bar');
-  const renderNavBar = async () => {
-    navMenu.innerHTML = '';
-    const isAuthenticated = await checkAuth();
-
-    if (isAuthenticated) {
-      console.log('auth');
-      navMenu.innerHTML = `
-        <a href='/feed' class="nav__link" data-link>Главная</a>
-        <button type="button" id="logout-button" style="width: 200px; height: fit-content">Выйти из аккаунта</button>
-      `;
-      document.getElementById('logout-button').addEventListener('click', async () => { 
-        await logout();
-        await renderNavBar();
-        navigateTo('/');
-      });
-    } else {
-      navMenu.innerHTML = `
-        <a href='/' class="nav__link" data-link>Войти в аккаунт</a>
-        <a href='/registration' class="nav__link" data-link>Создать аккаунт</a>
-      `;
-    }
-  }
-  renderNavBar();
+  
+  await renderNavBar();
   router();
 }); 
