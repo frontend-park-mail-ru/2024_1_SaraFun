@@ -412,7 +412,13 @@ const router = async () => {
       }
 
       if (valid) {
-        loginUser(login, password);
+        document.getElementById('login-error2').style.display = 'none';
+        document.getElementById('password-error2').style.display = 'none';
+        const isLogedIn = loginUser(login, password);
+        if (!isLogedIn) {
+          document.getElementById('login-error2').style.display = 'block';
+          document.getElementById('password-error2').style.display = 'block';
+        }
       } else {
         console.error('Ошибка: авторизации');
       }
@@ -437,14 +443,15 @@ const router = async () => {
       });
 
       if (!response.ok) {
-        throw new Error('Ошибка входа');
+        return false
       }
     
       console.log('Успешно авторизовался');
       navigateTo('/feed');
-    
+      return true
     } catch (error) {
       console.error('Ошибка:', error);
+      return false
             
     }
   }
