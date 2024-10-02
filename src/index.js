@@ -21,6 +21,31 @@ const navigateTo = url => {
   router();
 };
 
+async function loginUser(login, password) {
+  try {
+    console.log(login, password);
+    const response = await fetch('http://5.188.140.7:8080/signin', { 
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials : 'include',
+      body: JSON.stringify({'username': login, 'password': password}),
+    });
+
+    if (!response.ok) {
+      return false
+    }
+  
+    console.log('Успешно авторизовался');
+    navigateTo('/feed');
+    return true
+  } catch (error) {
+    // console.error('Ошибка:', error);
+    return false
+  }
+}
+
 async function checkAuth() {
   try {
     const response = await fetch('http://5.188.140.7:8080/checkauth', {
@@ -431,30 +456,7 @@ const router = async () => {
     });
   }
     
-  async function loginUser(login, password) {
-    try {
-      console.log(login, password);
-      const response = await fetch('http://5.188.140.7:8080/signin', { 
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        credentials : 'include',
-        body: JSON.stringify({'username': login, 'password': password}),
-      });
-
-      if (!response.ok) {
-        return false
-      }
-    
-      console.log('Успешно авторизовался');
-      navigateTo('/feed');
-      return true
-    } catch (error) {
-      // console.error('Ошибка:', error);
-      return false
-    }
-  }
+  
 
   if (match.route.path === '/cards') {
     const isAuth = await checkAuth()
