@@ -47,7 +47,6 @@ async function logout() {
     if (!response.ok) {
       return false;
     }
-    await renderNavBar();
     return true;
   }
   catch (error){
@@ -366,29 +365,6 @@ const router = async () => {
     return true;
   }
 
-  const navMenu = document.querySelector('#nav-bar');
-  const renderNavBar = async () => {
-    navMenu.innerHTML = '';
-    const isAuthenticated = await checkAuth();
-
-    if (isAuthenticated) {
-      console.log('auth');
-      navMenu.innerHTML = `
-        <a href='/feed' class="nav__link" data-link>Главная</a>
-        <button type="button" id="logout-button" style="width: 200px; height: fit-content">Выйти из аккаунта</button>
-      `;
-      document.getElementById('logout-button').addEventListener('click', async () => { 
-        await logout();
-        navigateTo('/');
-      });
-    } else {
-      navMenu.innerHTML = `
-        <a href='/' class="nav__link" data-link>Войти в аккаунт</a>
-        <a href='/registration' class="nav__link" data-link>Создать аккаунт</a>
-      `;
-    }
-  }
-
   async function registerUser(login, password, gender, age) {
     try {
       console.log(login, password, gender, age);
@@ -405,7 +381,6 @@ const router = async () => {
         throw new Error('Ошибка регистрации');
       }
       console.log('Успешно зарегистрировался');
-      await renderNavBar();
       navigateTo('/feed');
     
     } catch (error) {
@@ -466,7 +441,6 @@ const router = async () => {
       }
     
       console.log('Успешно авторизовался');
-      await renderNavBar();
       navigateTo('/feed');
     
     } catch (error) {
@@ -571,7 +545,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  
+  const navMenu = document.querySelector('#nav-bar');
+  const renderNavBar = async () => {
+    navMenu.innerHTML = '';
+    const isAuthenticated = await checkAuth();
+
+    if (isAuthenticated) {
+      console.log('auth');
+      navMenu.innerHTML = `
+        <a href='/feed' class="nav__link" data-link>Главная</a>
+        <button type="button" id="logout-button" style="width: 200px; height: fit-content">Выйти из аккаунта</button>
+      `;
+      document.getElementById('logout-button').addEventListener('click', async () => { 
+        await logout();
+        await renderNavBar();
+        navigateTo('/');
+      });
+    } else {
+      navMenu.innerHTML = `
+        <a href='/' class="nav__link" data-link>Войти в аккаунт</a>
+        <a href='/registration' class="nav__link" data-link>Создать аккаунт</a>
+      `;
+    }
+  }
   renderNavBar();
   router();
 }); 
