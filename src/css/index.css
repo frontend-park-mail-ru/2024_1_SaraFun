@@ -1,0 +1,549 @@
+@font-face {
+    font-family: 'Rubik';
+    src:  url('../assets/fonts/Rubik-Regular.woff') format('woff2'),
+          url('../assets/fonts/Rubik-Regular.woff2') format('woff');
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: var(--primary);
+    background-image: url(../assets/img/background.svg);
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: var(--nav-width);
+}
+
+:root {
+    --primary: #B9F1D9FF;
+    --secondary: #49B2A6FF;
+    --red1: #FF1A1AFF;
+    --error: #FF6275FF;
+    --warning: #FAC748FF;
+    --success: #204E4AFF;
+    --white1: #FFFFFFFF;
+    --black1: #000000FF;
+    --grey1: #C4C4C4FF;
+    --grey2: #8C8C8CFF;
+    --nav-width: 45px;
+}
+
+.h1 {
+    font-family: Rubik;
+    filter: blur(2.0000rem);
+    line-height: normal;
+    letter-spacing: 0.0000%;
+    font-weight: 700;
+}
+
+.text-base {
+    font-family: Rubik;
+    filter: blur(1.0000rem);
+    line-height: normal;
+    letter-spacing: 0.0000%;
+    font-weight: 400;
+}
+  
+.h2 {
+    font-family: Rubik;
+    filter: blur(1.5000rem);
+    line-height: normal;
+    letter-spacing: 0.0000%;
+    font-weight: 600;
+}
+  
+.h3 {
+    font-family: Rubik;
+    filter: blur(1.1875rem);
+    line-height: normal;
+    letter-spacing: 0.0000%;
+    font-weight: 500;
+}
+  
+.link {
+    font-family: Rubik;
+    filter: blur(1.0000rem);
+    line-height: normal;
+    letter-spacing: 0.0000%;
+    font-weight: 400;
+}
+  
+.text-base-medium {
+    font-family: Rubik;
+    filter: blur(1.0000rem);
+    line-height: normal;
+    letter-spacing: 0.0000%;
+    font-weight: 500;
+}
+
+.nav__link {
+    display: block;
+    padding: 12px 18px;
+    text-decoration: none;
+    color: var(--black1);
+}
+
+.nav__link:hover {
+    background: var(--primary);
+    background-size:auto;
+}
+
+a {
+    color: var(--secondary);
+}
+
+.container {
+    background-color: var(--white1);
+    border-radius: 25px;
+    width: 70vw;
+    min-width: 700px;
+    height: 85vh;
+    min-height: 592px;
+    display: flex;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    gap: 40px;
+    height: var(--nav-width);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--white1);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    width: 150px;
+}
+
+
+
+
+.form-section-tinder {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.form-section {
+    width: 50%;
+    padding-right: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.footer-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin-top: auto;
+    gap: 1em;
+    color: var(--grey2);
+}
+
+.footer-text a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+.image-section-wrapper {
+    width: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-section {
+    width: 50%; 
+    background-color: var(--secondary);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+label {
+    margin-bottom: 8px;
+    display: block;
+    color: var(--black1);
+}
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 16px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+button {
+    width: 100%; 
+    padding: 12px; 
+    background-color: var(--secondary);
+    color: var(--white1);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+button:hover {
+    background-color: var(--success);
+}
+.error {
+    color: var(--error);
+    font-size: 12px;
+    margin-bottom: 8px;
+    display: none; 
+}
+.image-section img {
+    height: 100%; 
+    object-fit: cover;
+    object-position: center; 
+}
+.description {
+    align-self: center;
+    margin-bottom: 20px; 
+}
+.main-header {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: absolute; 
+    top: 0;
+    left: 0; 
+    width: 100%;
+    z-index: 1;
+}
+.logo-header {
+    width: 100px;
+    height: auto;
+}
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.main-nav ul li {
+    margin-right: 20px;
+}
+    
+.main-nav ul li:last-child {
+    margin-right: 0;
+}
+.main-nav ul li a {
+    color: #fff; 
+    text-decoration: none;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Или установите конкретную высоту по необходимости */
+}
+.card-content {
+    flex: 1;
+    /* Дополнительные стили для основного содержимого */
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    background-color: var(--secondary);
+    color: var(--white1);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: var(--success);
+}
+.btn span {
+    margin-left: 8px; 
+}
+.error {
+    color: var(--error);
+    font-size: 12px;
+    margin-bottom: 8px;
+    display: none; 
+}
+.btn::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 8px;
+}
+.btn.skip::before {
+    background-image: url('../assets/icons/skip.svg');
+}
+.btn.like::before {
+    background-image: url('../assets/icons/like.svg');
+}
+.btn.photo::before {
+    background-image: url('../assets/icons/photo.svg');
+}
+.btn.gift::before {
+    background-image: url('../assets/icons/gift.svg');
+}
+
+.card-actions {
+    display: flex;
+    gap: 20px; 
+    justify-content: center;
+    align-self: center;
+    margin-top: auto;
+}
+
+.tinder--buttons {
+    display:flex;
+    justify-content: center;
+    flex: 0 0 100px;
+    padding-top: 10px;
+    gap: 20px; 
+}
+
+.custom-btn {
+    display: flex;
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 70%;
+    width: 80px;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+}
+
+.tinder--buttons button {
+    border-radius: 50%;
+    line-height: 60px;
+    width: 80px;
+    height: 80px;
+    border: none;
+    background: var(--secondary);
+    display: inline-block;
+    margin: 0 8px;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tinder--buttons button img{
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+.custom-btn img {
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+.tinder {
+    width: 100vw;
+    height: 93vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    opacity: 1;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.loaded.tinder {
+    opacity: 1;
+}
+
+.tinder--cards {
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1;
+}
+
+.tinder--card {
+    padding: 20px;
+    display: inline-block;
+    width: 65vw;
+    height: 75vh;
+    background: var(--white1);
+    border-radius: 12px;
+    overflow: hidden;
+    position: absolute;
+    will-change: transform;
+    transition: all 0.3s ease-in-out;
+    cursor: grab;
+    display: flex;
+    user-select: none;
+    opacity: 1;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.image-section-tinder {
+    width: 50%; 
+    background-color: var(--secondary);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    pointer-events: none;
+}
+
+.image-section-tinder img {
+    height: 100%; 
+    object-fit: cover;
+    user-select: none;
+    object-position: center; 
+    pointer-events: none;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.moving.tinder--card {
+    transition: none;
+    cursor: grabbing;
+}
+  
+.tinder--card p {
+    font-size: 20px;
+    padding: 0 16px;
+    pointer-events: none;
+}
+  
+.tinder--buttons button:focus {
+    outline: 0;
+}
+  
+.tinder--buttons i {
+    font-size: 32px;
+    vertical-align: middle;
+}
+
+.fa-heart img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    position: absolute;
+}
+
+
+/* gender selector start */
+.gender-selection {
+    display: flex;
+    align-items: center;
+}
+
+.gender-selection input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+    border: 2px solid var(--secondary, #49B2A6FF);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    margin-right: 10px;
+}
+
+.gender-selection input[type="radio"]:checked::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--secondary, #49B2A6FF);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gender-selection label {
+    margin-right: 20px;
+    color: var(--secondary, #49B2A6FF);
+}
+/* gender selector end */
+
+
+/* age slider start */
+input[type="range"] {
+    -webkit-appearance: none; 
+    width: 100%;
+    height: 8px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none; 
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none; 
+    width: 20px; 
+    height: 20px; 
+    background: var(--secondary); 
+    border-radius: 50%; 
+    cursor: pointer; 
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--secondary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+output {
+    margin-top: 10px;
+    font-size: 16px;
+}
+/* age slider end */
