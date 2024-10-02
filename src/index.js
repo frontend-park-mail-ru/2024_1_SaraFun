@@ -420,14 +420,16 @@ const router = async () => {
       }
       return true 
     }
-    catch {
+    catch (error){
+      console.log('error auth')
       return false;
     }
   }
 
   if (match.route.path === '/feed') {
-    if (!checkAuth()) {
-      navigateTo('/');
+    const isAuth = await checkAuth()
+    if (!isAuth) {
+      navigateTo('/login');
     } else {
       async function fetchUsers() {
         try {
