@@ -347,12 +347,6 @@ const router = async () => {
         document.getElementById('password-error').style.display = 'none';
       }
 
-      if (gender == nil) {
-        document.getElementById('gender-error').style.display = 'block';
-        valid = false;
-      } else {
-        document.getElementById('gender-error').style.display = 'none';
-      }
       if (valid) {
         registerUser(login, password, gender, age);
       }
