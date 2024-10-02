@@ -33,29 +33,25 @@ app.post('/register', (req, res) => {
 
 const checkAuth = async (req, res, next) => {
   try {
+    
     const response = await fetch('http://5.188.140.7:8080/checkauth', {
       method: 'GET',
       credentials: 'include',
       headers: {
       }
     });
-    
+
     if (!response.ok) {
-      // Если ответ не успешный (например, 401 Unauthorized)
       return res.redirect('/login');
     }
-
+    
     return next(); // Пользователь авторизован, продолжаем выполнение
-
+  
   } catch (error) {
     console.error(error);
-    return res.redirect('/login'); // В случае ошибки также перенаправляем на страницу логина
+    return res.redirect('/login');
   }
 };
-
-app.post('/feed', checkAuth, async (req, res) => {
-  res.status(200).send('Пользователь авторизован'); 
-});
 
 
 app.post('/feed', checkAuth, async (req, res) => {
