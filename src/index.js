@@ -437,15 +437,22 @@ const router = async () => {
       }
 
       if (valid) {
-        const isLogedIn = await loginUser(login, password);
-        console.log(isLogedIn)
-        if (!isLogedIn) {
+        try {
+          const isLogedIn = await loginUser(login, password);
+          if (!isLogedIn) {
+            document.getElementById('login-password-error').style.display = 'block';
+          } else {
+            document.getElementById('login-password-error').style.display = 'none';
+          }
+        } catch (error) {
+          console.error('Ошибка при входе:', error);
           document.getElementById('login-password-error').style.display = 'block';
         }
       } else {
         console.error('Ошибка: авторизации');
       }
     });
+
         
     document.getElementById('link').addEventListener('click', (event) => {
       event.preventDefault();
