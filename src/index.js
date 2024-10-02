@@ -27,7 +27,7 @@ const renderNavBar = async () => {
   const isAuthenticated = await checkAuth();
 
   if (isAuthenticated) {
-    console.log('auth');
+    //console.log('auth');
     navMenu.innerHTML = `
       <a href='/feed' class="nav__link" data-link>Главная</a>
       <button type="button" id="logout-button" style="width: 200px; height: fit-content">Выйти из аккаунта</button>
@@ -47,7 +47,7 @@ const renderNavBar = async () => {
 
 async function loginUser(login, password) {
   try {
-    console.log(login, password);
+    //console.log(login, password);
     const response = await fetch('http://5.188.140.7:8080/signin', { 
       method: 'POST',
       headers: {
@@ -61,7 +61,7 @@ async function loginUser(login, password) {
       return false
     }
   
-    console.log('Успешно авторизовался');
+    //console.log('Успешно авторизовался');
     await renderNavBar();
     navigateTo('/feed');
     return true
@@ -83,7 +83,7 @@ async function checkAuth() {
     return true;
   }
   catch (error){
-    console.log('error auth')
+    //console.log('error auth')
     return false;
   }
 }
@@ -100,7 +100,7 @@ async function logout() {
     return true;
   }
   catch (error){
-    console.log('error logout')
+    //console.log('error logout')
     return false;
   }
 }
@@ -362,26 +362,26 @@ const router = async () => {
   function isValidLogin(login) {
     // Проверка длины логина
     if (login.length < 5 || login.length > 15) {
-      console.log('Логин должен содержать от 5 до 15 символов.');
+      //console.log('Логин должен содержать от 5 до 15 символов.');
       return false;
     }
     
     // Проверка на наличие недопустимых специальных символов
     const invalidChars = /[^a-zA-Z0-9_-]/;
     if (invalidChars.test(login)) {
-      console.log('Логин может содержать только буквы, цифры, \'_\' и \'-\'.');
+      //console.log('Логин может содержать только буквы, цифры, \'_\' и \'-\'.');
       return false;
     }
     
     // Проверка на первую и последнюю позицию для специальных символов
     if (login.startsWith('_') || login.startsWith('-') || login.endsWith('_') || login.endsWith('-')) {
-      console.log('Специальные символы \'_\' и \'-\' не могут быть первыми или последними символами.');
+      //console.log('Специальные символы \'_\' и \'-\' не могут быть первыми или последними символами.');
       return false;
     }
     
     // Проверка на первую позицию для цифр
     if (/\d/.test(login.charAt(0))) {
-      console.log('Логин не может начинаться с цифры.');
+      //console.log('Логин не может начинаться с цифры.');
       return false;
     }
     
@@ -394,20 +394,20 @@ const router = async () => {
     }
     // Проверка длины пароля
     if (password.length < 6 || password.length > 40) {
-      console.log('Пароль должен содержать от 6 до 40 символов.');
+      //console.log('Пароль должен содержать от 6 до 40 символов.');
       return false;
     }
     
     // Проверка на наличие хотя бы одной цифры
     if (!/\d/.test(password)) {
-      console.log('Пароль должен содержать хотя бы одну цифру.');
+      //console.log('Пароль должен содержать хотя бы одну цифру.');
       return false;
     }
     
     // Проверка на допустимые специальные символы
     for (let char of password) {
       if (!/[a-zA-Z0-9*?!$]/.test(char)) {
-        console.log('Пароль содержит недопустимые символы.');
+        //console.log('Пароль содержит недопустимые символы.');
         return false;
       }
     }
@@ -417,7 +417,7 @@ const router = async () => {
 
   async function registerUser(login, password, gender, age) {
     try {
-      console.log(login, password, gender, age);
+      //console.log(login, password, gender, age);
       const response = await fetch('http://5.188.140.7:8080/signup', { 
         method: 'POST',
         headers: {
@@ -430,7 +430,7 @@ const router = async () => {
       if (!response.ok) {
         throw new Error('Ошибка регистрации');
       }
-      console.log('Успешно зарегистрировался');
+      //console.log('Успешно зарегистрировался');
       await renderNavBar();
       navigateTo('/feed');
     
@@ -536,7 +536,7 @@ const router = async () => {
 
       async function loadFeed() {
         const users = await fetchUsers();
-        console.log(users);
+        //console.log(users);
         let currentIndex = 0;
 
         function showNextUser() {
