@@ -416,7 +416,7 @@ const router = async () => {
 
   // логин
   if (match.route.path === '/') {
-    document.getElementById('login-button').addEventListener('click', () => {
+    document.getElementById('login-button').addEventListener('click', async () => {
       const login = document.getElementById('login').value;
       const password = document.getElementById('password').value;
 
@@ -437,7 +437,7 @@ const router = async () => {
       }
 
       if (valid) {
-        const isLogedIn = loginUser(login, password);
+        const isLogedIn = await loginUser(login, password);
         console.log(isLogedIn)
         if (!isLogedIn) {
           document.getElementById('login-password-error').style.display = 'block';
