@@ -25,7 +25,7 @@ export default class extends AbstractView {
             
            <label for="gender" class=".text-base">Пол</label>
            <div class="gender-selection">
-                <input type="radio" id="male" name="gender" value="male">
+                <input type="radio" id="male" name="gender" value="male" checked>
                 <label for="male">Мужской</label>
                 <input type="radio" id="female" name="gender" value="female">
                 <label for="female">Женский</label>
