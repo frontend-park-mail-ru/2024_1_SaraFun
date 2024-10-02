@@ -558,7 +558,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <button type="button" id="logout-button" style="width: 200px; height: fit-content">Выйти из аккаунта</button>
       `;
       document.getElementById('logout-button').addEventListener('click', () => { 
-        logout();
+        //logout();
       });
     } else {
       navMenu.innerHTML = `
