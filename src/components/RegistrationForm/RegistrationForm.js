@@ -1,4 +1,4 @@
-export class Registration {
+export class RegistrationForm {
   constructor(parent) {
     this.parent = parent;
     this.parent.innerHtml = '';

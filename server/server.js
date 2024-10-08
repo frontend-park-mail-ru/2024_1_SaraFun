@@ -4,34 +4,35 @@ const app = express();
 const cors = require('cors');
 const session = require('express-session');
 
-app.use(cors({
+/*app.use(cors({
   origin: 'http://localhost:80', 
   credentials: true
-}));
+}));*/
 
-app.use(session({
+/*app.use(session({
   secret: 'your-secret-key',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false } // true, если  HTTPS
-}));
+}));*/
 
+app.set('views', path.resolve(__dirname, '../src'));
 app.set('view engine', 'pug');
 app.use(express.static(path.resolve(__dirname, '../src')));
 
 app.use(express.urlencoded({ extended: true }));
 
 
-app.post('/register', (req, res) => {
+/*app.post('/register', (req, res) => {
   const { login, password } = req.body;
   if (login && password) {
     res.status(200).send('Регистрация успешна');
   } else {
     res.status(400).send('Ошибка регистрации');
   }
-});
+});*/
 
-const checkAuth = async (req, res, next) => {
+/*const checkAuth = async (req, res, next) => {
   try {
     
     const response = await fetch('http://5.188.140.7:8080/checkauth', {
@@ -51,9 +52,9 @@ const checkAuth = async (req, res, next) => {
     console.error(error);
     return res.redirect('/login');
   }
-};
+};*/
 
-const logout = async (req, res, next) => {
+/*const logout = async (req, res, next) => {
   try {
     const response = await fetch('http://5.188.140.7:8080/logout', {
       method: 'POST',
@@ -72,15 +73,15 @@ const logout = async (req, res, next) => {
     console.error(error);
     return next();
   }
-};
+};*/
 
 
-app.post('/feed', checkAuth, async (req, res) => {
+/*app.post('/feed', checkAuth, async (req, res) => {
   res.status(200).send('Пользователь авторизован'); 
-});
+});*/
 
 
-app.post('/login', (req, res) => {
+/*app.post('/login', (req, res) => {
   const { login, password } = req.body;
   if (login && password) {
     req.session.user = { login };
@@ -88,7 +89,7 @@ app.post('/login', (req, res) => {
   } else {
     res.status(400).send('Ошибка авторизации');
   }
-});
+});*/
 
 app.get('/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../src', 'index.html'));
