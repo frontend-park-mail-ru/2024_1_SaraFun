@@ -1,7 +1,7 @@
 import { compileFile } from 'pug';
 import { readdir, writeFile } from 'node:fs/promises';
 
-const PATHS = ['./src/js/views/'];
+const PATHS = ['./src/js/views/', './src/components/LoginForm/', './src/components/ImageSection/', './src/components/RegistrationForm/', './src/pages/login/', './src/pages/signup/'];
   
 const PATH_OUT = './src/Compile/';
 

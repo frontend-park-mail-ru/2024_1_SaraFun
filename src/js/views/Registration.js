@@ -9,7 +9,7 @@ export default class extends AbstractView {
   async getHtml() {
     return `
        <div class="container">
-            <div class="form-section">
+          <div class="form-section">
             <div class="logo">
                 <img src="../assets/img/Logo.svg" alt="Logo">
             </div>
@@ -23,8 +23,8 @@ export default class extends AbstractView {
             <input type="password" id="password" placeholder="Введите пароль">
             <p class="error" id="password-error" style="display:none;">Пароль должен быть от 6 до 40 символов, содержать минимум одну цифру, разрешенные спец знаки (!?*-$)</p>
             
-           <label for="gender" class=".text-base">Пол</label>
-           <div class="gender-selection">
+            <label for="gender" class=".text-base">Пол</label>
+            <div class="gender-selection">
                 <input type="radio" id="male" name="gender" value="male" checked>
                 <label for="male">Мужской</label>
                 <input type="radio" id="female" name="gender" value="female">
@@ -41,11 +41,11 @@ export default class extends AbstractView {
             <div class="footer-text">
                 У вас уже есть аккаунт? <a href="/login" id="link" class=".link">Войдите в аккаунт</a>
             </div>
-        </div>
-           <div class="image-section">
+          </div>
+          <div class="image-section">
             <img src="../assets/img/image.svg" alt="Image">
-        </div>
-    </div>`
+          </div>
+        </div>`
     ;
   }
 }
