@@ -3,20 +3,6 @@ import templateLogin from '../Compile/login.js';
 import templateSignup from '../Compile/signup.js';
 
 function renderFeed (parent) {
-	/*function createCard(user) {
-		return `
-			<div class="tinder--card">
-				<div class="image-section">
-					<img src="../assets/img/image.svg" alt="Image" draggable="false">
-				</div>
-				<div class="form-section-tinder">
-					<h1>${user.username}</h1>
-					<text-base>Пол: ${user.gender}</text-base>
-					<text-base>Возраст: ${user.age}</text-base>
-				</div>
-			</div>
-		`;
-	}*/
 	function initCards() { 
 		var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
 	
@@ -29,17 +15,23 @@ function renderFeed (parent) {
 		tinderContainer.classList.add('loaded');
 	}
 	parent.innerHTML = '';
-	const users = [ { username: "Andrey", gender: "male", age: 20}, { "id": 2, "username": "Anton", "age": 20, "gender": "male"}];
-	parent.innerHTML = templateFeed();
+	const users = [ 
+		{ username: "Andrey", gender: "male", age: 20}, 
+		{ username: "Anton", gender: "male", age: 20},
+		{ username: "Ivan", gender: "male", age: 20},	
+		{ username: "Alex", gender: "male", age: 20},
+		{ username: "Alena", gender: "female", age: 20},
+		{ username: "Andrey", gender: "male", age: 20}, 
+		{ username: "Anton", gender: "male", age: 20},
+		{ username: "Ivan", gender: "male", age: 20},	
+		{ username: "Alex", gender: "male", age: 20},
+		{ username: "Alena", gender: "female", age: 20},
+		{ username: "Andrey", gender: "male", age: 20}
+	];
+	parent.innerHTML = templateFeed({ users} );
 	const tinderContainer = document.querySelector('.tinder--cards');
-	//const compiledFunction = pug.compileFile('../src/components/SwipeCard/SwipeCard.pug');
-	//console.log(compiledFunction({ username: "Andrey", gender: "male", age: 20}));
-	//console.log(templateCard({ "id": 1, "username": "Andrey", "age": 20}));
-	tinderContainer.innerHTML = templateCard({ "id": 1, "username": "Andrey", "age": 20, "gender": "male"});
-	//tinderContainer.innerHTML = users.map(user => renderCard({ user })).join('');
-	//tinderContainer.innerHTML = users.map(user => createCard(user)).join('');
-	//var allCards = document.querySelectorAll('.tinder--card');
-	//initCards();
+	var allCards = document.querySelectorAll('.tinder--card');
+	initCards();
 };
 
 function renderLogin (parent) {

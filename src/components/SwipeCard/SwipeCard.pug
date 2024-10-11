@@ -3,6 +3,6 @@ mixin card(username, gender, age)
     .image-section
       img(src="../assets/img/image.svg" alt="Image" draggable="false")
     .form-section-tinder
-      h1= username
-      text-base Пол: #{gender}
-      text-base Возраст: #{age}
+      h1 !{username}
+      text-base Пол: !{gender}
+      text-base Возраст: !{age}

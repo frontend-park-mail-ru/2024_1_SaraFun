@@ -1,26 +1,20 @@
 include ../CustomInput/CustomInput.pug
+include ../Header/Header.pug
+include ../TextButton/TextButton.pug
+include ../FooterText/FooterText.pug
+
 block registration
-  .logo
-    img(src="../assets/img/Logo.svg" alt="Logo")
-  h1.description Добро пожаловать!
+  +header('Добро пожаловать!')
 
   +customInput('login', 'registration')
   +customInput('password', 'registration')
-  
-  label(for="gender" class=".text-base") Пол
-  .gender-selection
-    input(type="radio" id="male" name="gender" value="male" checked)
-    label(for="male") Мужской
-    input(type="radio" id="female" name="gender" value="female")
-    label(for="female") Женский
-  p.error(id="gender-error" style="display:none;") Выберите пол
+
+  include ../GenderSelection/GenderSelection.pug
 
   label(for="age" class=".text-base") Возраст
   input(type="range" id="age" name="age" min="18" max="100" value="18" oninput="this.nextElementSibling.value = this.value")
   output 18
 
-  button(type="button" id="register-button") Зарегистрироваться
+  +textButton('Зарегистрироваться')
 
-  .footer-text
-    span У вас уже есть аккаунт? 
-    a(href="/login" id="link" class=".link") Войдите в аккаунт
+  +footerText('registration')

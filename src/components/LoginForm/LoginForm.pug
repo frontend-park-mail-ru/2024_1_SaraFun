@@ -1,16 +1,13 @@
 include ../CustomInput/CustomInput.pug
 include ../Header/Header.pug
 include ../TextButton/TextButton.pug
+include ../FooterText/FooterText.pug
 
 block login
   +header('С возвращением!')
 
   +customInput('login', 'login')
   +customInput('password', 'login')
-
   +textButton('Войти в аккаунт', 'login-button')
-  //button(type="button" id="login-button") Войти в аккаунт
 
-  .footer-text
-    span У вас еще нет аккаунта? 
-    a(href="/registration" id="link" class=".link") Зарегистрируйтесь
+  +footerText('login')

@@ -2,7 +2,7 @@ import pug from 'pug';
 import { compileFile } from 'pug';
 import { readdir, writeFile } from 'node:fs/promises';
 
-const PATHS = ['./src/pages/login/', './src/pages/signup/', './src/pages/feed/'];
+const PATHS = ['./src/components/SwipeCard/', './src/pages/login/', './src/pages/signup/', './src/pages/feed/'];
   
 const PATH_OUT = './src/Compile/';
 

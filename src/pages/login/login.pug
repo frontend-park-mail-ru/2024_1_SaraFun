@@ -1,7 +1,5 @@
-include ../../components/ImageSection/ImageSection.pug
+include ../../components/BaseLogReg/BaseLogReg.pug
+include ../../components/Navbar/Navbar.pug
 
-.container
-  .form-section
-    include ../../components/LoginForm/LoginForm.pug
-  //+imageSection("../assets/img/Logo.svg")
-  include ../../components/ImageSection/ImageSection.pug
++navbar(false)
++base('login')
