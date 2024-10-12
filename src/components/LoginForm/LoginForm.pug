@@ -1,18 +1,13 @@
-.logo
-img(src="../assets/img/Logo.svg" alt="Logo")
-h1.description С возвращением!
+include ../CustomInput/CustomInput.pug
+include ../Header/Header.pug
+include ../TextButton/TextButton.pug
+include ../FooterText/FooterText.pug
 
-label(for="login" class=".text-base") Логин
-input(type="text" id="login" class=".text-base" placeholder="Введите логин")
-p.error(id="login-error") Ошибка: Введите правильный логин
+block login
+  +header('С возвращением!')
 
-label(for="password" class=".text-base") Пароль
-input(type="password" id="password" placeholder="Введите пароль")
-p.error(id="password-error") Ошибка: Введите пароль
-p.error(id="login-password-error") Ошибка: Неправильный логин или пароль
+  +customInput('login', 'login')
+  +customInput('password', 'login')
+  +textButton('Войти в аккаунт', 'login-button')
 
-button(type="button" id="login-button") Войти в аккаунт
-
-.footer-text
-  span У вас еще нет аккаунта? 
-  a(href="/registration" id="link" class=".link") Зарегистрируйтесь
+  +footerText('login')
