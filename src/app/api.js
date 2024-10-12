@@ -5,7 +5,7 @@ function loginUser(login, password) {
         contentType: 'application/json',
         data: JSON.stringify({ 'username': login, 'password': password }),
         xhrFields: {
-            withCredentials: true // для передачи cookies
+            withCredentials: true 
         }
     })
     .done(function(response) {
@@ -22,11 +22,10 @@ function checkAuth() {
         url: 'http://5.188.140.7:8080/checkauth',
         type: 'GET',
         xhrFields: {
-            withCredentials: true // для передачи cookies
+            withCredentials: true 
         }
     })
     .done(function(response) {
-        // Если запрос успешен, возвращаем true
         return true;
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
@@ -77,7 +76,7 @@ function registerUser(login, password, gender, age) {
         method: 'POST',
         contentType: 'application/json',
         xhrFields: {
-            withCredentials: true // Для отправки куки с запросом
+            withCredentials: true 
         },
         data: JSON.stringify({
             username: login,

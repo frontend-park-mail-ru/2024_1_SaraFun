@@ -4,6 +4,8 @@ import CardView from './js/views/CardView.js';
 import Registration from './js/views/Registration.js';
 
 
+
+const root = document.querySelector('#root');
 const pathToRegex = path => new RegExp('^' + path.replace(/\//g, '\\/').replace(/:\w+/g, '(.+)') + '$');
 
 const getParams = match => {
@@ -43,11 +45,6 @@ const renderNavBar = async () => {
     `;
   }
 }
-
-
-
-
-
 
 const router = async () => {
   const routes = [
@@ -342,10 +339,6 @@ const router = async () => {
     return true;
   }
 
-
-  
-    
-
   // логин
   if (match.route.path === '/') {
     document.getElementById('login-button').addEventListener('click', async () => {
@@ -372,8 +365,7 @@ const router = async () => {
         try {
           const isLogedIn = await loginUser(login, password);
           if (!isLogedIn) {
-            document.getElementById('login-password-error').style.display = 'block';
-            
+            document.getElementById('login-password-error').style.display = 'block';            
           } else {
             renderNavBar(); 
             navigateTo('/feed');
@@ -400,8 +392,6 @@ const router = async () => {
     if (!isAuth) {
       navigateTo('/login');
     } else {
-
-
       function displayUser(user) {
         const formSection = document.querySelector('.form-section');
         if (user) {
