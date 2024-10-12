@@ -4,6 +4,8 @@ import CardView from './js/views/CardView.js';
 import Registration from './js/views/Registration.js';
 
 
+
+const root = document.querySelector('#root');
 const pathToRegex = path => new RegExp('^' + path.replace(/\//g, '\\/').replace(/:\w+/g, '(.+)') + '$');
 
 const getParams = match => {
@@ -44,63 +46,6 @@ const renderNavBar = async () => {
   }
 }
 
-function loginUser(login, password) {
-  return $.ajax({
-    url: 'http://5.188.140.7:8080/signin',
-    type: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify({ 'username': login, 'password': password }),
-    xhrFields: {
-      withCredentials: true // для передачи cookies
-    }
-  })
-  .done(function(response) {
-    return true;
-  })
-  .fail(function(jqXHR, textStatus, errorThrown) {
-    console.error('Ошибка:', textStatus, errorThrown);
-    return false;
-  });
-}
-
-function checkAuth() {
-  return $.ajax({
-    url: 'http://5.188.140.7:8080/checkauth',
-    type: 'GET',
-    xhrFields: {
-      withCredentials: true // для передачи cookies
-    }
-  })
-  .done(function(response) {
-    // Если запрос успешен, возвращаем true
-    return true;
-  })
-  .fail(function(jqXHR, textStatus, errorThrown) {
-    // Обработка ошибки
-    console.error('Ошибка авторизации:', textStatus, errorThrown);
-    return false;
-  });
-}
-
-function logout() {
-  return $.ajax({
-    url: 'http://5.188.140.7:8080/logout',
-    method: 'GET',
-    xhrFields: {
-      withCredentials: true 
-    }
-  })
-  .done(function() {
-    console.log('Успешный выход из системы');
-    return true; 
-  })
-  .fail(function(jqXHR) {
-    console.error('Ошибка при выходе:', jqXHR.statusText);
-    return false; 
-  });
-}
-
-
 const router = async () => {
   const routes = [
     { path: '/', view: Login },
@@ -133,23 +78,6 @@ const router = async () => {
     if (!isAuth) {
       navigateTo('/login');
     } else {
-      async function fetchUsers() {
-          try {
-            const response = await fetch('http://5.188.140.7:8080/getusers', {
-              method: 'GET',
-              credentials: 'include',
-              mode: 'cors'
-            });
-            if (!response.ok) {
-              throw new Error('Ошибка при получении списка пользователей');
-            }
-            return await response.json();
-          } catch (error) {
-            console.error('Ошибка при получении списка пользователей:', error);
-            return [];
-          }
-      }
-
       function createCard(user) {
           return `
               <div class="tinder--card">
@@ -411,34 +339,6 @@ const router = async () => {
     return true;
   }
 
-  function registerUser(login, password, gender, age) {
-    return $.ajax({
-      url: 'http://5.188.140.7:8080/signup',
-      method: 'POST',
-      contentType: 'application/json',
-      xhrFields: {
-        withCredentials: true // Для отправки куки с запросом
-      },
-      data: JSON.stringify({
-        username: login,
-        password: password,
-        gender: gender,
-        age: parseInt(age)
-      })
-    })
-    .done(function() {
-      console.log('Успешно зарегистрировался');
-      renderNavBar().then(() => {
-        navigateTo('/feed');
-      });
-    })
-    .fail(function(jqXHR) {
-      console.error('Ошибка регистрации:', jqXHR.statusText);
-    });
-  }
-  
-    
-
   // логин
   if (match.route.path === '/') {
     document.getElementById('login-button').addEventListener('click', async () => {
@@ -465,8 +365,7 @@ const router = async () => {
         try {
           const isLogedIn = await loginUser(login, password);
           if (!isLogedIn) {
-            document.getElementById('login-password-error').style.display = 'block';
-            
+            document.getElementById('login-password-error').style.display = 'block';            
           } else {
             renderNavBar(); 
             navigateTo('/feed');
@@ -493,23 +392,6 @@ const router = async () => {
     if (!isAuth) {
       navigateTo('/login');
     } else {
-      async function fetchUsers() {
-        try {
-          const response = await fetch('http://5.188.140.7:8080/getusers', {
-            method: 'GET',
-            credentials: 'include',
-            mode: 'cors'
-          });
-          if (!response.ok) {
-            throw new Error('Ошибка при получении списка пользователей');
-          }
-          return await response.json();
-        } catch (error) {
-          console.error('Ошибка при получении списка пользователей:', error);
-          return [];
-        }
-      }
-
       function displayUser(user) {
         const formSection = document.querySelector('.form-section');
         if (user) {
