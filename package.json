@@ -1,29 +1,27 @@
 {
   "name": "sarafun",
   "version": "1.0.0",
-  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm index.html && node compile.js",
-    "start": "cd server && node index.js"
+    "start": "cd server && node server.js"
   },
+  "keywords": [],
   "author": "sarafun",
   "license": "ISC",
   "description": "dating app",
   "dependencies": {
-    "ejs": "^3.1.10"
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "express-session": "^1.18.0",
+    "pug": "^3.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^9.11.1",
-    "express": "^4.21.0",
-    "globals": "^15.9.0",
-    "http-server": "^14.1.1",
-    "open": "^10.1.0",
-    "pug": "^3.0.3",
-    "typescript-eslint": "^8.7.0",
-    "url": "^0.11.4"
+    "eslint": "^8.57.1",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "globals": "^15.10.0"
   }
 }

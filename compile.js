@@ -1,4 +1,4 @@
-const fs = require('fs');
+/*const fs = require('fs');
 const path = require('path');
 const pug = require('pug');
 const open = require('open');
@@ -18,4 +18,4 @@ const html = template({ app });
 
 fs.writeFileSync(indexHtmlPath, html);
 
-open(indexHtmlPath);
+open(indexHtmlPath);*/
