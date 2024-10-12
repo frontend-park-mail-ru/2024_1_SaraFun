@@ -80,6 +80,34 @@ body {
     font-weight: 500;
 }
 
+.container {
+    background-color: var(--white1);
+    border-radius: 25px;
+    width: 70vw;
+    min-width: 700px;
+    height: 85vh;
+    min-height: 592px;
+    display: flex;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.form-section {
+    width: 50%;
+    padding-right: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+
+
+.logo img {
+    width: 150px;
+}
+
 .nav__link {
     display: block;
     padding: 12px 18px;
@@ -94,19 +122,6 @@ body {
 
 a {
     color: var(--secondary);
-}
-
-.container {
-    background-color: var(--white1);
-    border-radius: 25px;
-    width: 70vw;
-    min-width: 700px;
-    height: 85vh;
-    min-height: 592px;
-    display: flex;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    box-sizing: border-box;
 }
 
 .nav {
@@ -133,15 +148,6 @@ a {
 .form-section-tinder {
     width: 50%;
     padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-}
-
-.form-section {
-    width: 50%;
-    padding-right: 20px;
     box-sizing: border-box;
     display: flex;
     align-items: flex-start;

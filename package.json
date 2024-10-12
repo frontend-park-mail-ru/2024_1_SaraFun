@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd server && node server.js"
+    "start": "cd server && node server.js",
+    "build": "node compile.js"
   },
   "keywords": [],
   "author": "sarafun",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
+    "@types/pug": "^2.0.10",
     "eslint": "^8.57.1",
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-react": "^7.37.1",
