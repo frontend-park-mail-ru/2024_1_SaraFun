@@ -38,8 +38,6 @@ pug_html = pug_html + "\u003Cbutton id=\"elemId\" type=\"button\"\u003E";
 ;pug_debug_line = 2;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
 pug_html = pug_html + (null == (pug_interp = text) ? "" : pug_interp) + "\u003C\u002Fbutton\u003E";
 };
-;pug_debug_line = 4;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
-pug_html = pug_html + "\u003C!--не могу указать кастомный id для кнопки--\u003E";
 ;pug_debug_line = 3;pug_debug_filename = "src\\components\\Navbar\\Navbar.pug";
 pug_mixins["navbar"] = pug_interp = function(isAuth){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -111,21 +109,20 @@ pug_mixins["card"](user.username, user.gender, user.age);
   }
 }).call(this);
 
+pug_html = pug_html + "\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 10;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
-pug_html = pug_html + "\u003C!--+card('Anton', 'male', 25)--\u003E\u003C\u002Fdiv\u003E";
-;pug_debug_line = 11;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
 pug_html = pug_html + "\u003Cdiv class=\"tinder--buttons\"\u003E";
-;pug_debug_line = 12;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
+;pug_debug_line = 11;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
 pug_html = pug_html + "\u003Cbutton id=\"nope\"\u003E";
-;pug_debug_line = 13;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
+;pug_debug_line = 12;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
 pug_html = pug_html + "\u003Ci class=\"fa fa-remove\"\u003E";
-;pug_debug_line = 14;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
+;pug_debug_line = 13;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
 pug_html = pug_html + "\u003Cimg src=\"..\u002Fassets\u002Fimg\u002FX.svg\" alt=\"X\"\u002F\u003E\u003C\u002Fi\u003E\u003C\u002Fbutton\u003E";
-;pug_debug_line = 15;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
+;pug_debug_line = 14;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
 pug_html = pug_html + "\u003Cbutton id=\"love\"\u003E";
-;pug_debug_line = 16;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
+;pug_debug_line = 15;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
 pug_html = pug_html + "\u003Ci class=\"fa fa-heart\"\u003E";
-;pug_debug_line = 17;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
+;pug_debug_line = 16;pug_debug_filename = ".\u002Fsrc\u002Fpages\u002Ffeed\u002Ffeed.pug";
 pug_html = pug_html + "\u003Cimg src=\"..\u002Fassets\u002Fimg\u002FHeart.svg\" alt=\"Heart\"\u002F\u003E\u003C\u002Fi\u003E\u003C\u002Fbutton\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
     }.call(this, "users" in locals_for_with ?
         locals_for_with.users :

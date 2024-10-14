@@ -477,8 +477,6 @@ button:hover {
     position: absolute;
 }
 
-
-/* gender selector start */
 .gender-selection {
     display: flex;
     align-items: center;
@@ -515,10 +513,7 @@ button:hover {
     margin-right: 20px;
     color: var(--secondary, #49B2A6FF);
 }
-/* gender selector end */
 
-
-/* age slider start */
 input[type="range"] {
     -webkit-appearance: none; 
     width: 100%;
@@ -550,4 +545,3 @@ output {
     margin-top: 10px;
     font-size: 16px;
 }
-/* age slider end */

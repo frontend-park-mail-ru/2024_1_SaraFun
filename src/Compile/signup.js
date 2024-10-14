@@ -97,8 +97,6 @@ pug_html = pug_html + "\u003Cbutton id=\"elemId\" type=\"button\"\u003E";
 ;pug_debug_line = 2;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
 pug_html = pug_html + (null == (pug_interp = text) ? "" : pug_interp) + "\u003C\u002Fbutton\u003E";
 };
-;pug_debug_line = 4;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
-pug_html = pug_html + "\u003C!--не могу указать кастомный id для кнопки--\u003E";
 ;pug_debug_line = 1;pug_debug_filename = "src\\components\\FooterText\\FooterText.pug";
 pug_mixins["footerText"] = pug_interp = function(type){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -249,8 +247,6 @@ pug_html = pug_html + "\u003Cbutton id=\"elemId\" type=\"button\"\u003E";
 ;pug_debug_line = 2;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
 pug_html = pug_html + (null == (pug_interp = text) ? "" : pug_interp) + "\u003C\u002Fbutton\u003E";
 };
-;pug_debug_line = 4;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
-pug_html = pug_html + "\u003C!--не могу указать кастомный id для кнопки--\u003E";
 ;pug_debug_line = 1;pug_debug_filename = "src\\components\\FooterText\\FooterText.pug";
 pug_mixins["footerText"] = pug_interp = function(type){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -306,8 +302,6 @@ pug_html = pug_html + "\u003Cbutton id=\"elemId\" type=\"button\"\u003E";
 ;pug_debug_line = 2;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
 pug_html = pug_html + (null == (pug_interp = text) ? "" : pug_interp) + "\u003C\u002Fbutton\u003E";
 };
-;pug_debug_line = 4;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
-pug_html = pug_html + "\u003C!--не могу указать кастомный id для кнопки--\u003E";
 ;pug_debug_line = 3;pug_debug_filename = "src\\components\\Navbar\\Navbar.pug";
 pug_mixins["navbar"] = pug_interp = function(isAuth){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
