@@ -109,7 +109,7 @@ pug_html = pug_html + "\u003Cspan\u003E";
 ;pug_debug_line = 4;pug_debug_filename = "src\\components\\FooterText\\FooterText.pug";
 pug_html = pug_html + "У вас еще нет аккаунта? \u003C\u002Fspan\u003E";
 ;pug_debug_line = 5;pug_debug_filename = "src\\components\\FooterText\\FooterText.pug";
-pug_html = pug_html + "\u003Ca class=\".link\" href=\"\u002Fregistration\" id=\"link\"\u003E";
+pug_html = pug_html + "\u003Ca class=\".link\" href=\"\u002Fsignup\" id=\"link\"\u003E";
 ;pug_debug_line = 5;pug_debug_filename = "src\\components\\FooterText\\FooterText.pug";
 pug_html = pug_html + "Зарегистрируйтесь\u003C\u002Fa\u003E\u003C\u002Fdiv\u003E";
 }
@@ -259,7 +259,7 @@ pug_html = pug_html + "\u003Cspan\u003E";
 ;pug_debug_line = 4;pug_debug_filename = "src\\components\\FooterText\\FooterText.pug";
 pug_html = pug_html + "У вас еще нет аккаунта? \u003C\u002Fspan\u003E";
 ;pug_debug_line = 5;pug_debug_filename = "src\\components\\FooterText\\FooterText.pug";
-pug_html = pug_html + "\u003Ca class=\".link\" href=\"\u002Fregistration\" id=\"link\"\u003E";
+pug_html = pug_html + "\u003Ca class=\".link\" href=\"\u002Fsignup\" id=\"link\"\u003E";
 ;pug_debug_line = 5;pug_debug_filename = "src\\components\\FooterText\\FooterText.pug";
 pug_html = pug_html + "Зарегистрируйтесь\u003C\u002Fa\u003E\u003C\u002Fdiv\u003E";
 }

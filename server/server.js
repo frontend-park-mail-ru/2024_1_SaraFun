@@ -4,17 +4,17 @@ const app = express();
 const cors = require('cors');
 const session = require('express-session');
 
-/*app.use(cors({
+app.use(cors({
   origin: 'http://localhost:80', 
   credentials: true
-}));*/
+}));
 
-/*app.use(session({
+app.use(session({
   secret: 'your-secret-key',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false } // true, если  HTTPS
-}));*/
+}));
 
 app.set('views', path.resolve(__dirname, '../src'));
 app.set('view engine', 'pug');
