@@ -1,4 +1,4 @@
-function loginUser(login, password) {
+export function loginUser(login, password) {
     return $.ajax({
         url: 'http://5.188.140.7:8080/signin',
         type: 'POST',
@@ -17,7 +17,7 @@ function loginUser(login, password) {
     });
 }
 
-function checkAuth() {
+export function checkAuth() {
     return $.ajax({
         url: 'http://5.188.140.7:8080/checkauth',
         type: 'GET',
@@ -35,7 +35,7 @@ function checkAuth() {
     });
 }
 
-function logout() {
+export function logout() {
     return $.ajax({
         url: 'http://5.188.140.7:8080/logout',
         method: 'GET',
@@ -53,7 +53,7 @@ function logout() {
     });
 }
 
-async function fetchUsers() {
+export async function fetchUsers() {
     try {
         const response = await fetch('http://5.188.140.7:8080/getusers', {
         method: 'GET',
@@ -70,7 +70,7 @@ async function fetchUsers() {
     }
 }
 
-function registerUser(login, password, gender, age) {
+export function registerUser(login, password, gender, age) {
     return $.ajax({
         url: 'http://5.188.140.7:8080/signup',
         method: 'POST',
