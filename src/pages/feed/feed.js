@@ -1,4 +1,6 @@
 import template from '../../Compile/feed.js';
+import { fetchUsers } from '../../app/api.js';
+
 export class FeedPage {
 	constructor(parent) {
 	this.parent = parent;

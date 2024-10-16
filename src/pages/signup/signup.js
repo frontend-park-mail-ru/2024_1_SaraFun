@@ -1,4 +1,6 @@
 import template from '../../Compile/signup.js';
+import { registerUser } from '../../app/api.js';
+
 export class RegistrationPage {
   constructor(parent) {
     this.parent = parent;
