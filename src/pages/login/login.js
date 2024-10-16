@@ -1,5 +1,5 @@
 import template from '../../Compile/login.js';
-import { loginUser } from '../../app/api.js';
+import { loginUser } from '../../modules/api.js';
 
 export class LoginPage {
   constructor(parent) {
