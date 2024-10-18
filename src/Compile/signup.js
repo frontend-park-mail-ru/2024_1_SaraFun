@@ -93,7 +93,7 @@ pug_html = pug_html + (null == (pug_interp = title) ? "" : pug_interp) + "\u003C
 pug_mixins["textButton"] = pug_interp = function(text, elemId){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
 ;pug_debug_line = 2;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
-pug_html = pug_html + "\u003Cbutton id=\"elemId\" type=\"button\"\u003E";
+pug_html = pug_html + "\u003Cbutton type=\"button\"\u003E";
 ;pug_debug_line = 2;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
 pug_html = pug_html + (null == (pug_interp = text) ? "" : pug_interp) + "\u003C\u002Fbutton\u003E";
 };
@@ -243,7 +243,7 @@ pug_html = pug_html + (null == (pug_interp = title) ? "" : pug_interp) + "\u003C
 pug_mixins["textButton"] = pug_interp = function(text, elemId){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
 ;pug_debug_line = 2;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
-pug_html = pug_html + "\u003Cbutton id=\"elemId\" type=\"button\"\u003E";
+pug_html = pug_html + "\u003Cbutton type=\"button\"\u003E";
 ;pug_debug_line = 2;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
 pug_html = pug_html + (null == (pug_interp = text) ? "" : pug_interp) + "\u003C\u002Fbutton\u003E";
 };
@@ -298,7 +298,7 @@ pug_html = pug_html + "\u003C\u002Fdiv\u003E";
 pug_mixins["textButton"] = pug_interp = function(text, elemId){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
 ;pug_debug_line = 2;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
-pug_html = pug_html + "\u003Cbutton id=\"elemId\" type=\"button\"\u003E";
+pug_html = pug_html + "\u003Cbutton type=\"button\"\u003E";
 ;pug_debug_line = 2;pug_debug_filename = "src\\components\\TextButton\\TextButton.pug";
 pug_html = pug_html + (null == (pug_interp = text) ? "" : pug_interp) + "\u003C\u002Fbutton\u003E";
 };
@@ -342,7 +342,11 @@ pug_html = pug_html + "\u003C\u002Ful\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 17;pug_debug_filename = "src\\components\\Navbar\\Navbar.pug";
 if ((isAuth)) {
 ;pug_debug_line = 18;pug_debug_filename = "src\\components\\Navbar\\Navbar.pug";
-pug_mixins["textButton"]('Выйти из аккаунта', 'button-logout');
+pug_html = pug_html + "\u003Cbutton id=\"button-logout\" type=\"button\"\u003E";
+;pug_debug_line = 18;pug_debug_filename = "src\\components\\Navbar\\Navbar.pug";
+pug_html = pug_html + "Выйти из аккаунта\u003C\u002Fbutton\u003E";
+;pug_debug_line = 19;pug_debug_filename = "src\\components\\Navbar\\Navbar.pug";
+pug_html = pug_html + "\u003C!--+textButton('Выйти из аккаунта', 'button-logout')--\u003E";
 }
 pug_html = pug_html + "\u003C\u002Fdiv\u003E";
 };

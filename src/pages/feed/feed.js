@@ -1,14 +1,20 @@
 import template from '../../Compile/feed.js';
 import { fetchUsers } from '../../modules/api.js';
+import Navbar from '../../components/Navbar/navbar.js';
 
 export class FeedPage {
-	constructor(parent) {
-	this.parent = parent;
-	this.parent.root.innerHTML = '';
-	this.render();
+		constructor(parent) {
+		this.parent = parent;
+		this.parent.root.innerHTML = '';
+		this.render();
+		this.navbar = new Navbar(document.querySelector('nav'), parent);
 	}
 
 	render() {
+		/*const isAuth = await checkAuth()
+    	if (!isAuth) {
+      		navigateTo('/login');
+    	}*/	
 		//const users = await fetchUsers();
 		const users = [ 
 			{ username: "Andrey", gender: "male", age: 20}, 

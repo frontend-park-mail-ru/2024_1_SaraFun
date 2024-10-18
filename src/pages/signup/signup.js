@@ -2,6 +2,7 @@ import template from '../../Compile/signup.js';
 import { registerUser } from '../../modules/api.js';
 import { isValidPassword } from '../../modules/validation.js';
 import { isValidLogin } from '../../modules/validation.js';
+import Navbar from '../../components/Navbar/navbar.js';
 
 export class RegistrationPage {
   constructor(parent) {
@@ -9,6 +10,7 @@ export class RegistrationPage {
     this.parent.root.innerHTML = '';
     this.parent.root.innerHTML = this.render();
     this.addEventListeners();
+    this.navbar = new Navbar(document.querySelector('nav'), parent);
   }
 
   render() {
@@ -20,7 +22,7 @@ export class RegistrationPage {
 			event.preventDefault();
 			const url = new URL(event.target.href);
 			const path = url.pathname;
-			this.parent.goToPage(path);
+			this.parent.render(path);
 		});
 
     document.querySelector('button').addEventListener('click', () => {
@@ -48,7 +50,7 @@ export class RegistrationPage {
       if (valid) {
         try {
           //registerUser(login, password, gender, age);
-          this.parent.goToPage('/feed');
+          this.parent.render('/feed');
         } catch (error) {
           console.error('Ошибка при входе:', error);
         }

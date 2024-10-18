@@ -68,27 +68,4 @@ const router = async () => {
   const view = new match.route.view(getParams(match));
 
   root.innerHTML = await view.getHtml();
-
-  if (match.route.path === '/feed') {
-    const isAuth = await checkAuth()
-    if (!isAuth) {
-      navigateTo('/login');
-    } else {
-    }
-  }
 };
-
-window.addEventListener('popstate', router);
-
-document.addEventListener('DOMContentLoaded', async () => {
-  document.body.addEventListener('click', e => {
-    if (e.target.matches('[data-link]')) {
-      e.preventDefault();
-      navigateTo(e.target.href);
-    }
-  });
-
-  
-  await renderNavBar();
-  router();
-}); 
