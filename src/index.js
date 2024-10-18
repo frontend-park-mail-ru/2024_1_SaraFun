@@ -1,6 +1,6 @@
-import App from "./app/App.js"
+import App from "./modules/App.js"
 
 const root = document.querySelector('#root');
 
 const app = new App(root);
-app.goToPage(window.location.pathname);
+app.init();

@@ -15,4 +15,5 @@ mixin navbar(isAuth)
                     li.nav-link
                         a(href='/signup') Регистрация
         if (isAuth)
-            +textButton('Выйти из аккаунта', 'button-logout')
+            button#button-logout(type="button") Выйти из аккаунта
+            //+textButton('Выйти из аккаунта', 'button-logout')

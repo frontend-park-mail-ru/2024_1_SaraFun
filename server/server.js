@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: true }));
   }
 });*/
 
-/*const checkAuth = async (req, res, next) => {
+const checkAuth = async (req, res, next) => {
   try {
     
     const response = await fetch('http://5.188.140.7:8080/checkauth', {
@@ -52,7 +52,7 @@ app.use(express.urlencoded({ extended: true }));
     console.error(error);
     return res.redirect('/login');
   }
-};*/
+};
 
 /*const logout = async (req, res, next) => {
   try {

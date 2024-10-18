@@ -1,4 +1,5 @@
 import template from '../../Compile/login.js';
+import Navbar from '../../components/Navbar/navbar.js';
 import { loginUser } from '../../modules/api.js';
 
 export class LoginPage {
@@ -7,6 +8,7 @@ export class LoginPage {
     this.parent.root.innerHTML = '';
     this.parent.root.innerHTML = this.render();
     this.addEventListeners();
+    this.navbar = new Navbar(document.querySelector('nav'), parent);
   }
 
   render() {
@@ -18,7 +20,7 @@ export class LoginPage {
       event.preventDefault();
       const url = new URL(event.target.href);
       const path = url.pathname;
-      this.parent.goToPage(path);
+      this.parent.render(path);
     });
 
     document.querySelector('button').addEventListener('click', async () => {
@@ -48,7 +50,7 @@ export class LoginPage {
           if (!isLogedIn) {
             document.getElementById('login-password-error').style.display = 'block';            
           } else { 
-            this.parent.goToPage('/feed');
+            this.parent.render('/feed');
           }
         } catch (error) {
           console.error('Ошибка при входе:', error);
