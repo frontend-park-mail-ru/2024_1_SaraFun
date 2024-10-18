@@ -13,7 +13,7 @@ pug_html = pug_html + "\u003C!--img(src=`..\u002F..\u002Fassets\u002Fimg\u002F${
 ;pug_debug_line = 7;pug_debug_filename = "src\\components\\ImageSection\\ImageSection.pug";
 pug_html = pug_html + "\u003C!--надо чинить--\u003E";
 ;pug_debug_line = 3;pug_debug_filename = "src\\components\\BaseLogReg\\BaseLogReg.pug";
-const pathToImage = "../../assets/img/Image.svg"
+const pathToImage = "../assets/img/Image.svg"
 ;pug_debug_line = 5;pug_debug_filename = "src\\components\\BaseLogReg\\BaseLogReg.pug";
 pug_mixins["base"] = pug_interp = function(typeOfPage){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
