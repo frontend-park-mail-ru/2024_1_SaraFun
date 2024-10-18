@@ -1,0 +1,8 @@
+mixin card(username, gender, age)
+  .tinder--card
+    .image-section
+      img(src="../assets/img/image.svg" alt="Image" draggable="false")
+    .form-section-tinder
+      h1 !{username}
+      text-base Пол: !{gender}
+      text-base Возраст: !{age}

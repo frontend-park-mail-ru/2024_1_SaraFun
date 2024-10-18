@@ -1,0 +1,12 @@
+include ../../components/ImageSection/ImageSection.pug
+
+- const pathToImage = "../assets/img/image.svg"
+
+mixin base(typeOfPage)
+    .container
+        .form-section
+            if typeOfPage === 'signup'
+                include ../../components/RegistrationForm/RegistrationForm.pug
+            else if typeOfPage === 'login'
+                include ../../components/LoginForm/LoginForm.pug
+        +imageSection(pathToImage)
