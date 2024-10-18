@@ -18,29 +18,6 @@ const navigateTo = url => {
   router();
 };
 
-const navMenu = document.querySelector('#nav-bar');
-const renderNavBar = async () => {
-  navMenu.innerHTML = '';
-  const isAuthenticated = await checkAuth();
-
-  if (isAuthenticated) {
-    //console.log('auth');
-    navMenu.innerHTML = `
-      <a href='/feed' class="nav__link" data-link>Главная</a>
-      <button type="button" id="logout-button" style="width: 200px; height: fit-content">Выйти из аккаунта</button>
-    `;
-    document.getElementById('logout-button').addEventListener('click', async () => { 
-      await logout();
-      await renderNavBar();
-      navigateTo('/');
-    });
-  } else {
-    navMenu.innerHTML = `
-      <a href='/' class="nav__link" data-link>Войти в аккаунт</a>
-      <a href='/registration' class="nav__link" data-link>Создать аккаунт</a>
-    `;
-  }
-}
 
 const router = async () => {
   const routes = [

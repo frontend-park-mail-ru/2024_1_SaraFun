@@ -23,18 +23,17 @@ app.use(express.static(path.resolve(__dirname, '../src')));
 app.use(express.urlencoded({ extended: true }));
 
 
-/*app.post('/register', (req, res) => {
+app.post('/signup', (req, res) => {
   const { login, password } = req.body;
   if (login && password) {
     res.status(200).send('Регистрация успешна');
   } else {
     res.status(400).send('Ошибка регистрации');
   }
-});*/
+});
 
 const checkAuth = async (req, res, next) => {
   try {
-    
     const response = await fetch('http://5.188.140.7:8080/checkauth', {
       method: 'GET',
       credentials: 'include',
@@ -54,7 +53,7 @@ const checkAuth = async (req, res, next) => {
   }
 };
 
-/*const logout = async (req, res, next) => {
+const logout = async (req, res, next) => {
   try {
     const response = await fetch('http://5.188.140.7:8080/logout', {
       method: 'POST',
@@ -73,15 +72,15 @@ const checkAuth = async (req, res, next) => {
     console.error(error);
     return next();
   }
-};*/
+};
 
 
-/*app.post('/feed', checkAuth, async (req, res) => {
+app.post('/feed', checkAuth, async (req, res) => {
   res.status(200).send('Пользователь авторизован'); 
-});*/
+});
 
 
-/*app.post('/login', (req, res) => {
+app.post('/login', (req, res) => {
   const { login, password } = req.body;
   if (login && password) {
     req.session.user = { login };
@@ -89,7 +88,7 @@ const checkAuth = async (req, res, next) => {
   } else {
     res.status(400).send('Ошибка авторизации');
   }
-});*/
+});
 
 app.get('/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../src', 'index.html'));

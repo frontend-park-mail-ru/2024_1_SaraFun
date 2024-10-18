@@ -1,3 +1,5 @@
+import { logout } from '../../modules/api.js';
+
 export default class Navbar {
     constructor(nav, app) {
         this.nav = nav;
@@ -6,7 +8,8 @@ export default class Navbar {
     }
   
     addEventListeners() {
-        const navLinks = document.querySelectorAll('a');
+        const navLinks = document.querySelectorAll('li.nav-link a');
+        console.log('navLinks', navLinks);
 
         navLinks.forEach(link => {
           link.addEventListener('click', (event) => {
@@ -17,10 +20,11 @@ export default class Navbar {
         });
         
         const button = document.getElementById('button-logout');
+        console.log('button', button);
         if (button) {
             button.addEventListener('click', async () => {
-              console.log(button.id);
-              //await logout();
+              console.log('try to logout');
+              await logout();
               this.app.render('/login');
             });
         }

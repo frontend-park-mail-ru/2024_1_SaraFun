@@ -25,7 +25,7 @@ export class RegistrationPage {
 			this.parent.render(path);
 		});
 
-    document.querySelector('button').addEventListener('click', () => {
+    document.querySelector('button').addEventListener('click', async () => {
       const login = document.getElementById('login').value;
       const password = document.getElementById('password').value;
       const gender = document.querySelector('input[name="gender"]:checked').value;
@@ -49,7 +49,12 @@ export class RegistrationPage {
 
       if (valid) {
         try {
-          //registerUser(login, password, gender, age);
+          const isSignedUp = await registerUser(login, password, gender, age);
+          if (!isSignedUp) {
+            document.getElementById('login-password-error').style.display = 'block';            
+          } else { 
+            this.parent.render('/feed');
+          }
           this.parent.render('/feed');
         } catch (error) {
           console.error('Ошибка при входе:', error);

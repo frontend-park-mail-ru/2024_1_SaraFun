@@ -45,8 +45,10 @@ export class LoginPage {
 
       if (valid) {
         try {
-          //const isLogedIn = await loginUser(login, password);
-          const isLogedIn = true;
+          console.log('try to login');
+          const isLogedIn = await loginUser(login, password);
+          console.log(isLogedIn);
+          //const isLogedIn = true;
           if (!isLogedIn) {
             document.getElementById('login-password-error').style.display = 'block';            
           } else { 

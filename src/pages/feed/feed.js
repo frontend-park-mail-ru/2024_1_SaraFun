@@ -6,17 +6,18 @@ export class FeedPage {
 		constructor(parent) {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
-		this.render();
-		this.navbar = new Navbar(document.querySelector('nav'), parent);
+		this.render().then(() => {;
+			this.navbar = new Navbar(document.querySelector('nav'), parent);
+		});
 	}
 
-	render() {
-		/*const isAuth = await checkAuth()
-    	if (!isAuth) {
-      		navigateTo('/login');
-    	}*/	
-		//const users = await fetchUsers();
-		const users = [ 
+	async render() {
+		console.log('try to fetch users');
+		var users = await fetchUsers();
+		if (users.length === 0) {
+			users = [{username: "Анкеты закончились :(", gender: "-", age: "-"}];
+		}
+		/*const users = [ 
 			{ username: "Andrey", gender: "male", age: 20}, 
 			{ username: "Anton", gender: "male", age: 20},
 			{ username: "Ivan", gender: "male", age: 20},	
@@ -28,7 +29,7 @@ export class FeedPage {
 			{ username: "Alex", gender: "male", age: 20},
 			{ username: "Alena", gender: "female", age: 20},
 			{ username: "Andrey", gender: "male", age: 20}
-		];
+		];*/
 		function initCards() { 
 			var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
 		

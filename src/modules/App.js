@@ -14,8 +14,8 @@ export default class App {
 
   async init() {
     try {
-      //const isAuthenticated = await checkAuth();
-      const isAuthenticated = false;
+      const isAuthenticated = await checkAuth();
+      //const isAuthenticated = false;
       if (isAuthenticated) {
         this.render(window.location.pathname);
       } else {
