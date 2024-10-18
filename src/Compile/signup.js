@@ -6,7 +6,7 @@ pug_html = pug_html + "\u003Cdiv class=\"image-section\"\u003E";
 ;pug_debug_line = 3;pug_debug_filename = "src\\components\\ImageSection\\ImageSection.pug";
 pug_html = pug_html + "\u003C!--img(src!=path, alt=\"Image\")--\u003E";
 ;pug_debug_line = 4;pug_debug_filename = "src\\components\\ImageSection\\ImageSection.pug";
-pug_html = pug_html + "\u003Cimg src=\"..\u002F..\u002Fassets\u002Fimg\u002FImage.svg\" alt=\"Image\"\u002F\u003E";
+pug_html = pug_html + "\u003Cimg src=\"..\u002Fassets\u002Fimg\u002FImage.svg\" alt=\"Image\"\u002F\u003E";
 ;pug_debug_line = 5;pug_debug_filename = "src\\components\\ImageSection\\ImageSection.pug";
 pug_html = pug_html + "\u003C!--img(src=`..\u002F..\u002Fassets\u002Fimg\u002F${path}` alt=\"Image\") будет работать...--\u003E\u003C\u002Fdiv\u003E";
 };
