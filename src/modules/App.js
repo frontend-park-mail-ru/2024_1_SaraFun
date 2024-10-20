@@ -8,14 +8,14 @@ export default class App {
 
 	constructor(root) {
 		this.root = root;
-		this.#state.user = null;
+		this.#state.isAuthenticated = false;
     this.router = createRouter(this);
 	}
 
   async init() {
     try {
-      const isAuthenticated = await checkAuth();
-      if (isAuthenticated) {
+      this.#state.isAuthenticated = await checkAuth();
+      if (this.#state.isAuthenticated) {
         this.render(window.location.pathname);
       } else {
         this.render(this.router.login.path);
@@ -38,8 +38,11 @@ export default class App {
       const componentInstance = new route.componentName(this);
     } else {
       console.log('page not found');
-      history.pushState({}, '', this.router.login.path);
-      this.render(this.router.login.path);
+      if (this.#state.isAuthenticated) {
+        this.render(this.router.feed.path);
+      } else {
+        this.render(this.router.login.path);
+      }
     }
 	}
 }
