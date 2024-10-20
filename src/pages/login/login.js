@@ -1,6 +1,6 @@
 import template from '../../Compile/login.js';
 import Navbar from '../../components/Navbar/navbar.js';
-import { loginUser } from '../../modules/api.js';
+import { loginUser } from '../../modules/apiService.js';
 
 export class LoginPage {
   constructor(parent) {

@@ -1,5 +1,5 @@
 import template from '../../Compile/signup.js';
-import { registerUser } from '../../modules/api.js';
+import { registerUser } from '../../modules/apiService.js';
 import { isValidPassword } from '../../modules/validation.js';
 import { isValidLogin } from '../../modules/validation.js';
 import Navbar from '../../components/Navbar/navbar.js';
