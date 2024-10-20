@@ -2,7 +2,8 @@ import {get, post, put, del} from './api.js'
 
 export async function loginUser(login, password) {
     try {
-        const response = await post('http://5.188.140.7:8080/signin', JSON.stringify({'username': login, 'password': password}));
+        const body = {'username': login, 'password': password};
+        const response = await post('http://5.188.140.7:8080/signin', body);
 
         if (!response.ok) {
             return false;
@@ -11,13 +12,14 @@ export async function loginUser(login, password) {
         return true;
 
     } catch (error) {
+        console.log(error);
         return false;
     }
 }
 
 export async function registerUser(login, password, gender, age) {
     try {
-        const body = JSON.stringify({'username': login, 'password': password, 'gender': gender, 'age': parseInt(age)});
+        const body = {'username': login, 'password': password, 'gender': gender, 'age': parseInt(age)};
         const response = await post('http://5.188.140.7:8080/signup', body);
     
         if (!response.ok) {
@@ -27,6 +29,7 @@ export async function registerUser(login, password, gender, age) {
         return true;
 
     } catch (error) {
+        console.log(error);
         return false;
     }
 }
@@ -42,6 +45,7 @@ export async function fetchUsers() {
         return response;
 
     } catch (error) {
+        console.log(error);
         return [];
     }
 }
@@ -57,6 +61,7 @@ export async function checkAuth() {
         return true;
 
     } catch (error) {
+        console.log(error);
         return false;
     }
 }
@@ -72,6 +77,7 @@ export async function logout() {
         return true;
 
     } catch (error) {
+        console.log(error);
         return false;
     }
 }

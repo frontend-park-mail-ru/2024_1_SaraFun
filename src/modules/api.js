@@ -8,17 +8,33 @@ export const AJAX_METHODS = {
 };
 
 export const get = async (url) => {
-    return await ajax(url, AJAX_METHODS.GET);
+    try {
+        return await ajax(url, AJAX_METHODS.GET);
+    } catch (error) {
+        throw error;
+    }
 };
 
 export const post = async (url, body) => {
-    return await ajax(url, AJAX_METHODS.POST, body);
+    try {
+        return await ajax(url, AJAX_METHODS.POST, body);
+    } catch (error) {
+        throw error;
+    }
 };
 
 export const put = async (url, body) => {
-    return await ajax(url, AJAX_METHODS.PUT, body);
+    try {
+        return await ajax(url, AJAX_METHODS.PUT, body);
+    } catch (error) {
+        throw error;
+    }
 };
 
 export const del = async (url) => {
-    return await ajax(url, AJAX_METHODS.DELETE);
+    try {
+        return await ajax(url, AJAX_METHODS.DELETE);
+    } catch (error) {
+        throw error;
+    }
 };

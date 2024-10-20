@@ -13,12 +13,13 @@ export async function ajax(url, method, body = null) {
 
     try {
         const response = await fetch(url, options);
-
+        
         if (!response.ok) {
             throw new Error(`${response.status}: ${response.statusText}`);
         }
 
-        return response.json();
+        return response;
+
     } catch (error) {
         throw error;
     }
