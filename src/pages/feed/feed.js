@@ -1,5 +1,5 @@
 import template from '../../Compile/feed.js';
-import { fetchUsers } from '../../modules/api.js';
+import { fetchUsers } from '../../modules/apiService.js';
 import Navbar from '../../components/Navbar/navbar.js';
 
 export class FeedPage {

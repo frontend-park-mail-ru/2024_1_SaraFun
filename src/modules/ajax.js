@@ -1,0 +1,25 @@
+export async function ajax(url, method, body = null) {
+    const options = {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+    };
+
+    if (body) {
+        options.body = JSON.stringify(body);
+    }
+
+    try {
+        const response = await fetch(url, options);
+
+        if (!response.ok) {
+            throw new Error(`${response.status}: ${response.statusText}`);
+        }
+
+        return response.json();
+    } catch (error) {
+        throw error;
+    }
+}

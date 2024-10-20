@@ -1,4 +1,4 @@
-import {checkAuth} from './api.js';
+import {checkAuth} from './apiService.js';
 import {createRouter} from './router.js';
 
 export default class App {

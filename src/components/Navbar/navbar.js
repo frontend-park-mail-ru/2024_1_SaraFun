@@ -1,4 +1,4 @@
-import { logout } from '../../modules/api.js';
+import { logout } from '../../modules/apiService.js';
 
 export default class Navbar {
     constructor(nav, app) {
