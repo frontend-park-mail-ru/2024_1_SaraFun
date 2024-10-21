@@ -7,7 +7,7 @@ export async function loginUser(login, password) {
         return true;
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return false;
     }
 }
@@ -19,7 +19,7 @@ export async function registerUser(login, password, gender, age) {
         return true;
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return false;
     }
 }
@@ -30,7 +30,7 @@ export async function fetchUsers() {
         return response.json();
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return [];
     }
 }
@@ -41,7 +41,7 @@ export async function checkAuth() {
         return true;
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return false;
     }
 }
@@ -52,7 +52,7 @@ export async function logout() {
         return true;
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return false;
     }
 }
