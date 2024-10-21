@@ -4,7 +4,14 @@ import { isValidPassword } from '../../modules/validation.js';
 import { isValidLogin } from '../../modules/validation.js';
 import Navbar from '../../components/Navbar/navbar.js';
 
+/**
+ * Class representing the registration page.
+ */
 export class RegistrationPage {
+  /**
+   * Creates an instance of RegistrationPage.
+   * @param {Object} parent - The parent object.
+   */
   constructor(parent) {
     this.parent = parent;
     this.parent.root.innerHTML = '';
@@ -12,11 +19,18 @@ export class RegistrationPage {
     this.addEventListeners();
     this.navbar = new Navbar(document.querySelector('nav'), parent);
   }
-
+  
+  /**
+   * Renders the registration page template.
+   * @returns {string} - The HTML string of the registration page template.
+   */
   render() {
     return template();
   }
 
+  /**
+   * Adds event listeners to the registration page elements.
+   */
   addEventListeners() {
     document.getElementById('link').addEventListener('click', (event) => {
       event.preventDefault();

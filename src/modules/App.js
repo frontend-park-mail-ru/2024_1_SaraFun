@@ -1,16 +1,27 @@
 import {checkAuth} from './apiService.js';
 import {createRouter} from './router.js';
 
+/**
+ * Class representing the main application.
+ */
 export default class App {
   #state = {};
   root;
 
-  constructor(root) {
-    this.root = root;
-    this.#state.isAuthenticated = false;
+  /**
+   * Creates an instance of App.
+   * @param {HTMLElement} root - The root element for rendering the application.
+   */
+	constructor(root) {
+		this.root = root;
+		this.#state.isAuthenticated = false;
     this.router = createRouter(this);
   }
 
+  /**
+   * Initializes the application by checking authentication and rendering the appropriate page.
+   * @returns {Promise<void>} - A promise that resolves after initialization.
+   */
   async init() {
     try {
       this.#state.isAuthenticated = await checkAuth();
@@ -29,8 +40,12 @@ export default class App {
     }
   }
 
-  render(pageLink) {
-    const route = Object.values(this.router).find(route => route.path === pageLink);
+  /**
+   * Renders the specified page.
+   * @param {string} pageLink - The link to the page to render.
+   */
+	render(pageLink) {
+		const route = Object.values(this.router).find(route => route.path === pageLink);
     if (route) {
       history.pushState({}, '', route.path);
       const componentInstance = new route.componentName(this);

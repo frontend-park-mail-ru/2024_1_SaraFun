@@ -2,7 +2,14 @@ import template from '../../Compile/login.js';
 import Navbar from '../../components/Navbar/navbar.js';
 import { loginUser } from '../../modules/apiService.js';
 
+/**
+ * Class representing the login page.
+ */
 export class LoginPage {
+  /**
+   * Creates an instance of LoginPage.
+   * @param {Object} parent - The parent object.
+   */
   constructor(parent) {
     this.parent = parent;
     this.parent.root.innerHTML = '';
@@ -11,10 +18,17 @@ export class LoginPage {
     this.navbar = new Navbar(document.querySelector('nav'), parent);
   }
 
+  /**
+   * Renders the login page template.
+   * @returns {string} - The HTML string of the login page template.
+   */
   render() {
     return template();
   }
 
+  /**
+   * Adds event listeners to the login page elements.
+   */
   addEventListeners() {
     document.getElementById('link').addEventListener('click', (event) => {
       event.preventDefault();
