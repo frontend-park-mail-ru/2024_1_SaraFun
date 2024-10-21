@@ -16,7 +16,7 @@ Spark It предлагает интуитивно понятный интерф
 С помощью алгоритмов сопоставления мы помогаем 
 пользователям находить людей с похожими интересами 
 и предпочтениями.
-[Подробнее](https://docs.google.com/document/d/1HIaHE6unbgc2B1l1U41ZG6nuuiD6zA-0RRYiOohMhoQ)
+[Подробнее](https://docs.google.com/document/d/1r6yzghalNC-jOLBCDkWPNFiBjrB0JdtCYizYOaxoYao)
 
 ▎Функции
 
