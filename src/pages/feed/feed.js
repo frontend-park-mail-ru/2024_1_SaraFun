@@ -3,9 +3,12 @@ import { fetchUsers } from '../../modules/apiService.js';
 import Navbar from '../../components/Navbar/navbar.js';
 
 export class FeedPage {
-		constructor(parent) {
+	#state = {};
+
+	constructor(parent) {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
+		this.#state.users = null;
 		this.render().then(() => {;
 			this.navbar = new Navbar(document.querySelector('nav'), parent);
 		});
@@ -13,11 +16,11 @@ export class FeedPage {
 
 	async render() {
 		console.log('try to fetch users');
-		var users = await fetchUsers();
-		if (users.length === 0) {
-			users = [{username: "Анкеты закончились :(", gender: "-", age: "-"}];
+		this.#state.users = await fetchUsers();
+		if (this.#state.users.length === 0) {
+			this.#state.users = [{username: "Анкеты закончились :(", gender: "-", age: "-"}];
 		}
-		/*const users = [ 
+		/*this.#state.users = [ 
 			{ username: "Andrey", gender: "male", age: 20}, 
 			{ username: "Anton", gender: "male", age: 20},
 			{ username: "Ivan", gender: "male", age: 20},	
@@ -41,7 +44,7 @@ export class FeedPage {
 				
 			tinderContainer.classList.add('loaded');
 		}
-		this.parent.root.innerHTML = template({ users });
+		this.parent.root.innerHTML = template({ users: this.#state.users });
 		var tinderContainer = document.querySelector('.tinder');
 		var allCards = document.querySelectorAll('.tinder--card');
 		var nope = document.getElementById('nope');
