@@ -1,5 +1,12 @@
 import {get, post, put, del} from './api.js'
 
+/**
+ * Logs in a user.
+ * 
+ * @param {string} login - The username of the user.
+ * @param {string} password - The password of the user.
+ * @returns {Promise<boolean>} - A promise that resolves to true if login is successful, otherwise false.
+ */
 export async function loginUser(login, password) {
     try {
         const body = {'username': login, 'password': password};
@@ -12,6 +19,15 @@ export async function loginUser(login, password) {
     }
 }
 
+/**
+ * Registers a new user.
+ * 
+ * @param {string} login - The username of the new user.
+ * @param {string} password - The password of the new user.
+ * @param {string} gender - The gender of the new user.
+ * @param {string} age - The age of the new user.
+ * @returns {Promise<boolean>} - A promise that resolves to true if registration is successful, otherwise false.
+ */
 export async function registerUser(login, password, gender, age) {
     try {
         const body = {'username': login, 'password': password, 'gender': gender, 'age': parseInt(age)};
@@ -24,6 +40,11 @@ export async function registerUser(login, password, gender, age) {
     }
 }
 
+/**
+ * Fetches the list of users.
+ * 
+ * @returns {Promise<Object[]>} - A promise that resolves to an array of user objects.
+ */
 export async function fetchUsers() {
     try {
         const response = await get('http://5.188.140.7:8080/getusers');
@@ -35,6 +56,11 @@ export async function fetchUsers() {
     }
 }
 
+/**
+ * Checks if the user is authenticated.
+ * 
+ * @returns {Promise<boolean>} - A promise that resolves to true if the user is authenticated, otherwise false.
+ */
 export async function checkAuth() {
     try {
         const response = await get('http://5.188.140.7:8080/checkauth');
@@ -46,6 +72,11 @@ export async function checkAuth() {
     }
 }
 
+/**
+ * Logs out the user.
+ * 
+ * @returns {Promise<boolean>} - A promise that resolves to true if logout is successful, otherwise false.
+ */
 export async function logout() {
     try {
         const response = await get('http://5.188.140.7:8080/logout');

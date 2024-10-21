@@ -1,3 +1,9 @@
+/**
+ * Validates if the given password meets the required criteria.
+ * 
+ * @param {string} password - The password to validate.
+ * @returns {boolean} - Returns true if the password is valid, otherwise false.
+ */
 export function isValidPassword(password) {
     if (!password) {
         return false;
@@ -19,6 +25,12 @@ export function isValidPassword(password) {
     return true;
 }
 
+/**
+ * Validates if the given login meets the required criteria.
+ * 
+ * @param {string} login - The login to validate.
+ * @returns {boolean} - Returns true if the login is valid, otherwise false.
+ */
 export function isValidLogin(login) {
     if (login.length < 5 || login.length > 15) {
       return false;
