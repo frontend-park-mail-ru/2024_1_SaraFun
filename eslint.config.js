@@ -1,21 +1,10 @@
-import globals from 'globals';
-import pluginJs from '@eslint/js';
+const importPlugin = require('eslint-plugin-import');
 
-export default [
+module.exports = [
   {
-    languageOptions: {
-      globals: {
-        browser: globals.browser,
-      },
-      parserOptions: {
-        sourceType: 'module',
-      },
+    plugins: {
+      import: importPlugin,
     },
-    extends: [
-      'eslint:recommended', // Расширяем стандартные рекомендации ESLint
-      'plugin:import/errors', // Ошибки плагина import
-      'plugin:import/warnings', // Предупреждения плагина import
-    ],
     rules: {
       // Требует использования точки с запятой в конце каждой инструкции
       'semi': ['error', 'always'],
@@ -50,6 +39,5 @@ export default [
         },
       ],
     },
-  },
-  pluginJs.configs.recommended,
+  }
 ];

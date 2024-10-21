@@ -2,14 +2,14 @@ import {checkAuth} from './apiService.js';
 import {createRouter} from './router.js';
 
 export default class App {
-	#state = {};
-	root;
+  #state = {};
+  root;
 
-	constructor(root) {
-		this.root = root;
-		this.#state.isAuthenticated = false;
+  constructor(root) {
+    this.root = root;
+    this.#state.isAuthenticated = false;
     this.router = createRouter(this);
-	}
+  }
 
   async init() {
     try {
@@ -29,8 +29,8 @@ export default class App {
     }
   }
 
-	render(pageLink) {
-		const route = Object.values(this.router).find(route => route.path === pageLink);
+  render(pageLink) {
+    const route = Object.values(this.router).find(route => route.path === pageLink);
     if (route) {
       history.pushState({}, '', route.path);
       const componentInstance = new route.componentName(this);
@@ -41,5 +41,5 @@ export default class App {
         this.render(this.router.login.path);
       }
     }
-	}
+  }
 }

@@ -18,12 +18,12 @@ export class RegistrationPage {
   }
 
   addEventListeners() {
-		document.getElementById('link').addEventListener('click', (event) => {
-			event.preventDefault();
-			const url = new URL(event.target.href);
-			const path = url.pathname;
-			this.parent.render(path);
-		});
+    document.getElementById('link').addEventListener('click', (event) => {
+      event.preventDefault();
+      const url = new URL(event.target.href);
+      const path = url.pathname;
+      this.parent.render(path);
+    });
 
     document.querySelector('button').addEventListener('click', async () => {
       const login = document.getElementById('login').value;
@@ -61,5 +61,5 @@ export class RegistrationPage {
         }
       }
     });
-	}
+  }
 }

@@ -55,7 +55,7 @@ export class LoginPage {
           console.error(error);
         }
       } else {
-        console.error("Error in authorization");
+        console.error('Error in authorization');
       }
     });
   }
