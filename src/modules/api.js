@@ -1,5 +1,10 @@
 import { ajax, ajaxMultipartForm } from './ajax.js';
 
+/**
+ * Enum for AJAX methods.
+ * @readonly
+ * @enum {string}
+ */
 export const AJAX_METHODS = {
     GET: 'GET',
     POST: 'POST',
@@ -7,6 +12,13 @@ export const AJAX_METHODS = {
     DELETE: 'DELETE',
 };
 
+/**
+ * Performs a GET request.
+ * 
+ * @param {string} url - The URL to send the request to.
+ * @returns {Promise<Response>} - A promise that resolves to the response object.
+ * @throws {Error} - Throws an error if the request fails.
+ */
 export const get = async (url) => {
     try {
         return await ajax(url, AJAX_METHODS.GET);
@@ -15,6 +27,14 @@ export const get = async (url) => {
     }
 };
 
+/**
+ * Performs a POST request.
+ * 
+ * @param {string} url - The URL to send the request to.
+ * @param {Object} body - The request body to send.
+ * @returns {Promise<Response>} - A promise that resolves to the response object.
+ * @throws {Error} - Throws an error if the request fails.
+ */
 export const post = async (url, body) => {
     try {
         return await ajax(url, AJAX_METHODS.POST, body);
@@ -23,6 +43,14 @@ export const post = async (url, body) => {
     }
 };
 
+/**
+ * Performs a PUT request.
+ * 
+ * @param {string} url - The URL to send the request to.
+ * @param {Object} body - The request body to send.
+ * @returns {Promise<Response>} - A promise that resolves to the response object.
+ * @throws {Error} - Throws an error if the request fails.
+ */
 export const put = async (url, body) => {
     try {
         return await ajax(url, AJAX_METHODS.PUT, body);
@@ -31,6 +59,13 @@ export const put = async (url, body) => {
     }
 };
 
+/**
+ * Performs a DELETE request.
+ * 
+ * @param {string} url - The URL to send the request to.
+ * @returns {Promise<Response>} - A promise that resolves to the response object.
+ * @throws {Error} - Throws an error if the request fails.
+ */
 export const del = async (url) => {
     try {
         return await ajax(url, AJAX_METHODS.DELETE);
@@ -39,6 +74,14 @@ export const del = async (url) => {
     }
 };
 
+/**
+ * Performs a POST request with a file.
+ * 
+ * @param {string} url - The URL to send the request to.
+ * @param {File} file - The file to send in the request.
+ * @returns {Promise<Response>} - A promise that resolves to the response object.
+ * @throws {Error} - Throws an error if the request fails.
+ */
 export const postFile = async (url, file) => {
     try {
         return await ajaxMultipartForm(url, AJAX_METHODS.POST, file);
@@ -47,6 +90,14 @@ export const postFile = async (url, file) => {
     }
 };
 
+/**
+ * Performs a PUT request with a file.
+ * 
+ * @param {string} url - The URL to send the request to.
+ * @param {File} file - The file to send in the request.
+ * @returns {Promise<Response>} - A promise that resolves to the response object.
+ * @throws {Error} - Throws an error if the request fails.
+ */
 export const putFile = async (url, file) => {
     try {
         return await ajaxMultipartForm(url, AJAX_METHODS.PUT, file);
