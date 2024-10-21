@@ -52,10 +52,10 @@ export class LoginPage {
             this.parent.render('/feed');
           }
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       } else {
-        console.log("Error in authorization");
+        console.error("Error in authorization");
       }
     });
   }

@@ -57,7 +57,7 @@ export class RegistrationPage {
           }
           this.parent.render('/feed');
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       }
     });
