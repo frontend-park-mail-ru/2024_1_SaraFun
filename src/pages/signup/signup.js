@@ -57,7 +57,7 @@ export class RegistrationPage {
           }
           this.parent.render('/feed');
         } catch (error) {
-          console.error('Ошибка при входе:', error);
+          console.log(error);
         }
       }
     });

@@ -15,7 +15,7 @@ app.use(session({
   secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // true, если  HTTPS
+  cookie: { secure: false } 
 }));
 
 app.use(express.static(path.resolve(__dirname, '../src')));

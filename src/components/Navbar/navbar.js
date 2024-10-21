@@ -21,7 +21,6 @@ export default class Navbar {
         const button = document.getElementById('button-logout');
         if (button) {
             button.addEventListener('click', async () => {
-              console.log('try to logout');
               await logout();
               this.app.render('/login');
             });

@@ -12,24 +12,10 @@ export class FeedPage {
 	}
 
 	async render() {
-		console.log('try to fetch users');
 		var users = await fetchUsers();
 		if (users.length === 0) {
 			users = [{username: "Анкеты закончились :(", gender: "-", age: "-"}];
 		}
-		/*const users = [ 
-			{ username: "Andrey", gender: "male", age: 20}, 
-			{ username: "Anton", gender: "male", age: 20},
-			{ username: "Ivan", gender: "male", age: 20},	
-			{ username: "Alex", gender: "male", age: 20},
-			{ username: "Alena", gender: "female", age: 20},
-			{ username: "Andrey", gender: "male", age: 20}, 
-			{ username: "Anton", gender: "male", age: 20},
-			{ username: "Ivan", gender: "male", age: 20},	
-			{ username: "Alex", gender: "male", age: 20},
-			{ username: "Alena", gender: "female", age: 20},
-			{ username: "Andrey", gender: "male", age: 20}
-		];*/
 		function initCards() { 
 			var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
 		
