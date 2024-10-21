@@ -3,7 +3,6 @@ import {createRouter} from './router.js';
 
 export default class App {
 	#state = {};
-	handlers = {};
 	root;
 
 	constructor(root) {
@@ -26,7 +25,6 @@ export default class App {
       });
 
     } catch (error) {
-      console.error('Ошибка при проверке аутентификации:', error);
       this.render(this.router.login.path);
     }
   }
@@ -37,7 +35,6 @@ export default class App {
       history.pushState({}, '', route.path);
       const componentInstance = new route.componentName(this);
     } else {
-      console.log('page not found');
       if (this.#state.isAuthenticated) {
         this.render(this.router.feed.path);
       } else {
