@@ -1,4 +1,4 @@
-import template from '../../Compile/feed.js';
+import template from '../../templates/feed.js';
 import { fetchUsers } from '../../modules/apiService.js';
 import Navbar from '../../components/Navbar/navbar.js';
 
