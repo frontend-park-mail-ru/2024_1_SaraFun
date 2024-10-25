@@ -23,22 +23,24 @@ export class FeedPage {
      * @returns {Promise<void>} - A promise that resolves when the rendering is complete.
      */
 	async render() {
-		var users = await fetchUsers();
+		let users = await fetchUsers();
 		if (users.length === 0) {
-			users = [{username: "Анкеты закончились :(", gender: "-", age: "-"}];
+			users = [{username: 'Анкеты закончились :(', gender: '-', age: '-'}];
 		}
 
 		/**
          * Initializes the cards by setting their styles and adding them to the container.
          */
 		function initCards() { 
-			var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
+			let newCards = document.querySelectorAll('.tinder--card:not(.removed)');
 		
-      newCards.forEach(function (card, index) {
-        card.style.zIndex = allCards.length - index;
-        card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
-        card.style.opacity = (10 - index) / 10;
-      });
+			newCards.forEach(function (card, index) {
+				card.style.zIndex = allCards.length - index;
+				card.style.transform = 
+					'scale(' + (20 - index) / 20 + ') ' + 
+					'translateY(-' + 30 * index + 'px)';
+				card.style.opacity = (10 - index) / 10;
+			});
 				
 			tinderContainer.classList.add('loaded');
 		}
@@ -46,13 +48,13 @@ export class FeedPage {
 		this.parent.root.innerHTML = template({ users });
 		var tinderContainer = document.querySelector('.tinder');
 		var allCards = document.querySelectorAll('.tinder--card');
-		var nope = document.getElementById('nope');
-		var love = document.getElementById('love');
+		let nope = document.getElementById('nope');
+		let love = document.getElementById('love');
 		initCards();
 
 		allCards.forEach(function (el) {
-			var startX, startY, currentX, currentY, initialX, initialY;
-			var isDragging = false;
+			let startX, startY, currentX, currentY, initialX, initialY;
+			let isDragging = false;
 			
 			/**
              * Starts the drag event.
@@ -63,7 +65,7 @@ export class FeedPage {
 				startX = event.type === 'touchstart' ? event.touches[0].clientX : event.clientX;
 				startY = event.type === 'touchstart' ? event.touches[0].clientY : event.clientY;
 				if (el.style.transform && el.style.transform.includes('translate')) {
-					var transformValues = el.style.transform.match(/translate\(([^,]+),\s*([^)]+)\)/);
+					let transformValues = el.style.transform.match(/translate\(([^,]+),\s*([^)]+)\)/);
 					if (transformValues) {
 						initialX = parseFloat(transformValues[1]);
 						initialY = parseFloat(transformValues[2]);
@@ -72,8 +74,8 @@ export class FeedPage {
 						initialY = 0;
 					}
 			  	} else {
-          initialX = 0;
-          initialY = 0;
+					initialX = 0;
+					initialY = 0;
 			  	}
 			  	el.classList.add('moving');
 			}
@@ -85,20 +87,22 @@ export class FeedPage {
 			function drag(event) {
 				if (!isDragging) {return;}
 			
-        currentX = event.type === 'touchmove' ? event.touches[0].clientX : event.clientX;
-        currentY = event.type === 'touchmove' ? event.touches[0].clientY : event.clientY;
+				currentX = event.type === 'touchmove' ? event.touches[0].clientX : event.clientX;
+				currentY = event.type === 'touchmove' ? event.touches[0].clientY : event.clientY;
 			
-        var deltaX = currentX - startX;
-        var deltaY = currentY - startY;
+				let deltaX = currentX - startX;
+				let deltaY = currentY - startY;
 			
-        tinderContainer.classList.toggle('tinder_love', deltaX > 0);
-        tinderContainer.classList.toggle('tinder_nope', deltaX < 0);
+				tinderContainer.classList.toggle('tinder_love', deltaX > 0);
+				tinderContainer.classList.toggle('tinder_nope', deltaX < 0);
 			
-        var xMulti = deltaX * 0.03;
-        var yMulti = deltaY / 80;
-        var rotate = xMulti * yMulti;
+				let xMulti = deltaX * 0.03;
+				let yMulti = deltaY / 80;
+				let rotate = xMulti * yMulti;
 			
-				el.style.transform = 'translate(' + (initialX + deltaX) + 'px, ' + (initialY + deltaY) + 'px) rotate(' + rotate + 'deg)';
+				el.style.transform = 
+					'translate(' + (initialX + deltaX) + 'px, ' + 
+					(initialY + deltaY) + 'px) rotate(' + rotate + 'deg)';
 			}
 			
 			/**
@@ -108,35 +112,35 @@ export class FeedPage {
 				if (!isDragging) {return;}
 				isDragging = false;
 			
-        el.classList.remove('moving');
-        tinderContainer.classList.remove('tinder_love');
-        tinderContainer.classList.remove('tinder_nope');
+				el.classList.remove('moving');
+				tinderContainer.classList.remove('tinder_love');
+				tinderContainer.classList.remove('tinder_nope');
 			
-        var deltaX = currentX - startX;
-        var deltaY = currentY - startY;
-        var moveOutWidth = document.body.clientWidth;
-        var keep = Math.abs(deltaX) < 80;
+				let deltaX = currentX - startX;
+				let deltaY = currentY - startY;
+				let moveOutWidth = document.body.clientWidth;
+				let keep = Math.abs(deltaX) < 80;
 			
-        el.classList.toggle('removed', !keep);
+				el.classList.toggle('removed', !keep);
 			
-        if (keep) {
-          el.style.transform = '';
+				if (keep) {
+					el.style.transform = '';
 			  	} else {
-          var toX = deltaX > 0 ? moveOutWidth : -moveOutWidth;
-          var toY = deltaY;
-          var xMulti = deltaX * 0.03;
-          var yMulti = deltaY / 80;
-          var rotate = xMulti * yMulti;
+					let toX = deltaX > 0 ? moveOutWidth : -moveOutWidth;
+					let toY = deltaY;
+					let xMulti = deltaX * 0.03;
+					let yMulti = deltaY / 80;
+					let rotate = xMulti * yMulti;
 		
-          el.style.transform = 'translate(' + toX + 'px, ' + toY + 'px) rotate(' + rotate + 'deg)';
-          initCards();
+					el.style.transform = 'translate(' + toX + 'px, ' + toY + 'px) rotate(' + rotate + 'deg)';
+					initCards();
 			  	}
-      }
+			}
 	  
-      el.addEventListener('mousedown', startDrag);
-      el.addEventListener('mousemove', drag);
-      el.addEventListener('mouseup', endDrag);
-      el.addEventListener('mouseleave', endDrag);
+			el.addEventListener('mousedown', startDrag);
+			el.addEventListener('mousemove', drag);
+			el.addEventListener('mouseup', endDrag);
+			el.addEventListener('mouseleave', endDrag);
 	  
 			el.addEventListener('touchstart', startDrag);
 			el.addEventListener('touchmove', drag);
@@ -151,31 +155,31 @@ export class FeedPage {
          */
 		function createButtonListener(love) {
 			return function (event) {
-				var cards = document.querySelectorAll('.tinder--card:not(.removed)');
-				var moveOutWidth = document.body.clientWidth * 1.5;
+				let cards = document.querySelectorAll('.tinder--card:not(.removed)');
+				let moveOutWidth = document.body.clientWidth * 1.5;
 			
-        if (!cards.length) {return false;}
+				if (!cards.length) {return false;}
 			
-        var card = cards[0];
+				let card = cards[0];
 			
-        card.classList.add('removed');
+				card.classList.add('removed');
 			
-        if (love) {
-          card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
-        } else {
-          card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
-        }
+				if (love) {
+					card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
+				} else {
+					card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+				}
 			
-        initCards();
+				initCards();
 			
-        event.preventDefault();
-      };
-    }
+				event.preventDefault();
+			};
+		}
   
-    var nopeListener = createButtonListener(false);
-    var loveListener = createButtonListener(true);
+		let nopeListener = createButtonListener(false);
+		let loveListener = createButtonListener(true);
 		
-    nope.addEventListener('click', nopeListener);
-    love.addEventListener('click', loveListener);
-  }
+		nope.addEventListener('click', nopeListener);
+		love.addEventListener('click', loveListener);
+	}
 }

@@ -20,19 +20,19 @@ import {RegistrationPage} from '../pages/signup/signup.js';
  * @returns {Function} signup.componentName - The component to render for the signup route.
  */
 export const createRouter = () => ({
-  feed: {
-    path: '/feed',
-    handle: 'Главная',
-    componentName: FeedPage,
-  },
-  login: {
-    path: '/login',
-    handle: 'Авторизация',
-    componentName: LoginPage,
-  },
-  signup: {
-    path: '/signup',
-    handle: 'Регистрация',
-    componentName: RegistrationPage,
-  },
+	feed: {
+		path: '/feed',
+		handle: 'Главная',
+		componentName: FeedPage,
+	},
+	login: {
+		path: '/login',
+		handle: 'Авторизация',
+		componentName: LoginPage,
+	},
+	signup: {
+		path: '/signup',
+		handle: 'Регистрация',
+		componentName: RegistrationPage,
+	},
 });

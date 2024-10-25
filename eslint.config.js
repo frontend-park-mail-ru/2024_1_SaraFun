@@ -1,43 +1,45 @@
 const importPlugin = require('eslint-plugin-import');
 
 module.exports = [
-  {
-    plugins: {
-      import: importPlugin,
-    },
-    rules: {
-      // Требует использования точки с запятой в конце каждой инструкции
-      'semi': ['error', 'always'],
+	{
+		plugins: {
+			import: importPlugin,
+		},
+		rules: {
+			// Требует использования точки с запятой в конце каждой инструкции
+			'semi': ['error', 'always'],
 
-      // Предупреждение при наличии неиспользуемых переменных
-      'no-unused-vars': 'warn',
+			// Предупреждение при наличии неиспользуемых переменных
+			'no-unused-vars': 'warn',
 
-      // Требует использования строго равенства (===) вместо нестрогого (==)
-      'eqeqeq': ['error', 'always'],
+			// Требует использования строго равенства (===) вместо нестрогого (==)
+			'eqeqeq': ['error', 'always'],
 
-      // Требует использования фигурных скобок для всех условных операторов (if, else и т.д.)
-      'curly': 'error',
+			'no-var': 'error',
 
-      // Предупреждение при использовании console.log и других методов console
-      'no-console': 'warn',
+			// Требует использования фигурных скобок для всех условных операторов (if, else и т.д.)
+			'curly': 'error',
 
-      // Требует отступа в 2 пробела
-      'indent': ['error', 2],
+			// Предупреждение при использовании console.log и других методов console
+			// 'no-console': 'warn', вернем, когда в прод пустим
 
-      // Требует использования одинарных кавычек для строк
-      'quotes': ['error', 'single'],
+			// Требует отступа в 2 пробела
+			'indent': ['error', 'tab'],
 
-      // Предупреждение, если длина строки превышает 80 символов
-      'max-len': ['warn', { code: 80 }],
+			// Требует использования одинарных кавычек для строк
+			'quotes': ['error', 'single'],
 
-      // Правила для порядка импортов
-      'import/order': [
-        'error',
-        {
-          groups: [['builtin', 'external'], 'internal', 'parent', 'sibling', 'index'],
-          'newlines-between': 'always',
-        },
-      ],
-    },
-  }
+			// Предупреждение, если длина строки превышает 80 символов
+			'max-len': ['warn', { code: 110 }],
+
+			// Правила для порядка импортов
+			'import/order': [
+				'error',
+				{
+					groups: [['builtin', 'external'], 'internal', 'parent', 'sibling', 'index'],
+					'newlines-between': 'always',
+				},
+			],
+		},
+	}
 ];
