@@ -2,8 +2,15 @@
   "name": "sarafun",
   "version": "1.0.0",
   "main": "index.js",
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint . --fix",
     "start": "cd server && node server.js",
     "build": "node compile.js"
   },
@@ -22,6 +29,7 @@
     "@eslint/js": "^9.11.1",
     "@types/pug": "^2.0.10",
     "eslint": "^8.57.1",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "^4.6.2",
