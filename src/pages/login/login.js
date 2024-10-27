@@ -1,4 +1,3 @@
-import template from '../../templates/login.js';
 import Navbar from '../../components/Navbar/navbar.js';
 import { loginUser } from '../../modules/apiService.js';
 

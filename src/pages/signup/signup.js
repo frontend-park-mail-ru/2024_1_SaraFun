@@ -1,4 +1,3 @@
-import template from '../../templates/signup.js';
 import { registerUser } from '../../modules/apiService.js';
 import { isValidPassword } from '../../modules/validation.js';
 import { isValidLogin } from '../../modules/validation.js';

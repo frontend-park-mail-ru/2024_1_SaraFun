@@ -12,7 +12,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint . --fix",
     "start": "cd server && node server.js",
-    "build": "node compile.js"
+    "build": "node compile.js",
+    "webpack": "webpack"
   },
   "keywords": [],
   "author": "sarafun",
@@ -33,6 +34,8 @@
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "globals": "^15.10.0"
+    "globals": "^15.10.0",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
   }
 }
