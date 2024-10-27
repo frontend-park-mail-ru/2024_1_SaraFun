@@ -13,7 +13,8 @@
     "lint": "npx eslint . --fix",
     "start": "cd server && node server.js",
     "build": "node compile.js",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "dev": "webpack serve"
   },
   "keywords": [],
   "author": "sarafun",
@@ -27,15 +28,24 @@
     "pug": "^3.0.3"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.26.0",
     "@eslint/js": "^9.11.1",
     "@types/pug": "^2.0.10",
+    "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
     "eslint": "^8.57.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "globals": "^15.10.0",
+    "html-webpack-plugin": "^5.6.3",
+    "sass": "^1.80.4",
+    "sass-loader": "^16.0.2",
+    "style-loader": "^4.0.0",
     "webpack": "^5.95.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-bundle-analyzer": "^4.10.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
   }
 }
