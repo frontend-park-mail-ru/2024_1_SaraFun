@@ -422,7 +422,6 @@ button:hover {
     border-radius: 12px;
     overflow: hidden;
     position: absolute;
-    top: 0;
     will-change: transform;
     transition: all 0.3s ease-in-out;
     cursor: grab;

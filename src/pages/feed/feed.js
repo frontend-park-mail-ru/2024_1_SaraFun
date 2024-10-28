@@ -33,12 +33,14 @@ export class FeedPage {
          */
 		function initCards() { 
 			let newCards = document.querySelectorAll('.tinder--card:not(.removed)');
+			const maxOffsetIndex = 10;
 		
 			newCards.forEach(function (card, index) {
+				const limitedIndex = Math.min(index, maxOffsetIndex); 
 				card.style.zIndex = allCards.length - index;
 				card.style.transform = 
-					'scale(' + (20 - index) / 20 + ') ' + 
-					'translateY(-' + 30 * index + 'px)';
+					'scale(' + (20 - limitedIndex) / 20 + ') ' + 
+					'translateY(-' + 30 * limitedIndex + 'px)';
 				card.style.opacity = (10 - index) / 10;
 			});
 				
