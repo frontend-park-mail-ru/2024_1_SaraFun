@@ -1,12 +1,12 @@
 include ../TextButton/TextButton.pug
 
-mixin navbar(isAuth)
+mixin navbar(isAuth, logoSrc)
     .nav
         .nav__logo
             img(src='../../assets/img/Logo.svg', alt='logo')
         .main-nav
             ul
-                if (isAuth)
+                if isAuth
                     li.nav-link
                         a(href='/feed') Главная
                 else 
@@ -14,6 +14,7 @@ mixin navbar(isAuth)
                         a(href='/login') Логин
                     li.nav-link
                         a(href='/signup') Регистрация
-        if (isAuth)
+        if isAuth
             button#button-logout(type="button") Выйти из аккаунта
-            //+textButton('Выйти из аккаунта', 'button-logout')
+            // +textButton('Выйти из аккаунта', 'button-logout')
+
