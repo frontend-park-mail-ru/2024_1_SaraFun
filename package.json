@@ -2,6 +2,7 @@
   "name": "sarafun",
   "version": "1.0.0",
   "main": "index.js",
+
   "eslintConfig": {
     "env": {
       "browser": true,
@@ -36,8 +37,6 @@
     "eslint": "^8.57.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.0",
-    "eslint-plugin-react": "^7.37.1",
-    "eslint-plugin-react-hooks": "^4.6.2",
     "globals": "^15.10.0",
     "html-webpack-plugin": "^5.6.3",
     "sass": "^1.80.4",
