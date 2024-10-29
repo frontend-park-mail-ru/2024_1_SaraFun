@@ -24,8 +24,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
-    "express-session": "^1.18.0",
-    "pug": "^3.0.3"
+    "express-session": "^1.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -40,6 +39,7 @@
     "file-loader": "^6.2.0",
     "globals": "^15.10.0",
     "html-webpack-plugin": "^5.6.3",
+    "pug": "^2.0.4",
     "sass": "^1.80.4",
     "sass-loader": "^16.0.2",
     "style-loader": "^4.0.0",
