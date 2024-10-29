@@ -1,4 +1,4 @@
-import { logout } from '../../modules/apiService.js';
+import { logout } from './api/logout.js';
 
 /**
  * Class representing the navigation bar.

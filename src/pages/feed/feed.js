@@ -1,6 +1,6 @@
 import template from '../../templates/feed.js';
-import { fetchUsers } from '../../modules/apiService.js';
-import Navbar from '../../components/Navbar/navbar.js';
+import { getUsers } from './api/getUsers.js';
+import Navbar from '../../widgets/Navbar/navbar.js';
 
 /**
  * Class representing the Feed Page.
@@ -23,7 +23,7 @@ export class FeedPage {
      * @returns {Promise<void>} - A promise that resolves when the rendering is complete.
      */
 	async render() {
-		let users = await fetchUsers();
+		let users = await getUsers();
 		if (users.length === 0) {
 			users = [{username: 'Анкеты закончились :(', gender: '-', age: '-'}];
 		}
