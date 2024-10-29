@@ -1,7 +1,3 @@
-mixin assets/imgection(path)
+mixin imageSection(path)
   .image-section
-    //img(src!=path, alt="Image")
-    img(src=`Images/image.svg` alt="Image")
-    //img(src=`Images/${path}` alt="Image") будет работать...
-
-//надо чинить
+    img(src=`${path}` alt="Image")

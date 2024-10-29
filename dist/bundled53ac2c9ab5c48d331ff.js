@@ -1,4 +1,5 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/components/Navbar/navbar.js":
@@ -7,7 +8,6 @@
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Navbar)
@@ -85,7 +85,6 @@ var Navbar = /*#__PURE__*/function () {
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ App)
@@ -203,7 +202,6 @@ var App = /*#__PURE__*/function () {
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ajax: () => (/* binding */ ajax),
@@ -328,7 +326,6 @@ function _ajaxMultipartForm() {
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AJAX_METHODS: () => (/* binding */ AJAX_METHODS),
@@ -562,7 +559,6 @@ var putFile = /*#__PURE__*/function () {
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   checkAuth: () => (/* binding */ checkAuth),
@@ -776,7 +772,6 @@ function _logout() {
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   createRouter: () => (/* binding */ createRouter)
@@ -833,7 +828,6 @@ var createRouter = function createRouter() {
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   isValidLogin: () => (/* binding */ isValidLogin),
@@ -906,7 +900,6 @@ function isValidLogin(login) {
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   FeedPage: () => (/* binding */ FeedPage)
@@ -1126,12 +1119,11 @@ var FeedPage = /*#__PURE__*/function () {
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   LoginPage: () => (/* binding */ LoginPage)
 /* harmony export */ });
-Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../templates/login.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _templates_login_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../templates/login.js */ "./src/templates/login.js");
 /* harmony import */ var _components_Navbar_navbar_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Navbar/navbar.js */ "./src/components/Navbar/navbar.js");
 /* harmony import */ var _modules_apiService_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../modules/apiService.js */ "./src/modules/apiService.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -1171,7 +1163,7 @@ var LoginPage = /*#__PURE__*/function () {
   return _createClass(LoginPage, [{
     key: "render",
     value: function render() {
-      return Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../templates/login.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())();
+      return (0,_templates_login_js__WEBPACK_IMPORTED_MODULE_0__["default"])();
     }
 
     /**
@@ -1250,12 +1242,11 @@ var LoginPage = /*#__PURE__*/function () {
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   RegistrationPage: () => (/* binding */ RegistrationPage)
 /* harmony export */ });
-Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../templates/signup.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _templates_signup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../templates/signup.js */ "./src/templates/signup.js");
 /* harmony import */ var _modules_apiService_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modules/apiService.js */ "./src/modules/apiService.js");
 /* harmony import */ var _modules_validation_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../modules/validation.js */ "./src/modules/validation.js");
 /* harmony import */ var _components_Navbar_navbar_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Navbar/navbar.js */ "./src/components/Navbar/navbar.js");
@@ -1298,7 +1289,7 @@ var RegistrationPage = /*#__PURE__*/function () {
   return _createClass(RegistrationPage, [{
     key: "render",
     value: function render() {
-      return Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../templates/signup.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())();
+      return (0,_templates_signup_js__WEBPACK_IMPORTED_MODULE_0__["default"])();
     }
 
     /**
@@ -1375,7 +1366,6 @@ var RegistrationPage = /*#__PURE__*/function () {
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ template)
@@ -1388,7 +1378,7 @@ function template(locals) {
   try {
     ;
     var locals_for_with = locals || {};
-    (function (require, users) {
+    (function (users) {
       ;
       pug_debug_line = 1;
       pug_debug_filename = "src/components/SwipeCard/SwipeCard.pug";
@@ -1464,7 +1454,7 @@ function template(locals) {
         ;
         pug_debug_line = 7;
         pug_debug_filename = "src/components/Navbar/Navbar.pug";
-        pug_html = pug_html + "<img" + (pug.attr("src", require('../../assets/img/Logo.svg'), true, false) + " alt=\"logo\"") + "/></div>";
+        pug_html = pug_html + "<img src=\"../../assets/img/Logo.svg\" alt=\"logo\"/></div>";
         ;
         pug_debug_line = 8;
         pug_debug_filename = "src/components/Navbar/Navbar.pug";
@@ -1586,7 +1576,7 @@ function template(locals) {
       ;
       pug_debug_line = 13;
       pug_debug_filename = "./src/pages/feed/feed.pug";
-      pug_html = pug_html + "<img src=\"Images/X.svg\" alt=\"X\"/></i></button>";
+      pug_html = pug_html + "<img src=\"../../asset/img/X.svg\" alt=\"X\"/></i></button>";
       ;
       pug_debug_line = 14;
       pug_debug_filename = "./src/pages/feed/feed.pug";
@@ -1598,8 +1588,1302 @@ function template(locals) {
       ;
       pug_debug_line = 16;
       pug_debug_filename = "./src/pages/feed/feed.pug";
-      pug_html = pug_html + "<img src=\"Images/Heart.svg\" alt=\"Heart\"/></i></button></div></div>";
-    }).call(this, "require" in locals_for_with ? locals_for_with.require :  true ? __webpack_require__("./src/templates sync recursive") : 0, "users" in locals_for_with ? locals_for_with.users : typeof users !== "undefined" ? users : undefined);
+      pug_html = pug_html + "<img src=\"../../asset/img/Heart.svg\" alt=\"Heart\"/></i></button></div></div>";
+    }).call(this, "users" in locals_for_with ? locals_for_with.users : typeof users !== "undefined" ? users : undefined);
+  } catch (err) {
+    pug.rethrow(err, pug_debug_filename, pug_debug_line);
+  }
+  ;
+  return pug_html;
+}
+
+/***/ }),
+
+/***/ "./src/templates/login.js":
+/*!********************************!*\
+  !*** ./src/templates/login.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ template)
+/* harmony export */ });
+function template(locals) {
+  var pug_html = "",
+    pug_mixins = {},
+    _pug_interp6;
+  var pug_debug_filename, pug_debug_line;
+  try {
+    ;
+    pug_debug_line = 1;
+    pug_debug_filename = "src/components/ImageSection/imageSection.pug";
+    pug_mixins["imageSection"] = _pug_interp6 = function pug_interp(path) {
+      var block = this && this.block,
+        attributes = this && this.attributes || {};
+      ;
+      pug_debug_line = 2;
+      pug_debug_filename = "src/components/ImageSection/imageSection.pug";
+      pug_html = pug_html + "<div class=\"image-section\">";
+      ;
+      pug_debug_line = 3;
+      pug_debug_filename = "src/components/ImageSection/imageSection.pug";
+      pug_html = pug_html + "<img" + (pug.attr("src", "".concat(path), true, false) + " alt=\"Image\"") + "/></div>";
+    };
+    ;
+    pug_debug_line = 3;
+    pug_debug_filename = "src/components/BaseLogReg/BaseLogReg.pug";
+    var pathToImage = "../../asset/img/image.svg";
+    pug_debug_line = 5;
+    pug_debug_filename = "src/components/BaseLogReg/BaseLogReg.pug";
+    pug_mixins["base"] = _pug_interp6 = function _pug_interp4(typeOfPage) {
+      var block = this && this.block,
+        attributes = this && this.attributes || {};
+      ;
+      pug_debug_line = 6;
+      pug_debug_filename = "src/components/BaseLogReg/BaseLogReg.pug";
+      pug_html = pug_html + "<div class=\"container\">";
+      ;
+      pug_debug_line = 7;
+      pug_debug_filename = "src/components/BaseLogReg/BaseLogReg.pug";
+      pug_html = pug_html + "<div class=\"form-section\">";
+      ;
+      pug_debug_line = 8;
+      pug_debug_filename = "src/components/BaseLogReg/BaseLogReg.pug";
+      if (typeOfPage === 'signup') {
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+        pug_mixins["customInput"] = _pug_interp6 = function pug_interp(inputType, formType) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+          if (inputType == 'password') {
+            ;
+            pug_debug_line = 3;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<label class=\".text-base\" for=\"password\">";
+            ;
+            pug_debug_line = 3;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "\u041F\u0430\u0440\u043E\u043B\u044C</label>";
+            ;
+            pug_debug_line = 4;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<input type=\"password\" id=\"password\" placeholder=\"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C\"/>";
+            ;
+            pug_debug_line = 5;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            if (formType == 'registration') {
+              ;
+              pug_debug_line = 6;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"password-error\" style=\"display:none;\">";
+              ;
+              pug_debug_line = 6;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041F\u0430\u0440\u043E\u043B\u044C \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043E\u0442 6 \u0434\u043E 40 \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432, \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u043C\u0438\u043D\u0438\u043C\u0443\u043C \u043E\u0434\u043D\u0443 \u0446\u0438\u0444\u0440\u0443, \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043D\u044B\u0435 \u0441\u043F\u0435\u0446 \u0437\u043D\u0430\u043A\u0438 (!?*-$)</p>";
+            } else if (formType == 'login') {
+              ;
+              pug_debug_line = 8;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"password-error\">";
+              ;
+              pug_debug_line = 8;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041E\u0448\u0438\u0431\u043A\u0430: \u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C</p>";
+              ;
+              pug_debug_line = 9;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"login-password-error\">";
+              ;
+              pug_debug_line = 9;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041E\u0448\u0438\u0431\u043A\u0430: \u041D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u044B\u0439 \u043B\u043E\u0433\u0438\u043D \u0438\u043B\u0438 \u043F\u0430\u0440\u043E\u043B\u044C</p>";
+            }
+          } else if (inputType == 'login') {
+            ;
+            pug_debug_line = 11;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<label class=\".text-base\" for=\"login\">";
+            ;
+            pug_debug_line = 11;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "\u041B\u043E\u0433\u0438\u043D</label>";
+            ;
+            pug_debug_line = 12;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<input class=\".text-base\" type=\"text\" id=\"login\" placeholder=\"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043B\u043E\u0433\u0438\u043D\"/>";
+            ;
+            pug_debug_line = 13;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            if (formType == 'registration') {
+              ;
+              pug_debug_line = 14;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"login-error\" style=\"display:none;\">";
+              ;
+              pug_debug_line = 14;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041B\u043E\u0433\u0438\u043D \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u043B\u0438\u043D\u0435\u0435 5, \u043A\u043E\u0440\u043E\u0447\u0435 15, \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u0441\u043F\u0435\u0446 \u0441\u0438\u043C\u0432\u043E\u043B\u044B, \u043A\u0440\u043E\u043C\u0435 (-, _), \u0438 \u043E\u043D\u0438 \u043D\u0435 \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0432 \u043D\u0430\u0447\u0430\u043B\u0435 \u0438 \u0432 \u043A\u043E\u043D\u0446\u0435, \u0446\u0438\u0444\u0440\u044B \u043D\u0435 \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0432 \u043D\u0430\u0447\u0430\u043B\u0435</p>";
+            } else if (formType == 'login') {
+              ;
+              pug_debug_line = 16;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"login-error\">";
+              ;
+              pug_debug_line = 16;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041E\u0448\u0438\u0431\u043A\u0430: \u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u044B\u0439 \u043B\u043E\u0433\u0438\u043D</p>";
+            }
+          }
+        };
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/Header/Header.pug";
+        pug_mixins["header"] = _pug_interp6 = function pug_interp(title) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + "<div class=\"logo\">";
+          ;
+          pug_debug_line = 3;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + "<img src=\"Images/Logo.svg\" alt=\"Logo\"/></div>";
+          ;
+          pug_debug_line = 4;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + "<h1 class=\"description\">";
+          ;
+          pug_debug_line = 4;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + (null == (_pug_interp6 = title) ? "" : _pug_interp6) + "</h1>";
+        };
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/TextButton/TextButton.pug";
+        pug_mixins["textButton"] = _pug_interp6 = function _pug_interp(text, elemId) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/TextButton/TextButton.pug";
+          pug_html = pug_html + "<button type=\"button\">";
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/TextButton/TextButton.pug";
+          pug_html = pug_html + (null == (_pug_interp6 = text) ? "" : _pug_interp6) + "</button>";
+        };
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/FooterText/FooterText.pug";
+        pug_mixins["footerText"] = _pug_interp6 = function _pug_interp2(type) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/FooterText/FooterText.pug";
+          if (type == 'login') {
+            ;
+            pug_debug_line = 3;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<div class=\"footer-text\">";
+            ;
+            pug_debug_line = 4;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<span>";
+            ;
+            pug_debug_line = 4;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0423 \u0432\u0430\u0441 \u0435\u0449\u0435 \u043D\u0435\u0442 \u0430\u043A\u043A\u0430\u0443\u043D\u0442\u0430? </span>";
+            ;
+            pug_debug_line = 5;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<a class=\".link\" href=\"/signup\" id=\"link\">";
+            ;
+            pug_debug_line = 5;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u0439\u0442\u0435\u0441\u044C</a></div>";
+          } else if (type == 'registration') {
+            ;
+            pug_debug_line = 7;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<div class=\"footer-text\">";
+            ;
+            pug_debug_line = 8;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<span>";
+            ;
+            pug_debug_line = 8;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0423 \u0432\u0430\u0441 \u0443\u0436\u0435 \u0435\u0441\u0442\u044C \u0430\u043A\u043A\u0430\u0443\u043D\u0442? </span>";
+            ;
+            pug_debug_line = 9;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<a class=\".link\" href=\"/login\" id=\"link\">";
+            ;
+            pug_debug_line = 9;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0412\u043E\u0439\u0434\u0438\u0442\u0435 \u0432 \u0430\u043A\u043A\u0430\u0443\u043D\u0442</a></div>";
+          }
+        };
+        ;
+        pug_debug_line = 6;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        ;
+        pug_debug_line = 7;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_mixins["header"]('Добро пожаловать!');
+        ;
+        pug_debug_line = 9;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_mixins["customInput"]('login', 'registration');
+        ;
+        pug_debug_line = 10;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_mixins["customInput"]('password', 'registration');
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<text class=\".text-base\">";
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "Пол";
+        ;
+        pug_debug_line = 2;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<div class=\"gender-selection\">";
+        ;
+        pug_debug_line = 3;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<input type=\"radio\" id=\"male\" name=\"gender\" value=\"male\" checked=\"checked\"/>";
+        ;
+        pug_debug_line = 4;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<label for=\"male\">";
+        ;
+        pug_debug_line = 4;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "\u041C\u0443\u0436\u0441\u043A\u043E\u0439</label>";
+        ;
+        pug_debug_line = 5;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<input type=\"radio\" id=\"female\" name=\"gender\" value=\"female\"/>";
+        ;
+        pug_debug_line = 6;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<label for=\"female\">";
+        ;
+        pug_debug_line = 6;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "\u0416\u0435\u043D\u0441\u043A\u0438\u0439</label></div>";
+        ;
+        pug_debug_line = 7;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<p class=\"error\" id=\"gender-error\" style=\"display:none;\">";
+        ;
+        pug_debug_line = 7;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u043E\u043B</p></text>";
+        ;
+        pug_debug_line = 14;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_html = pug_html + "<label class=\".text-base\" for=\"age\">";
+        ;
+        pug_debug_line = 14;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_html = pug_html + "\u0412\u043E\u0437\u0440\u0430\u0441\u0442</label>";
+        ;
+        pug_debug_line = 15;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_html = pug_html + "<input type=\"range\" id=\"age\" name=\"age\" min=\"18\" max=\"100\" value=\"18\" oninput=\"this.nextElementSibling.value = this.value\"/>";
+        ;
+        pug_debug_line = 16;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_html = pug_html + "<output>";
+        ;
+        pug_debug_line = 16;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_html = pug_html + "18</output>";
+        ;
+        pug_debug_line = 18;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_mixins["textButton"]('Зарегистрироваться');
+        ;
+        pug_debug_line = 20;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_mixins["footerText"]('registration');
+      } else if (typeOfPage === 'login') {
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+        pug_mixins["customInput"] = _pug_interp6 = function _pug_interp2(inputType, formType) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+          if (inputType == 'password') {
+            ;
+            pug_debug_line = 3;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<label class=\".text-base\" for=\"password\">";
+            ;
+            pug_debug_line = 3;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "\u041F\u0430\u0440\u043E\u043B\u044C</label>";
+            ;
+            pug_debug_line = 4;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<input type=\"password\" id=\"password\" placeholder=\"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C\"/>";
+            ;
+            pug_debug_line = 5;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            if (formType == 'registration') {
+              ;
+              pug_debug_line = 6;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"password-error\" style=\"display:none;\">";
+              ;
+              pug_debug_line = 6;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041F\u0430\u0440\u043E\u043B\u044C \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043E\u0442 6 \u0434\u043E 40 \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432, \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u043C\u0438\u043D\u0438\u043C\u0443\u043C \u043E\u0434\u043D\u0443 \u0446\u0438\u0444\u0440\u0443, \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043D\u044B\u0435 \u0441\u043F\u0435\u0446 \u0437\u043D\u0430\u043A\u0438 (!?*-$)</p>";
+            } else if (formType == 'login') {
+              ;
+              pug_debug_line = 8;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"password-error\">";
+              ;
+              pug_debug_line = 8;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041E\u0448\u0438\u0431\u043A\u0430: \u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C</p>";
+              ;
+              pug_debug_line = 9;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"login-password-error\">";
+              ;
+              pug_debug_line = 9;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041E\u0448\u0438\u0431\u043A\u0430: \u041D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u044B\u0439 \u043B\u043E\u0433\u0438\u043D \u0438\u043B\u0438 \u043F\u0430\u0440\u043E\u043B\u044C</p>";
+            }
+          } else if (inputType == 'login') {
+            ;
+            pug_debug_line = 11;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<label class=\".text-base\" for=\"login\">";
+            ;
+            pug_debug_line = 11;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "\u041B\u043E\u0433\u0438\u043D</label>";
+            ;
+            pug_debug_line = 12;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<input class=\".text-base\" type=\"text\" id=\"login\" placeholder=\"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043B\u043E\u0433\u0438\u043D\"/>";
+            ;
+            pug_debug_line = 13;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            if (formType == 'registration') {
+              ;
+              pug_debug_line = 14;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"login-error\" style=\"display:none;\">";
+              ;
+              pug_debug_line = 14;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041B\u043E\u0433\u0438\u043D \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u043B\u0438\u043D\u0435\u0435 5, \u043A\u043E\u0440\u043E\u0447\u0435 15, \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u0441\u043F\u0435\u0446 \u0441\u0438\u043C\u0432\u043E\u043B\u044B, \u043A\u0440\u043E\u043C\u0435 (-, _), \u0438 \u043E\u043D\u0438 \u043D\u0435 \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0432 \u043D\u0430\u0447\u0430\u043B\u0435 \u0438 \u0432 \u043A\u043E\u043D\u0446\u0435, \u0446\u0438\u0444\u0440\u044B \u043D\u0435 \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0432 \u043D\u0430\u0447\u0430\u043B\u0435</p>";
+            } else if (formType == 'login') {
+              ;
+              pug_debug_line = 16;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"login-error\">";
+              ;
+              pug_debug_line = 16;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041E\u0448\u0438\u0431\u043A\u0430: \u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u044B\u0439 \u043B\u043E\u0433\u0438\u043D</p>";
+            }
+          }
+        };
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/Header/Header.pug";
+        pug_mixins["header"] = _pug_interp6 = function _pug_interp2(title) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + "<div class=\"logo\">";
+          ;
+          pug_debug_line = 3;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + "<img src=\"Images/Logo.svg\" alt=\"Logo\"/></div>";
+          ;
+          pug_debug_line = 4;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + "<h1 class=\"description\">";
+          ;
+          pug_debug_line = 4;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + (null == (_pug_interp6 = title) ? "" : _pug_interp6) + "</h1>";
+        };
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/TextButton/TextButton.pug";
+        pug_mixins["textButton"] = _pug_interp6 = function _pug_interp3(text, elemId) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/TextButton/TextButton.pug";
+          pug_html = pug_html + "<button type=\"button\">";
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/TextButton/TextButton.pug";
+          pug_html = pug_html + (null == (_pug_interp6 = text) ? "" : _pug_interp6) + "</button>";
+        };
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/FooterText/FooterText.pug";
+        pug_mixins["footerText"] = _pug_interp6 = function _pug_interp4(type) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/FooterText/FooterText.pug";
+          if (type == 'login') {
+            ;
+            pug_debug_line = 3;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<div class=\"footer-text\">";
+            ;
+            pug_debug_line = 4;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<span>";
+            ;
+            pug_debug_line = 4;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0423 \u0432\u0430\u0441 \u0435\u0449\u0435 \u043D\u0435\u0442 \u0430\u043A\u043A\u0430\u0443\u043D\u0442\u0430? </span>";
+            ;
+            pug_debug_line = 5;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<a class=\".link\" href=\"/signup\" id=\"link\">";
+            ;
+            pug_debug_line = 5;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u0439\u0442\u0435\u0441\u044C</a></div>";
+          } else if (type == 'registration') {
+            ;
+            pug_debug_line = 7;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<div class=\"footer-text\">";
+            ;
+            pug_debug_line = 8;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<span>";
+            ;
+            pug_debug_line = 8;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0423 \u0432\u0430\u0441 \u0443\u0436\u0435 \u0435\u0441\u0442\u044C \u0430\u043A\u043A\u0430\u0443\u043D\u0442? </span>";
+            ;
+            pug_debug_line = 9;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<a class=\".link\" href=\"/login\" id=\"link\">";
+            ;
+            pug_debug_line = 9;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0412\u043E\u0439\u0434\u0438\u0442\u0435 \u0432 \u0430\u043A\u043A\u0430\u0443\u043D\u0442</a></div>";
+          }
+        };
+        ;
+        pug_debug_line = 6;
+        pug_debug_filename = "src/components/LoginForm/LoginForm.pug";
+        ;
+        pug_debug_line = 7;
+        pug_debug_filename = "src/components/LoginForm/LoginForm.pug";
+        pug_mixins["header"]('С возвращением!');
+        ;
+        pug_debug_line = 9;
+        pug_debug_filename = "src/components/LoginForm/LoginForm.pug";
+        pug_mixins["customInput"]('login', 'login');
+        ;
+        pug_debug_line = 10;
+        pug_debug_filename = "src/components/LoginForm/LoginForm.pug";
+        pug_mixins["customInput"]('password', 'login');
+        ;
+        pug_debug_line = 11;
+        pug_debug_filename = "src/components/LoginForm/LoginForm.pug";
+        pug_mixins["textButton"]('Войти в аккаунт', 'login-button');
+        ;
+        pug_debug_line = 13;
+        pug_debug_filename = "src/components/LoginForm/LoginForm.pug";
+        pug_mixins["footerText"]('login');
+      }
+      pug_html = pug_html + "</div>";
+      ;
+      pug_debug_line = 12;
+      pug_debug_filename = "src/components/BaseLogReg/BaseLogReg.pug";
+      pug_mixins["imageSection"](pathToImage);
+      pug_html = pug_html + "</div>";
+    };
+    ;
+    pug_debug_line = 1;
+    pug_debug_filename = "src/components/TextButton/TextButton.pug";
+    pug_mixins["textButton"] = _pug_interp6 = function _pug_interp5(text, elemId) {
+      var block = this && this.block,
+        attributes = this && this.attributes || {};
+      ;
+      pug_debug_line = 2;
+      pug_debug_filename = "src/components/TextButton/TextButton.pug";
+      pug_html = pug_html + "<button type=\"button\">";
+      ;
+      pug_debug_line = 2;
+      pug_debug_filename = "src/components/TextButton/TextButton.pug";
+      pug_html = pug_html + (null == (_pug_interp6 = text) ? "" : _pug_interp6) + "</button>";
+    };
+    ;
+    pug_debug_line = 4;
+    pug_debug_filename = "src/components/Navbar/Navbar.pug";
+    pug_mixins["navbar"] = _pug_interp6 = function _pug_interp6(isAuth) {
+      var block = this && this.block,
+        attributes = this && this.attributes || {};
+      ;
+      pug_debug_line = 5;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      pug_html = pug_html + "<div class=\"nav\">";
+      ;
+      pug_debug_line = 6;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      pug_html = pug_html + "<div class=\"nav__logo\">";
+      ;
+      pug_debug_line = 7;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      pug_html = pug_html + "<img src=\"../../assets/img/Logo.svg\" alt=\"logo\"/></div>";
+      ;
+      pug_debug_line = 8;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      pug_html = pug_html + "<div class=\"main-nav\">";
+      ;
+      pug_debug_line = 9;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      pug_html = pug_html + "<ul>";
+      ;
+      pug_debug_line = 10;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      if (isAuth) {
+        ;
+        pug_debug_line = 11;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<li class=\"nav-link\">";
+        ;
+        pug_debug_line = 12;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<a href=\"/feed\">";
+        ;
+        pug_debug_line = 12;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "\u0413\u043B\u0430\u0432\u043D\u0430\u044F</a></li>";
+      } else {
+        ;
+        pug_debug_line = 14;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<li class=\"nav-link\">";
+        ;
+        pug_debug_line = 15;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<a href=\"/login\">";
+        ;
+        pug_debug_line = 15;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "\u041B\u043E\u0433\u0438\u043D</a></li>";
+        ;
+        pug_debug_line = 16;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<li class=\"nav-link\">";
+        ;
+        pug_debug_line = 17;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<a href=\"/signup\">";
+        ;
+        pug_debug_line = 17;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F</a></li>";
+      }
+      pug_html = pug_html + "</ul></div>";
+      ;
+      pug_debug_line = 18;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      if (isAuth) {
+        ;
+        pug_debug_line = 19;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<button id=\"button-logout\" type=\"button\">";
+        ;
+        pug_debug_line = 19;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "\u0412\u044B\u0439\u0442\u0438 \u0438\u0437 \u0430\u043A\u043A\u0430\u0443\u043D\u0442\u0430</button>";
+      }
+      pug_html = pug_html + "</div>";
+    };
+    ;
+    pug_debug_line = 4;
+    pug_debug_filename = "./src/pages/login/login.pug";
+    pug_mixins["navbar"](false);
+    ;
+    pug_debug_line = 5;
+    pug_debug_filename = "./src/pages/login/login.pug";
+    pug_mixins["base"]('login');
+  } catch (err) {
+    pug.rethrow(err, pug_debug_filename, pug_debug_line);
+  }
+  ;
+  return pug_html;
+}
+
+/***/ }),
+
+/***/ "./src/templates/signup.js":
+/*!*********************************!*\
+  !*** ./src/templates/signup.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ template)
+/* harmony export */ });
+function template(locals) {
+  var pug_html = "",
+    pug_mixins = {},
+    _pug_interp6;
+  var pug_debug_filename, pug_debug_line;
+  try {
+    ;
+    pug_debug_line = 1;
+    pug_debug_filename = "src/components/ImageSection/imageSection.pug";
+    pug_mixins["imageSection"] = _pug_interp6 = function pug_interp(path) {
+      var block = this && this.block,
+        attributes = this && this.attributes || {};
+      ;
+      pug_debug_line = 2;
+      pug_debug_filename = "src/components/ImageSection/imageSection.pug";
+      pug_html = pug_html + "<div class=\"image-section\">";
+      ;
+      pug_debug_line = 3;
+      pug_debug_filename = "src/components/ImageSection/imageSection.pug";
+      pug_html = pug_html + "<img" + (pug.attr("src", "".concat(path), true, false) + " alt=\"Image\"") + "/></div>";
+    };
+    ;
+    pug_debug_line = 3;
+    pug_debug_filename = "src/components/BaseLogReg/BaseLogReg.pug";
+    var pathToImage = "../../asset/img/image.svg";
+    pug_debug_line = 5;
+    pug_debug_filename = "src/components/BaseLogReg/BaseLogReg.pug";
+    pug_mixins["base"] = _pug_interp6 = function _pug_interp4(typeOfPage) {
+      var block = this && this.block,
+        attributes = this && this.attributes || {};
+      ;
+      pug_debug_line = 6;
+      pug_debug_filename = "src/components/BaseLogReg/BaseLogReg.pug";
+      pug_html = pug_html + "<div class=\"container\">";
+      ;
+      pug_debug_line = 7;
+      pug_debug_filename = "src/components/BaseLogReg/BaseLogReg.pug";
+      pug_html = pug_html + "<div class=\"form-section\">";
+      ;
+      pug_debug_line = 8;
+      pug_debug_filename = "src/components/BaseLogReg/BaseLogReg.pug";
+      if (typeOfPage === 'signup') {
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+        pug_mixins["customInput"] = _pug_interp6 = function pug_interp(inputType, formType) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+          if (inputType == 'password') {
+            ;
+            pug_debug_line = 3;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<label class=\".text-base\" for=\"password\">";
+            ;
+            pug_debug_line = 3;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "\u041F\u0430\u0440\u043E\u043B\u044C</label>";
+            ;
+            pug_debug_line = 4;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<input type=\"password\" id=\"password\" placeholder=\"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C\"/>";
+            ;
+            pug_debug_line = 5;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            if (formType == 'registration') {
+              ;
+              pug_debug_line = 6;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"password-error\" style=\"display:none;\">";
+              ;
+              pug_debug_line = 6;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041F\u0430\u0440\u043E\u043B\u044C \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043E\u0442 6 \u0434\u043E 40 \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432, \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u043C\u0438\u043D\u0438\u043C\u0443\u043C \u043E\u0434\u043D\u0443 \u0446\u0438\u0444\u0440\u0443, \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043D\u044B\u0435 \u0441\u043F\u0435\u0446 \u0437\u043D\u0430\u043A\u0438 (!?*-$)</p>";
+            } else if (formType == 'login') {
+              ;
+              pug_debug_line = 8;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"password-error\">";
+              ;
+              pug_debug_line = 8;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041E\u0448\u0438\u0431\u043A\u0430: \u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C</p>";
+              ;
+              pug_debug_line = 9;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"login-password-error\">";
+              ;
+              pug_debug_line = 9;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041E\u0448\u0438\u0431\u043A\u0430: \u041D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u044B\u0439 \u043B\u043E\u0433\u0438\u043D \u0438\u043B\u0438 \u043F\u0430\u0440\u043E\u043B\u044C</p>";
+            }
+          } else if (inputType == 'login') {
+            ;
+            pug_debug_line = 11;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<label class=\".text-base\" for=\"login\">";
+            ;
+            pug_debug_line = 11;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "\u041B\u043E\u0433\u0438\u043D</label>";
+            ;
+            pug_debug_line = 12;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<input class=\".text-base\" type=\"text\" id=\"login\" placeholder=\"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043B\u043E\u0433\u0438\u043D\"/>";
+            ;
+            pug_debug_line = 13;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            if (formType == 'registration') {
+              ;
+              pug_debug_line = 14;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"login-error\" style=\"display:none;\">";
+              ;
+              pug_debug_line = 14;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041B\u043E\u0433\u0438\u043D \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u043B\u0438\u043D\u0435\u0435 5, \u043A\u043E\u0440\u043E\u0447\u0435 15, \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u0441\u043F\u0435\u0446 \u0441\u0438\u043C\u0432\u043E\u043B\u044B, \u043A\u0440\u043E\u043C\u0435 (-, _), \u0438 \u043E\u043D\u0438 \u043D\u0435 \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0432 \u043D\u0430\u0447\u0430\u043B\u0435 \u0438 \u0432 \u043A\u043E\u043D\u0446\u0435, \u0446\u0438\u0444\u0440\u044B \u043D\u0435 \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0432 \u043D\u0430\u0447\u0430\u043B\u0435</p>";
+            } else if (formType == 'login') {
+              ;
+              pug_debug_line = 16;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"login-error\">";
+              ;
+              pug_debug_line = 16;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041E\u0448\u0438\u0431\u043A\u0430: \u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u044B\u0439 \u043B\u043E\u0433\u0438\u043D</p>";
+            }
+          }
+        };
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/Header/Header.pug";
+        pug_mixins["header"] = _pug_interp6 = function pug_interp(title) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + "<div class=\"logo\">";
+          ;
+          pug_debug_line = 3;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + "<img src=\"Images/Logo.svg\" alt=\"Logo\"/></div>";
+          ;
+          pug_debug_line = 4;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + "<h1 class=\"description\">";
+          ;
+          pug_debug_line = 4;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + (null == (_pug_interp6 = title) ? "" : _pug_interp6) + "</h1>";
+        };
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/TextButton/TextButton.pug";
+        pug_mixins["textButton"] = _pug_interp6 = function _pug_interp(text, elemId) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/TextButton/TextButton.pug";
+          pug_html = pug_html + "<button type=\"button\">";
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/TextButton/TextButton.pug";
+          pug_html = pug_html + (null == (_pug_interp6 = text) ? "" : _pug_interp6) + "</button>";
+        };
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/FooterText/FooterText.pug";
+        pug_mixins["footerText"] = _pug_interp6 = function _pug_interp2(type) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/FooterText/FooterText.pug";
+          if (type == 'login') {
+            ;
+            pug_debug_line = 3;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<div class=\"footer-text\">";
+            ;
+            pug_debug_line = 4;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<span>";
+            ;
+            pug_debug_line = 4;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0423 \u0432\u0430\u0441 \u0435\u0449\u0435 \u043D\u0435\u0442 \u0430\u043A\u043A\u0430\u0443\u043D\u0442\u0430? </span>";
+            ;
+            pug_debug_line = 5;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<a class=\".link\" href=\"/signup\" id=\"link\">";
+            ;
+            pug_debug_line = 5;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u0439\u0442\u0435\u0441\u044C</a></div>";
+          } else if (type == 'registration') {
+            ;
+            pug_debug_line = 7;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<div class=\"footer-text\">";
+            ;
+            pug_debug_line = 8;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<span>";
+            ;
+            pug_debug_line = 8;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0423 \u0432\u0430\u0441 \u0443\u0436\u0435 \u0435\u0441\u0442\u044C \u0430\u043A\u043A\u0430\u0443\u043D\u0442? </span>";
+            ;
+            pug_debug_line = 9;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<a class=\".link\" href=\"/login\" id=\"link\">";
+            ;
+            pug_debug_line = 9;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0412\u043E\u0439\u0434\u0438\u0442\u0435 \u0432 \u0430\u043A\u043A\u0430\u0443\u043D\u0442</a></div>";
+          }
+        };
+        ;
+        pug_debug_line = 6;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        ;
+        pug_debug_line = 7;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_mixins["header"]('Добро пожаловать!');
+        ;
+        pug_debug_line = 9;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_mixins["customInput"]('login', 'registration');
+        ;
+        pug_debug_line = 10;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_mixins["customInput"]('password', 'registration');
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<text class=\".text-base\">";
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "Пол";
+        ;
+        pug_debug_line = 2;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<div class=\"gender-selection\">";
+        ;
+        pug_debug_line = 3;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<input type=\"radio\" id=\"male\" name=\"gender\" value=\"male\" checked=\"checked\"/>";
+        ;
+        pug_debug_line = 4;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<label for=\"male\">";
+        ;
+        pug_debug_line = 4;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "\u041C\u0443\u0436\u0441\u043A\u043E\u0439</label>";
+        ;
+        pug_debug_line = 5;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<input type=\"radio\" id=\"female\" name=\"gender\" value=\"female\"/>";
+        ;
+        pug_debug_line = 6;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<label for=\"female\">";
+        ;
+        pug_debug_line = 6;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "\u0416\u0435\u043D\u0441\u043A\u0438\u0439</label></div>";
+        ;
+        pug_debug_line = 7;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "<p class=\"error\" id=\"gender-error\" style=\"display:none;\">";
+        ;
+        pug_debug_line = 7;
+        pug_debug_filename = "src/components/GenderSelection/GenderSelection.pug";
+        pug_html = pug_html + "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u043E\u043B</p></text>";
+        ;
+        pug_debug_line = 14;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_html = pug_html + "<label class=\".text-base\" for=\"age\">";
+        ;
+        pug_debug_line = 14;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_html = pug_html + "\u0412\u043E\u0437\u0440\u0430\u0441\u0442</label>";
+        ;
+        pug_debug_line = 15;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_html = pug_html + "<input type=\"range\" id=\"age\" name=\"age\" min=\"18\" max=\"100\" value=\"18\" oninput=\"this.nextElementSibling.value = this.value\"/>";
+        ;
+        pug_debug_line = 16;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_html = pug_html + "<output>";
+        ;
+        pug_debug_line = 16;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_html = pug_html + "18</output>";
+        ;
+        pug_debug_line = 18;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_mixins["textButton"]('Зарегистрироваться');
+        ;
+        pug_debug_line = 20;
+        pug_debug_filename = "src/components/RegistrationForm/RegistrationForm.pug";
+        pug_mixins["footerText"]('registration');
+      } else if (typeOfPage === 'login') {
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+        pug_mixins["customInput"] = _pug_interp6 = function _pug_interp2(inputType, formType) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+          if (inputType == 'password') {
+            ;
+            pug_debug_line = 3;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<label class=\".text-base\" for=\"password\">";
+            ;
+            pug_debug_line = 3;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "\u041F\u0430\u0440\u043E\u043B\u044C</label>";
+            ;
+            pug_debug_line = 4;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<input type=\"password\" id=\"password\" placeholder=\"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C\"/>";
+            ;
+            pug_debug_line = 5;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            if (formType == 'registration') {
+              ;
+              pug_debug_line = 6;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"password-error\" style=\"display:none;\">";
+              ;
+              pug_debug_line = 6;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041F\u0430\u0440\u043E\u043B\u044C \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043E\u0442 6 \u0434\u043E 40 \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432, \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u043C\u0438\u043D\u0438\u043C\u0443\u043C \u043E\u0434\u043D\u0443 \u0446\u0438\u0444\u0440\u0443, \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043D\u044B\u0435 \u0441\u043F\u0435\u0446 \u0437\u043D\u0430\u043A\u0438 (!?*-$)</p>";
+            } else if (formType == 'login') {
+              ;
+              pug_debug_line = 8;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"password-error\">";
+              ;
+              pug_debug_line = 8;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041E\u0448\u0438\u0431\u043A\u0430: \u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C</p>";
+              ;
+              pug_debug_line = 9;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"login-password-error\">";
+              ;
+              pug_debug_line = 9;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041E\u0448\u0438\u0431\u043A\u0430: \u041D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u044B\u0439 \u043B\u043E\u0433\u0438\u043D \u0438\u043B\u0438 \u043F\u0430\u0440\u043E\u043B\u044C</p>";
+            }
+          } else if (inputType == 'login') {
+            ;
+            pug_debug_line = 11;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<label class=\".text-base\" for=\"login\">";
+            ;
+            pug_debug_line = 11;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "\u041B\u043E\u0433\u0438\u043D</label>";
+            ;
+            pug_debug_line = 12;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            pug_html = pug_html + "<input class=\".text-base\" type=\"text\" id=\"login\" placeholder=\"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043B\u043E\u0433\u0438\u043D\"/>";
+            ;
+            pug_debug_line = 13;
+            pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+            if (formType == 'registration') {
+              ;
+              pug_debug_line = 14;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"login-error\" style=\"display:none;\">";
+              ;
+              pug_debug_line = 14;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041B\u043E\u0433\u0438\u043D \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u043B\u0438\u043D\u0435\u0435 5, \u043A\u043E\u0440\u043E\u0447\u0435 15, \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u0441\u043F\u0435\u0446 \u0441\u0438\u043C\u0432\u043E\u043B\u044B, \u043A\u0440\u043E\u043C\u0435 (-, _), \u0438 \u043E\u043D\u0438 \u043D\u0435 \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0432 \u043D\u0430\u0447\u0430\u043B\u0435 \u0438 \u0432 \u043A\u043E\u043D\u0446\u0435, \u0446\u0438\u0444\u0440\u044B \u043D\u0435 \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0432 \u043D\u0430\u0447\u0430\u043B\u0435</p>";
+            } else if (formType == 'login') {
+              ;
+              pug_debug_line = 16;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "<p class=\"error\" id=\"login-error\">";
+              ;
+              pug_debug_line = 16;
+              pug_debug_filename = "src/components/CustomInput/CustomInput.pug";
+              pug_html = pug_html + "\u041E\u0448\u0438\u0431\u043A\u0430: \u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u044B\u0439 \u043B\u043E\u0433\u0438\u043D</p>";
+            }
+          }
+        };
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/Header/Header.pug";
+        pug_mixins["header"] = _pug_interp6 = function _pug_interp2(title) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + "<div class=\"logo\">";
+          ;
+          pug_debug_line = 3;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + "<img src=\"Images/Logo.svg\" alt=\"Logo\"/></div>";
+          ;
+          pug_debug_line = 4;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + "<h1 class=\"description\">";
+          ;
+          pug_debug_line = 4;
+          pug_debug_filename = "src/components/Header/Header.pug";
+          pug_html = pug_html + (null == (_pug_interp6 = title) ? "" : _pug_interp6) + "</h1>";
+        };
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/TextButton/TextButton.pug";
+        pug_mixins["textButton"] = _pug_interp6 = function _pug_interp3(text, elemId) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/TextButton/TextButton.pug";
+          pug_html = pug_html + "<button type=\"button\">";
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/TextButton/TextButton.pug";
+          pug_html = pug_html + (null == (_pug_interp6 = text) ? "" : _pug_interp6) + "</button>";
+        };
+        ;
+        pug_debug_line = 1;
+        pug_debug_filename = "src/components/FooterText/FooterText.pug";
+        pug_mixins["footerText"] = _pug_interp6 = function _pug_interp4(type) {
+          var block = this && this.block,
+            attributes = this && this.attributes || {};
+          ;
+          pug_debug_line = 2;
+          pug_debug_filename = "src/components/FooterText/FooterText.pug";
+          if (type == 'login') {
+            ;
+            pug_debug_line = 3;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<div class=\"footer-text\">";
+            ;
+            pug_debug_line = 4;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<span>";
+            ;
+            pug_debug_line = 4;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0423 \u0432\u0430\u0441 \u0435\u0449\u0435 \u043D\u0435\u0442 \u0430\u043A\u043A\u0430\u0443\u043D\u0442\u0430? </span>";
+            ;
+            pug_debug_line = 5;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<a class=\".link\" href=\"/signup\" id=\"link\">";
+            ;
+            pug_debug_line = 5;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u0439\u0442\u0435\u0441\u044C</a></div>";
+          } else if (type == 'registration') {
+            ;
+            pug_debug_line = 7;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<div class=\"footer-text\">";
+            ;
+            pug_debug_line = 8;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<span>";
+            ;
+            pug_debug_line = 8;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0423 \u0432\u0430\u0441 \u0443\u0436\u0435 \u0435\u0441\u0442\u044C \u0430\u043A\u043A\u0430\u0443\u043D\u0442? </span>";
+            ;
+            pug_debug_line = 9;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "<a class=\".link\" href=\"/login\" id=\"link\">";
+            ;
+            pug_debug_line = 9;
+            pug_debug_filename = "src/components/FooterText/FooterText.pug";
+            pug_html = pug_html + "\u0412\u043E\u0439\u0434\u0438\u0442\u0435 \u0432 \u0430\u043A\u043A\u0430\u0443\u043D\u0442</a></div>";
+          }
+        };
+        ;
+        pug_debug_line = 6;
+        pug_debug_filename = "src/components/LoginForm/LoginForm.pug";
+        ;
+        pug_debug_line = 7;
+        pug_debug_filename = "src/components/LoginForm/LoginForm.pug";
+        pug_mixins["header"]('С возвращением!');
+        ;
+        pug_debug_line = 9;
+        pug_debug_filename = "src/components/LoginForm/LoginForm.pug";
+        pug_mixins["customInput"]('login', 'login');
+        ;
+        pug_debug_line = 10;
+        pug_debug_filename = "src/components/LoginForm/LoginForm.pug";
+        pug_mixins["customInput"]('password', 'login');
+        ;
+        pug_debug_line = 11;
+        pug_debug_filename = "src/components/LoginForm/LoginForm.pug";
+        pug_mixins["textButton"]('Войти в аккаунт', 'login-button');
+        ;
+        pug_debug_line = 13;
+        pug_debug_filename = "src/components/LoginForm/LoginForm.pug";
+        pug_mixins["footerText"]('login');
+      }
+      pug_html = pug_html + "</div>";
+      ;
+      pug_debug_line = 12;
+      pug_debug_filename = "src/components/BaseLogReg/BaseLogReg.pug";
+      pug_mixins["imageSection"](pathToImage);
+      pug_html = pug_html + "</div>";
+    };
+    ;
+    pug_debug_line = 1;
+    pug_debug_filename = "src/components/TextButton/TextButton.pug";
+    pug_mixins["textButton"] = _pug_interp6 = function _pug_interp5(text, elemId) {
+      var block = this && this.block,
+        attributes = this && this.attributes || {};
+      ;
+      pug_debug_line = 2;
+      pug_debug_filename = "src/components/TextButton/TextButton.pug";
+      pug_html = pug_html + "<button type=\"button\">";
+      ;
+      pug_debug_line = 2;
+      pug_debug_filename = "src/components/TextButton/TextButton.pug";
+      pug_html = pug_html + (null == (_pug_interp6 = text) ? "" : _pug_interp6) + "</button>";
+    };
+    ;
+    pug_debug_line = 4;
+    pug_debug_filename = "src/components/Navbar/Navbar.pug";
+    pug_mixins["navbar"] = _pug_interp6 = function _pug_interp6(isAuth) {
+      var block = this && this.block,
+        attributes = this && this.attributes || {};
+      ;
+      pug_debug_line = 5;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      pug_html = pug_html + "<div class=\"nav\">";
+      ;
+      pug_debug_line = 6;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      pug_html = pug_html + "<div class=\"nav__logo\">";
+      ;
+      pug_debug_line = 7;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      pug_html = pug_html + "<img src=\"../../assets/img/Logo.svg\" alt=\"logo\"/></div>";
+      ;
+      pug_debug_line = 8;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      pug_html = pug_html + "<div class=\"main-nav\">";
+      ;
+      pug_debug_line = 9;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      pug_html = pug_html + "<ul>";
+      ;
+      pug_debug_line = 10;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      if (isAuth) {
+        ;
+        pug_debug_line = 11;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<li class=\"nav-link\">";
+        ;
+        pug_debug_line = 12;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<a href=\"/feed\">";
+        ;
+        pug_debug_line = 12;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "\u0413\u043B\u0430\u0432\u043D\u0430\u044F</a></li>";
+      } else {
+        ;
+        pug_debug_line = 14;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<li class=\"nav-link\">";
+        ;
+        pug_debug_line = 15;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<a href=\"/login\">";
+        ;
+        pug_debug_line = 15;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "\u041B\u043E\u0433\u0438\u043D</a></li>";
+        ;
+        pug_debug_line = 16;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<li class=\"nav-link\">";
+        ;
+        pug_debug_line = 17;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<a href=\"/signup\">";
+        ;
+        pug_debug_line = 17;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F</a></li>";
+      }
+      pug_html = pug_html + "</ul></div>";
+      ;
+      pug_debug_line = 18;
+      pug_debug_filename = "src/components/Navbar/Navbar.pug";
+      if (isAuth) {
+        ;
+        pug_debug_line = 19;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "<button id=\"button-logout\" type=\"button\">";
+        ;
+        pug_debug_line = 19;
+        pug_debug_filename = "src/components/Navbar/Navbar.pug";
+        pug_html = pug_html + "\u0412\u044B\u0439\u0442\u0438 \u0438\u0437 \u0430\u043A\u043A\u0430\u0443\u043D\u0442\u0430</button>";
+      }
+      pug_html = pug_html + "</div>";
+    };
+    ;
+    pug_debug_line = 4;
+    pug_debug_filename = "./src/pages/signup/signup.pug";
+    pug_mixins["navbar"](false);
+    ;
+    pug_debug_line = 5;
+    pug_debug_filename = "./src/pages/signup/signup.pug";
+    pug_mixins["base"]('signup');
   } catch (err) {
     pug.rethrow(err, pug_debug_filename, pug_debug_line);
   }
@@ -1615,7 +2899,6 @@ function template(locals) {
   \****************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -2212,7 +3495,6 @@ output {
   \*****************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /*
@@ -2307,7 +3589,6 @@ module.exports = function (cssWithMappingToString) {
   \********************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 module.exports = function (url, options) {
@@ -2343,7 +3624,6 @@ module.exports = function (url, options) {
   \************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 module.exports = function (item) {
@@ -2369,7 +3649,6 @@ module.exports = function (item) {
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -2422,7 +3701,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \****************************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 var stylesInDOM = [];
@@ -2516,7 +3794,6 @@ module.exports = function (list, options) {
   \********************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 var memo = {};
@@ -2560,7 +3837,6 @@ module.exports = insertBySelector;
   \**********************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -2580,7 +3856,6 @@ module.exports = insertStyleElement;
   \**********************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -2600,7 +3875,6 @@ module.exports = setAttributesWithoutAttributes;
   \***************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -2671,7 +3945,6 @@ module.exports = domAPI;
   \*********************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -2695,7 +3968,6 @@ module.exports = styleTagTransform;
   \**********************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_App_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/App.js */ "./src/modules/App.js");
@@ -2716,31 +3988,12 @@ __webpack_async_result__();
 
 /***/ }),
 
-/***/ "./src/templates sync recursive":
-/*!*****************************!*\
-  !*** ./src/templates/ sync ***!
-  \*****************************/
-/***/ ((module) => {
-
-function webpackEmptyContext(req) {
-	var e = new Error("Cannot find module '" + req + "'");
-	e.code = 'MODULE_NOT_FOUND';
-	throw e;
-}
-webpackEmptyContext.keys = () => ([]);
-webpackEmptyContext.resolve = webpackEmptyContext;
-webpackEmptyContext.id = "./src/templates sync recursive";
-module.exports = webpackEmptyContext;
-
-/***/ }),
-
 /***/ "./src/assets/fonts/Rubik-Regular.woff":
 /*!*********************************************!*\
   !*** ./src/assets/fonts/Rubik-Regular.woff ***!
   \*********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 module.exports = __webpack_require__.p + "Rubik-Regular.woff";
 
 /***/ }),
@@ -2751,7 +4004,6 @@ module.exports = __webpack_require__.p + "Rubik-Regular.woff";
   \**********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 module.exports = __webpack_require__.p + "Rubik-Regular.woff2";
 
 /***/ }),
@@ -2762,7 +4014,6 @@ module.exports = __webpack_require__.p + "Rubik-Regular.woff2";
   \***************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 module.exports = __webpack_require__.p + "background.svg";
 
 /***/ })
@@ -2981,4 +4232,4 @@ module.exports = __webpack_require__.p + "background.svg";
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=bundle8064dc8263b1cc0fbe3d.js.map
+//# sourceMappingURL=bundled53ac2c9ab5c48d331ff.js.map
