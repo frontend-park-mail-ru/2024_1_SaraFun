@@ -13,8 +13,8 @@
     "lint": "npx eslint . --fix",
     "start": "cd server && node server.js",
     "build": "node compile.js",
-    "webpack": "webpack",
-    "dev": "webpack serve"
+    "webpack": "webpack --mode production",
+    "dev": "webpack serve --mode development"
   },
   "keywords": [],
   "author": "sarafun",

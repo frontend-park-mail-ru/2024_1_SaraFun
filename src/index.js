@@ -1,5 +1,5 @@
 import App from './modules/App.js';
-import './index.css'
+import './index.css';
    
 
 const root = document.querySelector('#root');
