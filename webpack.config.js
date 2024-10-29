@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: {
-		bundle: path.resolve(__dirname, 'src/index.js'),
+		bundle: path.resolve(__dirname, 'src/index.ts'),
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
@@ -46,19 +46,23 @@ module.exports = {
 			},
 			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
-				type: 'asset/resource',
-				use: [
-					{
-						loader: 'file-loader',
-						options: {
-							name: '[name].[hash].[ext]', 
-							outputPath: 'assets/img/', 
-						},
-					},
-				],
-
-			}
-		]
+				loader: 'file-loader',
+				options: {
+					name: '[path][name].[ext]',
+				},
+			},
+			{
+				test: /\.tsx?$/,
+				use: 'ts-loader',
+				exclude: /node_modules/,
+			},
+		],
+	},
+	resolve: {
+		extensions:['.tsx', '.ts', '.js'],
+		alias: {
+			images: path.resolve(__dirname, 'src/assets/img'),
+		},
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
