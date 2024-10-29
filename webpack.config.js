@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+	mode: 'development',
 	entry: {
 		bundle: path.resolve(__dirname, 'src/index.ts'),
 	},
@@ -46,10 +47,9 @@ module.exports = {
 			},
 			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
-				loader: 'file-loader',
-				options: {
-					name: '[path][name].[ext]',
-				},
+				type: 'asset/resource',
+				
+				
 			},
 			{
 				test: /\.tsx?$/,
@@ -61,7 +61,7 @@ module.exports = {
 	resolve: {
 		extensions:['.tsx', '.ts', '.js'],
 		alias: {
-			Images: path.resolve(__dirname, 'src/assets/img'),
+			Images: path.resolve(__dirname, './src/assets/img'),
 		},
 	},
 	plugins: [

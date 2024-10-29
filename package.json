@@ -1,6 +1,7 @@
 {
   "name": "sarafun",
   "version": "1.0.0",
+  "type" : "module",
   "main": "index.js",
   "eslintConfig": {
     "env": {
@@ -11,10 +12,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint . --fix",
-    "start": "cd server && node server.js",
+    "start": "webpack & webpack serve --mode development",
     "build": "node compile.js",
-    "webpack": "webpack --mode production",
-    "dev": "webpack serve --mode development"
+    "dev": "webpack"
   },
   "keywords": [],
   "author": "sarafun",
