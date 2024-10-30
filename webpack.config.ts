@@ -28,11 +28,6 @@ export default (env: EnvVariables) => {
         module: {
             rules: [
                 {
-                    test: /\.tsx?$/,
-                    use: 'ts-loader',
-                    exclude: /node_modules/,
-                },
-                {
                     test: /.css$/,
                     use: ['style-loader', 'css-loader'],
                 },
@@ -46,8 +41,11 @@ export default (env: EnvVariables) => {
                         },
                     },
                 },
- 
- 
+                {
+                    test: /\.tsx?$/,
+                    use: 'ts-loader',
+                    exclude: /node_modules/,
+                },
             ]
         },
         resolve: {
@@ -55,6 +53,7 @@ export default (env: EnvVariables) => {
         },
         devtool: isDev ? 'inline-source-map' : false,
         devServer: isDev ? {
+            historyApiFallback: true,
             port: env.port ?? 3000,
         } : undefined,
     }
