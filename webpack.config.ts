@@ -32,7 +32,16 @@ export default (env: EnvVariables) => {
                     use: ['style-loader', 'css-loader'],
                 },
                 {
+                    test: /\.(png|jpg|jpeg|gif)$/i,
+                    type: 'asset/resource',
+                },
+                // {
+                //     test:/\.svg$/,
+                //     use: ['@svgr/webpack'], 
+                // },
+                {
                     test: /.(woff|woff2)$/,
+                    type: 'asset/resource',
                     use: {
                         loader: 'file-loader',
                         options: {
