@@ -313,7 +313,7 @@ button:hover {
     background-repeat: no-repeat;
     margin-right: 8px;
 }
-.btn.skip::before {
+/* .btn.skip::before {
     background-image: url('../assets/icons/skip.svg');
 }
 .btn.like::before {
@@ -324,7 +324,7 @@ button:hover {
 }
 .btn.gift::before {
     background-image: url('../assets/icons/gift.svg');
-}
+} */
 
 .card-actions {
     display: flex;
