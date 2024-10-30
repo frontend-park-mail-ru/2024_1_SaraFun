@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint . --fix",
-    "start": "cd server && node server.js",
+    "start": "webpack serve",
     "comp": "node compile.js",
     "build:dev": "webpack --env mode=development",
     "build:prod": "webpack --env mode=production"
@@ -45,6 +45,7 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
     "webpack": "^5.95.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }
