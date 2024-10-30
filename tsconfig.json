@@ -3,8 +3,15 @@
         "outDir": "./dist",
         "noImplicitAny": true,
         "target": "es2017", 
-       "module": "esnext",
+        "module": "esnext",
         "allowJs": true,
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
+    },
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
     }
 }
