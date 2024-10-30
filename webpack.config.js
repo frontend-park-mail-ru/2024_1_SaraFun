@@ -34,7 +34,7 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.(png|jpg|jpeg|gif)$/i,
+				test: /\.(png|jpg|jpeg|gif|svg)$/i,
 				type: 'asset/resource',
 				
 				
@@ -48,9 +48,6 @@ module.exports = {
 	},
 	resolve: {
 		extensions:['.tsx', '.ts', '.js'],
-		alias: {
-			Images: path.resolve(__dirname, './src/assets/img'),
-		},
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
