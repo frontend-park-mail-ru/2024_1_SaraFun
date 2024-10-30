@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint . --fix",
-    "start": "webpack serve",
+    "start": "webpack serve --env mode=development",
     "comp": "node compile.js",
     "build:dev": "webpack --env mode=development",
     "build:prod": "webpack --env mode=production"
