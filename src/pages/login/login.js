@@ -1,6 +1,6 @@
 import template from '../../templates/login.js';
-import Navbar from '../../widgets/Navbar/navbar.js';
-import { loginUser } from './api/loginUser.js';
+import Navbar from '../../components/Navbar/navbar.js';
+import { loginUser } from '../../modules/apiService.js';
 
 /**
  * Class representing the login page.

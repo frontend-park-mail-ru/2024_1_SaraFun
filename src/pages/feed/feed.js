@@ -1,6 +1,6 @@
 import template from '../../templates/feed.js';
-import { getUsers } from './api/getUsers.js';
-import Navbar from '../../widgets/Navbar/navbar.js';
+import { fetchUsers } from '../../modules/apiService.js';
+import Navbar from '../../components/Navbar/navbar.js';
 
 
 /**
@@ -24,7 +24,7 @@ export class FeedPage {
      * @returns {Promise<void>} - A promise that resolves when the rendering is complete.
      */
 	async render() {
-		let users = await getUsers();
+		let users = await fetchUsers();
 		if (users.length === 0) {
 			users = [{username: 'Анкеты закончились :(', gender: '-', age: '-'}];
 		}
@@ -34,14 +34,12 @@ export class FeedPage {
          */
 		function initCards() { 
 			let newCards = document.querySelectorAll('.tinder--card:not(.removed)');
-			const maxOffsetIndex = 10;
 		
 			newCards.forEach(function (card, index) {
-				const limitedIndex = Math.min(index, maxOffsetIndex); 
 				card.style.zIndex = allCards.length - index;
 				card.style.transform = 
-					'scale(' + (20 - limitedIndex) / 20 + ') ' + 
-					'translateY(-' + 30 * limitedIndex + 'px)';
+					'scale(' + (20 - index) / 20 + ') ' + 
+					'translateY(-' + 30 * index + 'px)';
 				card.style.opacity = (10 - index) / 10;
 			});
 				
