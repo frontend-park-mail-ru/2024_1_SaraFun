@@ -11,8 +11,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint . --fix",
-    "start": "webpack & webpack serve --mode development",
-    "build": "webpack"
+    "start": "npm run build && node server/server.mjs",
+    "dev": "webpack serve --mode development && nodemon server/server.mjs",
+    "build": "webpack --mode production"
   },
   "keywords": [],
   "author": "sarafun",
@@ -22,6 +23,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
+    "express-history-api-fallback": "^2.2.1",
     "express-session": "^1.18.0"
   },
   "devDependencies": {
