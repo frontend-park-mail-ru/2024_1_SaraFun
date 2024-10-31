@@ -1,4 +1,7 @@
 const path = require('path');
+const fs = require('fs');
+const { readdirSync } = require('fs');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -44,10 +47,22 @@ module.exports = {
 				use: 'ts-loader',
 				exclude: /node_modules/,
 			},
+			{
+				test: /.pug$/,
+				use: [
+				  {
+					loader: 'pug-loader',
+					options: {
+					  pretty: true 
+					}
+				  }
+				]
+			},
+		
 		],
 	},
 	resolve: {
-		extensions:['.tsx', '.ts', '.js'],
+		extensions:['.tsx', '.ts', '.js', '.pug'],
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
@@ -57,3 +72,30 @@ module.exports = {
 		}),
 	]
 };
+
+const PATH_OUT = './src/templates/';
+const PATHS = [
+	'./src/components/SwipeCard/',
+	'./src/pages/login/',
+	'./src/pages/signup/',
+	'./src/pages/feed/'
+  ];
+  
+const generateTemplates = () => {
+	for (const dir of PATHS) {
+		const files = readdirSync(dir);
+		for (const file of files) {
+			if (file.endsWith('.pug')) {
+				const name = file.replace('.pug', '');
+				const templatePath = path.resolve(dir, file);
+				const outputPath = path.resolve(PATH_OUT, `${name}.js`);
+				
+				const templateFunction = `import template from '${templatePath}'; export default template;`;
+				
+				fs.writeFileSync(outputPath, templateFunction);
+			}
+		}
+	}
+};
+  
+generateTemplates();
