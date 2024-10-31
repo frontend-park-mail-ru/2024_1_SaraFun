@@ -32,7 +32,7 @@ Spark It предлагает интуитивно понятный интерф
 
 Проект разработан с использованием следующих технологий:
 
-- Frontend: JavaScript, CSS
+- Frontend: JavaScript, CSS, webpack, TypeScript
 - [Backend](https://github.com/go-park-mail-ru/2024_2_SaraFun): Golang
 - База данных: Postgres
 - Аутентификация: 
