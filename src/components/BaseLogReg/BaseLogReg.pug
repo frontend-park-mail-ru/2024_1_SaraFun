@@ -8,4 +8,4 @@ mixin base(typeOfPage)
                 include ../../components/RegistrationForm/RegistrationForm.pug
             else if typeOfPage === 'login'
                 include ../../components/LoginForm/LoginForm.pug
-        +imageSection(pathToImage)
+        +imageSection('./image.svg')
