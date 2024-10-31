@@ -1,8 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 const { readdirSync } = require('fs');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
 	mode: 'development',
@@ -51,10 +51,10 @@ module.exports = {
 				test: /.pug$/,
 				use: [
 				  {
-					loader: 'pug-loader',
-					options: {
+						loader: 'pug-loader',
+						options: {
 					  pretty: true 
-					}
+						}
 				  }
 				]
 			},
@@ -79,7 +79,7 @@ const PATHS = [
 	'./src/pages/login/',
 	'./src/pages/signup/',
 	'./src/pages/feed/'
-  ];
+];
   
 const generateTemplates = () => {
 	for (const dir of PATHS) {
