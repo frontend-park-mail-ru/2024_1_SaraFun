@@ -1,4 +1,4 @@
-import {checkAuth} from './apiService.js';
+import {checkAuth} from '../features/checkAuth.js';
 import {createRouter} from './router.js';
 
 /**
