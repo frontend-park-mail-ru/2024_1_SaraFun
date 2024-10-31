@@ -1,8 +1,8 @@
 import template from '../../templates/signup.js';
-import { registerUser } from '../../modules/apiService.js';
-import { isValidPassword } from '../../modules/validation.js';
-import { isValidLogin } from '../../modules/validation.js';
-import Navbar from '../../components/Navbar/navbar.js';
+import { signupUser } from './api/signupUser.js';
+import { isValidPassword } from '../../shared/utils/validation.js';
+import { isValidLogin } from '../../shared/utils//validation.js';
+import Navbar from '../../widgets/Navbar/navbar.js';
 
 /**
  * Class representing the registration page.
@@ -63,7 +63,7 @@ export class RegistrationPage {
 
 			if (valid) {
 				try {
-					const isSignedUp = await registerUser(login, password, gender, age);
+					const isSignedUp = await signupUser(login, password, gender, age);
 					if (!isSignedUp) {
 						document.getElementById('login-password-error').style.display = 'block';            
 					} else { 
