@@ -8,7 +8,7 @@ import './assets/img/shine.svg'
 import './assets/img/arrowRight.svg'
 import './assets/img/giftArrow.svg'
 import './assets/img/X.svg';
-import './assets/img/Heart.svg'
+import './assets/img/Heart.svg';
 
 
 const root = document.querySelector('#root') as HTMLElement;
