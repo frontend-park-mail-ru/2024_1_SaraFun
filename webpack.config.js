@@ -75,10 +75,10 @@ module.exports = {
 
 const PATH_OUT = './src/templates/';
 const PATHS = [
-	'./src/components/SwipeCard/',
-	'./src/pages/login/',
-	'./src/pages/signup/',
-	'./src/pages/feed/'
+	'./src/shared/components/SwipeCard/',
+	'./src/pages/login/ui',
+	'./src/pages/signup/ui',
+	'./src/pages/feed/ui'
   ];
   
 const generateTemplates = () => {
