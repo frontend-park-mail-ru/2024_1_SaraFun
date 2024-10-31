@@ -48,17 +48,9 @@ module.exports = {
 				exclude: /node_modules/,
 			},
 			{
-				test: /.pug$/,
-				use: [
-				  {
-					loader: 'pug-loader',
-					options: {
-					  pretty: true 
-					}
-				  }
-				]
+				test: /\.pug$/,
+				loader: 'pug-loader',
 			},
-		
 		],
 	},
 	resolve: {
@@ -72,30 +64,3 @@ module.exports = {
 		}),
 	]
 };
-
-const PATH_OUT = './src/templates/';
-const PATHS = [
-	'./src/shared/components/SwipeCard/',
-	'./src/pages/login/ui',
-	'./src/pages/signup/ui',
-	'./src/pages/feed/ui'
-  ];
-  
-const generateTemplates = () => {
-	for (const dir of PATHS) {
-		const files = readdirSync(dir);
-		for (const file of files) {
-			if (file.endsWith('.pug')) {
-				const name = file.replace('.pug', '');
-				const templatePath = path.resolve(dir, file);
-				const outputPath = path.resolve(PATH_OUT, `${name}.js`);
-				
-				const templateFunction = `import template from '${templatePath}'; export default template;`;
-				
-				fs.writeFileSync(outputPath, templateFunction);
-			}
-		}
-	}
-};
-  
-generateTemplates();

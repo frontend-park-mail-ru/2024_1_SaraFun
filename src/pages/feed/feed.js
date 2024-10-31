@@ -1,4 +1,4 @@
-import template from '../../templates/feed.js';
+import template from './ui/feed.pug';
 import { getUsers } from './api/getUsers.js';
 import Navbar from '../../widgets/Navbar/navbar.js';
 
