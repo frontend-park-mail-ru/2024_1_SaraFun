@@ -14,7 +14,6 @@ export class ProfilePage {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
 		this.parent.root.innerHTML = this.render();
-		this.addEventListeners();
 		this.navbar = new Navbar(document.querySelector('nav'), parent);
 	}
 

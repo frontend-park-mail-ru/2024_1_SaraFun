@@ -50,12 +50,11 @@ export default class App {
 			history.pushState({}, '', route.path);
 			const componentInstance = new route.componentName(this);
 		} else {
-			this.render(this.router.profile.path);
-			// if (this.#state.isAuthenticated) {
-			// 	this.render(this.router.feed.path);
-			// } else {
-			// 	this.render(this.router.login.path);
-			// }
+			if (this.#state.isAuthenticated) {
+				this.render(this.router.feed.path);
+			} else {
+				this.render(this.router.login.path);
+			}
 		}
 	}
 }
