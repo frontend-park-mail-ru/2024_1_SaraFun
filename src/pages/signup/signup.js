@@ -69,7 +69,7 @@ export class RegistrationPage {
 					} else { 
 						this.parent.navigateTo('/feed');
 					}
-					this.parent.navigateTO('/feed');
+					this.parent.navigateTo('/feed');
 				} catch (error) {
 					console.error(error);
 				}

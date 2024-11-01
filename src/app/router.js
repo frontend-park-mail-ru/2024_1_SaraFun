@@ -9,9 +9,9 @@ export class Router {
 	 * @returns {Router} - The instance of the Router.
 	 */
     constructor(root) {
-        if (Router.instance) {
-            return Router.instance;
-        }
+		if (Router.instance) {
+			return Router.instance;
+		}
 		this.root = root;
         this.routes = new Map;
         this.currentRoute = null;
@@ -37,7 +37,7 @@ export class Router {
         window.addEventListener('popstate', () => {
 			this.navigateTo(window.location.pathname, false);
 		});
-		this.navigateTo(window.location.pathname);
+		this.navigateTo(window.location.pathname, false);
     }
 
 	/**

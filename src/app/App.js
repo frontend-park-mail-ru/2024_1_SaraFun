@@ -1,6 +1,6 @@
-import {checkAuth} from '../features/checkAuth.js';
-import {Router} from './router.js';
-import { ROUTES } from '../shared/constants/routes.js';
+import { checkAuth } from '../features/checkAuth.js';
+import { Router } from './router.js';
+import { ROUTES, ROUTES_NAME } from '../shared/constants/routes.js';
 
 /**
  * Class representing the main application.
@@ -28,21 +28,21 @@ export default class App {
 		try {
 			this.#state.isAuthenticated = await checkAuth();
 
-			ROUTES.forEach(route => {
-				this.router.register(route.path, route.view);
+			ROUTES.forEach(({ path, view })=> {
+				this.router.register(path, view);
 			});
 
 			this.router.start();
 
 			if (!this.#state.isAuthenticated) {
-				this.router.navigateTo(ROUTES[0].path);
+				this.router.navigateTo(ROUTES.get(ROUTES_NAME.LOGIN).path);
 			}
 			else {
 				this.router.navigateTo(window.location.pathname);
 			}
 
 		} catch (error) {
-			this.router.navigateTo(ROUTES[0].path);
+			this.router.navigateTo(ROUTES.get(ROUTES_NAME.LOGIN).path);
 		}
 	}
 }
