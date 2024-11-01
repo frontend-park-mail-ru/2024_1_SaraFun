@@ -44,7 +44,5 @@ export default class Navbar {
                 this.app.render('/profile');
             });
         }
-
-		//тут реализовать нажатие на кнопку профиля, чтобы перебрасывало на /profile
 	}
 }
