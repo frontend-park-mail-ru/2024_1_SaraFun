@@ -1,8 +1,6 @@
 const path = require('path');
-const fs = require('fs');
-const { readdirSync } = require('fs');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
 	mode: 'development',
@@ -21,7 +19,12 @@ module.exports = {
 			directory: path.resolve(__dirname, 'dist')
 		},
 		port: 3000,
-		open: false,
+		open: {
+			app: {
+			  name: 'Google Chrome', 
+			},
+		  },
+	   
 		hot: true,
 		compress: true,
 		historyApiFallback: true,
@@ -29,18 +32,24 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.css$/,
+				test: /.scss$/, 
 				use: [
-					'style-loader',
-					'css-loader',
-					'sass-loader'
+				  'style-loader', 
+				  'css-loader',   
+				  'sass-loader'  
 				]
 			},
 			{
+				test: /.css$/, 
+				use: [
+				  'style-loader',
+				  'css-loader'
+				]
+			},
+
+			{
 				test: /\.(png|jpg|jpeg|gif|svg)$/i,
 				type: 'asset/resource',
-				
-				
 			},
 			{
 				test: /\.tsx?$/,
@@ -54,7 +63,10 @@ module.exports = {
 		],
 	},
 	resolve: {
-		extensions:['.tsx', '.ts', '.js', '.pug'],
+        alias: {
+          '@img': path.resolve(__dirname, 'src/shared/assets/img')
+        },
+		extensions:['.tsx', '.ts', '.js', '.pug', '.svg'],
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
