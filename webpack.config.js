@@ -32,20 +32,20 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /.scss$/, 
+				test: /.(scss|css)$/, 
 				use: [
 				  'style-loader', 
 				  'css-loader',   
 				  'sass-loader'  
 				]
 			},
-			{
-				test: /.css$/, 
-				use: [
-				  'style-loader',
-				  'css-loader'
-				]
-			},
+			// {
+			// 	test: /.css$/, 
+			// 	use: [
+			// 	  'style-loader',
+			// 	  'css-loader'
+			// 	]
+			// },
 
 			{
 				test: /\.(png|jpg|jpeg|gif|svg)$/i,
