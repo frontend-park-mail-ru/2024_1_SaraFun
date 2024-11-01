@@ -9,9 +9,9 @@ export default class Navbar {
    * @param {HTMLElement} nav - The nav element.
    * @param {Object} app - The application instance.
    */
-	constructor(nav, app) {
+	constructor(nav, parent) {
 		this.nav = nav;
-		this.app = app;
+		this.parent = parent;
 		this.addEventListeners();
 	}
   
@@ -25,7 +25,7 @@ export default class Navbar {
 			link.addEventListener('click', (event) => {
 				event.preventDefault();
 				const path = link.getAttribute('href');
-				this.app.render(path);
+				this.parent.navigateTo(path);
 			});
 		});
       
@@ -33,7 +33,7 @@ export default class Navbar {
 		if (button) {
 			button.addEventListener('click', async () => {
 				await logout();
-				this.app.render('/login');
+				this.parent.navigateTo('/login');
 			});
 		}
 	}

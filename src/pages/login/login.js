@@ -34,7 +34,7 @@ export class LoginPage {
 			event.preventDefault();
 			const url = new URL(event.target.href);
 			const path = url.pathname;
-			this.parent.render(path);
+			this.parent.navigateTo(path);
 		});
 
 		document.querySelector('button').addEventListener('click', async () => {
@@ -63,7 +63,7 @@ export class LoginPage {
 					if (!isLogedIn) {
 						document.getElementById('login-password-error').style.display = 'block';            
 					} else { 
-						this.parent.render('/feed');
+						this.parent.navigateTo('/feed');
 					}
 				} catch (error) {
 					console.error(error);
