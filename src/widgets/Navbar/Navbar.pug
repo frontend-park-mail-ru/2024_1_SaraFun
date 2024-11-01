@@ -9,6 +9,8 @@ mixin navbar(isAuth)
                 if (isAuth)
                     li.nav-link
                         a(href='/feed') Главная
+                    li.nav-link
+                        a(href='/profile') Профиль 
                 else 
                     li.nav-link
                         a(href='/login') Логин
@@ -16,4 +18,4 @@ mixin navbar(isAuth)
                         a(href='/signup') Регистрация
         if (isAuth)
             button#button-logout(type="button") Выйти из аккаунта
-            //+textButton('Выйти из аккаунта', 'button-logout')
+            //нужна кнопка профиля пускай пока будет просто квадрат-ссылку на /profile, куда в дальнейшем впишу фотографию

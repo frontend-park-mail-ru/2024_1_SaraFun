@@ -36,5 +36,15 @@ export default class Navbar {
 				this.app.render('/login');
 			});
 		}
+
+		const profileLink = document.querySelector('li.nav-link a[href="/profile"]');
+        if (profileLink) {
+            profileLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                this.app.render('/profile');
+            });
+        }
+
+		//тут реализовать нажатие на кнопку профиля, чтобы перебрасывало на /profile
 	}
 }

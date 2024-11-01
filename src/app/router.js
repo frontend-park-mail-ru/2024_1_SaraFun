@@ -1,6 +1,7 @@
 import {LoginPage} from '../pages/login/login.js';
 import {FeedPage} from '../pages/feed/feed.js';
 import {RegistrationPage} from '../pages/signup/signup.js';
+import { ProfilePage } from '../pages/profile/profile.js';
 
 /**
  * Creates a router configuration object.
@@ -34,5 +35,10 @@ export const createRouter = () => ({
 		path: '/signup',
 		handle: 'Регистрация',
 		componentName: RegistrationPage,
+	},
+	profile: {
+		path: '/profile',
+		handle: 'Профиль',
+		componentName: ProfilePage,
 	},
 });
