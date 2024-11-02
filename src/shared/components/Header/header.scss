@@ -1,0 +1,11 @@
+.header {
+    &__logo {
+        &__img {
+            width: 130px;
+        }
+    }
+
+    &__description {
+        align-self: center;
+    }
+}
