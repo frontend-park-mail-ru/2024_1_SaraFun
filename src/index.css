@@ -125,71 +125,7 @@ a {
     color: var(--secondary);
 }
 
-.nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--nav-width);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--white1);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 0 10%;
-}
-
-.nav button {
-    width: 180px;
-    align-self: center;
-    padding: 12px; 
-    background-color: var(--secondary);
-    color: var(--white1);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 0px;
-    box-sizing: border-box;
-}
-
-.nav__logo {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-    pointer-events: none;
-}
-
-.nav__logo img{
-    height: 100%; 
-    object-fit: cover;
-    object-position: center; 
-}
-
-.nav-link {
-    display: block;
-    padding: 12px 18px;
-    text-decoration: none;
-    color: var(--black1);
-}
-
-.nav-link:hover {
-    background: var(--primary);
-    border-radius: 10px;
-}
-
-.main-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.main-nav ul li a{
-    color: var(--black1);
-    text-decoration: none;
-}
+/*тут был nav */
 
 .form-section-tinder {
     width: 50%;
@@ -313,7 +249,7 @@ button:hover {
     background-repeat: no-repeat;
     margin-right: 8px;
 }
-.btn.skip::before {
+/* .btn.skip::before {
     background-image: url('../assets/icons/skip.svg');
 }
 .btn.like::before {
@@ -324,7 +260,7 @@ button:hover {
 }
 .btn.gift::before {
     background-image: url('../assets/icons/gift.svg');
-}
+} */
 
 .card-actions {
     display: flex;
