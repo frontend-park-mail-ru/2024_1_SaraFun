@@ -14,7 +14,7 @@ export class FeedPage {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
 		this.render().then(() => {;
-			this.navbar = new Navbar(document.querySelector('nav'), parent);
+			this.navbar = new Navbar(document.querySelector('navbar'), parent);
 		});
 	}
 
@@ -32,7 +32,7 @@ export class FeedPage {
          * Initializes the cards by setting their styles and adding them to the container.
          */
 		function initCards() { 
-			let newCards = document.querySelectorAll('.tinder--card:not(.removed)');
+			let newCards = document.querySelectorAll('.tinder__card:not(.removed)');
 			const maxOffsetIndex = 10;
 		
 			newCards.forEach(function (card, index) {
@@ -49,7 +49,7 @@ export class FeedPage {
 
 		this.parent.root.innerHTML = template({ users });
 		var tinderContainer = document.querySelector('.tinder');
-		var allCards = document.querySelectorAll('.tinder--card');
+		var allCards = document.querySelectorAll('.tinder__card');
 		let nope = document.getElementById('nope');
 		let love = document.getElementById('love');
 		initCards();
@@ -157,7 +157,7 @@ export class FeedPage {
          */
 		function createButtonListener(love) {
 			return function (event) {
-				let cards = document.querySelectorAll('.tinder--card:not(.removed)');
+				let cards = document.querySelectorAll('.tinder__card:not(.removed)');
 				let moveOutWidth = document.body.clientWidth * 1.5;
 			
 				if (!cards.length) {return false;}

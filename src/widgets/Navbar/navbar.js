@@ -19,7 +19,7 @@ export default class Navbar {
    * Adds event listeners to the navigation links and logout button.
    */
 	addEventListeners() {
-		const navLinks = document.querySelectorAll('li.nav-link a');
+		const navLinks = document.querySelectorAll('li a');
 
 		navLinks.forEach(link => {
 			link.addEventListener('click', (event) => {

@@ -1,0 +1,14 @@
+.image-section {
+    flex: 1;
+    background-color: var(--secondary);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-section__img {
+    height: 100%; 
+    object-fit: cover;
+    object-position: center; 
+}
