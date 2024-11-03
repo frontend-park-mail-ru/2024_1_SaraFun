@@ -26,12 +26,12 @@ export class ProfilePage {
     this.isEditing = false;
     this.navbar = null;
     this.ID = -1;
-    this.FirstName = 'Андрей';
-    this.LastName = 'Карганов';
+    this.FirstName = '--';
+    this.LastName = '--';
     this.Age = 20;
     this.Gender = 'male';
-    this.Target = '$100';
-    this.About = 'tg: @andrey_918';
+    this.Target = '--';
+    this.About = '--';
     this.loadProfile().then(() => {
       this.render();
     });
