@@ -5,33 +5,38 @@ import cors from 'cors';
 import session from 'express-session';
 import { fileURLToPath } from 'url';
 
-dotenv.config();
+dotenv.config(); 
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 
+if (!process.env.SECRET_KEY) {
+  console.error('SECRET_KEY is not defined in .env file');
+  process.exit(1);
+}
+
 app.use(cors({
-	origin: 'http://localhost:80', 
-	credentials: true
+ origin: 'http://localhost:80', 
+ credentials: true
 }));
 
 app.use(session({
-	secret: process.env.SECRET_KEY,
-	resave: false,
-	saveUninitialized: true,
-	cookie: { secure: false } 
+ secret: process.env.SECRET_KEY,
+ resave: false,
+ saveUninitialized: true,
+ cookie: { secure: false } 
 }));
 
 app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/*', (req, res) => {
-	res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
+ res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
 });
 
 const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {
-	console.log(`Server is running on http://localhost:${PORT}`);
+ console.log(`Server is running on http://localhost:${PORT}`);
 });
