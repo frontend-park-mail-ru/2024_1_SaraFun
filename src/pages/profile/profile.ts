@@ -22,7 +22,6 @@ export class ProfilePage {
   private About: string;
 
   constructor(parent: Parent) {
-    this.loadProfile()
     this.parent = parent;
     this.isEditing = false;
     this.navbar = null;
@@ -33,6 +32,7 @@ export class ProfilePage {
     this.Gender = 'male';
     this.Target = '$100';
     this.About = 'tg: @andrey_918';
+    this.loadProfile();
     this.render();
   }
 
@@ -72,6 +72,7 @@ export class ProfilePage {
   }
 
   public render(): void {
+    this.loadProfile();
     this.parent.root.innerHTML = template({
       isEditing: this.isEditing,
       FirstName: this.FirstName,
@@ -134,8 +135,8 @@ export class ProfilePage {
     } else {
         console.error('Failed to update profile');
     }
-
     this.isEditing = false; 
+    await this.loadProfile();
     this.render(); 
   }
 }
