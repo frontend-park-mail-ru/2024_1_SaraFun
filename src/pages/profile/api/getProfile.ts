@@ -24,7 +24,7 @@ export async function getProfile(): Promise<UserProfile | null> {
       Gender: data.profile.gender,
       Age: data.profile.age,
       Target: data.profile.target,
-      About:data.profile.about,
+      About: data.profile.about,
     };
 
 

@@ -22,6 +22,7 @@ export class ProfilePage {
   private About: string;
 
   constructor(parent: Parent) {
+    this.loadProfile()
     this.parent = parent;
     this.isEditing = false;
     this.navbar = null;
@@ -32,8 +33,6 @@ export class ProfilePage {
     this.Gender = 'male';
     this.Target = '$100';
     this.About = 'tg: @andrey_918';
-    this.loadProfile()
-  
     this.render();
   }
 
@@ -48,8 +47,6 @@ export class ProfilePage {
         this.Gender = profileData.Gender || 'male';
         this.Target = profileData.Target || '$100';
         this.About = profileData.About || 'tg: @andrey_918';
-        console.log(profileData);
-        console.log(this.Age, this.Gender);
       }
     } catch (error) {
       console.error('Ошибка при загрузке профиля:', error);
