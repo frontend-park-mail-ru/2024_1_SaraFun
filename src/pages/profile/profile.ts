@@ -73,7 +73,6 @@ export class ProfilePage {
   }
 
   public render(): void {
-    this.loadProfile();
     this.parent.root.innerHTML = template({
       isEditing: this.isEditing,
       FirstName: this.FirstName,
@@ -137,7 +136,8 @@ export class ProfilePage {
         console.error('Failed to update profile');
     }
     this.isEditing = false; 
-    await this.loadProfile();
-    this.render(); 
+    this.loadProfile().then(() => {
+      this.render();
+    });
   }
 }
