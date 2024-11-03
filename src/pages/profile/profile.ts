@@ -40,7 +40,7 @@ export class ProfilePage {
     try {
       const profileData = await getProfile();
       if (profileData) {
-        this.Age = profileData.ID || -1;
+        this.ID = profileData.ID || -1;
         this.FirstName = profileData.FirstName || 'Кирилл';
         this.LastName = profileData.LastName || 'Четверов';
         this.Age = profileData.Age || 20;
@@ -48,7 +48,6 @@ export class ProfilePage {
         this.Target = profileData.Target || '$100кк';
         this.About = profileData.About || 'tg: @Reufee';
       }
-      this.render();
     } catch (error) {
       console.error('Ошибка при загрузке профиля:', error);
     }
@@ -119,13 +118,13 @@ export class ProfilePage {
     const about = (document.getElementById('About') as HTMLTextAreaElement).value || 'nothing';
 
     const profileData: UserProfile = {
-      "ID": this.ID, 
-      "FirstName": firstName,
-      "LastName": lastName,
-      "Age": age,
-      "Gender": gender,
-      "Target": target,
-      "About": about,
+      ID: this.ID, 
+      FirstName: firstName,
+      LastName: lastName,
+      Age: age,
+      Gender: gender,
+      Target: target,
+      About: about,
     };
 
     const updateSuccess = await updProfile(this.ID, profileData);
