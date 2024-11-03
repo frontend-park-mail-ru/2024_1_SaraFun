@@ -11,6 +11,7 @@
     "allowSyntheticDefaultImports": true, 
     "noEmit": false, 
     "typeRoots": ["./node_modules/@types"], 
-    "allowJs": true,
-  }
+    "allowJs": true
+  },
+  "include": ["src/**/*", "pug.d.ts"]
 }

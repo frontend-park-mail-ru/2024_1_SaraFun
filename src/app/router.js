@@ -1,7 +1,7 @@
 import {LoginPage} from '../pages/login/login.js';
 import {FeedPage} from '../pages/feed/feed.js';
 import {RegistrationPage} from '../pages/signup/signup.js';
-import { ProfilePage } from '../pages/profile/profile.js';
+import { ProfilePage } from '../pages/profile/profile.ts';
 
 /**
  * Creates a router configuration object.
