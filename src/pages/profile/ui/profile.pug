@@ -1,3 +1,4 @@
+//profile.pug
 include ../../../widgets/Navbar/Navbar.pug
 
 +navbar(true)
@@ -5,10 +6,30 @@ include ../../../widgets/Navbar/Navbar.pug
 div.profile
   div.profile-card
     .image-section-profile
-        img(src="./img/image.svg", alt="Фотография пользователя", draggable="false")
-    .info-section
-      h1 Имя пользователя
-      p Пол: Мужской
-      p Возраст: 25
-      p Биография: Здесь будет краткая информация о пользователе.
-    button.settings-button Настройки
+      img(src="./img/image.svg", alt="Фотография пользователя", draggable="false")
+    if isEditing
+      .settings-form
+        h2 Редактировать профиль
+        label
+          | Имя:
+          input(type="text" id="username" value="Имя пользователя")
+        label
+          | Пол:
+          select(id="gender")
+            option(value="male") Мужской
+            option(value="female") Женский
+        label
+          | Возраст:
+          <input type="number" id="age" value="25" max="85">
+        label
+          | Биография:
+          textarea(id="bio" rows="1" maxlength="200") Здесь будет краткая информация о пользователе.
+        button#save-settings Сохранить
+        button.settings-button Отмена
+    else 
+      .info-section
+        h1 Имя пользователя
+        p Пол: Мужской
+        p Возраст: 25
+        p Биография: Здесь будет краткая информация о пользователе.
+      button.settings-button Настройки
