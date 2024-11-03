@@ -8,20 +8,19 @@ import { UserProfile } from './profile';
  * @param {Object} profileData - The data to update the user's profile.
  * @returns {Promise<boolean>} - A promise that resolves to true if the update is successful, otherwise false.
  */
-export async function updProfile(id: number, profileData: UserProfile): Promise<boolean> {
+export async function updProfile(profileData: UserProfile): Promise<boolean> {
   try {
     const data = {
-      profile: {
-        firstName: profileData.FirstName,
-        lastName: profileData.LastName,
-        gender: profileData.Gender,
-        age: profileData.Age,
-        target: profileData.Target,
-        about: profileData.About,
-      }
-  };
+      id: profileData.ID,
+      firstName: profileData.FirstName,
+      lastName: profileData.LastName,
+      gender: profileData.Gender,
+      age: profileData.Age,
+      target: profileData.Target,
+      about: profileData.About,
+    };
   
-    const response = await put(`http://5.188.140.7:8080/profile/${id}`, data);
+    const response = await put(`http://5.188.140.7:8080/updateprofile`, data);
     
     if (!response.ok) {
       console.error('Failed to update profile:', response.statusText);

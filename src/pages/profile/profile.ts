@@ -26,12 +26,12 @@ export class ProfilePage {
     this.isEditing = false;
     this.navbar = null;
     this.ID = -1;
-    this.FirstName = '--';
-    this.LastName = '--';
+    this.FirstName = 'Fatal';
+    this.LastName = 'Error'
     this.Age = 20;
     this.Gender = 'male';
-    this.Target = '--';
-    this.About = '--';
+    this.Target = 'To solve this issue';
+    this.About = 'Something wrong';
     this.loadProfile().then(() => {
       this.render();
     });
@@ -127,7 +127,7 @@ export class ProfilePage {
       About: about,
     };
 
-    const updateSuccess = await updProfile(this.ID, profileData);
+    const updateSuccess = await updProfile(profileData);
     
     
     if (updateSuccess) {
