@@ -41,13 +41,14 @@ export class ProfilePage {
     try {
       const profileData = await getProfile();
       if (profileData) {
-        this.Age = profileData.ID || -1;
-        this.FirstName = profileData.FirstName || 'Андрей';
-        this.LastName = profileData.LastName || 'Карганов';
-        this.Age = profileData.Age || 20;
-        this.Gender = profileData.Gender || 'male';
-        this.Target = profileData.Target || '$100';
-        this.About = profileData.About || 'tg: @andrey_918';
+        this.Age = profileData["ID"] || -1;
+        this.FirstName = profileData["FirstName"] || 'Андрей';
+        this.LastName = profileData["LastName"] || 'Карганов';
+        this.Age = profileData["Age"] || 20;
+        this.Gender = profileData["Gender"] || 'male';
+        this.Target = profileData["Target"] || '$100';
+        this.About = profileData["About"] || 'tg: @andrey_918';
+        console.log(profileData);
       }
     } catch (error) {
       console.error('Ошибка при загрузке профиля:', error);
