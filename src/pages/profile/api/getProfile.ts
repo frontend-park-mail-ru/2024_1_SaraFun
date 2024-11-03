@@ -15,7 +15,20 @@ export async function getProfile(): Promise<UserProfile | null> {
       return null; 
     }
 
-    return await response.json();
+    const data = await response.json();
+
+    const userProfile: UserProfile = {
+      ID: data.profile.id,
+      FirstName: data.profile.firstName,
+      LastName: data.profile.lastName,
+      Gender: data.profile.gender,
+      Age: data.profile.age,
+      Target: data.profile.target,
+      About:data.profile.about,
+    };
+
+
+    return userProfile;
   } catch (error) {
     console.error('Error fetching user profile:', error);
     return null; 
