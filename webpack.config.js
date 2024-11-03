@@ -42,7 +42,19 @@ module.exports = {
 			{
 				test: /\.(png|jpg|jpeg|gif|svg)$/i,
 				type: 'asset/resource',
+				generator: {
+					filename: 'img/[name][ext]', 
+				},
+		  
 			},
+			{
+				test: /.(woff|woff2|eot|ttf|otf)$/i,
+				type: 'asset/resource',
+				generator: {
+				  filename: 'fonts/[name][ext]', 
+				},
+			},
+		
 			{
 				test: /\.tsx?$/,
 				use: 'ts-loader',

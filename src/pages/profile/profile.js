@@ -1,5 +1,6 @@
 import template from './ui/profile.pug';
 import Navbar from '../../widgets/Navbar/navbar.js';
+import './ui/profile.scss';
 
 
 /**
