@@ -1,5 +1,5 @@
 import { get } from '../../../shared/api/api.js';
-import { UserProfile } from './profile'; // Импортируйте интерфейс
+import { UserProfile } from './profile';
 
 /**
  * Fetches the profile of a user by ID.
@@ -15,7 +15,7 @@ export async function getProfile(): Promise<UserProfile | null> {
       return null; 
     }
 
-    return await response.json() as UserProfile; // Указываем тип
+    return await response.json() as UserProfile;
   } catch (error) {
     console.error('Error fetching user profile:', error);
     return null; 
