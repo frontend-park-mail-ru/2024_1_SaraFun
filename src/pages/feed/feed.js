@@ -1,5 +1,6 @@
 import template from './ui/feed.pug';
 import { getUsers } from './api/getUsers.js';
+import { putLikeOrDislike } from './api/putLikeOrDislike.js';
 import Navbar from '../../widgets/Navbar/navbar.js';
 
 
@@ -53,6 +54,12 @@ export class FeedPage {
 		var allCards = document.querySelectorAll('.tinder--card');
 		let nope = document.getElementById('nope');
 		let love = document.getElementById('love');
+		allCards.forEach((card, index) => {
+			const user = users[index];
+			if (user) {
+				card.setAttribute('data-item-id', user.id);
+			}
+		});
 		initCards();
 
 		allCards.forEach(function (el) {
@@ -111,8 +118,10 @@ export class FeedPage {
 			/**
              * Ends the drag event.
              */
-			function endDrag() {
-				if (!isDragging) {return;}
+			async function endDrag() {
+				if (!isDragging) {
+					return;
+				}
 				isDragging = false;
 			
 				el.classList.remove('moving');
@@ -136,6 +145,11 @@ export class FeedPage {
 					let rotate = xMulti * yMulti;
 		
 					el.style.transform = 'translate(' + toX + 'px, ' + toY + 'px) rotate(' + rotate + 'deg)';
+
+					let love = deltaX > 0;
+					let userId = el.getAttribute('data-item-id');
+    				await putLikeOrDislike(love, userId);
+
 					initCards();
 			  	}
 			}
@@ -157,13 +171,18 @@ export class FeedPage {
          * @returns {Function} - The event listener function.
          */
 		function createButtonListener(love) {
-			return function (event) {
+			return async function (event) {
 				let cards = document.querySelectorAll('.tinder--card:not(.removed)');
 				let moveOutWidth = document.body.clientWidth * 1.5;
 			
-				if (!cards.length) {return false;}
+				if (!cards.length) {
+					return false;
+				}
 			
 				let card = cards[0];
+				let userId = card.getAttribute('data-item-id');
+
+				await putLikeOrDislike(love, userId);
 			
 				card.classList.add('removed');
 			
