@@ -19,8 +19,8 @@ export async function getProfile(): Promise<UserProfile | null> {
 
     const userProfile: UserProfile = {
       ID: data.profile.id,
-      FirstName: data.profile.firstName,
-      LastName: data.profile.lastName,
+      FirstName: data.profile.first_name,
+      LastName: data.profile.last_name,
       Gender: data.profile.gender,
       Age: data.profile.age,
       Target: data.profile.target,

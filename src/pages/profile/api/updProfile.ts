@@ -12,8 +12,8 @@ export async function updProfile(profileData: UserProfile): Promise<boolean> {
   try {
     const data = {
       id: profileData.ID,
-      firstName: profileData.FirstName,
-      lastName: profileData.LastName,
+      first_name: profileData.FirstName,
+      last_name: profileData.LastName,
       gender: profileData.Gender,
       age: profileData.Age,
       target: profileData.Target,
