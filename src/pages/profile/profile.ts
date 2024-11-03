@@ -33,7 +33,6 @@ export class ProfilePage {
     this.Target = '$100';
     this.About = 'tg: @andrey_918';
     this.loadProfile();
-    this.render();
   }
 
   private async loadProfile(): Promise<void> {
@@ -41,13 +40,14 @@ export class ProfilePage {
       const profileData = await getProfile();
       if (profileData) {
         this.Age = profileData.ID || -1;
-        this.FirstName = profileData.FirstName || 'Андрей';
-        this.LastName = profileData.LastName || 'Карганов';
+        this.FirstName = profileData.FirstName || 'Кирилл';
+        this.LastName = profileData.LastName || 'Четверов';
         this.Age = profileData.Age || 20;
         this.Gender = profileData.Gender || 'male';
-        this.Target = profileData.Target || '$100';
-        this.About = profileData.About || 'tg: @andrey_918';
+        this.Target = profileData.Target || '$100кк';
+        this.About = profileData.About || 'tg: @Reufee';
       }
+      this.render();
     } catch (error) {
       console.error('Ошибка при загрузке профиля:', error);
     }
