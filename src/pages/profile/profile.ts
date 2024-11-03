@@ -33,6 +33,7 @@ export class ProfilePage {
     this.Target = '$100';
     this.About = 'tg: @andrey_918';
     this.loadProfile();
+    this.render();
   }
 
   private async loadProfile(): Promise<void> {
