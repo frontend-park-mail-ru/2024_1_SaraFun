@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "ESNext", 
+    "outDir": "./dist",
+    "target": "ESNext", 
+    "moduleResolution": "Node",
+    "esModuleInterop": true, 
+    "noImplicitAny": true, 
+    "lib": ["ESNext", "DOM"], 
+    "downlevelIteration": true, 
+    "allowSyntheticDefaultImports": true, 
+    "noEmit": false, 
+    "typeRoots": ["./node_modules/@types"], 
+    "allowJs": true,
+  }
+}

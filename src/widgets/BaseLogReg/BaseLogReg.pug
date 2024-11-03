@@ -1,6 +1,5 @@
 include ../../shared/components/ImageSection/ImageSection.pug
 
-- const pathToImage = "../assets/img/image.svg"
 
 mixin base(typeOfPage)
     .form
@@ -9,4 +8,4 @@ mixin base(typeOfPage)
                 include ../RegistrationForm/RegistrationForm.pug
             else if typeOfPage === 'login'
                 include ../LoginForm/LoginForm.pug
-        +imageSection(pathToImage)
+        +imageSection('./image.svg')

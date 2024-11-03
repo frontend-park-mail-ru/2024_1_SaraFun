@@ -8,12 +8,12 @@
       "node": true
     }
   },
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint . --fix",
-    "start": "cd server && node server.js",
-    "build": "node compile.js"
+    "start": "npm run build && node server/server.mjs",
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production"
   },
   "keywords": [],
   "author": "sarafun",
@@ -23,17 +23,33 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
-    "express-session": "^1.18.0",
-    "pug": "^3.0.3"
+    "express-history-api-fallback": "^2.2.1",
+    "express-session": "^1.18.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
     "@eslint/js": "^9.11.1",
     "@types/pug": "^2.0.10",
+    "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
     "eslint": "^8.57.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.0",
-    "eslint-plugin-react": "^7.37.1",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "globals": "^15.10.0"
+    "file-loader": "^6.2.0",
+    "globals": "^15.10.0",
+    "html-webpack-plugin": "^5.6.3",
+    "pug": "^2.0.4",
+    "pug-loader": "^2.4.0",
+    "sass": "^1.80.5",
+    "sass-loader": "^16.0.3",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.95.0",
+    "webpack-bundle-analyzer": "^4.10.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
   }
 }

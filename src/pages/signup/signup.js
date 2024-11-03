@@ -1,4 +1,4 @@
-import template from '../../templates/signup.js';
+import template from './ui/signup.pug';
 import { signupUser } from './api/signupUser.js';
 import { isValidPassword } from '../../shared/utils/validation.js';
 import { isValidLogin } from '../../shared/utils//validation.js';
