@@ -49,6 +49,7 @@ export class ProfilePage {
         this.Target = profileData["Target"] || '$100';
         this.About = profileData["About"] || 'tg: @andrey_918';
         console.log(profileData);
+        console.log(this.Age, this.Gender)
       }
     } catch (error) {
       console.error('Ошибка при загрузке профиля:', error);
