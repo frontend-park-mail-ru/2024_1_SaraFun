@@ -118,13 +118,13 @@ export class ProfilePage {
     const about = (document.getElementById('About') as HTMLTextAreaElement).value || 'nothing';
 
     const profileData: UserProfile = {
-      ID: this.ID, 
-      FirstName: firstName,
-      LastName: lastName,
-      Age: age,
-      Gender: gender,
-      Target: target,
-      About: about,
+      "ID": this.ID, 
+      "FirstName": firstName,
+      "LastName": lastName,
+      "Age": age,
+      "Gender": gender,
+      "Target": target,
+      "About": about,
     };
 
     const updateSuccess = await updProfile(this.ID, profileData);

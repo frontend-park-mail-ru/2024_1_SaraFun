@@ -14,12 +14,12 @@ export async function signupUser(login, password, gender, age) {
 	try {
 		const body = {
 			user: {
-			  username: login,
-			  password: password
+			  "username": login,
+			  "password": password
 			},
 			profile: {
-			  gender: gender, 
-			  age: age 
+			  "gender": gender, 
+			  "age": age 
 			}
 		  };
 	  
