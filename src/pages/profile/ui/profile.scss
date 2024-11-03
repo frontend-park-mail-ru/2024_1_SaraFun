@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 92vh;
+    height: 100vh;
+    margin-top: auto;
 
     .profile-card {
         width: 65vw;
@@ -20,7 +21,7 @@
             overflow: hidden;
 
             img {
-                width: 100%;
+                width: 150px;
                 height: auto;
                 object-fit: cover;
             }
