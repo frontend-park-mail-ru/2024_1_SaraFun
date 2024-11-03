@@ -1,6 +1,6 @@
 include ../../../widgets/Navbar/Navbar.pug
 
-+navbar(true)
+
 
 div.profile
   div.profile-card
@@ -11,24 +11,33 @@ div.profile
         h2 Редактировать профиль
         label
           | Имя:
-          input(type="text" id="username" value="Имя пользователя")
+          input(type="text" id="FirstName" value=FirstName required)
+        label
+          | Фамилия:
+          input(type="text" id="LastName" value=LastName required)
         label
           | Пол:
-          select(id="gender")
-            option(value="male") Мужской
-            option(value="female") Женский
+          select(id="gender" required)
+            option(value="male", selected=Gender === 'male') Мужской
+            option(value="female", selected=Gender === 'female') Женский
         label
           | Возраст:
-          <input type="number" id="age" value="25" max="85">
+          input(type="number" id="Age" value=Age max="85" min="1" required)
+        label
+          | Цель:
+          input(type="string" id="Target" value=Target)
         label
           | Биография:
-          textarea(id="bio" rows="1" maxlength="200") Здесь будет краткая информация о пользователе.
-        button#save-settings Сохранить
-        button.settings-button Отмена
+          textarea(id="bio" rows="1" maxlength="200")= About
+        button#save-settings() Сохранить
+        button.settings-button() Отмена
     else 
+      +navbar(true)
       .info-section
-        h1 Имя пользователя
-        p Пол: Мужской
-        p Возраст: 25
-        p Биография: Здесь будет краткая информация о пользователе.
-      button.settings-button Настройки
+        p Имя: #{FirstName}
+        p Фамилия: #{LastName}
+        p Пол: #{Gender === 'male' ? 'Мужской' : 'Женский'}
+        p Возраст: #{Age}
+        p Цель: #{Target}
+        p Биография: #{About}
+      button.settings-button() Настройки

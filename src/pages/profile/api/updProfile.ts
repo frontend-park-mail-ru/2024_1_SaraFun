@@ -1,4 +1,4 @@
-import {post} from '../../../shared/api/api.js';
+import {put} from '../../../shared/api/api.js';
 
 /**
  * Updates the profile of a user by ID.
@@ -9,7 +9,7 @@ import {post} from '../../../shared/api/api.js';
  */
 export async function updProfile(id: number | string, profileData: Object): Promise<boolean> {
   try {
-    const response = await post(`http://5.188.140.7:8080/profile/${id}`, profileData);
+    const response = await put(`http://5.188.140.7:8080/profile/${id}`, profileData);
     
     if (!response.ok) {
       console.error('Failed to update profile:', response.statusText);

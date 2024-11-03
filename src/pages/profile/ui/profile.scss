@@ -4,9 +4,11 @@
     align-items: center;
     height: 100vh;
     margin-top: auto;
+    
 
     .profile-card {
         width: 65vw;
+        position: sticky;
         background: var(--white1);
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
