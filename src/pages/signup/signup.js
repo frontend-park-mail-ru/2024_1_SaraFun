@@ -44,7 +44,7 @@ export class RegistrationPage {
 			const login = document.getElementById('login').value;
 			const password = document.getElementById('password').value;
 			const gender = document.querySelector('input[name="gender"]:checked').value;
-			const age = document.getElementById('age').value;
+			const age = parseInt((document.getElementById('age')).value, 10);
 
 			let valid = true;
 
