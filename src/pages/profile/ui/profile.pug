@@ -17,7 +17,7 @@ div.profile
           input(type="text" id="LastName" value=LastName required)
         label
           | Пол:
-          select(id="gender" required)
+          select(id="Gender" required)
             option(value="male", selected=Gender === 'male') Мужской
             option(value="female", selected=Gender === 'female') Женский
         label
@@ -28,7 +28,7 @@ div.profile
           input(type="string" id="Target" value=Target)
         label
           | Биография:
-          textarea(id="bio" rows="1" maxlength="200")= About
+          textarea(id="About" rows="1" maxlength="200")= About
         button#save-settings() Сохранить
         button.settings-button() Отмена
     else 

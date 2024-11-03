@@ -67,9 +67,9 @@ module.exports = {
 		],
 	},
 	resolve: {
-        alias: {
-          '@img': path.resolve(__dirname, 'src/shared/assets/img')
-        },
+		alias: {
+			'@img': path.resolve(__dirname, 'src/shared/assets/img')
+		},
 		extensions:['.tsx', '.ts', '.js', '.pug', '.svg'],
 	},
 	plugins: [

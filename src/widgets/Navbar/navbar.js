@@ -38,11 +38,11 @@ export default class Navbar {
 		}
 
 		const profileLink = document.querySelector('li.nav-link a[href="/profile"]');
-        if (profileLink) {
-            profileLink.addEventListener('click', (event) => {
-                event.preventDefault();
-                this.app.render('/profile');
-            });
-        }
+		if (profileLink) {
+			profileLink.addEventListener('click', (event) => {
+				event.preventDefault();
+				this.app.render('/profile');
+			});
+		}
 	}
 }

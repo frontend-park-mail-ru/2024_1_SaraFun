@@ -1,5 +1,7 @@
 import template from './ui/profile.pug';
+import { UserProfile } from './api/profile';
 import { getProfile } from './api/getProfile';
+import { updProfile } from './api/updProfile';
 import Navbar from '../../widgets/Navbar/navbar.js';
 import './ui/profile.scss';
 
@@ -11,6 +13,7 @@ export class ProfilePage {
   private parent: Parent;
   private isEditing: boolean;
   private navbar: Navbar | null;
+  private ID: number;
   private FirstName: string;
   private LastName: string;
   private Age: number;
@@ -22,6 +25,7 @@ export class ProfilePage {
     this.parent = parent;
     this.isEditing = false;
     this.navbar = null;
+    this.ID = -1;
     this.FirstName = 'Андрей';
     this.LastName = 'Карганов';
     this.Age = 20;
@@ -37,6 +41,7 @@ export class ProfilePage {
     try {
       const profileData = await getProfile();
       if (profileData) {
+        this.Age = profileData.ID || -1;
         this.FirstName = profileData.FirstName || 'Андрей';
         this.LastName = profileData.LastName || 'Карганов';
         this.Age = profileData.Age || 20;
@@ -50,12 +55,11 @@ export class ProfilePage {
   }
   
 
-  // Функция для ограничения количества строк
   private limitText(textarea: HTMLTextAreaElement, limit: number): void {
     const limitLines = (): void => {
-      const lines = textarea.value.split("n");
+      const lines = textarea.value.split("\n");
       if (lines.length > limit) {
-        textarea.value = lines.slice(0, limit).join("n");
+        textarea.value = lines.slice(0, limit).join("\n");
       }
     };
 
@@ -90,8 +94,8 @@ export class ProfilePage {
     }
 
     if (this.isEditing) {
-      const textarea = document.getElementById('bio') as HTMLTextAreaElement; 
-      this.limitText(textarea, 10); // Ограничение на кол-во строк
+      const textarea = document.getElementById('About') as HTMLTextAreaElement; 
+      this.limitText(textarea, 10); 
 
       textarea.addEventListener('input', () => {
         textarea.style.height = 'auto'; 
@@ -105,15 +109,32 @@ export class ProfilePage {
     this.render(); 
   }
   
-  private saveSettings(): void {
-    // const FirstName = (document.getElementById('FirstName') as HTMLInputElement).value;
-    // const LastName = (document.getElementById('LastName') as HTMLSelectElement).value;
-    // const Gender = (document.getElementById('Gender') as HTMLInputElement).value;
-    // const Age = (document.getElementById('Age') as HTMLTextAreaElement).value;
-    // const Target = (document.getElementById('Target') as HTMLTextAreaElement).value;
-    // const About = (document.getElementById('About') as HTMLTextAreaElement).value || 'nothing';
+  private async saveSettings(): Promise<void> {
+    const firstName = (document.getElementById('FirstName') as HTMLInputElement).value;
+    const lastName = (document.getElementById('LastName') as HTMLInputElement).value;
+    const gender = (document.getElementById('Gender') as HTMLSelectElement).value;
+    const age = parseInt((document.getElementById('Age') as HTMLInputElement).value, 10);
+    const target = (document.getElementById('Target') as HTMLTextAreaElement).value;
+    const about = (document.getElementById('About') as HTMLTextAreaElement).value || 'nothing';
 
-    // Здесь добавить логику для сохранения данных (отправка на сервер)
+    const profileData: UserProfile = {
+      ID: this.ID, 
+      FirstName: firstName,
+      LastName: lastName,
+      Age: age,
+      Gender: gender,
+      Target: target,
+      About: about,
+    };
+
+    const updateSuccess = await updProfile(this.ID, profileData);
+    
+    
+    if (updateSuccess) {
+        console.log('Profile updated successfully');
+    } else {
+        console.error('Failed to update profile');
+    }
 
     this.isEditing = false; 
     this.render(); 
