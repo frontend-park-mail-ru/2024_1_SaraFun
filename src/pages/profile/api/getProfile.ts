@@ -17,16 +17,19 @@ export async function getProfile(): Promise<UserProfile | null> {
 
     const data = await response.json();
 
+    const images = Array.isArray(data.images) ? data.images : [];
+
+
     const userProfile: UserProfile = {
       ID: data.profile.id,
-      imagesIndexes: data.images.map((image: { id: string }) => image.id),
+      imagesIndexes: images.map((image: { id: string }) => image.id),
       FirstName: data.profile.first_name,
       LastName: data.profile.last_name,
       Gender: data.profile.gender,
       Age: data.profile.age,
       Target: data.profile.target,
       About: data.profile.about,
-      imagesURLs: data.images.map((image: { link: string }) => image.link),
+      imagesURLs: images.map((image: { link: string }) => image.link),
     };
 
 
