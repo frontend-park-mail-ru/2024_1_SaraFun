@@ -1,7 +1,9 @@
-text(class=".text-base") Пол
-    .gender-selection
-        input(type="radio" id="male" name="gender" value="male" checked)
-        label(for="male") Мужской
-        input(type="radio" id="female" name="gender" value="female")
-        label(for="female") Женский
+text(class=".text-base label") Пол
+.gender-selection
+    .radio-input
+        input(class="radio-input__radio" type="radio" id="male" name="gender" value="male" checked)
+        label(class="radio-input__label" for="male") Мужской
+    .radio-input
+        input(class="radio-input__radio" type="radio" id="female" name="gender" value="female")
+        label(class="radio-input__label" for="female") Женский
     p.error(id="gender-error" style="display:none;") Выберите пол

@@ -1,9 +1,9 @@
 mixin footerText(type)
     if type=='login'
-        .footer-text
-            span У вас еще нет аккаунта? 
-            a(href="/signup" id="link" class=".link") Зарегистрируйтесь
+        .footer
+            span.footer__text У вас еще нет аккаунта?&nbsp;
+            a(class='footer__link' href="/signup" id="link" class=".link") Зарегистрируйтесь
     else if type=='registration'
-        .footer-text
-            span У вас уже есть аккаунт? 
-            a(href="/login" id="link" class=".link") Войдите в аккаунт
+        .footer
+            span.footer__text У вас уже есть аккаунт?&nbsp;
+            a(class='footer__link' href="/login" id="link" class=".link") Войдите в аккаунт

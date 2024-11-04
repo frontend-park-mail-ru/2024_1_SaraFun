@@ -1,0 +1,20 @@
+.footer {
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__text {
+        color: var(--grey2);
+    }
+
+    &__link {
+        color: var(--secondary);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--success);
+            text-decoration: underline;
+        }
+    }
+}
