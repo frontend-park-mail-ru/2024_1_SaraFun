@@ -6,7 +6,7 @@ include ../../../widgets/MatchCard/MatchCard.pug
 if (users.length > 0)
     .matches
         for user in users
-            +matchCard(user.username, user.age)
+            +matchCard(user.username, user.profile.age)
 else
     .form.message-form
         h1 Пока что у вас нет мэтчей
