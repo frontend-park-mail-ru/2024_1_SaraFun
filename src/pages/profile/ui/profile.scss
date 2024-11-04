@@ -1,9 +1,9 @@
 .profile {
     display: flex;
     justify-content: center;
-    align-items: flex-start; // Измените на flex-start, чтобы фотографии не центрировались по высоте
-    flex-direction: column; // Убедитесь, что все элементы располагаются вертикально
-    margin-top: 700px; // Отступ сверху
+    align-items: flex-start; 
+    flex-direction: column; 
+    margin-top: 700px;
 
     .profile-card {
         width: 65vw;
@@ -20,14 +20,14 @@
             margin-top: 30px;
             width: 80%;
             display: flex; 
-            flex-wrap: wrap; // Позволяет обернуть элементы
-            justify-content: space-between; // Распределяет пространство между изображениями
+            flex-wrap: wrap; 
+            justify-content: space-between; 
             
             img {
-                width: calc(33.33% - 80px); // Устанавливаем ширину каждого изображения (3 в ряд с отступом)
-                margin-bottom: 20px; // Отступ снизу между рядами
+                width: calc(33.33% - 80px); 
+                margin-bottom: 20px; 
                 border-radius: 12px;
-                object-fit: cover; // Сохраняем пропорции изображения
+                object-fit: cover; 
             }
         }
 

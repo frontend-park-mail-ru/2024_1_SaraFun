@@ -74,7 +74,7 @@ export class ProfilePage {
 
   public render(): void {
     this.parent.root.innerHTML = template({
-      additionalImages: ['./img/IMG_2098.JPG', "./img/IMG_0739.JPG", './img/IMG_2097.JPG', './img/IMG_1106.JPG', './img/IMG_1105.JPG', './img/IMG_2099.JPG'],
+      imagesURLs: ['./img/IMG_2098.JPG', "./img/IMG_0739.JPG", './img/IMG_2097.JPG', './img/IMG_1106.JPG', './img/IMG_1105.JPG', './img/IMG_2099.JPG'],
       isEditing: this.isEditing,
       FirstName: this.FirstName,
       LastName: this.LastName,

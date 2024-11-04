@@ -3,8 +3,8 @@ include ../../../widgets/Navbar/Navbar.pug
 div.profile
   div.profile-card
     .image-section-profile
-      each image in additionalImages
-        img(src=image, alt="Дополнительная фотография")
+      each image in imagesURLs
+        img(src=image, alt="Фотография в профиле")
     if isEditing
       .settings-form
         h2 Редактировать профиль
