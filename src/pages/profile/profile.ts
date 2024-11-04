@@ -37,7 +37,7 @@ export class ProfilePage {
     this.Gender = 'male';
     this.Target = 'Undefined';
     this.About = 'Undefined';
-    this.imagesURLs = ['./img/IMG_2098.JPG', "./img/IMG_0739.JPG", './img/IMG_2097.JPG', './img/IMG_1106.JPG', './img/IMG_1105.JPG', './img/IMG_2099.JPG'];
+    this.imagesURLs = ['./img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg'];
     this.loadProfile().then(() => {
       this.render();
     });
@@ -66,8 +66,7 @@ export class ProfilePage {
         this.Gender = 'male';
         this.Target = 'Undefined';
         this.About = 'Undefined';
-        // this.imagesURLs = ['./img/IMG_2098.JPG', "./img/IMG_0739.JPG", './img/IMG_2097.JPG', './img/IMG_1106.JPG', './img/IMG_1105.JPG', './img/IMG_2099.JPG'];
-        this.imagesURLs = [];
+        this.imagesURLs = ['./img/image.svg'];
       }
 
       console.log(this.imagesURLs);
