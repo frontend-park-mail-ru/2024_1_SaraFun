@@ -1,4 +1,8 @@
-include ../../../widgets/BaseLogReg/BaseLogReg.pug
 include ../../../widgets/Navbar/Navbar.pug
+include ../../../widgets/MatchCard/MatchCard.pug
 
 +navbar(true)
+
+.matches
+    for user in users
+        +matchCard(user.username, user.age)

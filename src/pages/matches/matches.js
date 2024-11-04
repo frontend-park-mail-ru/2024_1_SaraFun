@@ -12,7 +12,7 @@ export class MatchesPage {
 
     async render() {
         //let users = await getMatches();
-        let users = [{'username': "Андрей"},{'username': "Андрей"},{'username': "Андрей"},{'username': "Андрей"},{'username': "Андрей"}];
+        let users = [{'username': "Андрей", 'age': 20},{'username': "Андрей", 'age': 20},{'username': "Андрей", 'age': 20},{'username': "Андрей", 'age': 20},{'username': "Андрей", 'age': 20}];
 		this.parent.root.innerHTML = template({ users });
 	}
 }

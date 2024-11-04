@@ -11,6 +11,8 @@ import '@img/X.svg';
 import '@img/Heart.svg';
 
 import './nav.scss';
+import './widgets/MatchCard/matchCard.scss';
+import './pages/matches/ui/matches.scss'
 
 
 
