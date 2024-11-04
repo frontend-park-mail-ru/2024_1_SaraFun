@@ -107,12 +107,18 @@ export class ProfilePage {
       saveButton.addEventListener('click', () => this.saveSettings());
     }
 
-    const buttons = document.querySelectorAll('.delete-button');
-    buttons.forEach((button, index) => {
+    const delButtons = document.querySelectorAll('.delete-button');
+    delButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
             this.deleteImage(index);
         });
     });
+
+    const uploadButton = document.querySelector('.upload-button') as HTMLElement;
+    if (uploadButton) {
+        uploadButton.addEventListener('click', () => this.uploadImg());
+    }
+
 
 
     if (this.isEditing) {
@@ -124,6 +130,32 @@ export class ProfilePage {
         textarea.style.height = `${textarea.scrollHeight}px`; 
       });
     }
+  }
+
+  private uploadImg() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*'; 
+
+    input.addEventListener('change', (event: Event) => {
+        const target = event.target as HTMLInputElement; 
+        const file = target.files?.[0]; 
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const result = e.target!.result; 
+                if (typeof result === 'string') { 
+                    this.imagesURLs.push(result); 
+                    this.render();
+                }
+            };
+            reader.readAsDataURL(file); 
+        }
+    });
+
+    input.click(); 
+    console.log(this.imagesURLs);
+
   }
 
   private deleteImage(index: number): void {
