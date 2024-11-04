@@ -38,7 +38,7 @@ div.profile
       .image-section-profile
         each image in imagesURLs
           .image-container
-            img(src=`http://5.188.140.7${image}`, alt="Фотография в профиле")
+            img(src=image, alt="Фотография в профиле")
       .info-section
         p Имя: #{FirstName}
         p Фамилия: #{LastName}

@@ -29,8 +29,15 @@ export async function getProfile(): Promise<UserProfile | null> {
       Age: data.profile.age,
       Target: data.profile.target,
       About: data.profile.about,
-      imagesURLs: images.map((image: { link: string }) => image.link),
+      imagesURLs: images.map((image: { link: string }) => {
+        // Извлекаем название файла из ссылки
+        const fileName = image.link.substring(image.link.lastIndexOf('/') + 1);
+        // Формируем полный URL
+        return 'http://5.188.140.7/${fileName}';
+      }),
     };
+
+    
 
 
     return userProfile;
