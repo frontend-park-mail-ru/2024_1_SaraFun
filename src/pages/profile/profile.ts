@@ -211,7 +211,9 @@ export class ProfilePage {
     } else {
         console.error('Failed to update profile');
     }
-    this.isEditing = false; 
+    this.isEditing = false;
+    this.imagesDel = [];
+    this.imagesNew = [];
     this.loadProfile().then(() => {
       this.render();
     });
