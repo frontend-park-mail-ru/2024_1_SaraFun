@@ -1,11 +1,10 @@
 include ../../../widgets/Navbar/Navbar.pug
 
-
-
 div.profile
   div.profile-card
     .image-section-profile
-      img(src="./img/image.svg", alt="Фотография пользователя", draggable="false")
+      each image in additionalImages
+        img(src=image, alt="Дополнительная фотография")
     if isEditing
       .settings-form
         h2 Редактировать профиль
