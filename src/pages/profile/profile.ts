@@ -10,8 +10,8 @@ interface Parent {
 }
 
 export class ProfilePage {
-  private imagesDel: number[];
-  private imagesNew: File[];
+  private imagesDel: number[] = [];
+  private imagesNew: File[] = [];
   private parent: Parent;
   private isEditing: boolean;
   private navbar: Navbar | null;
