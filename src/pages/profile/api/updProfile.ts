@@ -41,7 +41,7 @@ export async function updProfile(profileData: UserProfile, imagesNew: File[], im
       }
     }
   
-    const response = await put('http://5.188.140.7:8080/updateprofile', data);
+    const response = await put('http://5.188.140.7:8080/updateprofile', JSON.stringify(data));
     
     if (!response.ok) {
       console.error('Failed to update profile:', response.statusText);
