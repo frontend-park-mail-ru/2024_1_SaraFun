@@ -3,7 +3,8 @@
     justify-content: center;
     align-items: flex-start; 
     flex-direction: column; 
-    margin-top: 700px;
+    margin-top: 500px;
+    margin-bottom: 100px;
 
     .profile-card {
         width: 65vw;
@@ -22,14 +23,38 @@
             display: flex; 
             flex-wrap: wrap; 
             justify-content: space-between; 
-            
-            img {
-                width: calc(33.33% - 80px); 
-                margin-bottom: 20px; 
-                border-radius: 12px;
-                object-fit: cover; 
+
+            .image-container {
+                display: flex;
+                flex-direction: column; // Вертикальное выравнивание
+                align-items: center; // Центрирование элементов по горизонтали
+                margin-bottom: 20px;
+
+                img {
+                    width: calc(100%); // Ширина изображения
+                    height: 200px; // Фиксированная высота
+                    border-radius: 12px;
+                    object-fit: cover; // Сохранение пропорций
+
+                }
+
+                .delete-button {
+                    margin-top: 10px; // Отступ между изображением и кнопкой
+                    padding: 10px 20px;
+                    background-color: #007BFF;
+                    color: white;
+                    border: none;
+                    width: 100px; // Установите фиксированную ширину кнопки
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #0056b3;
+                    }
+                }
             }
         }
+
 
         .info-section {
             text-align: left; 
@@ -67,6 +92,7 @@
                 background-color: #0056b3;
             }
         }
+        
     }
 }
 .settings-form {
@@ -76,6 +102,7 @@
     width: 100%; 
     max-width: 400px; 
     margin: 0 auto; 
+
 
     h2 {
         margin-bottom: 20px;

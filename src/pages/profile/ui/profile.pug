@@ -2,10 +2,12 @@ include ../../../widgets/Navbar/Navbar.pug
 
 div.profile
   div.profile-card
-    .image-section-profile
-      each image in imagesURLs
-        img(src=image, alt="Фотография в профиле")
     if isEditing
+      .image-section-profile
+        each image in imagesURLs
+          .image-container
+            img(src=image, alt="Фотография в профиле")
+            button.delete-button() Удалить
       .settings-form
         h2 Редактировать профиль
         label
@@ -32,6 +34,10 @@ div.profile
         button.settings-button() Отмена
     else 
       +navbar(true)
+      .image-section-profile
+        each image in imagesURLs
+          .image-container
+            img(src=image, alt="Фотография в профиле")
       .info-section
         p Имя: #{FirstName}
         p Фамилия: #{LastName}

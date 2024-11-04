@@ -33,7 +33,7 @@ export class ProfilePage {
     this.Gender = 'male';
     this.Target = 'Undefined';
     this.About = 'Undefined';
-    this.imagesURLs = ['./img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg'];
+    this.imagesURLs = ['./img/IMG_2098.JPG', "./img/IMG_0739.JPG", './img/IMG_2097.JPG', './img/IMG_1106.JPG', './img/IMG_1105.JPG', './img/IMG_2099.JPG'];
     this.loadProfile().then(() => {
       this.render();
     });
@@ -51,6 +51,16 @@ export class ProfilePage {
         this.Target = profileData.Target || '-';
         this.About = profileData.About || '-';
         this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
+      }
+      else {
+        this.ID = -1;
+        this.FirstName = 'Undefined';
+        this.LastName = 'Undefined'
+        this.Age = 0;
+        this.Gender = 'male';
+        this.Target = 'Undefined';
+        this.About = 'Undefined';
+        this.imagesURLs = ['./img/IMG_2098.JPG', "./img/IMG_0739.JPG", './img/IMG_2097.JPG', './img/IMG_1106.JPG', './img/IMG_1105.JPG', './img/IMG_2099.JPG'];
       }
     } catch (error) {
       console.error('Ошибка при загрузке профиля:', error);
@@ -97,6 +107,14 @@ export class ProfilePage {
       saveButton.addEventListener('click', () => this.saveSettings());
     }
 
+    const buttons = document.querySelectorAll('.delete-button');
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            this.deleteImage(index);
+        });
+    });
+
+
     if (this.isEditing) {
       const textarea = document.getElementById('About') as HTMLTextAreaElement; 
       this.limitText(textarea, 10); 
@@ -108,9 +126,18 @@ export class ProfilePage {
     }
   }
 
+  private deleteImage(index: number): void {
+    this.imagesURLs.splice(index, 1);
+    this.render();
+    console.log(`Изображение с индексом ${index} удалено`);
+  }
+
+
   private toggleEditMode(): void {
     this.isEditing = !this.isEditing; 
-    this.render(); 
+    this.loadProfile().then(() => {
+      this.render();
+    });
   }
   
   private async saveSettings(): Promise<void> {
