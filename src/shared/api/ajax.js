@@ -17,7 +17,8 @@ export async function ajax(url, method, body = null) {
 	};
 
 	if (body) {
-		options.body = JSON.stringify(body);
+		// options.body = JSON.stringify(body);
+		options.body = body;
 	}
 
 	try {
