@@ -69,6 +69,8 @@ export class ProfilePage {
         // this.imagesURLs = ['./img/IMG_2098.JPG', "./img/IMG_0739.JPG", './img/IMG_2097.JPG', './img/IMG_1106.JPG', './img/IMG_1105.JPG', './img/IMG_2099.JPG'];
         this.imagesURLs = [];
       }
+
+      console.log(this.imagesURLs);
     } catch (error) {
       console.error('Ошибка при загрузке профиля:', error);
     }
