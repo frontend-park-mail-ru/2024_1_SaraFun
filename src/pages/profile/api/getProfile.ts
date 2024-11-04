@@ -19,6 +19,7 @@ export async function getProfile(): Promise<UserProfile | null> {
 
     const userProfile: UserProfile = {
       ID: data.profile.id,
+      imagesIndexes: data.profile.imagesIndexes,
       FirstName: data.profile.first_name,
       LastName: data.profile.last_name,
       Gender: data.profile.gender,

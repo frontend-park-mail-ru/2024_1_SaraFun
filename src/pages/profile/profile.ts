@@ -10,10 +10,13 @@ interface Parent {
 }
 
 export class ProfilePage {
+  private imagesDel: number[];
+  private imagesNew: File[];
   private parent: Parent;
   private isEditing: boolean;
   private navbar: Navbar | null;
   private ID: number;
+  private imagesIndexes: number[];
   private FirstName: string;
   private LastName: string;
   private Age: number;
@@ -27,6 +30,7 @@ export class ProfilePage {
     this.isEditing = false;
     this.navbar = null;
     this.ID = -1;
+    this.imagesIndexes = [];
     this.FirstName = 'Undefined';
     this.LastName = 'Undefined'
     this.Age = 0;
@@ -44,6 +48,7 @@ export class ProfilePage {
       const profileData = await getProfile();
       if (profileData) {
         this.ID = profileData.ID || -1;
+        this.imagesIndexes = profileData.imagesIndexes || [-1];
         this.FirstName = profileData.FirstName || '-';
         this.LastName = profileData.LastName || '-';
         this.Age = profileData.Age || 21;
@@ -54,13 +59,15 @@ export class ProfilePage {
       }
       else {
         this.ID = -1;
+        this.imagesIndexes = [];
         this.FirstName = 'Undefined';
         this.LastName = 'Undefined'
         this.Age = 0;
         this.Gender = 'male';
         this.Target = 'Undefined';
         this.About = 'Undefined';
-        this.imagesURLs = ['./img/IMG_2098.JPG', "./img/IMG_0739.JPG", './img/IMG_2097.JPG', './img/IMG_1106.JPG', './img/IMG_1105.JPG', './img/IMG_2099.JPG'];
+        // this.imagesURLs = ['./img/IMG_2098.JPG', "./img/IMG_0739.JPG", './img/IMG_2097.JPG', './img/IMG_1106.JPG', './img/IMG_1105.JPG', './img/IMG_2099.JPG'];
+        this.imagesURLs = [];
       }
     } catch (error) {
       console.error('Ошибка при загрузке профиля:', error);
@@ -138,27 +145,30 @@ export class ProfilePage {
     input.accept = 'image/*'; 
 
     input.addEventListener('change', (event: Event) => {
-        const target = event.target as HTMLInputElement; 
-        const file = target.files?.[0]; 
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const result = e.target!.result; 
-                if (typeof result === 'string') { 
-                    this.imagesURLs.push(result); 
-                    this.render();
-                }
-            };
-            reader.readAsDataURL(file); 
-        }
+      const target = event.target as HTMLInputElement; 
+      const file = target.files?.[0]; 
+      if (file) {
+        this.imagesNew.push(file); 
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const result = e.target!.result; 
+          if (typeof result === 'string') { 
+            this.imagesURLs.push(result); 
+            this.render();
+          }
+        };
+        reader.readAsDataURL(file); 
+      }
     });
 
     input.click(); 
     console.log(this.imagesURLs);
-
   }
 
+
   private deleteImage(index: number): void {
+    this.imagesDel.push(this.imagesIndexes[index]);
+    this.imagesIndexes.splice(index, 1);
     this.imagesURLs.splice(index, 1);
     this.render();
     console.log(`Изображение с индексом ${index} удалено`);
@@ -182,6 +192,7 @@ export class ProfilePage {
 
     const profileData: UserProfile = {
       ID: this.ID, 
+      imagesIndexes: this.imagesIndexes,
       FirstName: firstName,
       LastName: lastName,
       Age: age,
@@ -191,7 +202,7 @@ export class ProfilePage {
       imagesURLs: this.imagesURLs,
     };
 
-    const updateSuccess = await updProfile(profileData);
+    const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel);
     
     
     if (updateSuccess) {

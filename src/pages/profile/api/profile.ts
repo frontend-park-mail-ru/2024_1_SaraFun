@@ -1,5 +1,6 @@
 export interface UserProfile {
     ID: number,
+    imagesIndexes: number[],
     FirstName: string,
     LastName: string,
     Age: number,
