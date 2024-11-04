@@ -164,7 +164,6 @@ export class ProfilePage {
     });
 
     input.click(); 
-    console.log(this.imagesURLs);
   }
 
 
