@@ -18,7 +18,6 @@ export async function updProfile(profileData: UserProfile, imagesNew: File[], im
       age: profileData.Age,
       target: profileData.Target,
       about: profileData.About,
-      imagesURLs: profileData.imagesURLs,
     };
     
     for (const image of imagesNew) {
