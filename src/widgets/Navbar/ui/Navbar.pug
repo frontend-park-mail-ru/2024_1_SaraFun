@@ -9,6 +9,8 @@ mixin navbar(isAuth)
                 if (isAuth)
                     li
                         a(class='navbar__link' href='/feed') Главная
+                    li
+                        a(class='navbar__link' href='/matches') Мэтчи
                 else 
                     li
                         a(class='navbar__link' href='/login') Логин

@@ -8,6 +8,9 @@
 @import './shared/components/TextButton/textButton';
 @import './widgets/Navbar/ui/navbar';
 @import './widgets/RegistrationForm/registrationForm';
+@import './pages/matches/ui/matches.scss';
+@import './widgets/MatchCard/matchCard.scss';
+@import './pages/matches/ui/messageForm.scss';
 
 @font-face {
     font-family: 'Rubik';
@@ -29,6 +32,11 @@
     --nav-width: 55px;
 }
 
+.root {
+    display: flex;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Rubik';
     background-color: var(--primary);
@@ -36,10 +44,10 @@ body {
     background-size: cover;
     background-position: center;
     margin: 0;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     padding-top: var(--nav-width);
     box-sizing: border-box;
 }
