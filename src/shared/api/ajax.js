@@ -10,9 +10,9 @@
 export async function ajax(url, method, body = null) {
 	const options = {
 		method: method,
-		headers: {
-			'Content-Type': 'application/json'
-		},
+		// headers: {
+		// 	'Content-Type': 'application/json'
+		// },
 		credentials: 'include'
 	};
 
