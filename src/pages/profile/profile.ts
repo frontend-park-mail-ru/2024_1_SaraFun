@@ -153,6 +153,7 @@ export class ProfilePage {
         reader.onload = (e) => {
           const result = e.target!.result; 
           if (typeof result === 'string') { 
+            this.imagesIndexes.push(-1);
             this.imagesURLs.push(result); 
             this.render();
           }

@@ -12,7 +12,6 @@ export async function updProfile(profileData: UserProfile, imagesNew: File[], im
   try {
     const data = {
       id: profileData.ID,
-      imagesIndexes: profileData.imagesIndexes,
       first_name: profileData.FirstName,
       last_name: profileData.LastName,
       gender: profileData.Gender,
@@ -30,11 +29,12 @@ export async function updProfile(profileData: UserProfile, imagesNew: File[], im
         console.error('Failed to upload image:', response.statusText);
         return false; 
       }
-      const responseData = await response.json();
-      data.imagesIndexes.push(responseData.imagesId);
     }
 
     for (const imageId of imagesDel) {
+      if (imageId === -1) {
+        continue;
+      }
       const response = await del(`http://5.188.140.7:8080/image/${imageId}`);
       if (!response.ok) {
         console.error('Failed to delete image:', response.statusText);
@@ -42,7 +42,7 @@ export async function updProfile(profileData: UserProfile, imagesNew: File[], im
       }
     }
   
-    const response = await put(`http://5.188.140.7:8080/updateprofile`, data);
+    const response = await put('http://5.188.140.7:8080/updateprofile', data);
     
     if (!response.ok) {
       console.error('Failed to update profile:', response.statusText);
