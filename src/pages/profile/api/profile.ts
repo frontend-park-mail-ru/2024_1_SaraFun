@@ -6,4 +6,5 @@ export interface UserProfile {
     Gender: string,
     Target: string,
     About: string,
+    imagesURLs: string[],
   }

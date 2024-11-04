@@ -18,6 +18,7 @@ export async function updProfile(profileData: UserProfile): Promise<boolean> {
       age: profileData.Age,
       target: profileData.Target,
       about: profileData.About,
+      imagesURLs: profileData.imagesURLs,
     };
   
     const response = await put(`http://5.188.140.7:8080/updateprofile`, data);

@@ -20,18 +20,20 @@ export class ProfilePage {
   private Gender: string;
   private Target: string;
   private About: string;
+  private imagesURLs: string[];
 
   constructor(parent: Parent) {
     this.parent = parent;
     this.isEditing = false;
     this.navbar = null;
     this.ID = -1;
-    this.FirstName = 'Fatal';
-    this.LastName = 'Error'
-    this.Age = 20;
+    this.FirstName = 'Undefined';
+    this.LastName = 'Undefined'
+    this.Age = 0;
     this.Gender = 'male';
-    this.Target = 'To solve this issue';
-    this.About = 'Something wrong';
+    this.Target = 'Undefined';
+    this.About = 'Undefined';
+    this.imagesURLs = ['./img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg'];
     this.loadProfile().then(() => {
       this.render();
     });
@@ -48,6 +50,7 @@ export class ProfilePage {
         this.Gender = profileData.Gender || 'male';
         this.Target = profileData.Target || '-';
         this.About = profileData.About || '-';
+        this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
       }
     } catch (error) {
       console.error('Ошибка при загрузке профиля:', error);
@@ -74,7 +77,6 @@ export class ProfilePage {
 
   public render(): void {
     this.parent.root.innerHTML = template({
-      imagesURLs: ['./img/IMG_2098.JPG', "./img/IMG_0739.JPG", './img/IMG_2097.JPG', './img/IMG_1106.JPG', './img/IMG_1105.JPG', './img/IMG_2099.JPG'],
       isEditing: this.isEditing,
       FirstName: this.FirstName,
       LastName: this.LastName,
@@ -82,6 +84,7 @@ export class ProfilePage {
       Gender: this.Gender,
       Target: this.Target,
       About: this.About,
+      imagesURLs: this.imagesURLs,
     });
   
     this.navbar = new Navbar(document.querySelector('nav') as HTMLElement, this.parent);
@@ -126,6 +129,7 @@ export class ProfilePage {
       Gender: gender,
       Target: target,
       About: about,
+      imagesURLs: this.imagesURLs,
     };
 
     const updateSuccess = await updProfile(profileData);

@@ -25,6 +25,7 @@ export async function getProfile(): Promise<UserProfile | null> {
       Age: data.profile.age,
       Target: data.profile.target,
       About: data.profile.about,
+      imagesURLs: data.profile.imagesURLs,
     };
 
 
