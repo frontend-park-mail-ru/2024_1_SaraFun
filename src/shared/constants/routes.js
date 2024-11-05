@@ -9,6 +9,7 @@ export const ROUTES_NAME = {
     FEED: 'feed',
     MATCHES: 'matches',
     SIGNUP: 'signup',
+    PROFILE: 'profile'
 };
 
 export const ROUTES = new Map([
@@ -16,5 +17,5 @@ export const ROUTES = new Map([
     [ROUTES_NAME.FEED, { path: '/feed', view: FeedPage }],
     [ROUTES_NAME.MATCHES, { path: '/matches', view: MatchesPage }],
     [ROUTES_NAME.SIGNUP, { path: '/signup', view: RegistrationPage }],
-    [ROUTES_NAME.SIGNUP, { path: '/profile', view: ProfilePage }],
+    [ROUTES_NAME.PROFILE, { path: '/profile', view: ProfilePage }],
 ]);
