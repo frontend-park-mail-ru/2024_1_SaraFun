@@ -1,13 +1,17 @@
-@import './pages/feed/ui/feed';
-@import './shared/components/CustomInput/customInput';
-@import './shared/components/FooterText/footerText';
-@import './shared/components/GenderSelection/genderSelection';
-@import './shared/components/Header/header';
-@import './shared/components/ImageSection/imageSection';
-@import './shared/components/SwipeCard/swipeCard';
-@import './shared/components/TextButton/textButton';
-@import './widgets/Navbar/ui/navbar';
-@import './widgets/RegistrationForm/registrationForm';
+@use './pages/feed/ui/feed' as *;
+@use './shared/components/CustomInput/customInput' as *;
+@use './shared/components/FooterText/footerText' as *;
+@use './shared/components/GenderSelection/genderSelection' as *;
+@use './shared/components/Header/header' as *;
+@use './shared/components/ImageSection/imageSection' as *;
+@use './shared/components/SwipeCard/swipeCard' as *;
+@use './shared/components/TextButton/textButton' as *;
+@use './widgets/Navbar/ui/navbar' as *;
+@use './widgets/RegistrationForm/registrationForm' as *;
+@use './pages/matches/ui/matches.scss' as *;
+@use './widgets/MatchCard/matchCard.scss' as *;
+@use './pages/matches/ui/messageForm.scss' as *;
+
 
 @font-face {
     font-family: 'Rubik';
@@ -29,6 +33,11 @@
     --nav-width: 55px;
 }
 
+.root {
+    display: flex;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Rubik';
     background-color: var(--primary);
@@ -36,10 +45,10 @@ body {
     background-size: cover;
     background-position: center;
     margin: 0;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     padding-top: var(--nav-width);
     box-sizing: border-box;
 }

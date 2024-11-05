@@ -1,8 +1,9 @@
-import template from './ui/signup.pug';
-import { signupUser } from './api/signupUser.js';
 import { isValidPassword } from '../../shared/utils/validation.js';
 import { isValidLogin } from '../../shared/utils//validation.js';
 import Navbar from '../../widgets/Navbar/navbar.js';
+
+import { signupUser } from './api/signupUser.js';
+import template from './ui/signup.pug';
 
 /**
  * Class representing the registration page.
@@ -43,7 +44,7 @@ export class RegistrationPage {
 			const login = document.getElementById('login').value;
 			const password = document.getElementById('password').value;
 			const gender = document.querySelector('input[name="gender"]:checked').value;
-			const age = document.getElementById('age').value;
+			const age = parseInt((document.getElementById('age')).value, 10);
 
 			let valid = true;
 

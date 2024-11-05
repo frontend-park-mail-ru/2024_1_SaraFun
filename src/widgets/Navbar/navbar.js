@@ -36,5 +36,13 @@ export default class Navbar {
 				this.parent.navigateTo('/login');
 			});
 		}
+
+		const profileLink = document.querySelector('li.nav-link a[href="/profile"]');
+		if (profileLink) {
+			profileLink.addEventListener('click', (event) => {
+				event.preventDefault();
+				this.app.render('/profile');
+			});
+		}
 	}
 }
