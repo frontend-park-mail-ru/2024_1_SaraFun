@@ -10,7 +10,7 @@ import {post} from '../../../shared/api/api.js';
  */
 export async function loginUser(login, password) {
 	try {
-		const body = {'username': login, 'password': password};
+		const body = {"username": login, "password": password};
 		const response = await post('http://5.188.140.7:8080/signin', body);
 		return true;
 
