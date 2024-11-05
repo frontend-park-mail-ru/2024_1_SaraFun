@@ -16,7 +16,7 @@ export async function signupUser(login, password, gender, age) {
 			user: {
 				"username": login,
 				"password": password,
-			  },
+			},
 			profile: {
 				"gender": gender, 
 				"age": parseInt(age),
