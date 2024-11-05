@@ -6,7 +6,7 @@ include ../../../widgets/Navbar/ui/Navbar.pug
 div.tinder
   div.tinder__cards
     for user in users
-      +card(user.username, user.gender, user.age)
+      +card(user)
   div.tinder__buttons
     button#nope(class="button button_img")
       img(class="img button_img__img" src="./img/X.svg" alt="X")

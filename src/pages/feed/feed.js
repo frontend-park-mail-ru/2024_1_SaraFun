@@ -58,7 +58,7 @@ export class FeedPage {
 		allCards.forEach((card, index) => {
 			const user = users[index];
 			if (user) {
-				card.setAttribute('data-item-id', user.id);
+				card.setAttribute('data-item-id', user.user);
 			}
 		});
 		initCards();
