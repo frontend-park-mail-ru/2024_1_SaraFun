@@ -11,10 +11,6 @@ import '@img/X.svg';
 import '@img/Heart.svg';
 
 
-import './nav.scss';
-
-
-
 const root = document.querySelector('#root') as HTMLElement;
 
 if (root) {
