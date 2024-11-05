@@ -9,7 +9,7 @@ export const ROUTES_NAME = {
     FEED: 'feed',
     MATCHES: 'matches',
     SIGNUP: 'signup',
-    PROFILE: 'profile'
+    PROFILE: 'profile',
 };
 
 export const ROUTES = new Map([
