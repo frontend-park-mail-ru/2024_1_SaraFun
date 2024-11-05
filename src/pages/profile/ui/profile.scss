@@ -1,0 +1,149 @@
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    flex-direction: column; 
+    margin-top: 500px;
+    margin-bottom: 100px;
+
+    .profile-card {
+        width: 65vw;
+        position: sticky;
+        background: var(--white1);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        padding: 20px;
+
+        .image-section-profile {
+            margin-top: 30px;
+            width: 80%;
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: space-between; 
+
+            .image-container {
+                display: flex;
+                flex-direction: column; // Вертикальное выравнивание
+                align-items: center; // Центрирование элементов по горизонтали
+                margin-bottom: 20px;
+
+                img {
+                    width: calc(100%); // Ширина изображения
+                    height: 200px; // Фиксированная высота
+                    border-radius: 12px;
+                    object-fit: cover; // Сохранение пропорций
+
+                }
+
+                .delete-button {
+                    margin-top: 10px; // Отступ между изображением и кнопкой
+                    padding: 10px 20px;
+                    background-color: #007BFF;
+                    color: white;
+                    border: none;
+                    width: 100px; // Установите фиксированную ширину кнопки
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #0056b3;
+                    }
+                }
+            }
+        }
+
+
+        .info-section {
+            text-align: left; 
+            width: 100%;
+
+            p {
+                margin: 10px 0;
+                padding-left: 20px;
+                position: relative;
+                
+                &:before {
+                    content: ""; 
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    width: 5px;
+                    height: 5px;
+                    background-color: #007BFF;
+                    border-radius: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+
+        .settings-button {
+            margin-top: auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+        }
+        
+    }
+}
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+    max-width: 400px; 
+    margin: 0 auto; 
+
+
+    h2 {
+        margin-bottom: 20px;
+        width: 100%; 
+        text-align: center; 
+    }
+
+    label {
+        margin-bottom: 10px;
+        width: 100%; 
+
+        input,
+        select,
+        textarea {
+            margin-left: 0; 
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%; 
+            resize: none; 
+        }
+        
+        textarea {
+            min-height: 50px; 
+            max-height: 200px; 
+            overflow-y: hidden
+        }
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 15px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%; 
+
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
+}

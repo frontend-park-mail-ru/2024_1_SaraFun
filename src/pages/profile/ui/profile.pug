@@ -1,0 +1,49 @@
+include ../../../widgets/Navbar/Navbar.pug
+
+div.profile
+  div.profile-card
+    if isEditing
+      .image-section-profile
+        each image in imagesURLs
+          .image-container
+            img(src=image, alt="Фотография в профиле")
+            button.delete-button() Удалить
+        button.upload-button() Загрузить новое фото
+      .settings-form
+        h2 Редактировать профиль
+        label
+          | Имя:
+          input(type="text" id="FirstName" value=FirstName required)
+        label
+          | Фамилия:
+          input(type="text" id="LastName" value=LastName required)
+        label
+          | Пол:
+          select(id="Gender" required)
+            option(value="male", selected=Gender === 'male') Мужской
+            option(value="female", selected=Gender === 'female') Женский
+        label
+          | Возраст:
+          input(type="number" id="Age" value=Age max="85" min="1" required)
+        label
+          | Цель:
+          input(type="string" id="Target" value=Target)
+        label
+          | Биография:
+          textarea(id="About" rows="1" maxlength="200")= About
+        button#save-settings() Сохранить
+        button.settings-button() Отмена
+    else 
+      +navbar(true)
+      .image-section-profile
+        each image in imagesURLs
+          .image-container
+            img(src=image, alt="Фотография в профиле")
+      .info-section
+        p Имя: #{FirstName}
+        p Фамилия: #{LastName}
+        p Пол: #{Gender === 'male' ? 'Мужской' : 'Женский'}
+        p Возраст: #{Age}
+        p Цель: #{Target}
+        p Биография: #{About}
+      button.settings-button() Настройки

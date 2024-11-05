@@ -1,5 +1,6 @@
-import template from './ui/login.pug';
 import Navbar from '../../widgets/Navbar/navbar.js';
+
+import template from './ui/login.pug';
 import { loginUser } from './api/loginUser.js';
 
 /**

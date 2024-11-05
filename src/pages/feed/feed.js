@@ -1,7 +1,8 @@
+import Navbar from '../../widgets/Navbar/navbar.js';
+
 import template from './ui/feed.pug';
 import { getUsers } from './api/getUsers.js';
 import { putLikeOrDislike } from './api/putLikeOrDislike.js';
-import Navbar from '../../widgets/Navbar/navbar.js';
 
 
 /**
