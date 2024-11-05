@@ -1,10 +1,10 @@
 mixin card(user)
   .tinder__card
     .image-section
-      if (user.images != null && user.images.length > 0)
+      //if (user.images != null && user.images.length > 0)
         img(class="img image-section__img" src=`http://5.188.140.7/${image[0].link.substring(image.link.lastIndexOf('/') + 1)}` alt="Image" draggable="false")
-      else
-        img(class="img image-section__img" src="./img/image.svg" alt="Image" draggable="false")
+      //else
+      img(class="img image-section__img" src="./img/image.svg" alt="Image" draggable="false")
     .form-section
       h1 !{user.username}
       text-base Пол: !{user.profile.gender}
