@@ -24,7 +24,8 @@ div.profile
             option(value="female", selected=Gender === 'female') Женский
         label
           | Возраст:
-          input(type="number" id="Age" value=Age max="85" min="1" required)
+          input(class="range-input" type="range" id="Age" name="Age" min="18" max="100" value="18" oninput="this.nextElementSibling.value = this.value")
+          output 18
         label
           | Цель:
           input(type="string" id="Target" value=Target)
