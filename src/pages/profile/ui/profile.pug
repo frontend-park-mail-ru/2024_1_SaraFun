@@ -29,7 +29,7 @@ div.profile
           | Цель:
           input(type="string" id="Target" value=Target)
         label
-          | Биография:
+          | О себе:
           textarea(id="About" rows="1" maxlength="200")= About
         button#save-settings() Сохранить
         button.settings-button() Отмена
@@ -45,5 +45,5 @@ div.profile
         p Пол: #{Gender === 'male' ? 'Мужской' : 'Женский'}
         p Возраст: #{Age}
         p Цель: #{Target}
-        p Биография: #{About}
+        p О себе: #{About}
       button.settings-button() Настройки
