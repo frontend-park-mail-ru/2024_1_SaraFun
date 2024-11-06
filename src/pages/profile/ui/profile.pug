@@ -3,14 +3,14 @@ include ../../../widgets/Navbar/ui/Navbar.pug
 div.profile
   div.profile-card
     if isEditing
+      h2 Редактировать профиль
       .image-section-profile
         each image in imagesURLs
           .image-container
             img(src=image, alt="Фотография в профиле")
             button.delete-button() Удалить
-        button.upload-button() Загрузить новое фото
+      button.upload-button() Загрузить новое фото
       .settings-form
-        h2 Редактировать профиль
         label
           | Имя:
           input(type="text" id="FirstName" value=FirstName required)
