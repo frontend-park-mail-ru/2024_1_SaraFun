@@ -5,25 +5,27 @@
  * @returns {boolean} - Returns true if the password is valid, otherwise false.
  */
 export function isValidPassword(password) {
-	if (!password) {
-		return false;
-	}
-	if (password.length < 6 || password.length > 40) {
-		return false;
-	}
+    const errors = [];
 
-	if (!/\d/.test(password)) {
-		return false;
-	}
+    if (!password) {
+        errors.push("Пароль не должен быть пустым.");
+    }
+    if (password.length < 6 || password.length > 40) {
+        errors.push("Пароль должен быть длиной от 6 до 40 символов.");
+    }
+    if (!/\d/.test(password)) {
+        errors.push("Пароль должен содержать минимум одну цифру.");
+    }
+    for (let char of password) {
+        if (!/[a-zA-Z0-9*?!$]/.test(char)) {
+            errors.push("Пароль содержит недопустимые специальные символы. Разрешены: ! ? * - $");
+            break;
+        }
+    }
 
-	for (let char of password) {
-		if (!/[a-zA-Z0-9*?!$]/.test(char)) {
-			return false;
-		}
-	}
-
-	return true;
+    return errors;
 }
+
 
 /**
  * Validates if the given login meets the required criteria.
@@ -32,23 +34,24 @@ export function isValidPassword(password) {
  * @returns {boolean} - Returns true if the login is valid, otherwise false.
  */
 export function isValidLogin(login) {
-	if (login.length < 5 || login.length > 15) {
-		return false;
+    const errors = [];
+
+    if (login.length < 5 || login.length > 25) {
+        errors.push("Логин должен быть длиной от 5 до 25 символов.");
+    }
+
+    const invalidChars = /[^a-zA-Z0-9_-]/;
+    if (invalidChars.test(login)) {
+        errors.push("Логин может содержать только буквы, цифры, - и _.");
+    }
+
+    if ((login.startsWith('_') || login.startsWith('-')) || (login.endsWith('_') || login.endsWith('-'))) {
+        errors.push("Специальные символы не могут быть в начале и в конце логина.");
+    }
+
+    if (/\d/.test(login.charAt(0))) {
+		errors.push("Логин не может начинаться с цифры.");
 	}
-    
-	const invalidChars = /[^a-zA-Z0-9_-]/;
-	if (invalidChars.test(login)) {
-		return false;
-	}
-    
-	if ((login.startsWith('_') || login.startsWith('-')) || 
-		(login.endsWith('_') || login.endsWith('-'))) {
-		return false;
-	}
-    
-	if (/\d/.test(login.charAt(0))) {
-		return false;
-	}
-    
-	return true;
+
+    return errors;
 }
