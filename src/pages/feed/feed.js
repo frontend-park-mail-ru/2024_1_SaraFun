@@ -51,8 +51,8 @@ export class FeedPage {
 		}
 
 		this.parent.root.innerHTML = template({ users });
-		var tinderContainer = document.querySelector('.tinder');
-		var allCards = document.querySelectorAll('.tinder__card');
+		let tinderContainer = document.querySelector('.tinder');
+		let allCards = document.querySelectorAll('.tinder__card');
 		let nope = document.getElementById('nope');
 		let love = document.getElementById('love');
 		allCards.forEach((card, index) => {

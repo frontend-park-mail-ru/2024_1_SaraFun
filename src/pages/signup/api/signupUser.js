@@ -22,7 +22,7 @@ export async function signupUser(login, password, gender, age) {
 				'age': parseInt(age),
 			}
 		};
-		const response = await post('http://5.188.140.7:8080/signup', JSON.stringify(body));
+		await post('http://5.188.140.7:8080/signup', JSON.stringify(body));
 		return true;
 
 	} catch (error) {

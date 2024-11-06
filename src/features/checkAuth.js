@@ -8,7 +8,7 @@ import {get} from '../shared/api/api.js';
  */
 export async function checkAuth() {
 	try {
-		const response = await get('http://5.188.140.7:8080/checkauth');
+		await get('http://5.188.140.7:8080/checkauth');
 		return true;
 
 	} catch (error) {
