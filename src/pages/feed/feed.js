@@ -52,7 +52,7 @@ export class FeedPage {
 
 		this.parent.root.innerHTML = template({ users });
 		if (users === null)
-			return;
+		{return;}
 		let tinderContainer = document.querySelector('.tinder');
 		let allCards = document.querySelectorAll('.tinder__card');
 		let nope = document.getElementById('nope');
