@@ -34,7 +34,6 @@ export async function getProfile(): Promise<UserProfile | null> {
         return `http://5.188.140.7/${fileName}`;
       }),
     };
-    console.log(data.imagesURLs);
 
     
 

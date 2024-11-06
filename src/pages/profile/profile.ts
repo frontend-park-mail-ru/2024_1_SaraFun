@@ -69,7 +69,6 @@ export class ProfilePage {
         this.imagesURLs = ['./img/image.svg'];
       }
 
-      console.log(this.imagesURLs);
     } catch (error) {
       console.error('Ошибка при загрузке профиля:', error);
     }
@@ -172,7 +171,6 @@ export class ProfilePage {
     this.imagesIndexes.splice(index, 1);
     this.imagesURLs.splice(index, 1);
     this.render();
-    console.log(`Изображение с индексом ${index} удалено`);
   }
 
 
@@ -207,7 +205,7 @@ export class ProfilePage {
     
     
     if (updateSuccess) {
-        console.log('Profile updated successfully');
+        // console.log('Profile updated successfully');
     } else {
         console.error('Failed to update profile');
     }
