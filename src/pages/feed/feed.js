@@ -27,7 +27,7 @@ export class FeedPage {
      */
 	async render() {
 		let users = await getUsers();
-		if (users.length === 0) {
+		if (users === null) {
 			users = [{username: 'Анкеты закончились :(', gender: '-', age: '-'}];
 		}
 
