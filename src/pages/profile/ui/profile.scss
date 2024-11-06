@@ -26,25 +26,25 @@
 
             .image-container {
                 display: flex;
-                flex-direction: column; // Вертикальное выравнивание
-                align-items: center; // Центрирование элементов по горизонтали
+                flex-direction: column; 
+                align-items: center; 
                 margin-bottom: 20px;
 
                 img {
-                    width: calc(100%); // Ширина изображения
-                    height: 200px; // Фиксированная высота
+                    width: calc(100%); 
+                    height: 200px; 
                     border-radius: 12px;
-                    object-fit: cover; // Сохранение пропорций
+                    object-fit: cover; 
 
                 }
 
                 .delete-button {
-                    margin-top: 10px; // Отступ между изображением и кнопкой
+                    margin-top: 10px; 
                     padding: 10px 20px;
                     background-color: #007BFF;
                     color: white;
                     border: none;
-                    width: 100px; // Установите фиксированную ширину кнопки
+                    width: 100px; 
                     border-radius: 5px;
                     cursor: pointer;
 
