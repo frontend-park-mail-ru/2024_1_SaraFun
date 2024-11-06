@@ -1,6 +1,7 @@
 import { checkAuth } from '../features/checkAuth.js';
-import { Router } from './router.js';
 import { ROUTES, ROUTES_NAME } from '../shared/constants/routes.js';
+
+import { Router } from './router.js';
 
 /**
  * Class representing the main application.

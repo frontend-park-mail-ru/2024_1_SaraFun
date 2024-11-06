@@ -8,15 +8,15 @@ export class Router {
 	 * @param {HTMLElement} root - The root element of the application where views will be rendered.
 	 * @returns {Router} - The instance of the Router.
 	 */
-    constructor(root) {
+	constructor(root) {
 		if (Router.instance) {
 			return Router.instance;
 		}
 		this.root = root;
-        this.routes = new Map;
-        this.currentRoute = null;
-        Router.instance = this;
-    }
+		this.routes = new Map;
+		this.currentRoute = null;
+		Router.instance = this;
+	}
 
 	/**
 	 * Registers a route with its corresponding view.
@@ -33,12 +33,12 @@ export class Router {
 	/**
 	 * Starts the router by setting up event listeners and navigating to the initial route.
 	 */
-    start() {
-        window.addEventListener('popstate', () => {
+	start() {
+		window.addEventListener('popstate', () => {
 			this.navigateTo(window.location.pathname, false);
 		});
 		this.navigateTo(window.location.pathname, false);
-    }
+	}
 
 	/**
 	 * Navigates to the specified path.
@@ -46,16 +46,16 @@ export class Router {
 	 * @param {string} path - The path to navigate to.
 	 * @param {boolean} addToHistory - Whether to add the navigation to the browser history. Defaults to true.
 	 */
-    navigateTo(path, addToHistory = true) {
+	navigateTo(path, addToHistory = true) {
 		const view = this.routes.get(path);
     	if (view) {
-			this.currentRoute = {path, view}
+			this.currentRoute = {path, view};
 			if (addToHistory) {
 				history.pushState({}, '', path);
 			}
       		const componentInstance = new view(this);
     	} 
-    }
+	}
 
 	/**
 	 * Navigates to the previous page in the browser history.

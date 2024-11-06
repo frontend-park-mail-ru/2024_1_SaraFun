@@ -14,12 +14,12 @@ export async function signupUser(login, password, gender, age) {
 	try {
 		const body = {
 			user: {
-				"username": login,
-				"password": password,
+				'username': login,
+				'password': password,
 			},
 			profile: {
-				"gender": gender, 
-				"age": parseInt(age),
+				'gender': gender, 
+				'age': parseInt(age),
 			}
 		};
 		const response = await post('http://5.188.140.7:8080/signup', JSON.stringify(body));

@@ -1,5 +1,6 @@
-import template from './ui/matches.pug';
 import Navbar from '../../widgets/Navbar/navbar.js';
+
+import template from './ui/matches.pug';
 import { getMatches } from './api/getMatches.js';
 
 export class MatchesPage {
@@ -11,9 +12,9 @@ export class MatchesPage {
 		});
 	}
 
-    async render() {
-        let users = await getMatches();
-        //let users = [{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age':'20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'}, {'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age':'20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'}, {'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age':'20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'}, {'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age':'20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'}];
+	async render() {
+		let users = await getMatches();
+		//let users = [{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age':'20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'}, {'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age':'20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'}, {'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age':'20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'}, {'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age':'20'},{'username': "Андрей", 'age': '20'},{'username': "Андрей", 'age': '20'}];
 		this.parent.root.innerHTML = template({ users });
 	}
 }
