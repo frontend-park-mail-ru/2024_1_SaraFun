@@ -155,6 +155,12 @@ export class ProfilePage {
           if (typeof result === 'string') { 
             this.imagesIndexes.push(-1);
             this.imagesURLs.push(result); 
+            this.FirstName = (document.getElementById('FirstName') as HTMLInputElement).value;
+            this.LastName = (document.getElementById('LastName') as HTMLInputElement).value;
+            this.Gender = (document.getElementById('Gender') as HTMLSelectElement).value;
+            this.Age = parseInt((document.getElementById('Age') as HTMLInputElement).value, 10);
+            this.Target = (document.getElementById('Target') as HTMLTextAreaElement).value;
+            this.About = (document.getElementById('About') as HTMLTextAreaElement).value;
             this.render();
           }
         };
