@@ -3,14 +3,14 @@ include ../../../widgets/Navbar/ui/Navbar.pug
 div.profile
   div.profile-card
     if isEditing
+      h2 Редактировать профиль
       .image-section-profile
         each image in imagesURLs
           .image-container
             img(src=image, alt="Фотография в профиле")
             button.delete-button() Удалить
-        button.upload-button() Загрузить новое фото
+      button.upload-button() Загрузить новое фото
       .settings-form
-        h2 Редактировать профиль
         label
           | Имя:
           input(type="text" id="FirstName" value=FirstName required)
@@ -24,7 +24,8 @@ div.profile
             option(value="female", selected=Gender === 'female') Женский
         label
           | Возраст:
-          input(type="number" id="Age" value=Age max="85" min="1" required)
+          input(class="range-input" type="range" id="Age" name="Age" min="18" max="100" value="18")
+          output 18
         label
           | Цель:
           input(type="string" id="Target" value=Target)
