@@ -33,7 +33,7 @@ export class ProfilePage {
     this.imagesIndexes = [];
     this.FirstName = 'Undefined';
     this.LastName = 'Undefined'
-    this.Age = 0;
+    this.Age = 18;
     this.Gender = 'male';
     this.Target = 'Undefined';
     this.About = 'Undefined';
@@ -62,7 +62,7 @@ export class ProfilePage {
         this.imagesIndexes = [];
         this.FirstName = 'Undefined';
         this.LastName = 'Undefined'
-        this.Age = 0;
+        this.Age = 18;
         this.Gender = 'male';
         this.Target = 'Undefined';
         this.About = 'Undefined';
@@ -113,6 +113,21 @@ export class ProfilePage {
     if (saveButton) {
       saveButton.addEventListener('click', () => this.saveSettings());
     }
+
+    if (this.isEditing) {
+      const rangeInput = document.getElementById('Age') as HTMLInputElement;
+      const output = rangeInput.nextElementSibling as HTMLOutputElement;
+
+      const updateOutput = () => {
+        const value = rangeInput.value;
+        output.value = value === '100' ? '100+' : value;
+    };
+
+    updateOutput();
+    rangeInput.addEventListener('input', updateOutput);
+    }
+    
+
 
     const delButtons = document.querySelectorAll('.delete-button');
     delButtons.forEach((button, index) => {
