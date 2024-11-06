@@ -27,9 +27,9 @@ export class FeedPage {
      */
 	async render() {
 		let users = await getUsers();
-		if (users === null) {
+		/*if (users === null) {
 			users = [{username: 'Анкеты закончились :(', gender: '-', age: '-'}];
-		}
+		}*/
 
 		/**
          * Initializes the cards by setting their styles and adding them to the container.
@@ -51,6 +51,8 @@ export class FeedPage {
 		}
 
 		this.parent.root.innerHTML = template({ users });
+		if (users === null)
+			return;
 		let tinderContainer = document.querySelector('.tinder');
 		let allCards = document.querySelectorAll('.tinder__card');
 		let nope = document.getElementById('nope');
