@@ -111,8 +111,6 @@ export class FeedPage {
 					initialY = 0;
 			  	}
 			  	el.classList.add('moving');
-				console.log('start');
-				console.log("INITIAL X: ", initialX, " INITIAL Y: ", initialY);
 			}
 			
 			/**
@@ -122,7 +120,6 @@ export class FeedPage {
 			function drag(event) {
 				if (!isDragging) {return;}
 				isSwiping = true;
-				//isDragging = false;
 			
 				currentX = event.type === 'touchmove' ? event.touches[0].clientX : event.clientX;
 				currentY = event.type === 'touchmove' ? event.touches[0].clientY : event.clientY;
@@ -140,7 +137,6 @@ export class FeedPage {
 				el.style.transform = 
 					'translate(' + (initialX + deltaX) + 'px, ' + 
 					(initialY + deltaY) + 'px) rotate(' + rotate + 'deg)';
-				console.log('moving');
 			}
 			
 			/**
@@ -161,7 +157,6 @@ export class FeedPage {
 				let deltaY = currentY - startY;
 				let moveOutWidth = document.body.clientWidth;
 				let keep = (Math.abs(deltaX) < 80 || deltaX === NaN);
-				console.log("DELTA X:", deltaX, " DELTA Y: ", deltaY);
 				el.classList.toggle('removed', !keep);
 			
 				if (keep) {
