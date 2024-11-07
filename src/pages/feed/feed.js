@@ -107,6 +107,7 @@ export class FeedPage {
 		allCards.forEach(function (el) {
 			let startX, startY, currentX, currentY, initialX, initialY;
 			let isDragging = false;
+			let isSwiping = false;
 			
 			/**
              * Starts the drag event.
@@ -140,6 +141,8 @@ export class FeedPage {
              */
 			function drag(event) {
 				if (!isDragging) {return;}
+				isSwiping = true;
+				isDragging = false;
 			
 				currentX = event.type === 'touchmove' ? event.touches[0].clientX : event.clientX;
 				currentY = event.type === 'touchmove' ? event.touches[0].clientY : event.clientY;
@@ -164,10 +167,10 @@ export class FeedPage {
              * Ends the drag event.
              */
 			async function endDrag() {
-				if (!isDragging) {
+				if (!isSwiping) {
 					return;
 				}
-				isDragging = false;
+				isSwiping = false;
 			
 				el.classList.remove('moving');
 				tinderContainer.classList.remove('tinder_love');
