@@ -167,5 +167,11 @@ h3 {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        transform-origin: center; 
+        transition: transform 0.1s ease-in-out;
+    }
+
+    &:hover &__img {
+        transform: translate(-50%, -50%) scale(1.2); 
     }
 }
