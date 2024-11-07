@@ -142,7 +142,7 @@ export class FeedPage {
 			function drag(event) {
 				if (!isDragging) {return;}
 				isSwiping = true;
-				isDragging = false;
+				//isDragging = false;
 			
 				currentX = event.type === 'touchmove' ? event.touches[0].clientX : event.clientX;
 				currentY = event.type === 'touchmove' ? event.touches[0].clientY : event.clientY;
@@ -171,6 +171,7 @@ export class FeedPage {
 					return;
 				}
 				isSwiping = false;
+				isDragging = false;
 			
 				el.classList.remove('moving');
 				tinderContainer.classList.remove('tinder_love');
