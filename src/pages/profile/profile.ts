@@ -5,7 +5,9 @@ import { updProfile } from './api/updProfile';
 import Navbar from '../../widgets/Navbar/navbar.js';
 import './ui/profile.scss';
 
+
 interface Parent {
+  curLogin: string;
   root: HTMLElement;
 }
 
@@ -93,6 +95,7 @@ export class ProfilePage {
   }
 
   public render(): void {
+    console.log(this.parent.curLogin);
     this.parent.root.innerHTML = template({
       isEditing: this.isEditing,
       FirstName: this.FirstName,
@@ -170,12 +173,7 @@ export class ProfilePage {
           if (typeof result === 'string') { 
             this.imagesIndexes.push(-1);
             this.imagesURLs.push(result); 
-            this.FirstName = (document.getElementById('FirstName') as HTMLInputElement).value;
-            this.LastName = (document.getElementById('LastName') as HTMLInputElement).value;
-            this.Gender = (document.getElementById('Gender') as HTMLSelectElement).value;
-            this.Age = parseInt((document.getElementById('Age') as HTMLInputElement).value, 10);
-            this.Target = (document.getElementById('Target') as HTMLTextAreaElement).value;
-            this.About = (document.getElementById('About') as HTMLTextAreaElement).value;
+            this.getInfoFromPage();
             this.render();
           }
         };
@@ -185,12 +183,22 @@ export class ProfilePage {
 
     input.click(); 
   }
+  private getInfoFromPage() {
+    this.FirstName = (document.getElementById('FirstName') as HTMLInputElement).value;
+    this.LastName = (document.getElementById('LastName') as HTMLInputElement).value;
+    this.Gender = (document.getElementById('Gender') as HTMLSelectElement).value;
+    this.Age = parseInt((document.getElementById('Age') as HTMLInputElement).value, 10);
+    this.Target = (document.getElementById('Target') as HTMLTextAreaElement).value;
+    this.About = (document.getElementById('About') as HTMLTextAreaElement).value;
+    return;
+  }
 
 
   private deleteImage(index: number): void {
     this.imagesDel.push(this.imagesIndexes[index]);
     this.imagesIndexes.splice(index, 1);
     this.imagesURLs.splice(index, 1);
+    this.getInfoFromPage();
     this.render();
   }
 
@@ -203,22 +211,17 @@ export class ProfilePage {
   }
   
   private async saveSettings(): Promise<void> {
-    const firstName = (document.getElementById('FirstName') as HTMLInputElement).value;
-    const lastName = (document.getElementById('LastName') as HTMLInputElement).value;
-    const gender = (document.getElementById('Gender') as HTMLSelectElement).value;
-    const age = parseInt((document.getElementById('Age') as HTMLInputElement).value, 10);
-    const target = (document.getElementById('Target') as HTMLTextAreaElement).value;
-    const about = (document.getElementById('About') as HTMLTextAreaElement).value || 'nothing';
+    this.getInfoFromPage()
 
     const profileData: UserProfile = {
       ID: this.ID, 
       imagesIndexes: this.imagesIndexes,
-      FirstName: firstName,
-      LastName: lastName,
-      Age: age,
-      Gender: gender,
-      Target: target,
-      About: about,
+      FirstName: this.FirstName,
+      LastName: this.LastName,
+      Age: this.Age,
+      Gender: this.Gender,
+      Target: this.Target,
+      About: this.About,
       imagesURLs: this.imagesURLs,
     };
 
