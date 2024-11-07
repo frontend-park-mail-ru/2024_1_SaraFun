@@ -174,7 +174,7 @@ export class FeedPage {
 				let deltaX = currentX - startX;
 				let deltaY = currentY - startY;
 				let moveOutWidth = document.body.clientWidth;
-				let keep = Math.abs(deltaX) < 80;
+				let keep = (Math.abs(deltaX) < 80 || deltaX === NaN);
 				console.log("DELTA X:", deltaX, " DELTA Y: ", deltaY);
 				el.classList.toggle('removed', !keep);
 			
