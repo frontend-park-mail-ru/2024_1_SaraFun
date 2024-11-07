@@ -105,6 +105,16 @@ h3 {
     }
 }
 
+.button_light {
+    background-color: var(--primary);
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--white1);
+    }
+}
+
 .form {
     background-color: var(--white1);
     border-radius: 25px;
