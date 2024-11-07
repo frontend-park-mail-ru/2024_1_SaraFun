@@ -13,10 +13,10 @@ div.profile
       .settings-form
         label
           | Имя:
-          input(type="text" id="FirstName" value=FirstName required)
+          input(type="text" id="FirstName" maxlength="50" value=FirstName required)
         label
           | Фамилия:
-          input(type="text" id="LastName" value=LastName required)
+          input(type="text" id="LastName" maxlength="50" value=LastName required)
         label
           | Пол:
           select(id="Gender" required)
@@ -28,7 +28,7 @@ div.profile
           output 18
         label
           | Цель:
-          input(type="string" id="Target" value=Target)
+          input(type="string" id="Target" value=Target maxlength="50")
         label
           | О себе:
           textarea(id="About" rows="1" maxlength="200")= About
