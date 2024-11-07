@@ -22,12 +22,12 @@ export async function updProfile(profileData: UserProfile, imagesNew: File[], im
       about: profileData.About,
     };
 
-    if (!uploadImg(imagesNew)) {
+    if (!( await uploadImg(imagesNew) )) {
       return false;
     };
     
     
-    if (!delImg(imagesDel)) {
+    if (!( await delImg(imagesDel) )) {
       return false
     };
     
