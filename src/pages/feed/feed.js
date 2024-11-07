@@ -206,7 +206,7 @@ export class FeedPage {
 			  	}
 			}
 	  
-			el.addEventListener('mousedown', startDrag);
+			/*el.addEventListener('mousedown', startDrag);
 			el.addEventListener('mousemove', drag);
 			el.addEventListener('mouseup', endDrag);
 			el.addEventListener('mouseleave', endDrag);
@@ -214,7 +214,7 @@ export class FeedPage {
 			el.addEventListener('touchstart', startDrag);
 			el.addEventListener('touchmove', drag);
 			el.addEventListener('touchend', endDrag);
-			el.addEventListener('touchcancel', endDrag);
+			el.addEventListener('touchcancel', endDrag);*/
 		});
 		
 		/**
