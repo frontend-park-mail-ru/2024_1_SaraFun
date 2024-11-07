@@ -85,22 +85,24 @@ export class FeedPage {
 			if (user) {
 				card.setAttribute('data-item-id', user.user);
 			}
-			const imageScrollContainer = card.querySelector('.image-scroll-container');
-			if (imageScrollContainer) {
-				imageScrollContainer.setAttribute('data-current-index', 0);
-				this.showImage(imageScrollContainer, 0);
+			if (user.profile.images != null && user.profile.images.length > 1) {
+				const imageScrollContainer = card.querySelector('.image-scroll-container');
+				if (imageScrollContainer) {
+					imageScrollContainer.setAttribute('data-current-index', 0);
+					this.showImage(imageScrollContainer, 0);
 
-				const scrollLeftButton = card.querySelector('.scroll-button--left');
-				const scrollRightButton = card.querySelector('.scroll-button--right');
+					const scrollLeftButton = card.querySelector('.scroll-button--left');
+					const scrollRightButton = card.querySelector('.scroll-button--right');
 
-				scrollLeftButton.addEventListener('click', (event) => {
-					event.stopPropagation(); 
-					this.scrollLeft(imageScrollContainer);
-				});
-				scrollRightButton.addEventListener('click', (event) => {
-					event.stopPropagation();
-					this.scrollRight(imageScrollContainer);
-				});
+					scrollLeftButton.addEventListener('click', (event) => {
+						event.stopPropagation(); 
+						this.scrollLeft(imageScrollContainer);
+					});
+					scrollRightButton.addEventListener('click', (event) => {
+						event.stopPropagation();
+						this.scrollRight(imageScrollContainer);
+					});
+				}
 			}
 		});
 		initCards();
