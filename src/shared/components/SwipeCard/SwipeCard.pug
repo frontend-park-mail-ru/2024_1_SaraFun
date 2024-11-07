@@ -11,11 +11,11 @@ mixin card(user)
       else 
         h1 !{user.profile.first_name}
       if (user.profile.gender == "male")
-        text-base Пол: мужской
+        h3 Пол: мужской
       else
-        text-base Пол: женский
-      text-base Возраст: !{user.profile.age}
+        h3 Пол: женский
+      h3 Возраст: !{user.profile.age}
       if (user.profile.target != "-" && user.profile.target != null)
-        text-base Цель знакомства: !{user.profile.target}
+        h3 Цель знакомства: !{user.profile.target}
       if (user.profile.about != "-" && user.profile.about != null)
-        text-base О себе: !{user.profile.about}
+        h3 О себе: !{user.profile.about}
