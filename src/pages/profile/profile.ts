@@ -116,10 +116,10 @@ export class ProfilePage {
       const updateOutput = () => {
         const value = rangeInput.value;
         output.value = value === '100' ? '100+' : value;
-    };
+      };
 
-    updateOutput();
-    rangeInput.addEventListener('input', updateOutput);
+      updateOutput();
+      rangeInput.addEventListener('input', updateOutput);
     }
     
 
@@ -151,7 +151,7 @@ export class ProfilePage {
 
   private handleUploadImg() {
     uploadImg(this.imagesNew, this.imagesURLs, this.imagesIndexes, () => this.getInfoFromPage(), () => this.render());
-}
+  }
   
   private getInfoFromPage() {
     this.FirstName = (document.getElementById('FirstName') as HTMLInputElement).value;
