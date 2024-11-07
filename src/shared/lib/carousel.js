@@ -10,7 +10,7 @@ export function scrollLeft(container) {
     let currentIndex = parseInt(container.getAttribute('data-current-index')) || 0;
     currentIndex = (currentIndex - 1 + images.length) % images.length;
     container.setAttribute('data-current-index', currentIndex);
-    this.showImage(container, currentIndex);
+    showImage(container, currentIndex);
 }
 
 export function scrollRight(container) {
@@ -18,5 +18,5 @@ export function scrollRight(container) {
     let currentIndex = parseInt(container.getAttribute('data-current-index')) || 0;
     currentIndex = (currentIndex + 1) % images.length; 
     container.setAttribute('data-current-index', currentIndex);
-    this.showImage(container, currentIndex);
+    showImage(container, currentIndex);
 }
