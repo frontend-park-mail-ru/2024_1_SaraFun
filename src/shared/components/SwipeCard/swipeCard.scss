@@ -22,13 +22,14 @@
     }
 }
 
-.image-scroll-container {
+.carousel {
   display: flex;
   height: 100%;
   overflow-x: hidden;
+  width: 100%;
 }
 
-.scroll-button {
+.carousel__button {
   color: var(--white1);
   width: 30px;
   height: 30px;
@@ -39,14 +40,14 @@
   position: absolute;
 }
   
-.scroll-button--left {
+.carousel__button_left {
   left: 5px;
 }
   
-.scroll-button--right {
+.carousel__button_right {
   right: 5px;
 }
   
-.image-section:hover .scroll-button {
+.image-section:hover .carousel__button {
   display: block;
 }

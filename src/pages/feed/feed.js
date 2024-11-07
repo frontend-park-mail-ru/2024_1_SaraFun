@@ -83,24 +83,21 @@ export class FeedPage {
 			if (user) {
 				card.setAttribute('data-item-id', user.user);
 			}
+
 			if (user.images != null && user.images.length > 1) {
-				const imageScrollContainer = card.querySelector('.image-scroll-container');
-				if (imageScrollContainer) {
-					console.log("FIND CONTAINER");
-					imageScrollContainer.setAttribute('data-current-index', 0);
-					this.showImage(imageScrollContainer, 0);
+				const carousel = card.querySelector('.carousel');
+				if (carousel) {
+					carousel.setAttribute('data-current-index', 0);
+					this.showImage(carousel, 0);
 
-					const scrollLeftButton = card.querySelector('.scroll-button--left');
-					console.log('find buttons');
-					const scrollRightButton = card.querySelector('.scroll-button--right');
+					const leftButton = card.querySelector('.carousel__button_left');
+					const rightButton = card.querySelector('.carousel__button_right');
 
-					scrollLeftButton.addEventListener('click', (event) => {
-						console.log("CLICK");
-						this.scrollLeft(imageScrollContainer);
+					leftButton.addEventListener('click', (event) => {
+						this.scrollLeft(carousel);
 					});
-					scrollRightButton.addEventListener('click', (event) => {
-						console.log("CLICK");
-						this.scrollRight(imageScrollContainer);
+					rightButton.addEventListener('click', (event) => {
+						this.scrollRight(carousel);
 					});
 				}
 			}
