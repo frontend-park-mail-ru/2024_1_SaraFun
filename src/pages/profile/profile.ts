@@ -104,7 +104,7 @@ export class ProfilePage {
     const settingsButton = document.querySelector('.settings-button') as HTMLElement;
     settingsButton.addEventListener('click', () => this.toggleEditMode());
 
-    const saveButton = document.getElementById('save-settings') as HTMLElement;
+    const saveButton = document.querySelector('.save-settings') as HTMLElement;
     if (saveButton) {
       saveButton.addEventListener('click', () => this.saveSettings());
     }

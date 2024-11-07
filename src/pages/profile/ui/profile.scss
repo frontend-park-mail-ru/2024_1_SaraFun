@@ -15,7 +15,17 @@
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
+        
+        .settings-button {
+            background-color: var(--secondary); 
+            color: white; 
+        
+            &:hover {
+                background-color: var(--success); 
+            }
+            
+        }
 
         .info {
             padding-top: 20px;
@@ -158,24 +168,6 @@
                 }
             }
         }
-
-        .settings-button {
-            margin-top: auto;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-
-            &:hover {
-                background-color: #0056b3;
-            }
-        }
-        
-
-
-        
     }
 }
 .settings-form {
@@ -205,20 +197,39 @@
             overflow-y: hidden
         }
     }
+}
 
+.button-wrapper {
+    display: flex;
+    margin-top: 20px; 
+    justify-content: center; 
+    flex-direction: column; 
+    width: 200px; 
+  
     button {
-        margin-top: 20px;
-        margin-bottom: 5px;
-        padding: 10px 15px;
-        background-color: #007BFF;
-        color: white;
-        border: none;
+        padding: 10px 20px; 
+        border: none; 
         border-radius: 5px;
-        cursor: pointer;
-        width: 100%; 
-
-        &:hover {
-            background-color: #0056b3;
+        cursor: pointer; 
+        font-size: 16px; 
+      
+        &.settings-button {
+          background-color: rgb(204, 204, 204); 
+          color: white; 
+          transition: background-color 0.3s; 
+      
+          &:hover {
+            background-color: #ff9696; 
+          }
         }
-    }
+      
+        &.save-settings {
+          background-color: var(--secondary); 
+          color: white; 
+      
+          &:hover {
+            background-color: var(--success); 
+          }
+        }
+      }
 }
