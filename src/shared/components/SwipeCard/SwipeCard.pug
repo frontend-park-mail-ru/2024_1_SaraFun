@@ -1,11 +1,14 @@
+include ../Carousel/Carousel.pug
+
 mixin card(user)
   .tinder__card
     .image-section
       if (user.images != null && user.images.length > 0)
-        .carousel
+        +carousel(user.images)
+        //.carousel
           each image, index in user.images
             img(class="img image-section__img" src=`http://5.188.140.7/${image.link.substring(image.link.lastIndexOf('/') + 1)}` alt="Image #{index + 1}" draggable="false")
-        if (user.images.length > 1)
+        //if (user.images.length > 1)
           button.button_light.carousel__button.carousel__button_left
             img(class="img button_img__img" src="./img/left.svg" alt="X")
           button.button_light.carousel__button.carousel__button_right
