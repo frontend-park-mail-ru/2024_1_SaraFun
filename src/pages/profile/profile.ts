@@ -58,19 +58,7 @@ export class ProfilePage {
         this.Target = profileData.Target || '-';
         this.About = profileData.About || '-';
         this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
-      }
-      else {
-        this.ID = -1;
-        this.imagesIndexes = [];
-        this.FirstName = 'Undefined';
-        this.LastName = 'Undefined'
-        this.Age = 18;
-        this.Gender = 'male';
-        this.Target = 'Undefined';
-        this.About = 'Undefined';
-        this.imagesURLs = ['./img/image.svg'];
-      }
-
+      };
     } catch (error) {
       console.error('Ошибка при загрузке профиля:', error);
     }
@@ -82,7 +70,7 @@ export class ProfilePage {
       const lines = textarea.value.split("\n");
       if (lines.length > limit) {
         textarea.value = lines.slice(0, limit).join("\n");
-      }
+      };
     };
 
     limitLines();
@@ -165,6 +153,12 @@ export class ProfilePage {
       const target = event.target as HTMLInputElement; 
       const file = target.files?.[0]; 
       if (file) {
+        const validImageTypes = ['image/jpeg', 'image/png', 'image/svg+xml'];
+        if (!validImageTypes.includes(file.type)) {
+            alert('Пожалуйста, загрузите изображение в формате JPEG, PNG или SVG.');
+            return; 
+        }
+
         this.imagesNew.push(file); 
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -182,6 +176,7 @@ export class ProfilePage {
 
     input.click(); 
   }
+  
   private getInfoFromPage() {
     this.FirstName = (document.getElementById('FirstName') as HTMLInputElement).value;
     this.LastName = (document.getElementById('LastName') as HTMLInputElement).value;
@@ -230,8 +225,9 @@ export class ProfilePage {
     if (updateSuccess) {
         //console.log('Profile updated successfully'); тут бы всплывающее окно
     } else {
-        console.error('Failed to update profile'); //тут тоже
+        //console.error('Failed to update profile'); //тут тоже
     }
+
     this.isEditing = false;
     this.imagesDel = [];
     this.imagesNew = [];
