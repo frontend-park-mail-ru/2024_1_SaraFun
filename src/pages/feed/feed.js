@@ -91,11 +91,11 @@ export class FeedPage {
 					const scrollLeftButton = card.querySelector('.scroll-button--left');
 					const scrollRightButton = card.querySelector('.scroll-button--right');
 
-					scrollLeftButton.addEventListener('click', (event) => {
+					scrollLeftButton.addEventListener('mousedown', (event) => {
 						event.stopPropagation(); 
 						this.scrollLeft(imageScrollContainer);
 					});
-					scrollRightButton.addEventListener('click', (event) => {
+					scrollRightButton.addEventListener('mousedown', (event) => {
 						event.stopPropagation();
 						this.scrollRight(imageScrollContainer);
 					});
@@ -114,6 +114,9 @@ export class FeedPage {
              * @param {Event} event - The drag start event.
              */
 			function startDrag(event) {
+				if (event.target.tagName === 'BUTTON') {
+					return;
+				}
 				isDragging = true;
 				startX = event.type === 'touchstart' ? event.touches[0].clientX : event.clientX;
 				startY = event.type === 'touchstart' ? event.touches[0].clientY : event.clientY;
