@@ -6,6 +6,14 @@ mixin card(user)
       else
         img(class="img image-section__img" src="./img/image.svg" alt="Image" draggable="false")
     .form-section
-      h1 !{user.username}
-      text-base Пол: !{user.profile.gender}
+      if (user.profile.first_name != "")
+        h1 !{user.profile.first_name}
+      else 
+        h1 !{user.username}
+      if (user.profile.gender == "male")
+        text-base Пол: мужской
+      else
+        text-base Пол: женский
       text-base Возраст: !{user.profile.age}
+      text-base Цель знакомства: !{user.profile.target}
+      text-base О себе: !{user.profile.about}
