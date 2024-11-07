@@ -4,6 +4,7 @@ import { getProfile } from './api/getProfile';
 import { updProfile } from './api/updProfile';
 import Navbar from '../../widgets/Navbar/navbar.js';
 import './ui/profile.scss';
+import { uploadImg } from '../../features/imageUploader';
 
 
 interface Parent {
@@ -93,7 +94,11 @@ export class ProfilePage {
       About: this.About,
       imagesURLs: this.imagesURLs,
     });
-  
+
+    this.componentWillMount();
+  }
+
+  private componentWillMount() {
     this.navbar = new Navbar(document.querySelector('nav') as HTMLElement, this.parent);
 
     const settingsButton = document.querySelector('.settings-button') as HTMLElement;
@@ -128,7 +133,7 @@ export class ProfilePage {
 
     const uploadButton = document.querySelector('.upload-button') as HTMLElement;
     if (uploadButton) {
-        uploadButton.addEventListener('click', () => this.uploadImg());
+        uploadButton.addEventListener('click', () => this.handleUploadImg());
     }
 
 
@@ -144,38 +149,9 @@ export class ProfilePage {
     }
   }
 
-  private uploadImg() {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*'; 
-
-    input.addEventListener('change', (event: Event) => {
-      const target = event.target as HTMLInputElement; 
-      const file = target.files?.[0]; 
-      if (file) {
-        const validImageTypes = ['image/jpeg', 'image/png', 'image/svg+xml'];
-        if (!validImageTypes.includes(file.type)) {
-            alert('Пожалуйста, загрузите изображение в формате JPEG, PNG или SVG.');
-            return; 
-        }
-
-        this.imagesNew.push(file); 
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const result = e.target!.result; 
-          if (typeof result === 'string') { 
-            this.imagesIndexes.push(-1);
-            this.imagesURLs.push(result); 
-            this.getInfoFromPage();
-            this.render();
-          }
-        };
-        reader.readAsDataURL(file); 
-      }
-    });
-
-    input.click(); 
-  }
+  private handleUploadImg() {
+    uploadImg(this.imagesNew, this.imagesURLs, this.imagesIndexes, () => this.getInfoFromPage(), () => this.render());
+}
   
   private getInfoFromPage() {
     this.FirstName = (document.getElementById('FirstName') as HTMLInputElement).value;

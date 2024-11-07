@@ -1,5 +1,7 @@
 import {post, put, del} from '../../../shared/api/api.js';
+import { delImg } from './delImg';
 import { UserProfile } from './profile';
+import { uploadImg } from './uploadImg';
 
 /**
  * Updates the profile of a user by ID.
@@ -19,27 +21,16 @@ export async function updProfile(profileData: UserProfile, imagesNew: File[], im
       target: profileData.Target,
       about: profileData.About,
     };
-    
-    for (const image of imagesNew) {
-      const formData = new FormData();
-      formData.append('image', image);
-      const response = await post('http://5.188.140.7:8080/uploadimage', formData);
-      if (!response.ok) {
-        console.error('Failed to upload image:', response.statusText);
-        return false; 
-      }
-    }
 
-    for (const imageId of imagesDel) {
-      if (imageId === -1) {
-        continue;
-      }
-      const response = await del(`http://5.188.140.7:8080/image/${imageId}`);
-      if (!response.ok) {
-        console.error('Failed to delete image:', response.statusText);
-        return false; 
-      }
-    }
+    if (!uploadImg(imagesNew)) {
+      return false;
+    };
+    
+    
+    if (!delImg(imagesDel)) {
+      return false
+    };
+    
   
     const response = await put('http://5.188.140.7:8080/updateprofile', JSON.stringify(data));
     
