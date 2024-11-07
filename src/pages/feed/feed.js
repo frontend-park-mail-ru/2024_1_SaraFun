@@ -131,6 +131,7 @@ export class FeedPage {
 			  	}
 			  	el.classList.add('moving');
 				console.log('start');
+				console.log("INITIAL X: ", initialX, " INITIAL Y: ", initialY);
 			}
 			
 			/**
@@ -156,6 +157,7 @@ export class FeedPage {
 				el.style.transform = 
 					'translate(' + (initialX + deltaX) + 'px, ' + 
 					(initialY + deltaY) + 'px) rotate(' + rotate + 'deg)';
+				console.log('moving');
 			}
 			
 			/**
@@ -170,7 +172,7 @@ export class FeedPage {
 				el.classList.remove('moving');
 				tinderContainer.classList.remove('tinder_love');
 				tinderContainer.classList.remove('tinder_nope');
-			
+				console.log("CURRENT X: ", currentX, " CURRENT Y: ", currentY);
 				let deltaX = currentX - startX;
 				let deltaY = currentY - startY;
 				let moveOutWidth = document.body.clientWidth;
