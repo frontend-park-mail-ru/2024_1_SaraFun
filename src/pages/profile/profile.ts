@@ -95,7 +95,6 @@ export class ProfilePage {
   }
 
   public render(): void {
-    console.log(this.parent.curLogin);
     this.parent.root.innerHTML = template({
       isEditing: this.isEditing,
       FirstName: this.FirstName,
@@ -229,9 +228,9 @@ export class ProfilePage {
     
     
     if (updateSuccess) {
-        // console.log('Profile updated successfully');
+        //console.log('Profile updated successfully'); тут бы всплывающее окно
     } else {
-        console.error('Failed to update profile');
+        console.error('Failed to update profile'); //тут тоже
     }
     this.isEditing = false;
     this.imagesDel = [];
