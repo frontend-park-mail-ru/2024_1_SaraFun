@@ -152,7 +152,6 @@ export class FeedPage {
 				el.classList.remove('moving');
 				tinderContainer.classList.remove('tinder_love');
 				tinderContainer.classList.remove('tinder_nope');
-				console.log("CURRENT X: ", currentX, " CURRENT Y: ", currentY);
 				let deltaX = currentX - startX;
 				let deltaY = currentY - startY;
 				let moveOutWidth = document.body.clientWidth;
