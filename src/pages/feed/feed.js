@@ -83,7 +83,7 @@ export class FeedPage {
 			if (user) {
 				card.setAttribute('data-item-id', user.user);
 			}
-			if (user.profile.images != null && user.profile.images.length > 1) {
+			if (user.images != null && user.images.length > 1) {
 				const imageScrollContainer = card.querySelector('.image-scroll-container');
 				if (imageScrollContainer) {
 					console.log("FIND CONTAINER");
