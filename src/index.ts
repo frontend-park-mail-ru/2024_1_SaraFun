@@ -9,6 +9,7 @@ import '@img/arrowRight.svg'
 import '@img/giftArrow.svg'
 import '@img/X.svg';
 import '@img/Heart.svg';
+import '@img/delete.svg';
 
 
 const root = document.querySelector('#root') as HTMLElement;

@@ -1,15 +1,13 @@
 include ../../../widgets/Navbar/ui/Navbar.pug
+include ../../../shared/components/Icons/trash.pug
 
 div.profile
+  
+
   div.profile-card
+    +navbar(true)
     if isEditing
-      h2 Редактировать профиль
-      .image-section-profile
-        each image in imagesURLs
-          .image-container
-            img(src=image, alt="Фотография в профиле")
-            button.delete-button() Удалить
-      button.upload-button() Загрузить новое фото
+      h1 Редактирование профиля
       .settings-form
         label
           | Имя:
@@ -32,19 +30,37 @@ div.profile
         label
           | О себе:
           textarea(id="About" rows="1" maxlength="200")= About
-        button#save-settings() Сохранить
-        button.settings-button() Отмена
+      div 
+        h3 Фотографии
+        .image-section-profile
+          each image in imagesURLs
+            .image-container
+              img(src=image, alt="Фотография в профиле")
+              .delete-button
+                +trash
+          div.upload
+            button.upload-button Добавить фото +
+      button#save-settings() Сохранить
+      button.settings-button() Отмена
     else 
-      +navbar(true)
-      .image-section-profile
-        each image in imagesURLs
-          .image-container
-            img(src=image, alt="Фотография в профиле")
-      .info-section
-        p Имя: #{FirstName}
-        p Фамилия: #{LastName}
-        p Пол: #{Gender === 'male' ? 'Мужской' : 'Женский'}
-        p Возраст: #{Age}
-        p Цель: #{Target}
-        p О себе: #{About}
+      h1 Профиль
+      
+      div.info
+        div.info-avatar
+          div.info-avatar__wrapper
+            img(src=imagesURLs[0]).info-avatar__image
+          | username
+        .info-section
+          p Имя: #{FirstName}
+          p Фамилия: #{LastName}
+          p Пол: #{Gender === 'male' ? 'Мужской' : 'Женский'}
+          p Возраст: #{Age}
+          p Цель: #{Target}
+          p О себе: #{About}
+      div
+        h3 Фотографии
+        .image-section-profile
+          each image in imagesURLs
+            .image-container
+              img(src=image, alt="Фотография в профиле")
       button.settings-button() Настройки
