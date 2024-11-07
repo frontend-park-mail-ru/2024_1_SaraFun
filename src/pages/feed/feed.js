@@ -21,12 +21,27 @@ export class FeedPage {
 		});
 	}
 
+	showImage(container, index) {
+		const images = container.querySelectorAll('.image-section__img');
+		images.forEach((img, i) => {
+			img.style.display = i === index ? 'block' : 'none';
+		});
+	}
+
 	scrollLeft(container) {
-		container.scrollBy({ left: -100, behavior: 'smooth' });
+		const images = container.querySelectorAll('.image-section__img');
+		let currentIndex = parseInt(container.getAttribute('data-current-index')) || 0;
+		currentIndex = (currentIndex - 1 + images.length) % images.length;  // Переход к последнему изображению
+		container.setAttribute('data-current-index', currentIndex);
+		this.showImage(container, currentIndex);
 	}
 
 	scrollRight(container) {
-		container.scrollBy({ left: 100, behavior: 'smooth' });
+		const images = container.querySelectorAll('.image-section__img');
+		let currentIndex = parseInt(container.getAttribute('data-current-index')) || 0;
+		currentIndex = (currentIndex + 1) % images.length;  // Переход к первому изображению
+		container.setAttribute('data-current-index', currentIndex);
+		this.showImage(container, currentIndex);
 	}
 
 	/**
@@ -72,6 +87,9 @@ export class FeedPage {
 			}
 			const imageScrollContainer = card.querySelector('.image-scroll-container');
 			if (imageScrollContainer) {
+				imageScrollContainer.setAttribute('data-current-index', 0);
+				this.showImage(imageScrollContainer, 0);
+
 				const scrollLeftButton = card.querySelector('.scroll-button--left');
 				const scrollRightButton = card.querySelector('.scroll-button--right');
 
