@@ -21,7 +21,7 @@ export class FeedPage {
 		});
 	}
 
-	showImage(container, index) {
+	/*showImage(container, index) {
 		const images = container.querySelectorAll('.image-section__img');
 		images.forEach((img, i) => {
 			img.style.display = i === index ? 'block' : 'none';
@@ -42,7 +42,7 @@ export class FeedPage {
 		currentIndex = (currentIndex + 1) % images.length;  // Переход к первому изображению
 		container.setAttribute('data-current-index', currentIndex);
 		this.showImage(container, currentIndex);
-	}
+	}*/
 
 	/**
      * Renders the feed page by fetching users and initializing cards.
@@ -85,7 +85,7 @@ export class FeedPage {
 			if (user) {
 				card.setAttribute('data-item-id', user.user);
 			}
-			if (user.profile.images != null && user.profile.images.length > 1) {
+			/*if (user.profile.images != null && user.profile.images.length > 1) {
 				const imageScrollContainer = card.querySelector('.image-scroll-container');
 				if (imageScrollContainer) {
 					imageScrollContainer.setAttribute('data-current-index', 0);
@@ -103,7 +103,7 @@ export class FeedPage {
 						this.scrollRight(imageScrollContainer);
 					});
 				}
-			}
+			}*/
 		});
 		initCards();
 
