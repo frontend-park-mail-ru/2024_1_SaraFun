@@ -91,11 +91,11 @@ export class FeedPage {
 					const scrollLeftButton = card.querySelector('.scroll-button--left');
 					const scrollRightButton = card.querySelector('.scroll-button--right');
 
-					scrollLeftButton.addEventListener('mousedown', (event) => {
+					scrollLeftButton.addEventListener('click', (event) => {
 						event.stopPropagation(); 
 						this.scrollLeft(imageScrollContainer);
 					});
-					scrollRightButton.addEventListener('mousedown', (event) => {
+					scrollRightButton.addEventListener('click', (event) => {
 						event.stopPropagation();
 						this.scrollRight(imageScrollContainer);
 					});
