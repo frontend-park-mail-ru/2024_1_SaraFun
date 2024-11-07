@@ -6,11 +6,7 @@ mixin card(user)
           each image, index in user.images
             img(class="img image-section__img" src=`http://5.188.140.7/${image.link.substring(image.link.lastIndexOf('/') + 1)}` alt="Image #{index + 1}" draggable="false")
         button.scroll-button.scroll-button--left(onclick="scrollLeft(this)")
-          | ◀
         button.scroll-button.scroll-button--right(onclick="scrollRight(this)")
-          | ▶
-      //if (user.images != null)
-      //  img(class="img image-section__img" src=`http://5.188.140.7/${user.images[0].link.substring(user.images[0].link.lastIndexOf('/') + 1)}` alt="Image" draggable="false")
       else
         img(class="img image-section__img" src="./img/image.svg" alt="Image" draggable="false")
     .form-section
