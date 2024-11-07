@@ -2,7 +2,7 @@ import Navbar from '../../widgets/Navbar/navbar.js';
 import template from './ui/feed.pug';
 import { getUsers } from './api/getUsers.js';
 import { putLikeOrDislike } from './api/putLikeOrDislike.js';
-import { scrollLeft, scrollRight } from '../../shared/lib/carousel.js';
+import { showImage, scrollLeft, scrollRight } from '../../shared/lib/carousel.js';
 
 
 /**
@@ -88,7 +88,7 @@ export class FeedPage {
 				const carousel = card.querySelector('.carousel');
 				if (carousel) {
 					carousel.setAttribute('data-current-index', 0);
-					this.showImage(carousel, 0);
+					showImage(carousel, 0);
 
 					const leftButton = card.querySelector('.carousel__button_left');
 					const rightButton = card.querySelector('.carousel__button_right');
