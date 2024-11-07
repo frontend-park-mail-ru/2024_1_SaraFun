@@ -21,7 +21,7 @@ export class FeedPage {
 		});
 	}
 
-	/*showImage(container, index) {
+	showImage(container, index) {
 		const images = container.querySelectorAll('.image-section__img');
 		images.forEach((img, i) => {
 			img.style.display = i === index ? 'block' : 'none';
@@ -42,7 +42,7 @@ export class FeedPage {
 		currentIndex = (currentIndex + 1) % images.length;  // Переход к первому изображению
 		container.setAttribute('data-current-index', currentIndex);
 		this.showImage(container, currentIndex);
-	}*/
+	}
 
 	/**
      * Renders the feed page by fetching users and initializing cards.
@@ -50,9 +50,6 @@ export class FeedPage {
      */
 	async render() {
 		let users = await getUsers();
-		/*if (users === null) {
-			users = [{username: 'Анкеты закончились :(', gender: '-', age: '-'}];
-		}*/
 
 		/**
          * Initializes the cards by setting their styles and adding them to the container.
@@ -85,7 +82,7 @@ export class FeedPage {
 			if (user) {
 				card.setAttribute('data-item-id', user.user);
 			}
-			/*if (user.profile.images != null && user.profile.images.length > 1) {
+			if (user.profile.images != null && user.profile.images.length > 1) {
 				const imageScrollContainer = card.querySelector('.image-scroll-container');
 				if (imageScrollContainer) {
 					imageScrollContainer.setAttribute('data-current-index', 0);
@@ -103,7 +100,7 @@ export class FeedPage {
 						this.scrollRight(imageScrollContainer);
 					});
 				}
-			}*/
+			}
 		});
 		initCards();
 
@@ -133,6 +130,7 @@ export class FeedPage {
 					initialY = 0;
 			  	}
 			  	el.classList.add('moving');
+				console.log('start');
 			}
 			
 			/**
@@ -177,7 +175,7 @@ export class FeedPage {
 				let deltaY = currentY - startY;
 				let moveOutWidth = document.body.clientWidth;
 				let keep = Math.abs(deltaX) < 80;
-			
+				console.log("DELTA X:", deltaX, " DELTA Y: ", deltaY);
 				el.classList.toggle('removed', !keep);
 			
 				if (keep) {
