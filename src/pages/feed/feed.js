@@ -21,6 +21,14 @@ export class FeedPage {
 		});
 	}
 
+	scrollLeft(container) {
+		container.scrollBy({ left: -100, behavior: 'smooth' });
+	}
+
+	scrollRight(container) {
+		container.scrollBy({ left: 100, behavior: 'smooth' });
+	}
+
 	/**
      * Renders the feed page by fetching users and initializing cards.
      * @returns {Promise<void>} - A promise that resolves when the rendering is complete.
@@ -61,6 +69,14 @@ export class FeedPage {
 			const user = users[index];
 			if (user) {
 				card.setAttribute('data-item-id', user.user);
+			}
+			const imageScrollContainer = card.querySelector('.image-scroll-container');
+			if (imageScrollContainer) {
+				const scrollLeftButton = card.querySelector('.scroll-button--left');
+				const scrollRightButton = card.querySelector('.scroll-button--right');
+
+				scrollLeftButton.addEventListener('click', () => this.scrollLeft(imageScrollContainer));
+				scrollRightButton.addEventListener('click', () => this.scrollRight(imageScrollContainer));
 			}
 		});
 		initCards();

@@ -21,3 +21,34 @@
         cursor: grabbing;
     }
 }
+
+.image-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .scroll-button--left {
+    left: 5px;
+  }
+  
+  .scroll-button--right {
+    right: 5px;
+  }
+  
+  .image-section:hover .scroll-button {
+    display: block;
+  }
