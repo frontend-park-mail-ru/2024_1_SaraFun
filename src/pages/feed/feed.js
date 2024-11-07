@@ -1,8 +1,8 @@
 import Navbar from '../../widgets/Navbar/navbar.js';
-
 import template from './ui/feed.pug';
 import { getUsers } from './api/getUsers.js';
 import { putLikeOrDislike } from './api/putLikeOrDislike.js';
+import { scrollLeft, scrollRight } from '../../shared/lib/carousel.js';
 
 
 /**
@@ -21,7 +21,7 @@ export class FeedPage {
 		});
 	}
 
-	showImage(container, index) {
+	/*showImage(container, index) {
 		const images = container.querySelectorAll('.image-section__img');
 		images.forEach((img, i) => {
 			img.style.display = i === index ? 'block' : 'none';
@@ -42,7 +42,7 @@ export class FeedPage {
 		currentIndex = (currentIndex + 1) % images.length; 
 		container.setAttribute('data-current-index', currentIndex);
 		this.showImage(container, currentIndex);
-	}
+	}*/
 
 	/**
      * Renders the feed page by fetching users and initializing cards.
@@ -94,10 +94,10 @@ export class FeedPage {
 					const rightButton = card.querySelector('.carousel__button_right');
 
 					leftButton.addEventListener('click', (event) => {
-						this.scrollLeft(carousel);
+						scrollLeft(carousel);
 					});
 					rightButton.addEventListener('click', (event) => {
-						this.scrollRight(carousel);
+						scrollRight(carousel);
 					});
 				}
 			}
