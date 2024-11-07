@@ -77,6 +77,7 @@ export class FeedPage {
 		let allCards = document.querySelectorAll('.tinder__card');
 		let nope = document.getElementById('nope');
 		let love = document.getElementById('love');
+
 		allCards.forEach((card, index) => {
 			const user = users[index];
 			if (user) {
@@ -85,10 +86,12 @@ export class FeedPage {
 			if (user.profile.images != null && user.profile.images.length > 1) {
 				const imageScrollContainer = card.querySelector('.image-scroll-container');
 				if (imageScrollContainer) {
+					console.log("FIND CONTAINER");
 					imageScrollContainer.setAttribute('data-current-index', 0);
 					this.showImage(imageScrollContainer, 0);
 
 					const scrollLeftButton = card.querySelector('.scroll-button--left');
+					console.log('find buttons');
 					const scrollRightButton = card.querySelector('.scroll-button--right');
 
 					scrollLeftButton.addEventListener('click', (event) => {
