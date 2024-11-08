@@ -25,5 +25,5 @@ mixin navbar(isAuth, activeNavbarItem)
                         a(class='navbar__link navbar__link--active' href='/signup') Зарегистрироваться
         if (isAuth)
             include ../../../shared/components/Avatar/Avatar.pug
-            //button#button-logout(class="text-base button button_text navbar__button", type="button") Выйти из аккаунта
+            button#button-logout(class="text-base button button_text navbar__button", type="button") Выйти из аккаунта
 
