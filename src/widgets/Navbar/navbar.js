@@ -58,6 +58,7 @@ export default class Navbar {
 			logoLink.addEventListener('click', (event) => {
 				event.preventDefault();
 				const path = link.getAttribute('href');
+				console.log(path);
 				this.parent.navigateTo(path);
 			});
 		}
