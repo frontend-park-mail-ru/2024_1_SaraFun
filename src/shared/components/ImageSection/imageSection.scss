@@ -1,0 +1,25 @@
+.image-section {
+    flex: 1;
+    background-color: var(--secondary);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+
+    &__img {
+        height: 100%;
+        width: auto;
+        min-width: 100%; 
+        min-height: 100%;
+        object-fit: cover;
+        object-position: center;
+
+        &_static {
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}

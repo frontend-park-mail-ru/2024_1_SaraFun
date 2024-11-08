@@ -1,5 +1,6 @@
-import template from '../../templates/login.js';
 import Navbar from '../../widgets/Navbar/navbar.js';
+
+import template from './ui/login.pug';
 import { loginUser } from './api/loginUser.js';
 
 /**
@@ -34,7 +35,14 @@ export class LoginPage {
 			event.preventDefault();
 			const url = new URL(event.target.href);
 			const path = url.pathname;
-			this.parent.render(path);
+			this.parent.navigateTo(path);
+		});
+
+		const passwordInputIcon = document.querySelector('.password__icon');
+		passwordInputIcon.addEventListener('click', (event) => {
+			const passwordInput = document.getElementById('password');
+			passwordInput.setAttribute('type', passwordInput.type === 'password' ? 'text' : 'password');
+			passwordInputIcon.setAttribute('src', passwordInput.type === 'password' ? './img/eye-x.svg' : './img/eye.svg');
 		});
 
 		document.querySelector('button').addEventListener('click', async () => {
@@ -63,7 +71,9 @@ export class LoginPage {
 					if (!isLogedIn) {
 						document.getElementById('login-password-error').style.display = 'block';            
 					} else { 
-						this.parent.render('/feed');
+						this.parent.curLogin = login;
+						this.parent.isAuth = true;
+						this.parent.navigateTo('/feed');
 					}
 				} catch (error) {
 					console.error(error);

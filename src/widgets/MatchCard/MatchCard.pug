@@ -1,0 +1,10 @@
+include ../../shared/components/Carousel/Carousel.pug
+
+mixin matchCard(user)
+  .match-card
+    .image-section.match-card__image-section
+      if (user.images != null && user.images.length > 0)
+        +carousel(user.images)
+      else
+        img(class="img image-section__img_static" src="./img/image.svg" alt="Image" draggable="false")
+    h3.match-card__title !{user.username}, !{user.age}

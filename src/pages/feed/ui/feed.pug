@@ -1,16 +1,19 @@
-include ../../../shared/components/SwipeCard/SwipeCard.pug
-include ../../../widgets/Navbar/Navbar.pug
+include ../../../widgets/SwipeCard/SwipeCard.pug
+include ../../../widgets/Navbar/ui/Navbar.pug
 
-+navbar(true)
++navbar(true, 'feed')
 
-div.tinder
-  div.tinder--cards
-    for user in users
-      +card(user.username, user.gender, user.age)
-  div.tinder--buttons
-    button#nope
-      i.fa.fa-remove
-        img(src="../shared/assets/img/X.svg" alt="X")
-    button#love
-      i.fa.fa-heart
-        img(src="../shared/assets/img/Heart.svg" alt="Heart")
+if (users != null)
+  div.tinder
+    div.tinder__cards
+      for user in users
+        +card(user)
+    div.tinder__buttons
+      button#nope(class="button button_img nope")
+        img(class="img button_img__img" src="./img/X.svg" alt="X")
+      button#love(class="button button_img love")
+        img(class="img button_img__img" src="./img/HeartWhite.svg" alt="Heart")
+else 
+  .form.message-form
+    h1 Пока что не появилось новых анкет
+    h3 Подсказка: заглядывайте почаще, чтобы не пропустить того самого человека!

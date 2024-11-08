@@ -1,0 +1,54 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.tinder {
+    width: 100vw;
+    height: 92vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    opacity: 1;
+    transition: opacity 0.1s ease-in-out;
+    gap: 10px;
+    padding-bottom: 10px;
+
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    &__cards {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        z-index: 1;
+    }
+
+    &.loaded {
+        opacity: 1;
+    }
+}
+
+.nope {
+    background-color: darkgrey !important;
+
+    &:hover {
+        background-color: black !important;
+    }
+}
+
+.love {
+    background-color: #FF6275FF !important;
+
+    &:hover {
+        background-color: crimson  !important;
+    }
+}

@@ -1,6 +1,9 @@
-import template from '../../templates/feed.js';
-import { getUsers } from './api/getUsers.js';
 import Navbar from '../../widgets/Navbar/navbar.js';
+import template from './ui/feed.pug';
+import { getUsers } from './api/getUsers.js';
+import { putLikeOrDislike } from './api/putLikeOrDislike.js';
+import { showImage, scrollLeft, scrollRight } from '../../shared/lib/carousel.js';
+
 
 /**
  * Class representing the Feed Page.
@@ -14,7 +17,7 @@ export class FeedPage {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
 		this.render().then(() => {;
-			this.navbar = new Navbar(document.querySelector('nav'), parent);
+			this.navbar = new Navbar(document.querySelector('navbar'), parent);
 		});
 	}
 
@@ -24,15 +27,12 @@ export class FeedPage {
      */
 	async render() {
 		let users = await getUsers();
-		if (users.length === 0) {
-			users = [{username: 'Анкеты закончились :(', gender: '-', age: '-'}];
-		}
 
 		/**
          * Initializes the cards by setting their styles and adding them to the container.
          */
 		function initCards() { 
-			let newCards = document.querySelectorAll('.tinder--card:not(.removed)');
+			let newCards = document.querySelectorAll('.tinder__card:not(.removed)');
 			const maxOffsetIndex = 10;
 		
 			newCards.forEach(function (card, index) {
@@ -48,21 +48,52 @@ export class FeedPage {
 		}
 
 		this.parent.root.innerHTML = template({ users });
-		var tinderContainer = document.querySelector('.tinder');
-		var allCards = document.querySelectorAll('.tinder--card');
+		if (users === null)
+		{return;}
+		let tinderContainer = document.querySelector('.tinder');
+		let allCards = document.querySelectorAll('.tinder__card');
 		let nope = document.getElementById('nope');
 		let love = document.getElementById('love');
+
+		allCards.forEach((card, index) => {
+			const user = users[index];
+			if (user) {
+				card.setAttribute('data-item-id', user.user);
+			}
+
+			if (user.images != null && user.images.length > 1) {
+				const carousel = card.querySelector('.carousel');
+				if (carousel) {
+					carousel.setAttribute('data-current-index', 0);
+					showImage(carousel, 0);
+
+					const leftButton = card.querySelector('.carousel__button_left');
+					const rightButton = card.querySelector('.carousel__button_right');
+
+					leftButton.addEventListener('click', (event) => {
+						scrollLeft(carousel);
+					});
+					rightButton.addEventListener('click', (event) => {
+						scrollRight(carousel);
+					});
+				}
+			}
+		});
 		initCards();
 
 		allCards.forEach(function (el) {
 			let startX, startY, currentX, currentY, initialX, initialY;
 			let isDragging = false;
+			let isSwiping = false;
 			
 			/**
              * Starts the drag event.
              * @param {Event} event - The drag start event.
              */
 			function startDrag(event) {
+				if (event.target.tagName === 'BUTTON') {
+					return;
+				}
 				isDragging = true;
 				startX = event.type === 'touchstart' ? event.touches[0].clientX : event.clientX;
 				startY = event.type === 'touchstart' ? event.touches[0].clientY : event.clientY;
@@ -88,6 +119,7 @@ export class FeedPage {
              */
 			function drag(event) {
 				if (!isDragging) {return;}
+				isSwiping = true;
 			
 				currentX = event.type === 'touchmove' ? event.touches[0].clientX : event.clientX;
 				currentY = event.type === 'touchmove' ? event.touches[0].clientY : event.clientY;
@@ -110,19 +142,20 @@ export class FeedPage {
 			/**
              * Ends the drag event.
              */
-			function endDrag() {
-				if (!isDragging) {return;}
+			async function endDrag() {
+				if (!isSwiping) {
+					return;
+				}
+				isSwiping = false;
 				isDragging = false;
 			
 				el.classList.remove('moving');
 				tinderContainer.classList.remove('tinder_love');
 				tinderContainer.classList.remove('tinder_nope');
-			
 				let deltaX = currentX - startX;
 				let deltaY = currentY - startY;
 				let moveOutWidth = document.body.clientWidth;
-				let keep = Math.abs(deltaX) < 80;
-			
+				let keep = (Math.abs(deltaX) < 80 || deltaX === NaN);
 				el.classList.toggle('removed', !keep);
 			
 				if (keep) {
@@ -135,6 +168,11 @@ export class FeedPage {
 					let rotate = xMulti * yMulti;
 		
 					el.style.transform = 'translate(' + toX + 'px, ' + toY + 'px) rotate(' + rotate + 'deg)';
+
+					let love = deltaX > 0;
+					let userId = el.getAttribute('data-item-id');
+    				await putLikeOrDislike(love, userId);
+
 					initCards();
 			  	}
 			}
@@ -156,13 +194,18 @@ export class FeedPage {
          * @returns {Function} - The event listener function.
          */
 		function createButtonListener(love) {
-			return function (event) {
-				let cards = document.querySelectorAll('.tinder--card:not(.removed)');
+			return async function (event) {
+				let cards = document.querySelectorAll('.tinder__card:not(.removed)');
 				let moveOutWidth = document.body.clientWidth * 1.5;
 			
-				if (!cards.length) {return false;}
+				if (!cards.length) {
+					return false;
+				}
 			
 				let card = cards[0];
+				let userId = card.getAttribute('data-item-id');
+
+				await putLikeOrDislike(love, userId);
 			
 				card.classList.add('removed');
 			

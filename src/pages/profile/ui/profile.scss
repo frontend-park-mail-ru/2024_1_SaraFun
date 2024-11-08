@@ -1,0 +1,249 @@
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    flex-direction: column; 
+    margin-top: 500px;
+    margin-bottom: 100px;
+
+    .profile-card {
+        padding: 20px 40px 40px 40px;
+        width: 65vw;
+        margin-top: 12px;
+        position: sticky;
+        background: var(--white1);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+
+        
+        .settings-button {
+            background-color: var(--secondary); 
+            color: white; 
+        
+            &:hover {
+                background-color: var(--success); 
+            }
+            
+        }
+
+        .info {
+            padding-top: 20px;
+            display: flex;
+            gap: 50px;
+            width: 100%;
+            &-avatar {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                align-items: center;
+                &__image {
+                    width: 250px;
+                    height: 250px;
+                    object-fit: cover;
+                }
+            }
+
+            &-avatar__wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 220px;
+                height: 220px;
+                border-radius: 50%;
+                overflow: hidden;
+                flex-shrink: 0;
+                border: 1px solid var(--primary);
+                
+            }
+            
+        }
+
+
+        h1 {
+            align-self: flex-start;
+            padding-bottom: 20px;
+        }
+        h3 {
+            align-self: flex-start;
+            padding-top: 40px;
+
+            padding-bottom: 4px;
+
+        }
+
+        .image-section-profile {
+
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 16px;
+
+            .image-container {
+                display: flex;
+                min-width: 200px;
+                border-radius: 10px;
+                overflow: hidden;
+
+                border: 1px solid grey;
+                flex-direction: column; 
+                align-items: center; 
+                margin-bottom: 20px;
+                position: relative;
+
+
+                img {
+                    width: 200px;
+                    height: 200px; 
+                    border-radius: 12px;
+                    object-fit: contain; 
+
+                }
+
+                .delete-button {
+                    padding: 4px;
+                    background-color: #d30e0e;
+                    color: white;
+                    border: none;
+                    width: 26px; 
+                    height: 26px;
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    border-radius: 50%;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #c33f3f;
+                    }
+                    svg {
+                        width: 18px;
+                        height: 18px;
+                        stroke: rgb(255, 255, 255);
+
+                    }
+                }
+            }
+        }
+        .upload {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px dashed grey;
+            border-radius: 10px;
+            width: 200px;
+            height: 200px;
+
+        }
+        .upload-button {
+            margin-top: 10px; 
+            display: fix;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none; 
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+        }
+
+
+        .info-section {
+            text-align: left; 
+            width: 100%;
+
+            p {
+                margin: 10px 0;
+                padding-left: 20px;
+                position: relative;
+                
+                &:before {
+                    content: ""; 
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    width: 5px;
+                    height: 5px;
+                    background-color: #007BFF;
+                    border-radius: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+}
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    max-width: 400px; 
+
+    label {
+        margin-bottom: 10px;
+        width: 100%; 
+
+        input,
+        select,
+        textarea {
+            margin-left: 0; 
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%; 
+            resize: none; 
+        }
+        
+        textarea {
+            min-height: 50px; 
+            max-height: 200px; 
+            overflow-y: hidden
+        }
+    }
+}
+
+.button-wrapper {
+    display: flex;
+    margin-top: 20px; 
+    align-items: center;
+    flex-direction: column; 
+  
+    button {
+        padding: 10px 20px; 
+        width: 300px;
+        height: 40px;
+        border: none; 
+        border-radius: 8px;
+        cursor: pointer; 
+        font-size: 16px; 
+        margin-bottom: 5px;
+      
+        &.settings-button {
+          background-color: rgb(204, 204, 204); 
+          color: white; 
+          transition: background-color 0.3s; 
+      
+          &:hover {
+            background-color: #ff9696; 
+          }
+        }
+      
+        &.save-settings {
+          background-color: var(--secondary); 
+          color: white;
+          &:hover {
+            background-color: var(--success); 
+          }
+        }
+        &.cancel-settings {
+            background-color: rgb(180, 179, 179); 
+            color: rgb(89, 88, 88);
+
+            &:hover {
+                background-color: rgb(249, 113, 113); 
+              }
+        }
+      }
+}
