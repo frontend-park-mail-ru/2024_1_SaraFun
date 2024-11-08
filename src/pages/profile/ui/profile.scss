@@ -16,6 +16,7 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
+
         
         .settings-button {
             background-color: var(--secondary); 
@@ -230,6 +231,14 @@
           &:hover {
             background-color: var(--success); 
           }
+        }
+        &.cancel-settings {
+            background-color: rgb(180, 179, 179); 
+            color: rgb(89, 88, 88);
+
+            &:hover {
+                background-color: rgb(249, 113, 113); 
+              }
         }
       }
 }
