@@ -42,7 +42,7 @@ div.profile
             button.upload-button Добавить фото +
       div.button-wrapper
         button.save-settings Сохранить
-        button.settings-button Отмена
+        button.cancel-settings Отмена
 
     else 
       h1 Профиль
@@ -65,4 +65,5 @@ div.profile
           each image in imagesURLs
             .image-container
               img(src=image, alt="Фотография в профиле")
-      button.settings-button Настройки
+      div.button-wrapper
+        button.settings-button Настройки

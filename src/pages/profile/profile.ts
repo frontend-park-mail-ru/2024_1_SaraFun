@@ -102,7 +102,14 @@ export class ProfilePage {
     this.navbar = new Navbar(document.querySelector('nav') as HTMLElement, this.parent);
 
     const settingsButton = document.querySelector('.settings-button') as HTMLElement;
-    settingsButton.addEventListener('click', () => this.toggleEditMode());
+    if (settingsButton) {
+      settingsButton.addEventListener('click', () => this.toggleEditMode());
+    }
+
+    const cancelButton = document.querySelector('.cancel-settings') as HTMLElement;
+    if (cancelButton) {
+      cancelButton.addEventListener('click', () => this.toggleEditMode());
+    }
 
     const saveButton = document.querySelector('.save-settings') as HTMLElement;
     if (saveButton) {
