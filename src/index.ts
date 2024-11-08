@@ -1,6 +1,6 @@
 import App from './app/App.js';
 import './index.scss';
-import '@img/Favicon.svg';
+import '@img/HeartWhite.svg';
 import '@img/Logo.svg';
 import '@img/image.svg';
 import '@img/icon.svg';
