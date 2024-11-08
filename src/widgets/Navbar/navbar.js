@@ -68,5 +68,14 @@ export default class Navbar {
 				this.app.render('/profile');
 			});
 		}
+
+		const avatarImage = document.querySelector('.user-avatar__image');
+		if (avatarImage) {
+			avatarImage.addEventListener('click', (event) => {
+				event.preventDefault();
+				const path = logoLink.getAttribute('href');
+				this.parent.navigateTo('/profile');
+			});
+		}
 	}
-}
+};
