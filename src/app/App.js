@@ -28,7 +28,6 @@ export default class App {
 	async init() {
 		try {
 			this.#state.isAuthenticated = await checkAuth();
-			console.log("im here");
 			ROUTES.forEach(({ path, view, isPublic })=> {
 				this.router.register(path, view, isPublic);
 			});

@@ -35,7 +35,6 @@ export class Router {
 	 * Starts the router by setting up event listeners and navigating to the initial route.
 	 */
 	start(isAuth) {
-		console.log(this.routes);
 		this.isAuth = isAuth;
 		window.addEventListener('popstate', () => {
 			this.navigateTo(window.location.pathname, false);
@@ -52,7 +51,6 @@ export class Router {
 	navigateTo(path, addToHistory = true) {
 		const route = this.routes.get(path);
 		if (!route.isPublic && !this.isAuth) {
-			console.log(route);
 			this.navigateTo('/login');
 			return;
 		}
