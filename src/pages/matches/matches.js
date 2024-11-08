@@ -16,25 +16,27 @@ export class MatchesPage {
 		let users = await getMatches();
 		this.parent.root.innerHTML = template({ users });
 		let allCards = document.querySelectorAll('.match-card');
-		allCards.forEach((card, index) => {
-			const user = users[index];
-			if (user.images != null && user.images.length > 1) {
-				const carousel = card.querySelector('.carousel');
-				if (carousel) {
-					carousel.setAttribute('data-current-index', 0);
-					showImage(carousel, 0);
-
-					const leftButton = card.querySelector('.carousel__button_left');
-					const rightButton = card.querySelector('.carousel__button_right');
-
-					leftButton.addEventListener('click', (event) => {
-						scrollLeft(carousel);
-					});
-					rightButton.addEventListener('click', (event) => {
-						scrollRight(carousel);
-					});
+		if (allCards) {
+			allCards.forEach((card, index) => {
+				const user = users[index];
+				if (user.images != null && user.images.length > 1) {
+					const carousel = card.querySelector('.carousel');
+					if (carousel) {
+						carousel.setAttribute('data-current-index', 0);
+						showImage(carousel, 0);
+	
+						const leftButton = card.querySelector('.carousel__button_left');
+						const rightButton = card.querySelector('.carousel__button_right');
+	
+						leftButton.addEventListener('click', (event) => {
+							scrollLeft(carousel);
+						});
+						rightButton.addEventListener('click', (event) => {
+							scrollRight(carousel);
+						});
+					}
 				}
-			}
-		});
+			});
+		}
 	}
 }
