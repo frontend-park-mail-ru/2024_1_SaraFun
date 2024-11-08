@@ -50,7 +50,12 @@ div.profile
       div.info
         div.info-avatar
           div.info-avatar__wrapper
-            img(src=imagesURLs[0]).info-avatar__image
+            if imagesURLs.length === 0 
+              img(src="./img/user.svg").info-avatar__image
+            else 
+              img(src=imagesURLs[0]).info-avatar__image
+            
+            
           | #{username}
         .info-section
           p Имя: #{FirstName}

@@ -34,12 +34,12 @@ export class ProfilePage {
     this.navbar = null;
     this.ID = -1;
     this.imagesIndexes = [];
-    this.FirstName = 'Undefined';
-    this.LastName = 'Undefined'
+    this.FirstName = 'Андрей';
+    this.LastName = 'Девелопер'
     this.Age = 18;
     this.Gender = 'male';
-    this.Target = 'Undefined';
-    this.About = 'Undefined';
+    this.Target = '-';
+    this.About = '-';
     this.imagesURLs = ['./img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg'];
     this.loadProfile().then(() => {
       this.render();
