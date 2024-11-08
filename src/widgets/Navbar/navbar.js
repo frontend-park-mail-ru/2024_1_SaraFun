@@ -48,6 +48,7 @@ export default class Navbar {
 		if (button) {
 			button.addEventListener('click', async () => {
 				await logout();
+				this.parent.isAuth = false;
 				this.parent.navigateTo('/login');
 			});
 		}

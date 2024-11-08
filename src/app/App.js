@@ -28,18 +28,20 @@ export default class App {
 	async init() {
 		try {
 			this.#state.isAuthenticated = await checkAuth();
-
-			ROUTES.forEach(({ path, view })=> {
-				this.router.register(path, view);
+			console.log("im here");
+			ROUTES.forEach(({ path, view, isPublic })=> {
+				this.router.register(path, view, isPublic);
 			});
 
-			this.router.start();
+			this.router.start(this.#state.isAuthenticated);
 
 			if (!this.#state.isAuthenticated) {
 				this.router.navigateTo(ROUTES.get(ROUTES_NAME.LOGIN).path);
+				console.log("false");
 			}
 			else {
 				this.router.navigateTo(window.location.pathname);
+				console.log("true");
 			}
 
 		} catch (error) {

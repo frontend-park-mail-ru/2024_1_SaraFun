@@ -13,6 +13,7 @@ export class Router {
 			return Router.instance;
 		}
 		this.root = root;
+		this.isAuth = false;
 		this.routes = new Map;
 		this.currentRoute = null;
 		Router.instance = this;
@@ -25,15 +26,17 @@ export class Router {
 	 * @param {Function} view - The class of view associated with the route.
 	 * @returns {Router} - The instance of the Router for chaining method calls.
 	 */
-	register(path, view) {
-		this.routes.set(path, view);
+	register(path, view, isPublic) {
+		this.routes.set(path, { view, isPublic });
 		return this;
 	}
 
 	/**
 	 * Starts the router by setting up event listeners and navigating to the initial route.
 	 */
-	start() {
+	start(isAuth) {
+		console.log(this.routes);
+		this.isAuth = isAuth;
 		window.addEventListener('popstate', () => {
 			this.navigateTo(window.location.pathname, false);
 		});
@@ -47,7 +50,16 @@ export class Router {
 	 * @param {boolean} addToHistory - Whether to add the navigation to the browser history. Defaults to true.
 	 */
 	navigateTo(path, addToHistory = true) {
-		const view = this.routes.get(path);
+		const route = this.routes.get(path);
+		if (!route.isPublic && !this.isAuth) {
+			console.log(route);
+			this.navigateTo('/login');
+		}
+		if (route.isPublic && this.isAuth) {
+			this.navigateTo('/feed');
+		}
+		
+		const view = route.view;
     	if (view) {
 			this.currentRoute = {path, view};
 			if (addToHistory) {

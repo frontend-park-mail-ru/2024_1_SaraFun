@@ -13,9 +13,9 @@ export const ROUTES_NAME = {
 };
 
 export const ROUTES = new Map([
-	[ROUTES_NAME.LOGIN, { path: '/login', view: LoginPage }],
-	[ROUTES_NAME.FEED, { path: '/feed', view: FeedPage }],
-	[ROUTES_NAME.MATCHES, { path: '/matches', view: MatchesPage }],
-	[ROUTES_NAME.SIGNUP, { path: '/signup', view: RegistrationPage }],
-	[ROUTES_NAME.PROFILE, { path: '/profile', view: ProfilePage }],
+	[ROUTES_NAME.LOGIN, { path: '/login', view: LoginPage, isPublic: true }],
+	[ROUTES_NAME.FEED, { path: '/feed', view: FeedPage, isPublic: false }],
+	[ROUTES_NAME.MATCHES, { path: '/matches', view: MatchesPage, isPublic: false }],
+	[ROUTES_NAME.SIGNUP, { path: '/signup', view: RegistrationPage, isPublic: true }],
+	[ROUTES_NAME.PROFILE, { path: '/profile', view: ProfilePage, isPublic: false }],
 ]);
