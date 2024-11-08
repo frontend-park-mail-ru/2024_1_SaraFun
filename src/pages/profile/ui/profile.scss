@@ -7,52 +7,128 @@
     margin-bottom: 100px;
 
     .profile-card {
+        padding: 20px 40px 40px 40px;
         width: 65vw;
+        margin-top: 12px;
         position: sticky;
         background: var(--white1);
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         display: flex;
-        flex-direction: column; 
-        align-items: center; 
-        padding: 20px;
+        flex-direction: column;
+        
+        .settings-button {
+            background-color: var(--secondary); 
+            color: white; 
+        
+            &:hover {
+                background-color: var(--success); 
+            }
+            
+        }
+
+        .info {
+            padding-top: 20px;
+            display: flex;
+            gap: 50px;
+            width: 100%;
+            &-avatar {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                align-items: center;
+
+            }
+
+            &-avatar__wrapper {
+                width: 220px;
+                height: 220px;
+                border-radius: 50%;
+                overflow: hidden;
+                flex-shrink: 0;
+                border: 1px solid var(--primary);
+                &__image {
+                    width: 200px;
+                    height: 200px;
+                    object-fit: cover;
+                }
+            }
+        }
+
+
+        h1 {
+            align-self: flex-start;
+            padding-bottom: 20px;
+        }
+        h3 {
+            align-self: flex-start;
+            padding-top: 40px;
+
+            padding-bottom: 4px;
+
+        }
 
         .image-section-profile {
-            margin-top: 30px;
-            width: 80%;
+
             display: flex; 
             flex-wrap: wrap; 
-            justify-content: space-between; 
+            gap: 16px;
 
             .image-container {
                 display: flex;
+                min-width: 200px;
+                border-radius: 10px;
+                overflow: hidden;
+
+                border: 1px solid grey;
                 flex-direction: column; 
                 align-items: center; 
                 margin-bottom: 20px;
+                position: relative;
+
 
                 img {
-                    width: calc(100%); 
+                    width: 200px;
                     height: 200px; 
                     border-radius: 12px;
-                    object-fit: cover; 
+                    object-fit: contain; 
 
                 }
 
                 .delete-button {
-                    margin-top: 10px; 
-                    padding: 10px 20px;
+                    padding: 4px;
                     background-color: #d30e0e;
                     color: white;
                     border: none;
-                    width: 100px; 
-                    border-radius: 5px;
+                    width: 26px; 
+                    height: 26px;
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    border-radius: 50%;
                     cursor: pointer;
 
                     &:hover {
                         background-color: #c33f3f;
                     }
+                    svg {
+                        width: 18px;
+                        height: 18px;
+                        stroke: rgb(255, 255, 255);
+
+                    }
                 }
             }
+        }
+        .upload {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px dashed grey;
+            border-radius: 10px;
+            width: 200px;
+            height: 200px;
+
         }
         .upload-button {
             margin-top: 10px; 
@@ -60,8 +136,7 @@
             padding: 10px 20px;
             background-color: #007BFF;
             color: white;
-            border: none;
-            width: 300px; 
+            border: none; 
             border-radius: 5px;
             cursor: pointer;
 
@@ -93,30 +168,13 @@
                 }
             }
         }
-
-        .settings-button {
-            margin-top: auto;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-
-            &:hover {
-                background-color: #0056b3;
-            }
-        }
-        
     }
 }
 .settings-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%; 
     max-width: 400px; 
-    margin: 0 auto; 
 
     label {
         margin-bottom: 10px;
@@ -139,20 +197,39 @@
             overflow-y: hidden
         }
     }
+}
 
+.button-wrapper {
+    display: flex;
+    margin-top: 20px; 
+    justify-content: center; 
+    flex-direction: column; 
+    width: 200px; 
+  
     button {
-        margin-top: 20px;
-        margin-bottom: 5px;
-        padding: 10px 15px;
-        background-color: #007BFF;
-        color: white;
-        border: none;
+        padding: 10px 20px; 
+        border: none; 
         border-radius: 5px;
-        cursor: pointer;
-        width: 100%; 
-
-        &:hover {
-            background-color: #0056b3;
+        cursor: pointer; 
+        font-size: 16px; 
+      
+        &.settings-button {
+          background-color: rgb(204, 204, 204); 
+          color: white; 
+          transition: background-color 0.3s; 
+      
+          &:hover {
+            background-color: #ff9696; 
+          }
         }
-    }
+      
+        &.save-settings {
+          background-color: var(--secondary); 
+          color: white; 
+      
+          &:hover {
+            background-color: var(--success); 
+          }
+        }
+      }
 }

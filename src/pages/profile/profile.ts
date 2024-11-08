@@ -4,8 +4,11 @@ import { getProfile } from './api/getProfile';
 import { updProfile } from './api/updProfile';
 import Navbar from '../../widgets/Navbar/navbar.js';
 import './ui/profile.scss';
+import { uploadImg } from '../../features/imageUploader';
+
 
 interface Parent {
+  curLogin: string;
   root: HTMLElement;
 }
 
@@ -56,19 +59,7 @@ export class ProfilePage {
         this.Target = profileData.Target || '-';
         this.About = profileData.About || '-';
         this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
-      }
-      else {
-        this.ID = -1;
-        this.imagesIndexes = [];
-        this.FirstName = 'Undefined';
-        this.LastName = 'Undefined'
-        this.Age = 18;
-        this.Gender = 'male';
-        this.Target = 'Undefined';
-        this.About = 'Undefined';
-        this.imagesURLs = ['./img/image.svg'];
-      }
-
+      };
     } catch (error) {
       console.error('Ошибка при загрузке профиля:', error);
     }
@@ -80,7 +71,7 @@ export class ProfilePage {
       const lines = textarea.value.split("\n");
       if (lines.length > limit) {
         textarea.value = lines.slice(0, limit).join("\n");
-      }
+      };
     };
 
     limitLines();
@@ -103,13 +94,17 @@ export class ProfilePage {
       About: this.About,
       imagesURLs: this.imagesURLs,
     });
-  
+
+    this.componentWillMount();
+  }
+
+  private componentWillMount() {
     this.navbar = new Navbar(document.querySelector('nav') as HTMLElement, this.parent);
 
     const settingsButton = document.querySelector('.settings-button') as HTMLElement;
     settingsButton.addEventListener('click', () => this.toggleEditMode());
 
-    const saveButton = document.getElementById('save-settings') as HTMLElement;
+    const saveButton = document.querySelector('.save-settings') as HTMLElement;
     if (saveButton) {
       saveButton.addEventListener('click', () => this.saveSettings());
     }
@@ -121,10 +116,10 @@ export class ProfilePage {
       const updateOutput = () => {
         const value = rangeInput.value;
         output.value = value === '100' ? '100+' : value;
-    };
+      };
 
-    updateOutput();
-    rangeInput.addEventListener('input', updateOutput);
+      updateOutput();
+      rangeInput.addEventListener('input', updateOutput);
     }
     
 
@@ -138,7 +133,7 @@ export class ProfilePage {
 
     const uploadButton = document.querySelector('.upload-button') as HTMLElement;
     if (uploadButton) {
-        uploadButton.addEventListener('click', () => this.uploadImg());
+        uploadButton.addEventListener('click', () => this.handleUploadImg());
     }
 
 
@@ -154,36 +149,18 @@ export class ProfilePage {
     }
   }
 
-  private uploadImg() {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*'; 
-
-    input.addEventListener('change', (event: Event) => {
-      const target = event.target as HTMLInputElement; 
-      const file = target.files?.[0]; 
-      if (file) {
-        this.imagesNew.push(file); 
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const result = e.target!.result; 
-          if (typeof result === 'string') { 
-            this.imagesIndexes.push(-1);
-            this.imagesURLs.push(result); 
-            this.FirstName = (document.getElementById('FirstName') as HTMLInputElement).value;
-            this.LastName = (document.getElementById('LastName') as HTMLInputElement).value;
-            this.Gender = (document.getElementById('Gender') as HTMLSelectElement).value;
-            this.Age = parseInt((document.getElementById('Age') as HTMLInputElement).value, 10);
-            this.Target = (document.getElementById('Target') as HTMLTextAreaElement).value;
-            this.About = (document.getElementById('About') as HTMLTextAreaElement).value;
-            this.render();
-          }
-        };
-        reader.readAsDataURL(file); 
-      }
-    });
-
-    input.click(); 
+  private handleUploadImg() {
+    uploadImg(this.imagesNew, this.imagesURLs, this.imagesIndexes, () => this.getInfoFromPage(), () => this.render());
+  }
+  
+  private getInfoFromPage() {
+    this.FirstName = (document.getElementById('FirstName') as HTMLInputElement).value;
+    this.LastName = (document.getElementById('LastName') as HTMLInputElement).value;
+    this.Gender = (document.getElementById('Gender') as HTMLSelectElement).value;
+    this.Age = parseInt((document.getElementById('Age') as HTMLInputElement).value, 10);
+    this.Target = (document.getElementById('Target') as HTMLTextAreaElement).value;
+    this.About = (document.getElementById('About') as HTMLTextAreaElement).value;
+    return;
   }
 
 
@@ -191,6 +168,7 @@ export class ProfilePage {
     this.imagesDel.push(this.imagesIndexes[index]);
     this.imagesIndexes.splice(index, 1);
     this.imagesURLs.splice(index, 1);
+    this.getInfoFromPage();
     this.render();
   }
 
@@ -203,22 +181,17 @@ export class ProfilePage {
   }
   
   private async saveSettings(): Promise<void> {
-    const firstName = (document.getElementById('FirstName') as HTMLInputElement).value;
-    const lastName = (document.getElementById('LastName') as HTMLInputElement).value;
-    const gender = (document.getElementById('Gender') as HTMLSelectElement).value;
-    const age = parseInt((document.getElementById('Age') as HTMLInputElement).value, 10);
-    const target = (document.getElementById('Target') as HTMLTextAreaElement).value;
-    const about = (document.getElementById('About') as HTMLTextAreaElement).value || 'nothing';
+    this.getInfoFromPage()
 
     const profileData: UserProfile = {
       ID: this.ID, 
       imagesIndexes: this.imagesIndexes,
-      FirstName: firstName,
-      LastName: lastName,
-      Age: age,
-      Gender: gender,
-      Target: target,
-      About: about,
+      FirstName: this.FirstName,
+      LastName: this.LastName,
+      Age: this.Age,
+      Gender: this.Gender,
+      Target: this.Target,
+      About: this.About,
       imagesURLs: this.imagesURLs,
     };
 
@@ -226,10 +199,11 @@ export class ProfilePage {
     
     
     if (updateSuccess) {
-        // console.log('Profile updated successfully');
+        //console.log('Profile updated successfully'); тут бы всплывающее окно
     } else {
-        console.error('Failed to update profile');
+        //console.error('Failed to update profile'); //тут тоже
     }
+
     this.isEditing = false;
     this.imagesDel = [];
     this.imagesNew = [];

@@ -53,7 +53,7 @@ export class Router {
 			if (addToHistory) {
 				history.pushState({}, '', path);
 			}
-      		const componentInstance = new view(this);
+      		new view(this);
     	} 
 	}
 

@@ -1,22 +1,20 @@
 include ../../../widgets/Navbar/ui/Navbar.pug
+include ../../../shared/components/Icons/trash.pug
 
 div.profile
+  
+
   div.profile-card
+    +navbar(true)
     if isEditing
-      h2 Редактировать профиль
-      .image-section-profile
-        each image in imagesURLs
-          .image-container
-            img(src=image, alt="Фотография в профиле")
-            button.delete-button() Удалить
-      button.upload-button() Загрузить новое фото
+      h1 Редактирование профиля
       .settings-form
         label
           | Имя:
-          input(type="text" id="FirstName" value=FirstName required)
+          input(type="text" id="FirstName" maxlength="50" value=FirstName required)
         label
           | Фамилия:
-          input(type="text" id="LastName" value=LastName required)
+          input(type="text" id="LastName" maxlength="50" value=LastName required)
         label
           | Пол:
           select(id="Gender" required)
@@ -28,23 +26,43 @@ div.profile
           output 18
         label
           | Цель:
-          input(type="string" id="Target" value=Target)
+          input(type="string" id="Target" value=Target maxlength="50")
         label
           | О себе:
           textarea(id="About" rows="1" maxlength="200")= About
-        button#save-settings() Сохранить
-        button.settings-button() Отмена
+      div 
+        h3 Фотографии
+        .image-section-profile
+          each image in imagesURLs
+            .image-container
+              img(src=image, alt="Фотография в профиле")
+              .delete-button
+                +trash
+          div.upload
+            button.upload-button Добавить фото +
+      div.button-wrapper
+        button.save-settings Сохранить
+        button.settings-button Отмена
+
     else 
-      +navbar(true)
-      .image-section-profile
-        each image in imagesURLs
-          .image-container
-            img(src=image, alt="Фотография в профиле")
-      .info-section
-        p Имя: #{FirstName}
-        p Фамилия: #{LastName}
-        p Пол: #{Gender === 'male' ? 'Мужской' : 'Женский'}
-        p Возраст: #{Age}
-        p Цель: #{Target}
-        p О себе: #{About}
-      button.settings-button() Настройки
+      h1 Профиль
+      
+      div.info
+        div.info-avatar
+          div.info-avatar__wrapper
+            img(src=imagesURLs[0]).info-avatar__image
+          | username
+        .info-section
+          p Имя: #{FirstName}
+          p Фамилия: #{LastName}
+          p Пол: #{Gender === 'male' ? 'Мужской' : 'Женский'}
+          p Возраст: #{Age}
+          p Цель: #{Target}
+          p О себе: #{About}
+      div
+        h3 Фотографии
+        .image-section-profile
+          each image in imagesURLs
+            .image-container
+              img(src=image, alt="Фотография в профиле")
+      button.settings-button Настройки
