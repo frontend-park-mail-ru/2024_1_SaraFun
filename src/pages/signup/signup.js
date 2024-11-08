@@ -63,7 +63,6 @@ export class RegistrationPage {
 
 			if (passwordErrors.length > 0) {
 				passwordErrors.forEach((error, index) => {
-					document.getElementById(`password-error`).style.display = 'block';
 					document.getElementById(`password-error-${index + 1}`).innerText = error;
 					document.getElementById(`password-error-${index + 1}`).style.display = 'block';
 				});
@@ -72,7 +71,6 @@ export class RegistrationPage {
 
 			if (loginErrors.length > 0) {
 				loginErrors.forEach((error, index) => {
-					document.getElementById(`login-error`).style.display = 'block';
 					document.getElementById(`login-error-${index + 1}`).innerText = error;
 					document.getElementById(`login-error-${index + 1}`).style.display = 'block';
 				});
