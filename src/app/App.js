@@ -36,11 +36,9 @@ export default class App {
 
 			if (!this.#state.isAuthenticated) {
 				this.router.navigateTo(ROUTES.get(ROUTES_NAME.LOGIN).path);
-				console.log("false");
 			}
 			else {
 				this.router.navigateTo(window.location.pathname);
-				console.log("true");
 			}
 
 		} catch (error) {
