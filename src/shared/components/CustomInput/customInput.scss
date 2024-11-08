@@ -5,3 +5,26 @@
 	padding: 12px;
 	border: 1px solid var(--grey1);
 }
+
+.error {
+	font-size: 12px;
+}
+
+.password {
+	&__wrapper {
+		width: 100%;
+		position: relative;
+		gap: 10px;
+	}
+
+	&__icon {
+		cursor: pointer;
+		position: absolute;
+		right: 10px;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 18px;
+		height: 18px;
+
+	}
+}

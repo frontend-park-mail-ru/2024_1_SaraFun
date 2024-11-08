@@ -12,6 +12,9 @@ import '@img/Heart.svg';
 import '@img/delete.svg';
 import '@img/left.svg';
 import '@img/right.svg';
+import '@img/eye.svg';
+import '@img/eye-x.svg';
+import '@img/user.svg';
 
 
 const root = document.querySelector('#root') as HTMLElement;

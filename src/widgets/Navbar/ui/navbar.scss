@@ -12,10 +12,10 @@
     box-sizing: border-box;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     padding: 0 10%;
-    z-index: 1;
 
     &__logo {
         height: 100%;
+        display: flex;
 
         &__img {
             height: 100%;
@@ -36,7 +36,14 @@
         color: var(--black1);
 
         &:hover {
-            background: var(--primary);
+            background: var(--success);
+            color: var(--white1);
+            border-radius: 10px;
+        }
+
+        &--active {
+            background: var(--secondary);
+            color: var(--white1);
             border-radius: 10px;
         }
     }

@@ -4,5 +4,5 @@ mixin matchCard(username, age, images)
       if (images != null && images.length > 0)
         img(class="img image-section__img" src=`http://5.188.140.7/${images[0].link.substring(images[0].link.lastIndexOf('/') + 1)}` alt="Image" draggable="false")
       else
-        img(class="img image-section__img" src="./img/image.svg" alt="Image" draggable="false")
+        img(class="img image-section__img_static" src="./img/image.svg" alt="Image" draggable="false")
     h3.match-card__title !{username}, !{age}

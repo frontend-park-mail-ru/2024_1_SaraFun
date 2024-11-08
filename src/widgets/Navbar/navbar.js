@@ -1,4 +1,6 @@
 import { logout } from './api/logout.js';
+import {getProfile} from "../../pages/profile/api/getProfile";
+import {checkAuth} from "../../features/checkAuth";
 
 /**
  * Class representing the navigation bar.
@@ -13,6 +15,19 @@ export default class Navbar {
 		this.nav = nav;
 		this.parent = parent;
 		this.addEventListeners();
+		this.getUserAvatar();
+	}
+
+	async getUserAvatar() {
+		const isAuth = await checkAuth();
+		if (!isAuth) {
+			return;
+		}
+
+		const userData = await getProfile();
+		const avatarSrc = userData?.imagesURLs?.[0] ?? './img/user.svg';
+		const avatarImg = document.querySelector('.user-avatar__image');
+		avatarImg.setAttribute('src', avatarSrc);
 	}
   
 	/**
@@ -34,6 +49,15 @@ export default class Navbar {
 			button.addEventListener('click', async () => {
 				await logout();
 				this.parent.navigateTo('/login');
+			});
+		}
+
+		const logoLink = document.querySelector('.navbar__logo__link');
+		if (logoLink) {
+			logoLink.addEventListener('click', (event) => {
+				event.preventDefault();
+				const path = logoLink.getAttribute('href');
+				this.parent.navigateTo(path);
 			});
 		}
 
