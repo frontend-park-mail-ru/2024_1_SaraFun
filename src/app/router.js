@@ -54,9 +54,11 @@ export class Router {
 		if (!route.isPublic && !this.isAuth) {
 			console.log(route);
 			this.navigateTo('/login');
+			return;
 		}
 		if (route.isPublic && this.isAuth) {
 			this.navigateTo('/feed');
+			return;
 		}
 		
 		const view = route.view;
