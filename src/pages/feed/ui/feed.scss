@@ -36,3 +36,19 @@
         opacity: 1;
     }
 }
+
+.nope {
+    background-color: darkgrey !important;
+
+    &:hover {
+        background-color: black !important;
+    }
+}
+
+.love {
+    background-color: #FF6275FF !important;
+
+    &:hover {
+        background-color: crimson  !important;
+    }
+}
