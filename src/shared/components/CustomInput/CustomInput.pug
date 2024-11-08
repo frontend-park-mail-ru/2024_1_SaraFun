@@ -1,7 +1,9 @@
 mixin customInput(inputType, formType)
     if inputType=='password'
-        label(for="password" class=".text-base label") Пароль
-        input(class='input' type="password" id="password" placeholder="Введите пароль")
+        div(class="password__wrapper")
+            label(for="password" class=".text-base label") Пароль
+            input(class='input' type="password" id="password" placeholder="Введите пароль")
+            img(class="password__icon" src='./img/eye-x.svg')
         if formType=='registration'
             p.error(id="password-error" style="display:none;") Пароль должен быть от 6 до 40 символов, содержать минимум одну цифру, разрешенные спец знаки (!?*-$)
         else if formType=='login'

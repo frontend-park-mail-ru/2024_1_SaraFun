@@ -40,6 +40,13 @@ export class RegistrationPage {
 			this.parent.navigateTo(path);
 		});
 
+		const passwordInputIcon = document.querySelector('.password__icon');
+		passwordInputIcon.addEventListener('click', (event) => {
+			const passwordInput = document.getElementById('password');
+			passwordInput.setAttribute('type', passwordInput.type === 'password' ? 'text' : 'password');
+			passwordInputIcon.setAttribute('src', passwordInput.type === 'password' ? './img/eye-x.svg' : './img/eye.svg');
+		});
+
 		document.querySelector('button').addEventListener('click', async () => {
 			const login = document.getElementById('login').value;
 			const password = document.getElementById('password').value;

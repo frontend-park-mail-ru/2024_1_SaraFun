@@ -1,0 +1,44 @@
+.user-avatar {
+    position: relative;
+    display: flex;
+  
+    &__image-wrapper {
+      cursor: pointer;
+      border-radius: 50%;
+      overflow: hidden;
+      width: 40px;
+      height: 40px;
+  
+      & img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    &__menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: white;
+        border: 1px solid #ccc; 
+        border-radius: 4px; 
+        display: none; 
+    
+        &.is-active {
+          display: block; 
+        }
+    
+        &__logout-button {
+          padding: 10px 15px;
+          border: none;
+          background-color: #f44336;
+          color: white;
+          cursor: pointer;
+          border-radius: 4px;
+    
+            &:hover {
+                background-color: #d32f2f; 
+            }
+        }
+    }
+}

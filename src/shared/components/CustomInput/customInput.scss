@@ -5,3 +5,22 @@
 	padding: 12px;
 	border: 1px solid var(--grey1);
 }
+
+.password {
+	&__wrapper {
+		width: 100%;
+		position: relative;
+	}
+
+	&__icon {
+		cursor: pointer;
+		position: absolute;
+		right: 6px;
+		top: 65%;
+		transform: translateY(-50%);
+
+			width: 18px;
+			height: 18px;
+
+	}
+}
