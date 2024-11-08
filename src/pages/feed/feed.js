@@ -1,8 +1,8 @@
 import Navbar from '../../widgets/Navbar/navbar.js';
-
 import template from './ui/feed.pug';
 import { getUsers } from './api/getUsers.js';
 import { putLikeOrDislike } from './api/putLikeOrDislike.js';
+import { showImage, scrollLeft, scrollRight } from '../../shared/lib/carousel.js';
 
 
 /**
@@ -27,9 +27,6 @@ export class FeedPage {
      */
 	async render() {
 		let users = await getUsers();
-		/*if (users === null) {
-			users = [{username: 'Анкеты закончились :(', gender: '-', age: '-'}];
-		}*/
 
 		/**
          * Initializes the cards by setting their styles and adding them to the container.
@@ -57,10 +54,29 @@ export class FeedPage {
 		let allCards = document.querySelectorAll('.tinder__card');
 		let nope = document.getElementById('nope');
 		let love = document.getElementById('love');
+
 		allCards.forEach((card, index) => {
 			const user = users[index];
 			if (user) {
 				card.setAttribute('data-item-id', user.user);
+			}
+
+			if (user.images != null && user.images.length > 1) {
+				const carousel = card.querySelector('.carousel');
+				if (carousel) {
+					carousel.setAttribute('data-current-index', 0);
+					showImage(carousel, 0);
+
+					const leftButton = card.querySelector('.carousel__button_left');
+					const rightButton = card.querySelector('.carousel__button_right');
+
+					leftButton.addEventListener('click', (event) => {
+						scrollLeft(carousel);
+					});
+					rightButton.addEventListener('click', (event) => {
+						scrollRight(carousel);
+					});
+				}
 			}
 		});
 		initCards();
@@ -68,12 +84,16 @@ export class FeedPage {
 		allCards.forEach(function (el) {
 			let startX, startY, currentX, currentY, initialX, initialY;
 			let isDragging = false;
+			let isSwiping = false;
 			
 			/**
              * Starts the drag event.
              * @param {Event} event - The drag start event.
              */
 			function startDrag(event) {
+				if (event.target.tagName === 'BUTTON') {
+					return;
+				}
 				isDragging = true;
 				startX = event.type === 'touchstart' ? event.touches[0].clientX : event.clientX;
 				startY = event.type === 'touchstart' ? event.touches[0].clientY : event.clientY;
@@ -99,6 +119,7 @@ export class FeedPage {
              */
 			function drag(event) {
 				if (!isDragging) {return;}
+				isSwiping = true;
 			
 				currentX = event.type === 'touchmove' ? event.touches[0].clientX : event.clientX;
 				currentY = event.type === 'touchmove' ? event.touches[0].clientY : event.clientY;
@@ -122,20 +143,19 @@ export class FeedPage {
              * Ends the drag event.
              */
 			async function endDrag() {
-				if (!isDragging) {
+				if (!isSwiping) {
 					return;
 				}
+				isSwiping = false;
 				isDragging = false;
 			
 				el.classList.remove('moving');
 				tinderContainer.classList.remove('tinder_love');
 				tinderContainer.classList.remove('tinder_nope');
-			
 				let deltaX = currentX - startX;
 				let deltaY = currentY - startY;
 				let moveOutWidth = document.body.clientWidth;
-				let keep = Math.abs(deltaX) < 80;
-			
+				let keep = (Math.abs(deltaX) < 80 || deltaX === NaN);
 				el.classList.toggle('removed', !keep);
 			
 				if (keep) {

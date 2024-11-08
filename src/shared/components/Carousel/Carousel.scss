@@ -1,0 +1,28 @@
+.carousel {
+    display: flex;
+    height: 100%;
+    overflow-x: hidden;
+    width: 100%;
+
+    &__button {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        display: none;
+        position: absolute;
+
+        &_left {
+            left: 5px;
+        }
+
+        &_right {
+            right: 5px;
+        }
+    }
+}
+
+.image-section:hover .carousel__button {
+    display: block;
+}
+  

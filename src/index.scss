@@ -4,13 +4,14 @@
 @use './shared/components/GenderSelection/genderSelection' as *;
 @use './shared/components/Header/header' as *;
 @use './shared/components/ImageSection/imageSection' as *;
-@use './shared/components/SwipeCard/swipeCard' as *;
+@use './widgets/SwipeCard/swipeCard.scss' as *;
 @use './shared/components/TextButton/textButton' as *;
 @use './widgets/Navbar/ui/navbar' as *;
 @use './widgets/RegistrationForm/registrationForm' as *;
 @use './pages/matches/ui/matches.scss' as *;
 @use './widgets/MatchCard/matchCard.scss' as *;
 @use './pages/matches/ui/messageForm.scss' as *;
+@use './shared/components/Carousel/Carousel.scss' as *;
 
 
 @font-face {
@@ -105,6 +106,16 @@ h3 {
     }
 }
 
+.button_light {
+    background-color: var(--primary);
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--white1);
+    }
+}
+
 .form {
     background-color: var(--white1);
     border-radius: 25px;
@@ -156,5 +167,11 @@ h3 {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        transform-origin: center; 
+        transition: transform 0.1s ease-in-out;
+    }
+
+    &:hover &__img {
+        transform: translate(-50%, -50%) scale(1.1); 
     }
 }
