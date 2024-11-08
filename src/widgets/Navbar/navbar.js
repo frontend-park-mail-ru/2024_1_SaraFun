@@ -52,6 +52,15 @@ export default class Navbar {
 			});
 		}
 
+		const logoLink = document.querySelector('navbar__logo__link');
+		if (logoLink) {
+			logoLink.addEventListener('click', (event) => {
+				event.preventDefault();
+				const path = link.getAttribute('href');
+				this.parent.navigateTo(path);
+			});
+		}
+
 		const profileLink = document.querySelector('li.nav-link a[href="/profile"]');
 		if (profileLink) {
 			profileLink.addEventListener('click', (event) => {

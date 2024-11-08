@@ -4,10 +4,10 @@ mixin navbar(isAuth, activeNavbarItem)
     .navbar
         .navbar__logo
             if (isAuth)
-                a(href='/feed')
+                a(class='navbar__logo__link' href='/feed')
                     img(class='img navbar__logo__img' src='./img/Logo.svg' alt='logo')
             else 
-                a(href='/login')
+                a(class='navbar__logo__link' href='/login')
                     img(class='img navbar__logo__img' src='./img/Logo.svg' alt='logo')
         .navbar__list
             ul.navbar__list__ul
