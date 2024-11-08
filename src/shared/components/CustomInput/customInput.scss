@@ -6,10 +6,15 @@
 	border: 1px solid var(--grey1);
 }
 
+.error {
+	font-size: 12px;
+}
+
 .password {
 	&__wrapper {
 		width: 100%;
 		position: relative;
+		gap: 10px;
 	}
 
 	&__icon {
