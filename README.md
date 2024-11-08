@@ -36,4 +36,4 @@ Spark It предлагает интуитивно понятный интерф
 - [Backend](https://github.com/go-park-mail-ru/2024_2_SaraFun): Golang
 - База данных: Postgres
 - Аутентификация: 
-- Хостинг: http://5.188.140.7/login
+- Хостинг: http://5.188.140.7/
