@@ -52,7 +52,8 @@ export default class Navbar {
 			});
 		}
 
-		const logoLink = document.querySelector('navbar__logo__link');
+		const logoLink = document.querySelector('.navbar__logo__link');
+		console.log(logoLink);
 		if (logoLink) {
 			logoLink.addEventListener('click', (event) => {
 				event.preventDefault();
