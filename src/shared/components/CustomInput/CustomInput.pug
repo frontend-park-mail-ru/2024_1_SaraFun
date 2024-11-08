@@ -1,7 +1,7 @@
 mixin customInput(inputType, formType)
     if inputType=='password'
+        label(for="password" class=".text-base label") Пароль
         div(class="password__wrapper")
-            label(for="password" class=".text-base label") Пароль
             input(class='input' type="password" id="password" placeholder="Введите пароль")
             img(class="password__icon" src='./img/eye-x.svg')
         if formType=='registration'
