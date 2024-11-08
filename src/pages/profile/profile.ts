@@ -85,6 +85,7 @@ export class ProfilePage {
 
   public render(): void {
     this.parent.root.innerHTML = template({
+      username: this.parent.curLogin,
       isEditing: this.isEditing,
       FirstName: this.FirstName,
       LastName: this.LastName,

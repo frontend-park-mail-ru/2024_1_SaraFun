@@ -38,21 +38,26 @@
                 flex-direction: column;
                 gap: 16px;
                 align-items: center;
+                &__image {
+                    width: 300px;
+                    height: 300px;
+                    object-fit: cover;
+                }
             }
 
             &-avatar__wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 width: 220px;
                 height: 220px;
                 border-radius: 50%;
                 overflow: hidden;
                 flex-shrink: 0;
                 border: 1px solid var(--primary);
-                &__image {
-                    width: 200px;
-                    height: 200px;
-                    object-fit: cover;
-                }
+                
             }
+            
         }
 
 
