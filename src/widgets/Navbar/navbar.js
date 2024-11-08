@@ -53,12 +53,10 @@ export default class Navbar {
 		}
 
 		const logoLink = document.querySelector('.navbar__logo__link');
-		console.log(logoLink);
 		if (logoLink) {
 			logoLink.addEventListener('click', (event) => {
 				event.preventDefault();
-				const path = link.getAttribute('href');
-				console.log(path);
+				const path = logoLink.getAttribute('href');
 				this.parent.navigateTo(path);
 			});
 		}
