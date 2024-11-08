@@ -1,8 +1,10 @@
-mixin matchCard(username, age, images)
+include ../../shared/components/Carousel/Carousel.pug
+
+mixin matchCard(user)
   .match-card
     .image-section.match-card__image-section
-      if (images != null && images.length > 0)
-        img(class="img image-section__img" src=`http://5.188.140.7/${images[0].link.substring(images[0].link.lastIndexOf('/') + 1)}` alt="Image" draggable="false")
+      if (user.images != null && user.images.length > 0)
+        +carousel(user.images)
       else
         img(class="img image-section__img_static" src="./img/image.svg" alt="Image" draggable="false")
-    h3.match-card__title !{username}, !{age}
+    h3.match-card__title !{user.username}, !{user.age}
