@@ -8,7 +8,7 @@ import {get} from '../../../shared/api/api.js';
  */
 export async function logout() {
 	try {
-		await get('http://5.188.140.7:8080/logout');
+		await get('/logout');
 		return true;
 
 	} catch (error) {
