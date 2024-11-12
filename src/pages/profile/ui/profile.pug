@@ -15,11 +15,7 @@ div.profile
         label
           | Фамилия:
           input(type="text" id="LastName" maxlength="50" value=LastName required)
-        label
-          | Пол:
-          select(id="Gender" required)
-            option(value="male", selected=Gender === 'male') Мужской
-            option(value="female", selected=Gender === 'female') Женский
+        include ../../../shared/components/GenderSelection/GenderSelection.pug
         label
           | Возраст:
           input(class="range-input" type="range" id="Age" name="Age" min="18" max="100" value=Age)

@@ -165,7 +165,7 @@ export class ProfilePage {
   private getInfoFromPage() {
     this.FirstName = (document.getElementById('FirstName') as HTMLInputElement).value;
     this.LastName = (document.getElementById('LastName') as HTMLInputElement).value;
-    this.Gender = (document.getElementById('Gender') as HTMLSelectElement).value;
+    this.Gender = (document.querySelector('input[name="gender"]:checked') as HTMLSelectElement).value;
     this.Age = parseInt((document.getElementById('Age') as HTMLInputElement).value, 10);
     this.Target = (document.getElementById('Target') as HTMLTextAreaElement).value;
     this.About = (document.getElementById('About') as HTMLTextAreaElement).value;
@@ -215,9 +215,9 @@ export class ProfilePage {
       this.parent.About = this.About;
       this.parent.imagesURLs = this.imagesURLs;
       this.parent.imagesIndexes = this.imagesIndexes;
-        //console.log('Profile updated successfully'); //тут бы всплывающее окно
+      //console.log('Profile updated successfully'); //тут бы всплывающее окно
     } else {
-        //console.error('Failed to update profile'); //тут тоже
+      // console.error('Failed to update profile'); //тут тоже
     }
 
     this.isEditing = false;
