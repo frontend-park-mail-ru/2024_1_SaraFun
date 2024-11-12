@@ -1,5 +1,5 @@
 import { logout } from './api/logout.js';
-import {getProfile} from "../../pages/profile/api/getProfile";
+import {getProfile} from "../../pages/login/api/getProfile";
 import {checkAuth} from "../../features/checkAuth";
 
 /**

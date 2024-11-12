@@ -85,6 +85,14 @@ export class RegistrationPage {
 						document.getElementById('login-password-error').style.display = 'block';            
 					} else { 
 						this.parent.curLogin = login;
+						this.parent.imagesIndexes = [];
+						this.parent.FirstName = '-';
+						this.parent.LastName = '-';
+						this.parent.Age = 18;
+						this.parent.Gender = 'male';
+						this.parent.Target = '-';
+						this.parent.About = '-';
+						this.parent.imagesURLs = ['./img/user.svg'];
 						this.parent.isAuth = true;
 						this.parent.navigateTo('/feed');
 					}

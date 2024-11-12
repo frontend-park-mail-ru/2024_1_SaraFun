@@ -1,6 +1,6 @@
 import {post, put, del} from '../../../shared/api/api.js';
 import { delImg } from './delImg';
-import { UserProfile } from './profile';
+import { UserProfile } from '../../login/api/profile.js';
 import { uploadImg } from './uploadImg';
 
 /**

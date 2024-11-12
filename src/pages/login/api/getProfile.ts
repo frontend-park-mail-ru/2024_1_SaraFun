@@ -1,5 +1,5 @@
 import { get } from '../../../shared/api/api.js';
-import { UserProfile } from './profile';
+import { UserProfile } from './profile.js';
 
 /**
  * Fetches the profile of a user by ID.

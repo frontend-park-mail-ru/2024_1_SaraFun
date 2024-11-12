@@ -2,6 +2,7 @@ import Navbar from '../../widgets/Navbar/navbar.js';
 
 import template from './ui/login.pug';
 import { loginUser } from './api/loginUser.js';
+import { getProfile } from './api/getProfile';
 
 /**
  * Class representing the login page.
@@ -72,6 +73,21 @@ export class LoginPage {
 						document.getElementById('login-password-error').style.display = 'block';            
 					} else { 
 						this.parent.curLogin = login;
+						//тут хочу получать всю инфу о пользователе и хранить 
+						//имя фамилия возраст(дату рождения) пол фотографии
+						const profileData = await getProfile();
+						if (profileData) {
+							this.parent.ID = profileData.ID || 0;
+							this.parent.imagesIndexes = profileData.imagesIndexes || [];
+							this.parent.FirstName = profileData.FirstName || '-';
+							this.parent.LastName = profileData.LastName || '-';
+							this.parent.Age = profileData.Age || 21;
+							this.parent.Gender = profileData.Gender || 'male';
+							this.parent.Target = profileData.Target || '-';
+							this.parent.About = profileData.About || '-';
+							this.parent.imagesURLs = profileData.imagesURLs || ['./img/user.svg'];
+						};
+						
 						this.parent.isAuth = true;
 						this.parent.navigateTo('/feed');
 					}

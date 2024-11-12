@@ -1,14 +1,22 @@
 import template from './ui/profile.pug';
-import { UserProfile } from './api/profile';
-import { getProfile } from './api/getProfile';
 import { updProfile } from './api/updProfile';
 import Navbar from '../../widgets/Navbar/navbar.js';
 import './ui/profile.scss';
 import { uploadImg } from '../../features/imageUploader';
+import { UserProfile } from '../login/api/profile';
 
 
 interface Parent {
   curLogin: string;
+  ID: number;
+  imagesIndexes: number[];
+  FirstName: string;
+  LastName: string;
+  Age: number;
+  Gender: string;
+  Target: string;
+  About: string;
+  imagesURLs: string[];
   root: HTMLElement;
 }
 
@@ -47,22 +55,15 @@ export class ProfilePage {
   }
 
   private async loadProfile(): Promise<void> {
-    try {
-      const profileData = await getProfile();
-      if (profileData) {
-        this.ID = profileData.ID || -1;
-        this.imagesIndexes = profileData.imagesIndexes || [-1];
-        this.FirstName = profileData.FirstName || '-';
-        this.LastName = profileData.LastName || '-';
-        this.Age = profileData.Age || 21;
-        this.Gender = profileData.Gender || 'male';
-        this.Target = profileData.Target || '-';
-        this.About = profileData.About || '-';
-        this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
-      };
-    } catch (error) {
-      console.error('Ошибка при загрузке профиля:', error);
-    }
+    this.ID = this.parent.ID || -1;
+    this.imagesIndexes = this.parent.imagesIndexes || [];
+    this.FirstName = this.parent.FirstName || '-';
+    this.LastName = this.parent.LastName || '-';
+    this.Age = this.parent.Age || 21;
+    this.Gender = this.parent.Gender || 'male';
+    this.Target = this.parent.Target || '-';
+    this.About = this.parent.About || '-';
+    this.imagesURLs = this.parent.imagesURLs || ['./img/image.svg'];
   }
   
 
@@ -205,9 +206,16 @@ export class ProfilePage {
 
     const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel);
     
-    
     if (updateSuccess) {
-        //console.log('Profile updated successfully'); тут бы всплывающее окно
+      this.parent.FirstName = this.FirstName;
+      this.parent.LastName = this.LastName;
+      this.parent.Age = this.Age;
+      this.parent.Gender = this.Gender;
+      this.parent.Target = this.Target;
+      this.parent.About = this.About;
+      this.parent.imagesURLs = this.imagesURLs;
+      this.parent.imagesIndexes = this.imagesIndexes;
+        //console.log('Profile updated successfully'); //тут бы всплывающее окно
     } else {
         //console.error('Failed to update profile'); //тут тоже
     }
