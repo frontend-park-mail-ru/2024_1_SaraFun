@@ -8,7 +8,7 @@ import { UserProfile } from './profile';
  */
 export async function getProfile(): Promise<UserProfile | null> {
   try {
-    const response = await get('http://5.188.140.7:8080/profile');
+    const response = await get('/profile');
     
     if (!response.ok) {
       console.error('Failed to fetch profile:', response.statusText);

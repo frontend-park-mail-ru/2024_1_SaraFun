@@ -1,23 +1,26 @@
-import Navbar from '../../widgets/Navbar/navbar.js';
+import Navbar from '../../widgets/Navbar/navbar';
 import template from './ui/feed.pug';
-import { getUsers } from './api/getUsers.js';
-import { putLikeOrDislike } from './api/putLikeOrDislike.js';
-import { showImage, scrollLeft, scrollRight } from '../../shared/lib/carousel.js';
+import { getUsers } from './api/getUsers';
+import { putLikeOrDislike } from './api/putLikeOrDislike';
+import { showImage, scrollLeft, scrollRight } from '../../shared/lib/carousel';
+import { User } from '../../entities/User/User'
 
 
 /**
  * Class representing the Feed Page.
  */
 export class FeedPage {
+	private parent: { root: HTMLElement };
+  	private navbar: Navbar | undefined;
 	/**
      * Creates an instance of FeedPage.
      * @param {Object} parent - The parent object containing the root element.
      */
-	constructor(parent) {
+	constructor(parent: { root: HTMLElement }) {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
 		this.render().then(() => {;
-			this.navbar = new Navbar(document.querySelector('navbar'), parent);
+			this.navbar = new Navbar(document.querySelector('navbar') as HTMLElement, parent);
 		});
 	}
 
@@ -25,23 +28,23 @@ export class FeedPage {
      * Renders the feed page by fetching users and initializing cards.
      * @returns {Promise<void>} - A promise that resolves when the rendering is complete.
      */
-	async render() {
-		let users = await getUsers();
+	async render(): Promise<void> {
+		let users: User[] = await getUsers();
 
 		/**
          * Initializes the cards by setting their styles and adding them to the container.
          */
-		function initCards() { 
-			let newCards = document.querySelectorAll('.tinder__card:not(.removed)');
+		function initCards(): void { 
+			let newCards = document.querySelectorAll('.tinder__card:not(.removed)') as NodeListOf<HTMLElement>;
 			const maxOffsetIndex = 10;
 		
 			newCards.forEach(function (card, index) {
 				const limitedIndex = Math.min(index, maxOffsetIndex); 
-				card.style.zIndex = allCards.length - index;
+				card.style.zIndex = `${allCards.length - index}`;
 				card.style.transform = 
 					'scale(' + (20 - limitedIndex) / 20 + ') ' + 
 					'translateY(-' + 30 * limitedIndex + 'px)';
-				card.style.opacity = (10 - index) / 10;
+				card.style.opacity = `${(10 - index) / 10}`;
 			});
 				
 			tinderContainer.classList.add('loaded');
@@ -50,21 +53,21 @@ export class FeedPage {
 		this.parent.root.innerHTML = template({ users });
 		if (users === null)
 		{return;}
-		let tinderContainer = document.querySelector('.tinder');
-		let allCards = document.querySelectorAll('.tinder__card');
-		let nope = document.getElementById('nope');
-		let love = document.getElementById('love');
+		let tinderContainer = document.querySelector('.tinder') as HTMLElement;
+		let allCards = document.querySelectorAll('.tinder__card') as NodeListOf<HTMLElement>;
+		let nope = document.getElementById('nope') as HTMLElement;
+		let love = document.getElementById('love') as HTMLElement;
 
 		allCards.forEach((card, index) => {
 			const user = users[index];
 			if (user) {
-				card.setAttribute('data-item-id', user.user);
+				card.setAttribute('data-item-id', `${user.user}`);
 			}
 
 			if (user.images != null && user.images.length > 1) {
-				const carousel = card.querySelector('.carousel');
+				const carousel = card.querySelector('.carousel') as HTMLElement;
 				if (carousel) {
-					carousel.setAttribute('data-current-index', 0);
+					carousel.setAttribute('data-current-index', `${0}`);
 					showImage(carousel, 0);
 
 					const leftButton = card.querySelector('.carousel__button_left');
@@ -82,7 +85,7 @@ export class FeedPage {
 		initCards();
 
 		allCards.forEach(function (el) {
-			let startX, startY, currentX, currentY, initialX, initialY;
+			let startX: number, startY: number, currentX: number, currentY: number, initialX: number, initialY: number;
 			let isDragging = false;
 			let isSwiping = false;
 			
@@ -90,13 +93,13 @@ export class FeedPage {
              * Starts the drag event.
              * @param {Event} event - The drag start event.
              */
-			function startDrag(event) {
-				if (event.target.tagName === 'BUTTON') {
+			function startDrag(event: MouseEvent | TouchEvent): void {
+				if ((event.target as HTMLElement).tagName === 'BUTTON') {
 					return;
 				}
 				isDragging = true;
-				startX = event.type === 'touchstart' ? event.touches[0].clientX : event.clientX;
-				startY = event.type === 'touchstart' ? event.touches[0].clientY : event.clientY;
+				startX = event.type === 'touchstart' ? (event as TouchEvent).touches[0].clientX : (event as MouseEvent).clientX;
+				startY = event.type === 'touchstart' ? (event as TouchEvent).touches[0].clientY : (event as MouseEvent).clientY;
 				if (el.style.transform && el.style.transform.includes('translate')) {
 					let transformValues = el.style.transform.match(/translate\(([^,]+),\s*([^)]+)\)/);
 					if (transformValues) {
@@ -117,12 +120,12 @@ export class FeedPage {
              * Handles the drag event.
              * @param {Event} event - The drag event.
              */
-			function drag(event) {
+			function drag(event: MouseEvent | TouchEvent): void {
 				if (!isDragging) {return;}
 				isSwiping = true;
 			
-				currentX = event.type === 'touchmove' ? event.touches[0].clientX : event.clientX;
-				currentY = event.type === 'touchmove' ? event.touches[0].clientY : event.clientY;
+				currentX = event.type === 'touchmove' ? (event as TouchEvent).touches[0].clientX : (event as MouseEvent).clientX;
+				currentY = event.type === 'touchmove' ? (event as TouchEvent).touches[0].clientY : (event as MouseEvent).clientY;
 			
 				let deltaX = currentX - startX;
 				let deltaY = currentY - startY;
@@ -142,7 +145,7 @@ export class FeedPage {
 			/**
              * Ends the drag event.
              */
-			async function endDrag() {
+			async function endDrag(): Promise<void> {
 				if (!isSwiping) {
 					return;
 				}
@@ -155,7 +158,7 @@ export class FeedPage {
 				let deltaX = currentX - startX;
 				let deltaY = currentY - startY;
 				let moveOutWidth = document.body.clientWidth;
-				let keep = (Math.abs(deltaX) < 80 || deltaX === NaN);
+				let keep = Math.abs(deltaX) < 80;
 				el.classList.toggle('removed', !keep);
 			
 				if (keep) {
@@ -171,7 +174,7 @@ export class FeedPage {
 
 					let love = deltaX > 0;
 					let userId = el.getAttribute('data-item-id');
-    				await putLikeOrDislike(love, userId);
+    				await putLikeOrDislike(love, parseInt(userId));
 
 					initCards();
 			  	}
@@ -193,9 +196,9 @@ export class FeedPage {
          * @param {boolean} love - Indicates if the button is for liking (true) or disliking (false).
          * @returns {Function} - The event listener function.
          */
-		function createButtonListener(love) {
-			return async function (event) {
-				let cards = document.querySelectorAll('.tinder__card:not(.removed)');
+		function createButtonListener(love: boolean) {
+			return async function (event: Event) {
+				let cards = document.querySelectorAll('.tinder__card:not(.removed)') as NodeListOf<HTMLElement>;
 				let moveOutWidth = document.body.clientWidth * 1.5;
 			
 				if (!cards.length) {
@@ -205,7 +208,7 @@ export class FeedPage {
 				let card = cards[0];
 				let userId = card.getAttribute('data-item-id');
 
-				await putLikeOrDislike(love, userId);
+				await putLikeOrDislike(love, parseInt(userId));
 			
 				card.classList.add('removed');
 			

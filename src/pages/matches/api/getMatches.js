@@ -7,7 +7,7 @@ import {get} from '../../../shared/api/api.js';
  */
 export async function getMatches() {
 	try {
-		const response = await get('http://5.188.140.7:8080/matches');
+		const response = await get('/matches');
 		return response.json();
 
 	} catch (error) {

@@ -1,3 +1,5 @@
+import { BASE_URL } from "../constants/baseURL";
+
 /**
  * Performs an AJAX request.
  * 
@@ -22,7 +24,7 @@ export async function ajax(url, method, body = null) {
 	}
 
 	try {
-		const response = await fetch(url, options);
+		const response = await fetch(`${BASE_URL}${url}`, options);
 
 		if (!response.ok) {
 			throw new Error(`${response.status}: ${response.statusText}`);
@@ -55,7 +57,7 @@ export async function ajaxMultipartForm(url, method, file) {
 	};
 
 	try {
-		const response = await fetch(url, options);
+		const response = await fetch(`${BASE_URL}${url}`, options);
         
 		if (!response.ok) {
 			throw new Error(`${response.status}: ${response.statusText}`);
