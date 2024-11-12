@@ -84,6 +84,15 @@ export class ProfilePage {
     });
   }
 
+  private limitInput(input: HTMLInputElement): void {
+    const regex = /^[A-Za-zА-Яа-яЁё-]*$/;
+    input.addEventListener("input", () => {
+      if (!regex.test(input.value)) {
+        input.value = input.value.split('').filter(char => regex.test(char)).join('');
+      }
+    });
+  }
+
   public render(): void {
     this.parent.root.innerHTML = template({
       username: this.parent.curLogin,
@@ -150,6 +159,17 @@ export class ProfilePage {
     if (this.isEditing) {
       const textarea = document.getElementById('About') as HTMLTextAreaElement; 
       this.limitText(textarea, 10); 
+
+      const firstNameInput = document.getElementById('FirstName') as HTMLInputElement; 
+      if (firstNameInput) {
+        this.limitInput(firstNameInput); 
+      }
+      
+
+      const lastNameInput = document.getElementById('LastName') as HTMLInputElement; 
+      if (lastNameInput) {
+        this.limitInput(lastNameInput); 
+      }
 
       textarea.addEventListener('input', () => {
         textarea.style.height = 'auto'; 
