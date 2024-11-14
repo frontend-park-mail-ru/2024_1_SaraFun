@@ -1,4 +1,5 @@
-export function uploadImg(imagesNew: File[], imagesURLs: string[], imagesIndexes: number[], getInfoFromPage: () => void, render: () => void) {
+import { ImgData } from '../pages/login/api/profile';
+export function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imagesIndexes: number[], getInfoFromPage: () => void, render: () => void) {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*'; 
@@ -13,11 +14,12 @@ export function uploadImg(imagesNew: File[], imagesURLs: string[], imagesIndexes
                 return; 
             }
 
-            imagesNew.push(file); 
             const reader = new FileReader();
             reader.onload = (e) => {
                 const result = e.target!.result; 
                 if (typeof result === 'string') { 
+                    const index = imagesURLs.length; 
+                    imagesNew.push({ file, index }); 
                     imagesIndexes.push(-1);
                     imagesURLs.push(result); 
                     getInfoFromPage();

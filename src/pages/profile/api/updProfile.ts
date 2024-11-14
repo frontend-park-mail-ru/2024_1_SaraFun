@@ -1,6 +1,6 @@
 import {post, put, del} from '../../../shared/api/api.js';
 import { delImg } from './delImg';
-import { UserProfile } from '../../login/api/profile.js';
+import { ImgData, UserProfile } from '../../login/api/profile.js';
 import { uploadImg } from './uploadImg';
 
 /**
@@ -10,7 +10,7 @@ import { uploadImg } from './uploadImg';
  * @param {Object} profileData - The data to update the user's profile.
  * @returns {Promise<boolean>} - A promise that resolves to true if the update is successful, otherwise false.
  */
-export async function updProfile(profileData: UserProfile, imagesNew: File[], imagesDel: number[]): Promise<boolean> {
+export async function updProfile(profileData: UserProfile, imagesNew: ImgData[], imagesDel: number[]): Promise<boolean> {
   try {
     const data = {
       id: profileData.ID,

@@ -3,7 +3,7 @@ import { updProfile } from './api/updProfile';
 import Navbar from '../../widgets/Navbar/navbar.js';
 import './ui/profile.scss';
 import { uploadImg } from '../../features/imageUploader';
-import { UserProfile } from '../login/api/profile';
+import { UserProfile, ImgData } from '../login/api/profile';
 
 
 interface Parent {
@@ -22,7 +22,7 @@ interface Parent {
 
 export class ProfilePage {
   private imagesDel: number[] = [];
-  private imagesNew: File[] = [];
+  private imagesNew: ImgData[] = [];
   private parent: Parent;
   private isEditing: boolean;
   private navbar: Navbar | null;
@@ -194,12 +194,23 @@ export class ProfilePage {
 
 
   private deleteImage(index: number): void {
-    this.imagesDel.push(this.imagesIndexes[index]);
+    const imageIndex = this.imagesIndexes[index];
+    
+    const isNewImage = this.imagesNew.some(img => img.index === imageIndex);
+    
+    if (isNewImage) {
+        this.imagesNew = this.imagesNew.filter(img => img.index !== imageIndex);
+    } else {
+        this.imagesDel.push(imageIndex);
+    }
+
+
     this.imagesIndexes.splice(index, 1);
     this.imagesURLs.splice(index, 1);
+
     this.getInfoFromPage();
     this.render();
-  }
+}
 
 
   private toggleEditMode(): void {
