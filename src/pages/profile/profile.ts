@@ -196,10 +196,10 @@ export class ProfilePage {
   private deleteImage(index: number): void {
     const imageIndex = this.imagesIndexes[index];
     
-    const isNewImage = this.imagesNew.some(img => img.index === imageIndex);
+    const isNewImage = this.imagesNew.some(img => img.index === index);
     
     if (isNewImage) {
-        this.imagesNew = this.imagesNew.filter(img => img.index !== imageIndex);
+        this.imagesNew = this.imagesNew.filter(img => img.index !== index);
     } else {
         this.imagesDel.push(imageIndex);
     }
