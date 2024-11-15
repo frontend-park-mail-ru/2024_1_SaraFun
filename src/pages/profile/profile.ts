@@ -125,48 +125,7 @@ export class ProfilePage {
       saveButton.addEventListener('click', () => this.saveSettings());
     }
 
-    const imageContainers = document.querySelectorAll('.image-container') as NodeListOf<HTMLElement>;
-
-    imageContainers.forEach((container, index) => {
-
-      container.addEventListener('dragstart', (event) => {
-        event.dataTransfer?.setData('text/plain', index.toString());
-      });
-
-
-      container.addEventListener('dragover', (event) => {
-        event.preventDefault(); 
-      });
-
-      container.addEventListener('drop', (event) => {
-        event.preventDefault();
-        const dragIndex = parseInt(event.dataTransfer?.getData('text/plain') || '0');
-
-        if (dragIndex !== index) {
-        
-          const draggedImage = this.imagesURLs[dragIndex];
-          this.imagesURLs.splice(dragIndex, 1); 
-          this.imagesURLs.splice(index, 0, draggedImage); 
-          
-          this.imagesNew.forEach((image, i) => {
-            if (image.index === dragIndex) {
-              // Если индекс совпадает с перетаскиваемым, обновляем его на новый индекс
-              image.index = index;
-            } else if (dragIndex < index && image.index > dragIndex && image.index <= index) {
-              // Если элемент находится между старым и новым индексами, уменьшаем индекс на 1
-              image.index -= 1;
-            } else if (dragIndex > index && image.index < dragIndex && image.index >= index) {
-              // Если элемент находится между новым и старым индексами, увеличиваем индекс на 1
-              image.index += 1;
-            }
-          });
     
-
-          this.getInfoFromPage();
-          this.render();
-        }
-      });
-    });
 
 
     if (this.isEditing) {
@@ -180,6 +139,52 @@ export class ProfilePage {
 
       updateOutput();
       rangeInput.addEventListener('input', updateOutput);
+      const imageContainers = document.querySelectorAll('.image-container') as NodeListOf<HTMLElement>;
+
+      if (imageContainers) {
+        imageContainers.forEach((container, index) => {
+
+        container.addEventListener('dragstart', (event) => {
+          event.dataTransfer?.setData('text/plain', index.toString());
+        });
+
+
+        container.addEventListener('dragover', (event) => {
+          event.preventDefault(); 
+        });
+
+        container.addEventListener('drop', (event) => {
+          event.preventDefault();
+          const dragIndex = parseInt(event.dataTransfer?.getData('text/plain') || '0');
+
+          if (dragIndex !== index) {
+            const draggedImage = this.imagesURLs[dragIndex];
+            const dragedId = this.imagesIndexes[dragIndex];
+            this.imagesURLs.splice(dragIndex, 1); 
+            this.imagesIndexes.splice(dragIndex, 1);
+            this.imagesURLs.splice(index, 0, draggedImage); 
+            this.imagesIndexes.splice(index, 0, dragedId); 
+            
+            this.imagesNew.forEach((image, i) => { //мне кажется, что непонятный код, поэтому есть комменты
+              if (image.index === dragIndex) {
+                // Если индекс совпадает с перетаскиваемым, обновляем его на новый индекс
+                image.index = index;
+              } else if (dragIndex < index && image.index > dragIndex && image.index <= index) {
+                // Если элемент находится между старым и новым индексами, уменьшаем индекс на 1
+                image.index -= 1;
+              } else if (dragIndex > index && image.index < dragIndex && image.index >= index) {
+                // Если элемент находится между новым и старым индексами, увеличиваем индекс на 1
+                image.index += 1;
+              }
+            });
+      
+
+            this.getInfoFromPage();
+            this.render();
+          }
+        });
+        });
+      }
     }
     
 
@@ -284,7 +289,7 @@ export class ProfilePage {
       imagesURLs: this.imagesURLs,
     };
 
-    const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel);
+    const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel, this.imagesURLs, this.imagesIndexes);
     
     if (updateSuccess) {
       //console.log('Profile updated successfully'); //тут бы всплывающее окно

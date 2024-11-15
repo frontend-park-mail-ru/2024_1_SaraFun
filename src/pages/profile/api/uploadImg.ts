@@ -1,6 +1,6 @@
 import {post} from '../../../shared/api/api.js';
 import { ImgData } from './profile.js';
-export async function uploadImg(imagesNew: ImgData[]): Promise<boolean> {
+export async function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imagesIndexes: number[]): Promise<boolean> {
     try {
         for (const image of imagesNew) {
             const formData = new FormData();
@@ -10,6 +10,11 @@ export async function uploadImg(imagesNew: ImgData[]): Promise<boolean> {
               console.error('Failed to upload the image:', response.statusText);
               return false; 
             };
+
+            const data = await response.json(); 
+
+            imagesURLs[image.index] = data.link;
+            imagesIndexes[image.index] = data.id;
         }
         return true;
     }
