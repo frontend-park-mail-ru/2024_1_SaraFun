@@ -1,5 +1,5 @@
 import {post} from '../../../shared/api/api.js';
-import { ImgData } from '../../login/api/profile.js';
+import { ImgData } from './profile.js';
 export async function uploadImg(imagesNew: ImgData[]): Promise<boolean> {
     try {
         for (const image of imagesNew) {

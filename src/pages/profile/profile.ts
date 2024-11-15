@@ -3,20 +3,11 @@ import { updProfile } from './api/updProfile';
 import Navbar from '../../widgets/Navbar/navbar.js';
 import './ui/profile.scss';
 import { uploadImg } from '../../features/imageUploader';
-import { UserProfile, ImgData } from '../login/api/profile';
+import { UserProfile, ImgData } from './api/profile';
+import { getProfile } from './api/getProfile';
 
 
 interface Parent {
-  curLogin: string;
-  ID: number;
-  imagesIndexes: number[];
-  FirstName: string;
-  LastName: string;
-  Age: number;
-  Gender: string;
-  Target: string;
-  About: string;
-  imagesURLs: string[];
   root: HTMLElement;
 }
 
@@ -26,6 +17,7 @@ export class ProfilePage {
   private parent: Parent;
   private isEditing: boolean;
   private navbar: Navbar | null;
+  private username: string;
   private ID: number;
   private imagesIndexes: number[];
   private FirstName: string;
@@ -40,6 +32,7 @@ export class ProfilePage {
     this.parent = parent;
     this.isEditing = false;
     this.navbar = null;
+    this.username = 'andrey_918';
     this.ID = -1;
     this.imagesIndexes = [];
     this.FirstName = 'Андрей';
@@ -55,15 +48,20 @@ export class ProfilePage {
   }
 
   private async loadProfile(): Promise<void> {
-    this.ID = this.parent.ID || -1;
-    this.imagesIndexes = this.parent.imagesIndexes || [];
-    this.FirstName = this.parent.FirstName || '-';
-    this.LastName = this.parent.LastName || '-';
-    this.Age = this.parent.Age || 21;
-    this.Gender = this.parent.Gender || 'male';
-    this.Target = this.parent.Target || '-';
-    this.About = this.parent.About || '-';
-    this.imagesURLs = this.parent.imagesURLs || ['./img/image.svg'];
+    const profileData = await getProfile();
+    if(profileData) {
+      this.username = profileData.username || 'andrey_918';
+      this.ID = profileData.ID || -1;
+      this.imagesIndexes = profileData.imagesIndexes || [];
+      this.FirstName = profileData.FirstName || '-';
+      this.LastName = profileData.LastName || '-';
+      this.Age = profileData.Age || 21;
+      this.Gender = profileData.Gender || 'male';
+      this.Target = profileData.Target || '-';
+      this.About = profileData.About || '-';
+      this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
+    }
+    
   }
   
 
@@ -95,7 +93,7 @@ export class ProfilePage {
 
   public render(): void {
     this.parent.root.innerHTML = template({
-      username: this.parent.curLogin,
+      username: this.username,
       isEditing: this.isEditing,
       FirstName: this.FirstName,
       LastName: this.LastName,
@@ -224,6 +222,7 @@ export class ProfilePage {
     this.getInfoFromPage()
 
     const profileData: UserProfile = {
+      username: this.username,
       ID: this.ID, 
       imagesIndexes: this.imagesIndexes,
       FirstName: this.FirstName,
@@ -238,14 +237,6 @@ export class ProfilePage {
     const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel);
     
     if (updateSuccess) {
-      this.parent.FirstName = this.FirstName;
-      this.parent.LastName = this.LastName;
-      this.parent.Age = this.Age;
-      this.parent.Gender = this.Gender;
-      this.parent.Target = this.Target;
-      this.parent.About = this.About;
-      this.parent.imagesURLs = this.imagesURLs;
-      this.parent.imagesIndexes = this.imagesIndexes;
       //console.log('Profile updated successfully'); //тут бы всплывающее окно
     } else {
       // console.error('Failed to update profile'); //тут тоже
