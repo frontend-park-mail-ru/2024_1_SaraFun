@@ -8,6 +8,7 @@ import { getProfile } from './api/getProfile';
 
 
 interface Parent {
+  curLogin: string;
   root: HTMLElement;
 }
 
@@ -49,9 +50,7 @@ export class ProfilePage {
 
   private async loadProfile(): Promise<void> {
     const profileData = await getProfile();
-    console.log(profileData.username);
     if(profileData) {
-      this.username = profileData.username || 'andrey_918';
       this.ID = profileData.ID || -1;
       this.imagesIndexes = profileData.imagesIndexes || [];
       this.FirstName = profileData.FirstName || '-';
@@ -94,7 +93,7 @@ export class ProfilePage {
 
   public render(): void {
     this.parent.root.innerHTML = template({
-      username: this.username,
+      username: this.parent.curLogin,
       isEditing: this.isEditing,
       FirstName: this.FirstName,
       LastName: this.LastName,
@@ -223,7 +222,6 @@ export class ProfilePage {
     this.getInfoFromPage()
 
     const profileData: UserProfile = {
-      username: this.username,
       ID: this.ID, 
       imagesIndexes: this.imagesIndexes,
       FirstName: this.FirstName,

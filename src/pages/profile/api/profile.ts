@@ -1,5 +1,4 @@
 export interface UserProfile {
-  username: string,
   ID: number,
   imagesIndexes: number[],
   FirstName: string,
