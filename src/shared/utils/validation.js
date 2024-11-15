@@ -2,7 +2,7 @@
  * Validates if the given password meets the required criteria.
  * 
  * @param {string} password - The password to validate.
- * @returns {boolean} - Returns true if the password is valid, otherwise false.
+ * @returns {array} - Returns true if the password is valid, otherwise false.
  */
 export function isValidPassword(password) {
     const errors = [];
@@ -31,7 +31,7 @@ export function isValidPassword(password) {
  * Validates if the given login meets the required criteria.
  * 
  * @param {string} login - The login to validate.
- * @returns {boolean} - Returns true if the login is valid, otherwise false.
+ * @returns {array} - Returns true if the login is valid, otherwise false.
  */
 export function isValidLogin(login) {
     const errors = [];

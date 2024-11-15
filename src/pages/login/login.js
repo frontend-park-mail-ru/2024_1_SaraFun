@@ -2,6 +2,7 @@ import Navbar from '../../widgets/Navbar/navbar.js';
 
 import template from './ui/login.pug';
 import { loginUser } from './api/loginUser.js';
+import { isValidLogin, isValidPassword } from '../../shared/utils/validation.js';
 
 /**
  * Class representing the login page.
@@ -50,6 +51,13 @@ export class LoginPage {
 			const password = document.getElementById('password').value;
 
 			let valid = true;
+			const loginErrors = isValidLogin(login);
+			const passwordErrors = isValidPassword(password);
+
+			if (loginErrors.length > 0 || passwordErrors.length > 0) {
+				valid = false;
+			}
+
 
 			if (!login) {
 				document.getElementById('login-error').style.display = 'block';
