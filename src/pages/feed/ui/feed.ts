@@ -52,8 +52,9 @@ export class FeedPage {
 		}
 
 		this.parent.root.innerHTML = template({ users });
-		if (users === null)
-		{return;}
+		if (users === null) {
+			return;
+		}
 		let tinderContainer = document.querySelector('.tinder') as HTMLElement;
 		let allCards = document.querySelectorAll('.tinder__card') as NodeListOf<HTMLElement>;
 		let nope = document.getElementById('nope') as HTMLElement;
@@ -85,7 +86,7 @@ export class FeedPage {
 		});
 		initCards();
 
-		allCards.forEach(function (el) {
+		allCards.forEach(function (el, index) {
 			let startX: number, startY: number, currentX: number, currentY: number, initialX: number, initialY: number;
 			let isDragging = false;
 			let isSwiping = false;
@@ -95,6 +96,9 @@ export class FeedPage {
              * @param {Event} event - The drag start event.
              */
 			function startDrag(event: MouseEvent | TouchEvent): void {
+				if (index != 0) {
+					return;
+				}
 				if ((event.target as HTMLElement).tagName === 'BUTTON') {
 					return;
 				}
