@@ -198,6 +198,13 @@ export class ProfilePage {
     
     if (isNewImage) {
         this.imagesNew = this.imagesNew.filter(img => img.index !== index);
+        this.imagesNew = this.imagesNew.map(img => {
+          if (img.index > index) {
+              return { ...img, index: img.index - 1 }; 
+          }
+          return img;
+      });
+  
     } else {
         this.imagesDel.push(imageIndex);
     }
