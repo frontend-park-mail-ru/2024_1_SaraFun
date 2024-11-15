@@ -1,4 +1,4 @@
-import { get } from '../../../shared/api/api.js';
+import { get } from '../../../shared/api/api';
 import { UserProfile } from './profile';
 
 /**

@@ -1,4 +1,4 @@
-import {del} from '../../../shared/api/api.js';
+import {del} from '../../../shared/api/api';
 
 export async function delImg(imagesDel: number[]): Promise<boolean> {
     try {

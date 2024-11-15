@@ -4,19 +4,20 @@ import { getUsers } from './api/getUsers';
 import { putLikeOrDislike } from './api/putLikeOrDislike';
 import { showImage, scrollLeft, scrollRight } from '../../shared/lib/carousel';
 import { User } from '../../entities/User/User'
+import { Router } from '../../app/Router';
 
 
 /**
  * Class representing the Feed Page.
  */
 export class FeedPage {
-	private parent: { root: HTMLElement };
+	private parent: Router;
   	private navbar: Navbar | undefined;
 	/**
      * Creates an instance of FeedPage.
      * @param {Object} parent - The parent object containing the root element.
      */
-	constructor(parent: { root: HTMLElement }) {
+	constructor(parent: Router) {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
 		this.render().then(() => {;

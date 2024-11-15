@@ -3,10 +3,10 @@
  */
 export class Router {
 	private static instance: Router;
-	private root: HTMLElement;
-	private isAuth: boolean;
 	private routes: Map<string, { view: any, isPublic: boolean }>;
 	private currentRoute: { path: string, view: any };
+	root: HTMLElement;
+	isAuth: boolean;
 	/**
 	 * Creates an instance of Router.
 	 *

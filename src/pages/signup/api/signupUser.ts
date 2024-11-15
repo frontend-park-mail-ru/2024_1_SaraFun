@@ -1,4 +1,4 @@
-import {post} from '../../../shared/api/api.js';
+import {post} from '../../../shared/api/api';
 
 /**
  * Registers a new user.
@@ -10,7 +10,7 @@ import {post} from '../../../shared/api/api.js';
  * @returns {Promise<boolean>} - A promise that resolves to true 
  * 								if registration is successful, otherwise false.
  */
-export async function signupUser(login, password, gender, age) {
+export async function signupUser(login: string, password: string, gender: string, age: number): Promise<boolean> {
 	try {
 		const body = {
 			user: {
@@ -19,10 +19,10 @@ export async function signupUser(login, password, gender, age) {
 			},
 			profile: {
 				'gender': gender, 
-				'age': parseInt(age),
+				'age': age,
 			}
 		};
-		await post('/signup', JSON.stringify(body));
+		await post('/signup', body);
 		return true;
 
 	} catch (error) {

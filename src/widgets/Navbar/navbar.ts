@@ -1,24 +1,27 @@
-import { logout } from './api/logout.js';
+import { logout } from './api/logout';
 import {getProfile} from "../../pages/profile/api/getProfile";
 import {checkAuth} from "../../features/checkAuth";
+import { Router } from '../../app/Router';
 
 /**
  * Class representing the navigation bar.
  */
 export default class Navbar {
+	private nav: HTMLElement;
+	private parent: Router;
 	/**
    * Creates an instance of Navbar.
    * @param {HTMLElement} nav - The nav element.
    * @param {Object} app - The application instance.
    */
-	constructor(nav, parent) {
+	constructor(nav: HTMLElement, parent: Router) {
 		this.nav = nav;
 		this.parent = parent;
 		this.addEventListeners();
 		this.getUserAvatar();
 	}
 
-	async getUserAvatar() {
+	async getUserAvatar(): Promise<void> {
 		const isAuth = await checkAuth();
 		if (!isAuth) {
 			return;
@@ -33,7 +36,7 @@ export default class Navbar {
 	/**
    * Adds event listeners to the navigation links and logout button.
    */
-	addEventListeners() {
+	addEventListeners(): void {
 		const navLinks = document.querySelectorAll('li a');
 
 		navLinks.forEach(link => {
@@ -66,7 +69,7 @@ export default class Navbar {
 		if (profileLink) {
 			profileLink.addEventListener('click', (event) => {
 				event.preventDefault();
-				this.app.render('/profile');
+				this.parent.navigateTo('/profile');
 			});
 		}
 
