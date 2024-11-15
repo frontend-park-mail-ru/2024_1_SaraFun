@@ -71,6 +71,7 @@ export class LoginPage {
 					if (!isLogedIn) {
 						document.getElementById('login-password-error').style.display = 'block';            
 					} else { 
+						this.parent.curLogin = login;
 						this.parent.isAuth = true;
 						this.parent.navigateTo('/feed');
 					}
