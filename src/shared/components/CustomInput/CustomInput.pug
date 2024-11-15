@@ -9,8 +9,8 @@ mixin customInput(inputType, formType)
             p.error#password-error-2(style='display:none')
             p.error#password-error-3(style='display:none')
         else if formType=='login'
-            p.error(id="password-error") Ошибка: Введите пароль
-            p.error(id="login-password-error") Ошибка: Неправильный логин или пароль
+            p.error(id="password-error") Введите пароль
+            p.error(id="login-password-error") Неправильный логин или пароль
     else if inputType=='login'
         label(for="login" class=".text-base label") Логин
         input(class='input' type="text" id="login" class=".text-base" placeholder="Введите логин")
@@ -20,4 +20,4 @@ mixin customInput(inputType, formType)
             p.error#login-error-3(style='display:none')
             p.error#login-error-4(style='display:none')
         else if formType=='login'
-            p.error(id="login-error") Ошибка: Введите правильный логин
+            p.error(id="login-error") Введите правильный логин
