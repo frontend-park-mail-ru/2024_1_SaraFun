@@ -56,6 +56,7 @@ export class LoginPage {
 
 			if (loginErrors.length > 0 || passwordErrors.length > 0) {
 				valid = false;
+				document.getElementById('login-password-error').style.display = 'block'; 
 			}
 
 
