@@ -27,8 +27,13 @@ div.profile
       div 
         h3 Фотографии
         .image-section-profile
-          each image in imagesURLs
-            .image-container
+          each image, index in imagesURLs
+            .image-container(
+              draggable="true"
+              data-index=index
+            )
+
+
               img(src=image, alt="Фотография в профиле")
               .delete-button
                 +trash
