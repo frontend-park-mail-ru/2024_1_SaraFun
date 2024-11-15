@@ -139,50 +139,51 @@ export class ProfilePage {
 
       updateOutput();
       rangeInput.addEventListener('input', updateOutput);
+
+      //перетаскивание фотографий
       const imageContainers = document.querySelectorAll('.image-container') as NodeListOf<HTMLElement>;
 
       if (imageContainers) {
         imageContainers.forEach((container, index) => {
+          container.addEventListener('dragstart', (event) => {
+            event.dataTransfer?.setData('text/plain', index.toString());
+          });
 
-        container.addEventListener('dragstart', (event) => {
-          event.dataTransfer?.setData('text/plain', index.toString());
-        });
 
+          container.addEventListener('dragover', (event) => {
+            event.preventDefault(); 
+          });
 
-        container.addEventListener('dragover', (event) => {
-          event.preventDefault(); 
-        });
+          container.addEventListener('drop', (event) => {
+            event.preventDefault();
+            const dragIndex = parseInt(event.dataTransfer?.getData('text/plain') || '0');
 
-        container.addEventListener('drop', (event) => {
-          event.preventDefault();
-          const dragIndex = parseInt(event.dataTransfer?.getData('text/plain') || '0');
+            if (dragIndex !== index) {
+              const draggedImage = this.imagesURLs[dragIndex];
+              const dragedId = this.imagesIndexes[dragIndex];
+              this.imagesURLs.splice(dragIndex, 1); 
+              this.imagesIndexes.splice(dragIndex, 1);
+              this.imagesURLs.splice(index, 0, draggedImage); 
+              this.imagesIndexes.splice(index, 0, dragedId); 
+              
+              this.imagesNew.forEach((image, i) => { //мне кажется, что непонятный код, поэтому есть комменты
+                if (image.index === dragIndex) {
+                  // Если индекс совпадает с перетаскиваемым, обновляем его на новый индекс
+                  image.index = index;
+                } else if (dragIndex < index && image.index > dragIndex && image.index <= index) {
+                  // Если элемент находится между старым и новым индексами, уменьшаем индекс на 1
+                  image.index -= 1;
+                } else if (dragIndex > index && image.index < dragIndex && image.index >= index) {
+                  // Если элемент находится между новым и старым индексами, увеличиваем индекс на 1
+                  image.index += 1;
+                }
+              });
+        
 
-          if (dragIndex !== index) {
-            const draggedImage = this.imagesURLs[dragIndex];
-            const dragedId = this.imagesIndexes[dragIndex];
-            this.imagesURLs.splice(dragIndex, 1); 
-            this.imagesIndexes.splice(dragIndex, 1);
-            this.imagesURLs.splice(index, 0, draggedImage); 
-            this.imagesIndexes.splice(index, 0, dragedId); 
-            
-            this.imagesNew.forEach((image, i) => { //мне кажется, что непонятный код, поэтому есть комменты
-              if (image.index === dragIndex) {
-                // Если индекс совпадает с перетаскиваемым, обновляем его на новый индекс
-                image.index = index;
-              } else if (dragIndex < index && image.index > dragIndex && image.index <= index) {
-                // Если элемент находится между старым и новым индексами, уменьшаем индекс на 1
-                image.index -= 1;
-              } else if (dragIndex > index && image.index < dragIndex && image.index >= index) {
-                // Если элемент находится между новым и старым индексами, увеличиваем индекс на 1
-                image.index += 1;
-              }
-            });
-      
-
-            this.getInfoFromPage();
-            this.render();
-          }
-        });
+              this.getInfoFromPage();
+              this.render();
+            }
+          });
         });
       }
     }
@@ -247,16 +248,16 @@ export class ProfilePage {
     
     if (isNewImage) {
         this.imagesNew = this.imagesNew.filter(img => img.index !== index);
-        this.imagesNew = this.imagesNew.map(img => {
-          if (img.index > index) {
-              return { ...img, index: img.index - 1 }; 
-          }
-          return img;
-      });
-  
     } else {
         this.imagesDel.push(imageIndex);
     }
+
+    this.imagesNew = this.imagesNew.map(img => {
+      if (img.index > index) {
+          return { ...img, index: img.index - 1 }; 
+      }
+      return img;
+    });
 
 
     this.imagesIndexes.splice(index, 1);
