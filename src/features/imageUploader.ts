@@ -4,15 +4,15 @@ export function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imagesInde
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*'; 
-    input.multiple = true; // Разрешаем выбор нескольких файлов
+    input.multiple = true; 
 
     input.addEventListener('change', (event: Event) => {
         const target = event.target as HTMLInputElement; 
-        const files = target.files; // Получаем все выбранные файлы
+        const files = target.files; 
         
         if (files) {
             const validImageTypes = ['image/jpeg', 'image/png', 'image/svg+xml'];
-            const promises: Promise<void>[] = []; // Массив для хранения промисов
+            const promises: Promise<void>[] = []; 
 
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
@@ -31,18 +31,18 @@ export function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imagesInde
                             imagesNew.push({ file, index }); 
                             imagesIndexes.push(-1);
                             imagesURLs.push(result); 
-                            resolve(); // Успешно завершили чтение файла
+                            resolve(); 
                         }
                     };
                     reader.readAsDataURL(file); 
                 });
 
-                promises.push(promise); // Добавляем промис в массив
+                promises.push(promise); 
             }
 
             Promise.all(promises).then(() => {
-                getInfoFromPage(); // Вызываем после обработки всех файлов
-                render(); // Обновляем интерфейс
+                getInfoFromPage(); 
+                render(); 
             });
         }
     });
