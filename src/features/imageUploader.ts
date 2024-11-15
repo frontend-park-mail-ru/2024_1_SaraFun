@@ -46,6 +46,5 @@ export function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imagesInde
             });
         }
     });
-
     input.click(); 
 }
