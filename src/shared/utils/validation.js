@@ -17,7 +17,7 @@ export function isValidPassword(password) {
         errors.push("Пароль должен содержать минимум одну цифру.");
     }
     for (let char of password) {
-        if (!/[a-zA-Z0-9*?!$]/.test(char)) {
+        if (!/[a-zA-Z0-9*?!$-]/.test(char)) {
             errors.push("Пароль содержит недопустимые специальные символы. Разрешены: ! ? * - $");
             break;
         }
