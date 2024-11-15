@@ -49,6 +49,7 @@ export class ProfilePage {
 
   private async loadProfile(): Promise<void> {
     const profileData = await getProfile();
+    console.log(profileData.username);
     if(profileData) {
       this.username = profileData.username || 'andrey_918';
       this.ID = profileData.ID || -1;
