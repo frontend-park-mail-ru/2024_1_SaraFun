@@ -1,9 +1,9 @@
-import Navbar from '../../widgets/Navbar/navbar';
-import { showImage, scrollLeft, scrollRight } from '../../shared/lib/carousel';
-import template from './ui/matches.pug';
-import { getMatches } from './api/getMatches';
-import { Router } from '../../app/Router';
-import { User } from '../../entities/User/User';
+import Navbar from '../../../widgets/Navbar/navbar';
+import { showImage, scrollLeft, scrollRight } from '../../../shared/lib/carousel';
+import template from './matches.pug';
+import { getMatches } from '../api/getMatches';
+import { Router } from '../../../app/Router';
+import { User } from '../../../entities/User/User';
 
 export class MatchesPage {
 	private parent: Router;

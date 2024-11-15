@@ -3,8 +3,9 @@
  */
 export class Router {
 	private static instance: Router;
-	private routes: Map<string, { view: any, isPublic: boolean }>;
-	private currentRoute: { path: string, view: any };
+	private publicRoutes: Map<string, { view: any }>;
+	private privateRoutes: Map<string, { view: any }>;
+
 	root: HTMLElement;
 	isAuth: boolean;
 	/**
@@ -19,8 +20,8 @@ export class Router {
 		}
 		this.root = root;
 		this.isAuth = false;
-		this.routes = new Map;
-		this.currentRoute = null;
+		this.publicRoutes = new Map();
+		this.privateRoutes = new Map();
 		Router.instance = this;
 	}
 
@@ -32,7 +33,11 @@ export class Router {
 	 * @returns {Router} - The instance of the Router for chaining method calls.
 	 */
 	register(path: string, view: any, isPublic: boolean): Router {
-		this.routes.set(path, { view, isPublic });
+		if (isPublic) {
+			this.publicRoutes.set(path, { view });
+		} else {
+			this.privateRoutes.set(path, { view });
+		}
 		return this;
 	}
 
@@ -54,19 +59,20 @@ export class Router {
 	 * @param {boolean} addToHistory - Whether to add the navigation to the browser history. Defaults to true.
 	 */
 	navigateTo(path: string, addToHistory: boolean = true): void {
-		const route = this.routes.get(path);
-		if (!route.isPublic && !this.isAuth) {
-			this.navigateTo('/login');
+		const route = this.publicRoutes.get(path) || this.privateRoutes.get(path);
+		if (this.privateRoutes.has(path) && !this.isAuth) {
+			const firstPublicRoute = Array.from(this.publicRoutes.keys())[0];
+    		this.navigateTo(firstPublicRoute);
 			return;
 		}
-		if (route.isPublic && this.isAuth) {
-			this.navigateTo('/feed');
+		if (this.publicRoutes.has(path) && this.isAuth) {
+			const firstPrivateRoute = Array.from(this.privateRoutes.keys())[0];
+    		this.navigateTo(firstPrivateRoute);
 			return;
 		}
 		
 		const view = route.view;
     	if (view) {
-			this.currentRoute = {path, view};
 			if (addToHistory) {
 				history.pushState({}, '', path);
 			}

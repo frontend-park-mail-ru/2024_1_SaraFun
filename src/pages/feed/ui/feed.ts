@@ -1,10 +1,10 @@
-import Navbar from '../../widgets/Navbar/navbar';
-import template from './ui/feed.pug';
-import { getUsers } from './api/getUsers';
-import { putLikeOrDislike } from './api/putLikeOrDislike';
-import { showImage, scrollLeft, scrollRight } from '../../shared/lib/carousel';
-import { User } from '../../entities/User/User'
-import { Router } from '../../app/Router';
+import Navbar from '../../../widgets/Navbar/navbar';
+import template from './feed.pug';
+import { getUsers } from '../api/getUsers';
+import { putLikeOrDislike } from '../api/putLikeOrDislike';
+import { showImage, scrollLeft, scrollRight } from '../../../shared/lib/carousel';
+import { User } from '../../../entities/User/User'
+import { Router } from '../../../app/Router';
 
 
 /**

@@ -1,8 +1,8 @@
-import { isValidPassword, isValidLogin } from '../../shared/utils/validation';
-import Navbar from '../../widgets/Navbar/navbar';
-import { signupUser } from './api/signupUser';
-import template from './ui/signup.pug';
-import { Router } from '../../app/Router';
+import { isValidPassword, isValidLogin } from '../../../shared/utils/validation';
+import Navbar from '../../../widgets/Navbar/navbar';
+import { signupUser } from '../api/signupUser';
+import template from './signup.pug';
+import { Router } from '../../../app/Router';
 
 /**
  * Class representing the registration page.

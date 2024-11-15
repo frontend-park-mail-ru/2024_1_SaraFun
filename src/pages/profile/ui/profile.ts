@@ -1,11 +1,11 @@
-import template from './ui/profile.pug';
-import { UserProfile } from './api/profile';
-import { getProfile } from './api/getProfile';
-import { updProfile } from './api/updProfile';
-import Navbar from '../../widgets/Navbar/navbar';
-import './ui/profile.scss';
-import { uploadImg } from '../../features/imageUploader';
-import { Router } from '../../app/Router';
+import template from './profile.pug';
+import { UserProfile } from '../api/profile';
+import { getProfile } from '../api/getProfile';
+import { updProfile } from '../api/updProfile';
+import Navbar from '../../../widgets/Navbar/navbar';
+import './profile.scss';
+import { uploadImg } from '../../../features/imageUploader';
+import { Router } from '../../../app/Router';
 
 export class ProfilePage {
   private imagesDel: number[] = [];

@@ -1,7 +1,7 @@
-import Navbar from '../../widgets/Navbar/navbar';
-import template from './ui/login.pug';
-import { loginUser } from './api/loginUser';
-import { Router } from '../../app/Router';
+import Navbar from '../../../widgets/Navbar/navbar';
+import template from './login.pug';
+import { loginUser } from '../api/loginUser';
+import { Router } from '../../../app/Router';
 
 /**
  * Class representing the login page.

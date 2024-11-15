@@ -1,8 +1,8 @@
-import { FeedPage } from '../../pages/feed/feed';
-import { LoginPage } from '../../pages/login/login';
-import { RegistrationPage } from '../../pages/signup/signup';
-import { MatchesPage } from '../../pages/matches/matches';
-import { ProfilePage } from '../../pages/profile/profile';
+import { FeedPage } from '../../pages/feed/index';
+import { LoginPage } from '../../pages/login/index';
+import { RegistrationPage } from '../../pages/signup/index';
+import { MatchesPage } from '../../pages/matches/index';
+import { ProfilePage } from '../../pages/profile/index';
 
 export const ROUTES_NAME = {
 	LOGIN: 'login',
