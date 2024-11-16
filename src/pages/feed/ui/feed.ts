@@ -5,6 +5,7 @@ import { putLikeOrDislike } from '../api/putLikeOrDislike';
 import { showImage, scrollLeft, scrollRight } from '../../../shared/lib/carousel';
 import { User } from '../../../entities/User/User'
 import { Router } from '../../../app/Router';
+import { initCards } from '../lib/initCards';
 
 
 /**
@@ -32,10 +33,45 @@ export class FeedPage {
 	async render(): Promise<void> {
 		let users: User[] = await getUsers();
 
+		this.parent.root.innerHTML = template({ users });
+		if (users === null) {
+			return;
+		}
+		let tinderContainer = document.querySelector('.tinder') as HTMLElement;
+		let allCards = document.querySelectorAll('.tinder__card') as NodeListOf<HTMLElement>;
+		let nope = document.getElementById('nope') as HTMLElement;
+		let love = document.getElementById('love') as HTMLElement;
+
+		allCards.forEach((card, index) => {
+			const user = users[index];
+			if (user) {
+				card.setAttribute('data-item-id', `${user.user}`);
+			}
+
+			if (user.images != null && user.images.length > 1) {
+				const carousel = card.querySelector('.carousel') as HTMLElement;
+				if (carousel) {
+					carousel.setAttribute('data-current-index', `${0}`);
+					showImage(carousel, 0);
+
+					const leftButton = card.querySelector('.carousel__button_left');
+					const rightButton = card.querySelector('.carousel__button_right');
+
+					leftButton.addEventListener('click', (event) => {
+						scrollLeft(carousel);
+					});
+					rightButton.addEventListener('click', (event) => {
+						scrollRight(carousel);
+					});
+				}
+			}
+		});
+		initCards(tinderContainer, allCards);
+
 		/**
          * Initializes the cards by setting their styles and adding them to the container.
          */
-		function initCards(): void { 
+		/*function initCards(): void { 
 			let newCards = document.querySelectorAll('.tinder__card:not(.removed)') as NodeListOf<HTMLElement>;
 			const maxOffsetIndex = 10;
 		
@@ -144,42 +180,7 @@ export class FeedPage {
 			firstCard.addEventListener('touchcancel', endDrag);
 				
 			tinderContainer.classList.add('loaded');
-		}
-
-		this.parent.root.innerHTML = template({ users });
-		if (users === null) {
-			return;
-		}
-		let tinderContainer = document.querySelector('.tinder') as HTMLElement;
-		let allCards = document.querySelectorAll('.tinder__card') as NodeListOf<HTMLElement>;
-		let nope = document.getElementById('nope') as HTMLElement;
-		let love = document.getElementById('love') as HTMLElement;
-
-		allCards.forEach((card, index) => {
-			const user = users[index];
-			if (user) {
-				card.setAttribute('data-item-id', `${user.user}`);
-			}
-
-			if (user.images != null && user.images.length > 1) {
-				const carousel = card.querySelector('.carousel') as HTMLElement;
-				if (carousel) {
-					carousel.setAttribute('data-current-index', `${0}`);
-					showImage(carousel, 0);
-
-					const leftButton = card.querySelector('.carousel__button_left');
-					const rightButton = card.querySelector('.carousel__button_right');
-
-					leftButton.addEventListener('click', (event) => {
-						scrollLeft(carousel);
-					});
-					rightButton.addEventListener('click', (event) => {
-						scrollRight(carousel);
-					});
-				}
-			}
-		});
-		initCards();
+		}*/
 		
 		/**
          * Creates a button listener for the like or dislike buttons.
@@ -208,7 +209,7 @@ export class FeedPage {
 					card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
 				}
 			
-				initCards();
+				initCards(tinderContainer, allCards);
 			
 				event.preventDefault();
 			};
