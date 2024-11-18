@@ -281,13 +281,7 @@ export class ProfilePage {
     };
 
     const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel, this.imagesURLs, this.imagesIndexes);
-    console.log(this.imagesURLs);
     if (updateSuccess) {
-      /*const avatarSrc = this.imagesNew?.[0].file?.name ?? './img/user.svg';
-      console.log(avatarSrc);
-      const avatarImg = document.querySelector('.user-avatar__image');
-      console.log(avatarImg);
-      avatarImg.setAttribute('src', avatarSrc);*/
       //console.log('Profile updated successfully'); //тут бы всплывающее окно
     } else {
       // console.error('Failed to update profile'); //тут тоже
@@ -298,6 +292,11 @@ export class ProfilePage {
     this.imagesNew = [];
     this.loadProfile().then(() => {
       this.render();
+      const avatarSrc = this.imagesURLs?.[0] ?? './img/user.svg';
+      console.log(avatarSrc);
+      const avatarImg = document.querySelector('.user-avatar__image');
+      console.log(avatarImg);
+      avatarImg.setAttribute('src', avatarSrc);
     });
   }
 }
