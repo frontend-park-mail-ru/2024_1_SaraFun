@@ -1,12 +1,12 @@
 import { putLikeOrDislike } from '../api/putLikeOrDislike';
 
-export function initCards(tinderContainer: HTMLElement, allCards: NodeListOf<HTMLElement>): void { 
+export function initCards(tinderContainer: HTMLElement): void { 
     let newCards = document.querySelectorAll('.tinder__card:not(.removed)') as NodeListOf<HTMLElement>;
     const maxOffsetIndex = 10;
 
     newCards.forEach(function (card, index) {
         const limitedIndex = Math.min(index, maxOffsetIndex); 
-        card.style.zIndex = `${allCards.length - index}`;
+        card.style.zIndex = `${newCards.length - index}`;
         card.style.transform = 
             'scale(' + (20 - limitedIndex) / 20 + ') ' + 
             'translateY(-' + 30 * limitedIndex + 'px)';
@@ -94,7 +94,7 @@ export function initCards(tinderContainer: HTMLElement, allCards: NodeListOf<HTM
             let userId = firstCard.getAttribute('data-item-id');
             await putLikeOrDislike(love, parseInt(userId));
 
-            initCards(tinderContainer, allCards);
+            initCards(tinderContainer);
           }
     }
 
