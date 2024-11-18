@@ -218,9 +218,6 @@ export class ProfilePage {
 
   private handleUploadImg() {
     uploadImg(this.imagesNew, this.imagesURLs, this.imagesIndexes, () => this.getInfoFromPage(), () => this.render());
-    const avatarSrc = this.imagesURLs?.[0] ?? './img/user.svg';
-		const avatarImg = document.querySelector('.user-avatar__image');
-		avatarImg.setAttribute('src', avatarSrc);
   }
   
   private getInfoFromPage() {
@@ -286,6 +283,9 @@ export class ProfilePage {
     const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel, this.imagesURLs, this.imagesIndexes);
     
     if (updateSuccess) {
+      const avatarSrc = this.imagesURLs?.[0] ?? './img/user.svg';
+      const avatarImg = document.querySelector('.user-avatar__image');
+      avatarImg.setAttribute('src', avatarSrc);
       //console.log('Profile updated successfully'); //тут бы всплывающее окно
     } else {
       // console.error('Failed to update profile'); //тут тоже
