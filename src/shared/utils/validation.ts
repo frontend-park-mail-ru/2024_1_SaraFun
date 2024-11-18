@@ -4,8 +4,8 @@
  * @param {string} password - The password to validate.
  * @returns {boolean} - Returns true if the password is valid, otherwise false.
  */
-export function isValidPassword(password) {
-    const errors = [];
+export function isValidPassword(password: string): string[] {
+    const errors: string[] = [];
 
     if (!password) {
         errors.push("Пароль не должен быть пустым.");
@@ -33,8 +33,8 @@ export function isValidPassword(password) {
  * @param {string} login - The login to validate.
  * @returns {boolean} - Returns true if the login is valid, otherwise false.
  */
-export function isValidLogin(login) {
-    const errors = [];
+export function isValidLogin(login: string): string[] {
+    const errors: string[] = [];
 
     if (login.length < 5 || login.length > 25) {
         errors.push("Логин должен быть длиной от 5 до 25 символов.");

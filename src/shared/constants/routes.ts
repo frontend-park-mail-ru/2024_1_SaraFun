@@ -1,8 +1,8 @@
-import { FeedPage } from '../../pages/feed/feed.js';
-import { LoginPage } from '../../pages/login/login.js';
-import { RegistrationPage } from '../../pages/signup/signup.js';
-import { MatchesPage } from '../../pages/matches/matches.js';
-import { ProfilePage } from '../../pages/profile/profile.ts';
+import { FeedPage } from '../../pages/feed/index';
+import { LoginPage } from '../../pages/login/index';
+import { RegistrationPage } from '../../pages/signup/index';
+import { MatchesPage } from '../../pages/matches/index';
+import { ProfilePage } from '../../pages/profile/index';
 
 export const ROUTES_NAME = {
 	LOGIN: 'login',

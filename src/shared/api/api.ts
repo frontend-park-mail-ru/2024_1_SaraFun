@@ -1,4 +1,4 @@
-import { ajax, ajaxMultipartForm } from './ajax.js';
+import { ajax, ajaxMultipartForm } from './ajax';
 
 /**
  * Enum for AJAX methods.
@@ -19,7 +19,7 @@ export const AJAX_METHODS = {
  * @returns {Promise<Response>} - A promise that resolves to the response object.
  * @throws {Error} - Throws an error if the request fails.
  */
-export const get = async (url) => {
+export const get = async (url: string) => {
 	try {
 		return await ajax(url, AJAX_METHODS.GET);
 	} catch (error) {
@@ -35,7 +35,7 @@ export const get = async (url) => {
  * @returns {Promise<Response>} - A promise that resolves to the response object.
  * @throws {Error} - Throws an error if the request fails.
  */
-export const post = async (url, body) => {
+export const post = async (url: string, body: any) => {
 	try {
 		return await ajax(url, AJAX_METHODS.POST, body);
 	} catch (error) {
@@ -51,7 +51,7 @@ export const post = async (url, body) => {
  * @returns {Promise<Response>} - A promise that resolves to the response object.
  * @throws {Error} - Throws an error if the request fails.
  */
-export const put = async (url, body) => {
+export const put = async (url: string, body: any) => {
 	try {
 		return await ajax(url, AJAX_METHODS.PUT, body);
 	} catch (error) {
@@ -66,7 +66,7 @@ export const put = async (url, body) => {
  * @returns {Promise<Response>} - A promise that resolves to the response object.
  * @throws {Error} - Throws an error if the request fails.
  */
-export const del = async (url) => {
+export const del = async (url: string) => {
 	try {
 		return await ajax(url, AJAX_METHODS.DELETE);
 	} catch (error) {
@@ -82,7 +82,7 @@ export const del = async (url) => {
  * @returns {Promise<Response>} - A promise that resolves to the response object.
  * @throws {Error} - Throws an error if the request fails.
  */
-export const postFile = async (url, file) => {
+export const postFormData = async (url: string, file: FormData) => {
 	try {
 		return await ajaxMultipartForm(url, AJAX_METHODS.POST, file);
 	} catch (error) {
@@ -98,7 +98,7 @@ export const postFile = async (url, file) => {
  * @returns {Promise<Response>} - A promise that resolves to the response object.
  * @throws {Error} - Throws an error if the request fails.
  */
-export const putFile = async (url, file) => {
+export const putFormData = async (url: string, file: FormData) => {
 	try {
 		return await ajaxMultipartForm(url, AJAX_METHODS.PUT, file);
 	} catch (error) {

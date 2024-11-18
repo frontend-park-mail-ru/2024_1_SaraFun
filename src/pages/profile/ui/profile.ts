@@ -1,21 +1,16 @@
-import template from './ui/profile.pug';
-import { UserProfile } from './api/profile';
-import { getProfile } from './api/getProfile';
-import { updProfile } from './api/updProfile';
-import Navbar from '../../widgets/Navbar/navbar.js';
-import './ui/profile.scss';
-import { uploadImg } from '../../features/imageUploader';
-
-
-interface Parent {
-  curLogin: string;
-  root: HTMLElement;
-}
+import template from './profile.pug';
+import { UserProfile } from '../api/profile';
+import { getProfile } from '../api/getProfile';
+import { updProfile } from '../api/updProfile';
+import Navbar from '../../../widgets/Navbar/navbar';
+import './profile.scss';
+import { uploadImg } from '../../../features/imageUploader';
+import { Router } from '../../../app/Router';
 
 export class ProfilePage {
   private imagesDel: number[] = [];
   private imagesNew: File[] = [];
-  private parent: Parent;
+  private parent: Router;
   private isEditing: boolean;
   private navbar: Navbar | null;
   private ID: number;
@@ -28,7 +23,7 @@ export class ProfilePage {
   private About: string;
   private imagesURLs: string[];
 
-  constructor(parent: Parent) {
+  constructor(parent: Router) {
     this.parent = parent;
     this.isEditing = false;
     this.navbar = null;
@@ -85,7 +80,7 @@ export class ProfilePage {
 
   public render(): void {
     this.parent.root.innerHTML = template({
-      username: this.parent.curLogin,
+      //username: this.parent.curLogin,
       isEditing: this.isEditing,
       FirstName: this.FirstName,
       LastName: this.LastName,

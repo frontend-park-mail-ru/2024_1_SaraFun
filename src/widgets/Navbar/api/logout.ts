@@ -1,4 +1,4 @@
-import {get} from '../../../shared/api/api.js';
+import {get} from '../../../shared/api/api';
 
 /**
  * Logs out the user.
@@ -6,9 +6,9 @@ import {get} from '../../../shared/api/api.js';
  * @returns {Promise<boolean>} - A promise that resolves to true 
  * 								if logout is successful, otherwise false.
  */
-export async function logout() {
+export async function logout(): Promise<boolean> {
 	try {
-		await get('http://5.188.140.7:8080/logout');
+		await get('/logout');
 		return true;
 
 	} catch (error) {

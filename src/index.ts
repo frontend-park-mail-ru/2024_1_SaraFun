@@ -1,4 +1,4 @@
-import App from './app/App.js';
+import App from './app/App';
 import './index.scss';
 import '@img/HeartWhite.svg';
 import '@img/Logo.svg';

@@ -2,20 +2,26 @@
  * Class representing a router for managing navigation in a web application.
  */
 export class Router {
+	private static instance: Router;
+	private publicRoutes: Map<string, { view: any }>;
+	private privateRoutes: Map<string, { view: any }>;
+
+	root: HTMLElement;
+	isAuth: boolean;
 	/**
 	 * Creates an instance of Router.
 	 *
 	 * @param {HTMLElement} root - The root element of the application where views will be rendered.
 	 * @returns {Router} - The instance of the Router.
 	 */
-	constructor(root) {
+	constructor(root: HTMLElement) {
 		if (Router.instance) {
 			return Router.instance;
 		}
 		this.root = root;
 		this.isAuth = false;
-		this.routes = new Map;
-		this.currentRoute = null;
+		this.publicRoutes = new Map();
+		this.privateRoutes = new Map();
 		Router.instance = this;
 	}
 
@@ -26,15 +32,19 @@ export class Router {
 	 * @param {Function} view - The class of view associated with the route.
 	 * @returns {Router} - The instance of the Router for chaining method calls.
 	 */
-	register(path, view, isPublic) {
-		this.routes.set(path, { view, isPublic });
+	register(path: string, view: any, isPublic: boolean): Router {
+		if (isPublic) {
+			this.publicRoutes.set(path, { view });
+		} else {
+			this.privateRoutes.set(path, { view });
+		}
 		return this;
 	}
 
 	/**
 	 * Starts the router by setting up event listeners and navigating to the initial route.
 	 */
-	start(isAuth) {
+	start(isAuth: boolean): void {
 		this.isAuth = isAuth;
 		window.addEventListener('popstate', () => {
 			this.navigateTo(window.location.pathname, false);
@@ -48,20 +58,21 @@ export class Router {
 	 * @param {string} path - The path to navigate to.
 	 * @param {boolean} addToHistory - Whether to add the navigation to the browser history. Defaults to true.
 	 */
-	navigateTo(path, addToHistory = true) {
-		const route = this.routes.get(path);
-		if (!route.isPublic && !this.isAuth) {
-			this.navigateTo('/login');
+	navigateTo(path: string, addToHistory: boolean = true): void {
+		const route = this.publicRoutes.get(path) || this.privateRoutes.get(path);
+		if (this.privateRoutes.has(path) && !this.isAuth) {
+			const firstPublicRoute = Array.from(this.publicRoutes.keys())[0];
+    		this.navigateTo(firstPublicRoute);
 			return;
 		}
-		if (route.isPublic && this.isAuth) {
-			this.navigateTo('/feed');
+		if (this.publicRoutes.has(path) && this.isAuth) {
+			const firstPrivateRoute = Array.from(this.privateRoutes.keys())[0];
+    		this.navigateTo(firstPrivateRoute);
 			return;
 		}
 		
 		const view = route.view;
     	if (view) {
-			this.currentRoute = {path, view};
 			if (addToHistory) {
 				history.pushState({}, '', path);
 			}
@@ -72,14 +83,14 @@ export class Router {
 	/**
 	 * Navigates to the previous page in the browser history.
 	 */
-	back() {
+	back(): void {
 		window.history.back();
 	}
 
 	/**
 	 * Navigates to the next page in the browser history.
 	 */
-	forward () {
+	forward(): void {
 		window.history.forward();
 	}
 }

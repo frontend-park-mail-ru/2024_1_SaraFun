@@ -1,4 +1,4 @@
-import {get} from '../shared/api/api.js';
+import {get} from '../shared/api/api';
 
 /**
  * Checks if the user is authenticated.
@@ -6,9 +6,9 @@ import {get} from '../shared/api/api.js';
  * @returns {Promise<boolean>} - A promise that resolves to true
  * 								if the user is authenticated, otherwise false.
  */
-export async function checkAuth() {
+export async function checkAuth(): Promise<boolean> {
 	try {
-		await get('http://5.188.140.7:8080/checkauth');
+		await get('/checkauth');
 		return true;
 
 	} catch (error) {

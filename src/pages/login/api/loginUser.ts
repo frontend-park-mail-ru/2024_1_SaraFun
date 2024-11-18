@@ -1,4 +1,4 @@
-import {post} from '../../../shared/api/api.js';
+import {post} from '../../../shared/api/api';
 
 /**
  * Logs in a user.
@@ -8,10 +8,10 @@ import {post} from '../../../shared/api/api.js';
  * @returns {Promise<boolean>} - A promise that resolves to true 
  * 								if login is successful, otherwise false.
  */
-export async function loginUser(login, password) {
+export async function loginUser(login: string, password: string): Promise<boolean> {
 	try {
 		const body = {'username': login, 'password': password};
-		await post('http://5.188.140.7:8080/signin', JSON.stringify(body));
+		await post('/signin', body);
 		return true;
 
 	} catch (error) {

@@ -1,3 +1,5 @@
+import { BASE_URL } from "../constants/baseURL";
+
 /**
  * Performs an AJAX request.
  * 
@@ -7,22 +9,21 @@
  * @returns {Promise<Response>} - A promise that resolves to the response object.
  * @throws {Error} - Throws an error if the response is not ok.
  */
-export async function ajax(url, method, body = null) {
-	const options = {
+export async function ajax(url: string, method: string, body: any = null): Promise<Response> {
+	const options: RequestInit = {
 		method: method,
-		// headers: {
-		// 	'Content-Type': 'application/json'
-		// },
+		 headers: {
+		 	'Content-Type': 'application/json'
+		 },
 		credentials: 'include'
 	};
 
 	if (body) {
-		// options.body = JSON.stringify(body);
-		options.body = body;
+		options.body = JSON.stringify(body);
 	}
 
 	try {
-		const response = await fetch(url, options);
+		const response = await fetch(`${BASE_URL}${url}`, options);
 
 		if (!response.ok) {
 			throw new Error(`${response.status}: ${response.statusText}`);
@@ -44,18 +45,18 @@ export async function ajax(url, method, body = null) {
  * @returns {Promise<Response>} - A promise that resolves to the response object.
  * @throws {Error} - Throws an error if the response is not ok.
  */
-export async function ajaxMultipartForm(url, method, file) {
-	const formData = new FormData();
-	formData.append('file', file);
+export async function ajaxMultipartForm(url: string, method: string, formData: FormData): Promise<Response> {
+	//const formData = new FormData();
+	//formData.append('file', file);
 
-	const options = {
+	const options: RequestInit = {
 		method: method,
 		body: formData,
 		credentials: 'include'
 	};
 
 	try {
-		const response = await fetch(url, options);
+		const response = await fetch(`${BASE_URL}${url}`, options);
         
 		if (!response.ok) {
 			throw new Error(`${response.status}: ${response.statusText}`);

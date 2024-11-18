@@ -1,4 +1,4 @@
-import {post, put, del} from '../../../shared/api/api.js';
+import {post, put, del} from '../../../shared/api/api';
 import { delImg } from './delImg';
 import { UserProfile } from './profile';
 import { uploadImg } from './uploadImg';
@@ -32,7 +32,7 @@ export async function updProfile(profileData: UserProfile, imagesNew: File[], im
     };
     
   
-    const response = await put('http://5.188.140.7:8080/updateprofile', JSON.stringify(data));
+    const response = await put('/updateprofile', data);
     
     if (!response.ok) {
       console.error('Failed to update profile:', response.statusText);
