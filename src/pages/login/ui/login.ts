@@ -1,8 +1,8 @@
-import Navbar from '../../../widgets/Navbar/navbar.js';
+import Navbar from '../../../widgets/Navbar/navbar';
 import { Router } from '../../../app/Router';
-import template from './ui/login.pug';
-import { loginUser } from '../api/loginUser.js';
-import { isValidLogin, isValidPassword } from '../../../shared/utils/validation.js';
+import template from './login.pug';
+import { loginUser } from '../api/loginUser';
+import { isValidLogin, isValidPassword } from '../../../shared/utils/validation';
 
 /**
  * Class representing the login page.

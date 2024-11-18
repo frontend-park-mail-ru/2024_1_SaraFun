@@ -1,4 +1,4 @@
-import { postFormData } from '../../../shared/api/api.js';
+import { postFormData } from '../../../shared/api/api';
 import { ImgData } from './profile';
 export async function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imagesIndexes: number[]): Promise<boolean> {
     try {

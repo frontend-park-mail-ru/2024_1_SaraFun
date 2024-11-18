@@ -1,7 +1,7 @@
-import template from './ui/profile.pug';
+import template from './profile.pug';
 import { updProfile } from '../api/updProfile';
-import Navbar from '../../../widgets/Navbar/navbar.js';
-import './ui/profile.scss';
+import Navbar from '../../../widgets/Navbar/navbar';
+import './profile.scss';
 import { uploadImg } from '../../../features/imageUploader';
 import { UserProfile, ImgData } from '../api/profile';;
 import { getProfile } from '../api/getProfile';
