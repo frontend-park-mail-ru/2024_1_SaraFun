@@ -63,6 +63,12 @@ export default class App {
 		this.navbarRoot.innerHTML = this.navbar.render();
 	}
 
+	setCurRoute(route: string): void {
+		this.state.currentRoute = route;
+		this.navbar.setCurRoute(route);
+		this.navbarRoot.innerHTML = this.navbar.render();
+	}
+
 	getAuth(): boolean {	
 		return this.state.isAuthenticated;
 	}

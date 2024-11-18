@@ -33,6 +33,10 @@ export default class Navbar {
 		this.isAuth = isAuth;
 	}
 
+	setCurRoute(curRoute: string): void {
+		this.curRoute = curRoute;
+	}
+
 	componentDidUpdate(): void {
 		this.isAuth = this.parent.getAuth();
 		this.curRoute = this.parent.getCurRoute();
