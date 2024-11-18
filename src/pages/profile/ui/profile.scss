@@ -8,6 +8,7 @@
     .profile-card {
         padding: 20px 40px 40px 40px;
         width: 65vw;
+        min-width: 400px;
         margin-top: 12px;
         position: sticky;
         background: var(--white1);
@@ -178,7 +179,6 @@
     display: flex;
     flex-direction: column;
     width: 100%; 
-    max-width: 400px; 
 
     label {
         margin-bottom: 10px;
