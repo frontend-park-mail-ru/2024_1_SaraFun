@@ -25,16 +25,6 @@ export class ProfilePage {
   constructor(parent: Router) {
     this.parent = parent;
     this.isEditing = false;
-    this.username = 'andrey_918';
-    this.ID = -1;
-    this.imagesIndexes = [];
-    this.FirstName = 'Андрей';
-    this.LastName = 'Девелопер'
-    this.Age = 18;
-    this.Gender = 'male';
-    this.Target = '-';
-    this.About = '-';
-    this.imagesURLs = ['./img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg'];
     this.loadProfile().then(() => {
       this.render();
     });
@@ -45,12 +35,12 @@ export class ProfilePage {
     if(profileData) {
       this.ID = profileData.ID || -1;
       this.imagesIndexes = profileData.imagesIndexes || [];
-      this.FirstName = profileData.FirstName || '-';
-      this.LastName = profileData.LastName || '-';
+      this.FirstName = profileData.FirstName || '';
+      this.LastName = profileData.LastName || '';
       this.Age = profileData.Age || 21;
       this.Gender = profileData.Gender || 'male';
-      this.Target = profileData.Target || '-';
-      this.About = profileData.About || '-';
+      this.Target = profileData.Target || '';
+      this.About = profileData.About || '';
       this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
     }
     
