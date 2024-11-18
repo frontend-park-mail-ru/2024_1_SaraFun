@@ -60,12 +60,14 @@ export default class App {
 	setAuth(isAuth: boolean): void {
 		this.state.isAuthenticated = isAuth;
 		this.navbar.setAuth(isAuth);
+		this.navbarRoot.innerHTML = '';
 		this.navbarRoot.innerHTML = this.navbar.render();
 	}
 
 	setCurRoute(route: string): void {
 		this.state.currentRoute = route;
 		this.navbar.setCurRoute(route);
+		this.navbarRoot.innerHTML = '';
 		this.navbarRoot.innerHTML = this.navbar.render();
 	}
 

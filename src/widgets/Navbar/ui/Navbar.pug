@@ -8,11 +8,11 @@ include ../../../shared/components/TextButton/TextButton.pug
         ul.navbar__list__ul
             if (this.isAuth)
                 li
-                    a(class=`navbar__link ${curRoute === 'feed' ? 'navbar__link--active' : ''}` href='/feed') Главная
+                    a(class=`navbar__link ${curRoute === '/feed' ? 'navbar__link--active' : ''}` href='/feed') Главная
                 li
-                    a(class=`navbar__link ${curRoute === 'matches' ? 'navbar__link--active' : ''}` href='/matches') Мэтчи
+                    a(class=`navbar__link ${curRoute === '/matches' ? 'navbar__link--active' : ''}` href='/matches') Мэтчи
                 li
-                    a(class=`navbar__link ${curRoute === 'profile' ? 'navbar__link--active' : ''}` href='/profile') Профиль
+                    a(class=`navbar__link ${curRoute === '/profile' ? 'navbar__link--active' : ''}` href='/profile') Профиль
             else 
                 li
                     a(class='navbar__link' href='/login') Войти
