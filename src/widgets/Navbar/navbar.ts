@@ -1,6 +1,5 @@
 import { logout } from './api/logout';
 import {getProfile} from "../../pages/profile/api/getProfile";
-import {checkAuth} from "../../features/checkAuth";
 import { Router } from '../../app/Router';
 import template from './ui/Navbar.pug';
 
@@ -17,8 +16,8 @@ export default class Navbar {
    */
 	constructor(parent: Router) {
 		this.parent = parent;
-		this.isAuth = parent.isAuth;
-		this.curRoute = parent.curRoute;
+		this.isAuth = parent.getAuth();
+		this.curRoute = parent.getCurRoute();
 	}
 
 	render(): string {
@@ -27,6 +26,15 @@ export default class Navbar {
 
 	componentDidMount(): void {
 		this.addEventListeners();
+		this.getUserAvatar();
+	}
+
+	setAuth(isAuth: boolean): void {
+		this.isAuth = isAuth;
+		this.componentDidUpdate();
+	}
+
+	componentDidUpdate(): void {
 		this.getUserAvatar();
 	}
 
@@ -59,7 +67,7 @@ export default class Navbar {
 		if (button) {
 			button.addEventListener('click', async () => {
 				await logout();
-				this.parent.isAuth = false;
+				this.parent.setAuth(false);
 				this.parent.navigateTo('/login');
 			});
 		}
