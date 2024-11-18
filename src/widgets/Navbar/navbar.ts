@@ -31,10 +31,11 @@ export default class Navbar {
 
 	setAuth(isAuth: boolean): void {
 		this.isAuth = isAuth;
-		this.componentDidUpdate();
 	}
 
 	componentDidUpdate(): void {
+		this.isAuth = this.parent.getAuth();
+		this.curRoute = this.parent.getCurRoute();
 		this.getUserAvatar();
 	}
 

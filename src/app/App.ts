@@ -41,7 +41,7 @@ export default class App {
 
 			this.router.setAuth(this.state.isAuthenticated);
 			this.router.start();
-			
+
 			this.navbarRoot.innerHTML = this.navbar.render();
 			this.navbar.componentDidMount();
 
@@ -60,6 +60,7 @@ export default class App {
 	setAuth(isAuth: boolean): void {
 		this.state.isAuthenticated = isAuth;
 		this.navbar.setAuth(isAuth);
+		this.navbarRoot.innerHTML = this.navbar.render();
 	}
 
 	getAuth(): boolean {	
