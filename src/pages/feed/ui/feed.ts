@@ -52,39 +52,6 @@ export class FeedPage {
 
 		addCarousel(allCards, users);
 		initCards(tinderContainer);
-		
-		/**
-         * Creates a button listener for the like or dislike buttons.
-         * @param {boolean} love - Indicates if the button is for liking (true) or disliking (false).
-         * @returns {Function} - The event listener function.
-         */
-		/*function createButtonListener(love: boolean) {
-			return async function (event: Event) {
-				let cards = document.querySelectorAll('.tinder__card:not(.removed)') as NodeListOf<HTMLElement>;
-				let moveOutWidth = document.body.clientWidth * 1.5;
-			
-				if (!cards.length) {
-					return false;
-				}
-			
-				let card = cards[0];
-				let userId = card.getAttribute('data-item-id');
-
-				await putLikeOrDislike(love, parseInt(userId));
-			
-				card.classList.add('removed');
-			
-				if (love) {
-					card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
-				} else {
-					card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
-				}
-			
-				initCards(tinderContainer);
-			
-				event.preventDefault();
-			};
-		}*/
   
 		let nopeListener = createButtonListener(false, tinderContainer);
 		let loveListener = createButtonListener(true, tinderContainer);
