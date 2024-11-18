@@ -6,12 +6,6 @@ import { UserProfile, ImgData } from '../api/profile';;
 import { getProfile } from '../api/getProfile';
 import { Router } from '../../../app/Router';
 
-
-interface Parent {
-  curLogin: string;
-  root: HTMLElement;
-}
-
 export class ProfilePage {
   private imagesDel: number[] = [];
   private imagesNew: ImgData[] = [];
@@ -91,7 +85,6 @@ export class ProfilePage {
 
   public render(): void {
     this.parent.root.innerHTML = template({
-      //username: this.parent.curLogin,
       isEditing: this.isEditing,
       FirstName: this.FirstName,
       LastName: this.LastName,
@@ -225,6 +218,9 @@ export class ProfilePage {
 
   private handleUploadImg() {
     uploadImg(this.imagesNew, this.imagesURLs, this.imagesIndexes, () => this.getInfoFromPage(), () => this.render());
+    const avatarSrc = this.imagesURLs?.[0] ?? './img/user.svg';
+		const avatarImg = document.querySelector('.user-avatar__image');
+		avatarImg.setAttribute('src', avatarSrc);
   }
   
   private getInfoFromPage() {
