@@ -5,12 +5,13 @@ export function initCards(tinderContainer: HTMLElement): void {
 
     const messageForm = document.querySelector('.form.message-form') as HTMLElement;
     if (newCards.length === 0) {
+        tinderContainer.style.display = 'none';
         messageForm.style.display = 'block';
         return;
     } else {
         messageForm.style.display = 'none';
     }
-    
+
     const maxOffsetIndex = 10;
 
     newCards.forEach(function (card, index) {
