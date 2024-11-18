@@ -90,6 +90,7 @@ export class Router {
 		const view = route.view;
     	if (view) {
 			this.curRoute = path;
+			this.parent.setCurRoute(path);
 			if (addToHistory) {
 				history.pushState({}, '', path);
 			}

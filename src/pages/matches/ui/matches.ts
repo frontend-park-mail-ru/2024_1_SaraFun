@@ -10,6 +10,7 @@ export class MatchesPage {
 	constructor(parent: Router) {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
+		this.render();
 	}
 
 	async render(): Promise<void> {

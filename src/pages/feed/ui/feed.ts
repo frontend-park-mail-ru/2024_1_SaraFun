@@ -19,6 +19,7 @@ export class FeedPage {
 	constructor(parent: Router) {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
+		this.render();
 	}
 
 	/**
