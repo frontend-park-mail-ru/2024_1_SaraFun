@@ -68,9 +68,7 @@ export default class App {
 	setCurRoute(route: string): void {
 		this.state.currentRoute = route;
 		this.navbar.setCurRoute(route);
-		this.navbarRoot.innerHTML = '';
-		this.navbarRoot.innerHTML = this.navbar.render();
-		this.navbar.componentDidUpdate();
+		this.navbar.componentDidUpdateActiveLink();
 	}
 
 	getAuth(): boolean {	

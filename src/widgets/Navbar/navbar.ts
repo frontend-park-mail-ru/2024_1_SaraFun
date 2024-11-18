@@ -44,6 +44,17 @@ export default class Navbar {
 		this.addEventListeners();
 	}
 
+	componentDidUpdateActiveLink(): void {
+		const links = document.querySelectorAll('.nav-link');
+		links.forEach(link => {
+			link.classList.remove('active');
+		});
+		const activeLink = document.querySelector(`.nav-link a[href="${this.curRoute}"]`);
+		if (activeLink) {
+			activeLink.parentElement.classList.add('active');
+		}
+	}
+
 	async getUserAvatar(): Promise<void> {
 		if (!this.isAuth) {
 			return;
