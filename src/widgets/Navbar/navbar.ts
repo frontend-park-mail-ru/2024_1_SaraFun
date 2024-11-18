@@ -45,7 +45,7 @@ export default class Navbar {
 	}
 
 	componentDidUpdateActiveLink(): void {
-		const links = document.querySelectorAll('.nav-link');
+		const links = document.querySelectorAll('li a');
 		links.forEach(link => {
 			link.classList.remove('navbar__link--active');
 		});
