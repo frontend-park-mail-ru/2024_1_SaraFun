@@ -1,4 +1,5 @@
 export interface UserProfile {
+
   ID: number,
   imagesIndexes: number[],
   FirstName: string,
@@ -8,4 +9,9 @@ export interface UserProfile {
   Target: string,
   About: string,
   imagesURLs: string[],
+}
+
+export interface ImgData {
+  file: File;
+  index: number; 
 }

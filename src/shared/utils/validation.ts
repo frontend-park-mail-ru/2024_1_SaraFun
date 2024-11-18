@@ -2,7 +2,7 @@
  * Validates if the given password meets the required criteria.
  * 
  * @param {string} password - The password to validate.
- * @returns {boolean} - Returns true if the password is valid, otherwise false.
+ * @returns {array} - Returns true if the password is valid, otherwise false.
  */
 export function isValidPassword(password: string): string[] {
     const errors: string[] = [];
@@ -17,7 +17,7 @@ export function isValidPassword(password: string): string[] {
         errors.push("Пароль должен содержать минимум одну цифру.");
     }
     for (let char of password) {
-        if (!/[a-zA-Z0-9*?!$]/.test(char)) {
+        if (!/[a-zA-Z0-9*?!$-]/.test(char)) {
             errors.push("Пароль содержит недопустимые специальные символы. Разрешены: ! ? * - $");
             break;
         }
@@ -31,7 +31,7 @@ export function isValidPassword(password: string): string[] {
  * Validates if the given login meets the required criteria.
  * 
  * @param {string} login - The login to validate.
- * @returns {boolean} - Returns true if the login is valid, otherwise false.
+ * @returns {array} - Returns true if the login is valid, otherwise false.
  */
 export function isValidLogin(login: string): string[] {
     const errors: string[] = [];

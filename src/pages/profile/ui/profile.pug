@@ -2,8 +2,6 @@ include ../../../widgets/Navbar/ui/Navbar.pug
 include ../../../shared/components/Icons/trash.pug
 
 div.profile
-  
-
   div.profile-card
     +navbar(true, 'profile')
     if isEditing
@@ -15,11 +13,7 @@ div.profile
         label
           | Фамилия:
           input(type="text" id="LastName" maxlength="50" value=LastName required)
-        label
-          | Пол:
-          select(id="Gender" required)
-            option(value="male", selected=Gender === 'male') Мужской
-            option(value="female", selected=Gender === 'female') Женский
+        include ../../../shared/components/GenderSelection/GenderSelection.pug
         label
           | Возраст:
           input(class="range-input" type="range" id="Age" name="Age" min="18" max="100" value=Age)
@@ -33,8 +27,11 @@ div.profile
       div 
         h3 Фотографии
         .image-section-profile
-          each image in imagesURLs
-            .image-container
+          each image, index in imagesURLs
+            .image-container(
+              draggable="true"
+              data-index=index
+            )
               img(src=image, alt="Фотография в профиле")
               .delete-button
                 +trash

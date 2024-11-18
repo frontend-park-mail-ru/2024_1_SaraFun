@@ -1,18 +1,25 @@
-import template from './profile.pug';
-import { UserProfile } from '../api/profile';
-import { getProfile } from '../api/getProfile';
+import template from './ui/profile.pug';
 import { updProfile } from '../api/updProfile';
-import Navbar from '../../../widgets/Navbar/navbar';
-import './profile.scss';
+import Navbar from '../../../widgets/Navbar/navbar.js';
+import './ui/profile.scss';
 import { uploadImg } from '../../../features/imageUploader';
+import { UserProfile, ImgData } from '../api/profile';;
+import { getProfile } from '../api/getProfile';
 import { Router } from '../../../app/Router';
+
+
+interface Parent {
+  curLogin: string;
+  root: HTMLElement;
+}
 
 export class ProfilePage {
   private imagesDel: number[] = [];
-  private imagesNew: File[] = [];
+  private imagesNew: ImgData[] = [];
   private parent: Router;
   private isEditing: boolean;
   private navbar: Navbar | null;
+  private username: string;
   private ID: number;
   private imagesIndexes: number[];
   private FirstName: string;
@@ -27,6 +34,7 @@ export class ProfilePage {
     this.parent = parent;
     this.isEditing = false;
     this.navbar = null;
+    this.username = 'andrey_918';
     this.ID = -1;
     this.imagesIndexes = [];
     this.FirstName = 'Андрей';
@@ -42,22 +50,19 @@ export class ProfilePage {
   }
 
   private async loadProfile(): Promise<void> {
-    try {
-      const profileData = await getProfile();
-      if (profileData) {
-        this.ID = profileData.ID || -1;
-        this.imagesIndexes = profileData.imagesIndexes || [-1];
-        this.FirstName = profileData.FirstName || '-';
-        this.LastName = profileData.LastName || '-';
-        this.Age = profileData.Age || 21;
-        this.Gender = profileData.Gender || 'male';
-        this.Target = profileData.Target || '-';
-        this.About = profileData.About || '-';
-        this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
-      };
-    } catch (error) {
-      console.error('Ошибка при загрузке профиля:', error);
+    const profileData = await getProfile();
+    if(profileData) {
+      this.ID = profileData.ID || -1;
+      this.imagesIndexes = profileData.imagesIndexes || [];
+      this.FirstName = profileData.FirstName || '-';
+      this.LastName = profileData.LastName || '-';
+      this.Age = profileData.Age || 21;
+      this.Gender = profileData.Gender || 'male';
+      this.Target = profileData.Target || '-';
+      this.About = profileData.About || '-';
+      this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
     }
+    
   }
   
 
@@ -75,6 +80,15 @@ export class ProfilePage {
     textarea.addEventListener("input", () => {
       clearTimeout(timeout);
       timeout = setTimeout(limitLines, 1);
+    });
+  }
+
+  private limitInput(input: HTMLInputElement): void {
+    const regex = /^[A-Za-zА-Яа-яЁё-]*$/;
+    input.addEventListener("input", () => {
+      if (!regex.test(input.value)) {
+        input.value = input.value.split('').filter(char => regex.test(char)).join('');
+      }
     });
   }
 
@@ -112,6 +126,9 @@ export class ProfilePage {
       saveButton.addEventListener('click', () => this.saveSettings());
     }
 
+    
+
+
     if (this.isEditing) {
       const rangeInput = document.getElementById('Age') as HTMLInputElement;
       const output = rangeInput.nextElementSibling as HTMLOutputElement;
@@ -123,6 +140,53 @@ export class ProfilePage {
 
       updateOutput();
       rangeInput.addEventListener('input', updateOutput);
+
+      //перетаскивание фотографий
+      const imageContainers = document.querySelectorAll('.image-container') as NodeListOf<HTMLElement>;
+
+      if (imageContainers) {
+        imageContainers.forEach((container, index) => {
+          container.addEventListener('dragstart', (event) => {
+            event.dataTransfer?.setData('text/plain', index.toString());
+          });
+
+
+          container.addEventListener('dragover', (event) => {
+            event.preventDefault(); 
+          });
+
+          container.addEventListener('drop', (event) => {
+            event.preventDefault();
+            const dragIndex = parseInt(event.dataTransfer?.getData('text/plain') || '0');
+
+            if (dragIndex !== index) {
+              const draggedImage = this.imagesURLs[dragIndex];
+              const dragedId = this.imagesIndexes[dragIndex];
+              this.imagesURLs.splice(dragIndex, 1); 
+              this.imagesIndexes.splice(dragIndex, 1);
+              this.imagesURLs.splice(index, 0, draggedImage); 
+              this.imagesIndexes.splice(index, 0, dragedId); 
+              
+              this.imagesNew.forEach((image, i) => { //мне кажется, что непонятный код, поэтому есть комменты
+                if (image.index === dragIndex) {
+                  // Если индекс совпадает с перетаскиваемым, обновляем его на новый индекс
+                  image.index = index;
+                } else if (dragIndex < index && image.index > dragIndex && image.index <= index) {
+                  // Если элемент находится между старым и новым индексами, уменьшаем индекс на 1
+                  image.index -= 1;
+                } else if (dragIndex > index && image.index < dragIndex && image.index >= index) {
+                  // Если элемент находится между новым и старым индексами, увеличиваем индекс на 1
+                  image.index += 1;
+                }
+              });
+        
+
+              this.getInfoFromPage();
+              this.render();
+            }
+          });
+        });
+      }
     }
     
 
@@ -145,6 +209,17 @@ export class ProfilePage {
       const textarea = document.getElementById('About') as HTMLTextAreaElement; 
       this.limitText(textarea, 10); 
 
+      const firstNameInput = document.getElementById('FirstName') as HTMLInputElement; 
+      if (firstNameInput) {
+        this.limitInput(firstNameInput); 
+      }
+      
+
+      const lastNameInput = document.getElementById('LastName') as HTMLInputElement; 
+      if (lastNameInput) {
+        this.limitInput(lastNameInput); 
+      }
+
       textarea.addEventListener('input', () => {
         textarea.style.height = 'auto'; 
         textarea.style.height = `${textarea.scrollHeight}px`; 
@@ -159,7 +234,7 @@ export class ProfilePage {
   private getInfoFromPage() {
     this.FirstName = (document.getElementById('FirstName') as HTMLInputElement).value;
     this.LastName = (document.getElementById('LastName') as HTMLInputElement).value;
-    this.Gender = (document.getElementById('Gender') as HTMLSelectElement).value;
+    this.Gender = (document.querySelector('input[name="gender"]:checked') as HTMLSelectElement).value;
     this.Age = parseInt((document.getElementById('Age') as HTMLInputElement).value, 10);
     this.Target = (document.getElementById('Target') as HTMLTextAreaElement).value;
     this.About = (document.getElementById('About') as HTMLTextAreaElement).value;
@@ -168,12 +243,30 @@ export class ProfilePage {
 
 
   private deleteImage(index: number): void {
-    this.imagesDel.push(this.imagesIndexes[index]);
+    const imageIndex = this.imagesIndexes[index];
+    
+    const isNewImage = this.imagesNew.some(img => img.index === index);
+    
+    if (isNewImage) {
+        this.imagesNew = this.imagesNew.filter(img => img.index !== index);
+    } else {
+        this.imagesDel.push(imageIndex);
+    }
+
+    this.imagesNew = this.imagesNew.map(img => {
+      if (img.index > index) {
+          return { ...img, index: img.index - 1 }; 
+      }
+      return img;
+    });
+
+
     this.imagesIndexes.splice(index, 1);
     this.imagesURLs.splice(index, 1);
+
     this.getInfoFromPage();
     this.render();
-  }
+}
 
 
   private toggleEditMode(): void {
@@ -198,13 +291,12 @@ export class ProfilePage {
       imagesURLs: this.imagesURLs,
     };
 
-    const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel);
-    
+    const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel, this.imagesURLs, this.imagesIndexes);
     
     if (updateSuccess) {
-        //console.log('Profile updated successfully'); тут бы всплывающее окно
+      //console.log('Profile updated successfully'); //тут бы всплывающее окно
     } else {
-        //console.error('Failed to update profile'); //тут тоже
+      // console.error('Failed to update profile'); //тут тоже
     }
 
     this.isEditing = false;

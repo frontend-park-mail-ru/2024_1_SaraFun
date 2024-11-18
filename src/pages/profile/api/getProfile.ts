@@ -34,10 +34,6 @@ export async function getProfile(): Promise<UserProfile | null> {
         return `http://5.188.140.7/${fileName}`;
       }),
     };
-
-    
-
-
     return userProfile;
   } catch (error) {
     console.error('Error fetching user profile:', error);

@@ -1,6 +1,6 @@
 import {post, put, del} from '../../../shared/api/api';
 import { delImg } from './delImg';
-import { UserProfile } from './profile';
+import { ImgData, UserProfile } from './profile';
 import { uploadImg } from './uploadImg';
 
 /**
@@ -10,7 +10,7 @@ import { uploadImg } from './uploadImg';
  * @param {Object} profileData - The data to update the user's profile.
  * @returns {Promise<boolean>} - A promise that resolves to true if the update is successful, otherwise false.
  */
-export async function updProfile(profileData: UserProfile, imagesNew: File[], imagesDel: number[]): Promise<boolean> {
+export async function updProfile(profileData: UserProfile, imagesNew: ImgData[], imagesDel: number[], imagesURLs: string[], imagesIndexes: number[]): Promise<boolean> {
   try {
     const data = {
       id: profileData.ID,
@@ -22,7 +22,7 @@ export async function updProfile(profileData: UserProfile, imagesNew: File[], im
       about: profileData.About,
     };
 
-    if (!( await uploadImg(imagesNew) )) {
+    if (!( await uploadImg(imagesNew, imagesURLs, imagesIndexes) )) {
       return false;
     };
     
