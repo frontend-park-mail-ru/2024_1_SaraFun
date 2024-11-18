@@ -26,7 +26,7 @@ export default class Navbar {
 
 	componentDidMount(): void {
 		this.addEventListeners();
-		this.getUserAvatar();
+		//this.getUserAvatar();
 	}
 
 	setAuth(isAuth: boolean): void {
@@ -36,10 +36,10 @@ export default class Navbar {
 	componentDidUpdate(): void {
 		this.isAuth = this.parent.getAuth();
 		this.curRoute = this.parent.getCurRoute();
-		this.getUserAvatar();
+		//this.getUserAvatar();
 	}
 
-	async getUserAvatar(): Promise<void> {
+	/*async getUserAvatar(): Promise<void> {
 		if (!this.isAuth) {
 			return;
 		}
@@ -48,7 +48,7 @@ export default class Navbar {
 		const avatarSrc = userData?.imagesURLs?.[0] ?? './img/user.svg';
 		const avatarImg = document.querySelector('.user-avatar__image');
 		avatarImg.setAttribute('src', avatarSrc);
-	}
+	}*/
   
 	/**
    * Adds event listeners to the navigation links and logout button.
