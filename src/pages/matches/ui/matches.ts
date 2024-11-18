@@ -1,9 +1,10 @@
 import Navbar from '../../../widgets/Navbar/navbar';
-import { showImage, scrollLeft, scrollRight } from '../../../shared/lib/carousel';
+//import { showImage, scrollLeft, scrollRight } from '../../../shared/lib/carousel/carousel';
 import template from './matches.pug';
 import { getMatches } from '../api/getMatches';
 import { Router } from '../../../app/Router';
 import { User } from '../../../entities/User/User';
+import { addCarousel } from '../../../shared/lib/carousel/addCarousel';
 
 export class MatchesPage {
 	private parent: Router;
@@ -22,7 +23,8 @@ export class MatchesPage {
 		this.parent.root.innerHTML = template({ users });
 		let allCards = document.querySelectorAll('.match-card') as NodeListOf<HTMLElement>;
 		if (allCards) {
-			allCards.forEach((card, index) => {
+			addCarousel(allCards, users);
+			/*allCards.forEach((card, index) => {
 				const user = users[index];
 				if (user.images != null && user.images.length > 1) {
 					const carousel = card.querySelector('.carousel') as HTMLElement;
@@ -41,7 +43,7 @@ export class MatchesPage {
 						});
 					}
 				}
-			});
+			});*/
 		}
 	}
 }

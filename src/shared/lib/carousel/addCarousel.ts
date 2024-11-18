@@ -1,5 +1,5 @@
 import { User } from '../../../entities/User/User';
-import { showImage, scrollLeft, scrollRight } from '../../../shared/lib/carousel';
+import { showImage, scrollLeft, scrollRight } from './carousel';
 
 export function addCarousel(cards: NodeListOf<HTMLElement>, users : User[]): void {
     cards.forEach((card, index) => {
