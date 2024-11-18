@@ -293,9 +293,7 @@ export class ProfilePage {
     this.loadProfile().then(() => {
       this.render();
       const avatarSrc = this.imagesURLs?.[0] ?? './img/user.svg';
-      console.log(avatarSrc);
       const avatarImg = document.querySelector('.user-avatar__image');
-      console.log(avatarImg);
       avatarImg.setAttribute('src', avatarSrc);
     });
   }

@@ -51,7 +51,7 @@ export default class Navbar {
 		});
 		const activeLink = document.querySelector(`.nav-link a[href="${this.curRoute}"]`);
 		if (activeLink) {
-			activeLink.parentElement.classList.add('active');
+			activeLink.parentElement.classList.add('navbar__link--active');
 		}
 	}
 
