@@ -1,16 +1,16 @@
 include ../../../widgets/SwipeCard/SwipeCard.pug
 
-if (users != null)
-  div.tinder
-    div.tinder__cards
-      for user in users
-        +card(user)
-    div.tinder__buttons
-      button#nope(class="button button_img nope")
-        img(class="img button_img__img" src="./img/X.svg" alt="X")
-      button#love(class="button button_img love")
-        img(class="img button_img__img" src="./img/HeartWhite.svg" alt="Heart")
-else 
-  .form.message-form
-    h1 Пока что не появилось новых анкет
-    h3 Подсказка: заглядывайте почаще, чтобы не пропустить того самого человека!
+//if (users != null)
+div.tinder
+  div.tinder__cards
+    for user in users
+      +card(user)
+  div.tinder__buttons
+    button#nope(class="button button_img nope")
+      img(class="img button_img__img" src="./img/X.svg" alt="X")
+    button#love(class="button button_img love")
+      img(class="img button_img__img" src="./img/HeartWhite.svg" alt="Heart")
+//else 
+.form.message-form
+  h1 Пока что не появилось новых анкет
+  h3 Подсказка: заглядывайте почаще, чтобы не пропустить того самого человека!
