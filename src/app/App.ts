@@ -62,6 +62,7 @@ export default class App {
 		this.navbar.setAuth(isAuth);
 		this.navbarRoot.innerHTML = '';
 		this.navbarRoot.innerHTML = this.navbar.render();
+		this.navbar.componentDidUpdate();
 	}
 
 	setCurRoute(route: string): void {
@@ -69,6 +70,7 @@ export default class App {
 		this.navbar.setCurRoute(route);
 		this.navbarRoot.innerHTML = '';
 		this.navbarRoot.innerHTML = this.navbar.render();
+		this.navbar.componentDidUpdate();
 	}
 
 	getAuth(): boolean {	
