@@ -5,7 +5,8 @@ export class Router {
 	private static instance: Router;
 	private publicRoutes: Map<string, { view: any }>;
 	private privateRoutes: Map<string, { view: any }>;
-
+	
+	curRoute: string;
 	root: HTMLElement;
 	isAuth: boolean;
 	/**
@@ -19,6 +20,7 @@ export class Router {
 			return Router.instance;
 		}
 		this.root = root;
+		this.curRoute = '';
 		this.isAuth = false;
 		this.publicRoutes = new Map();
 		this.privateRoutes = new Map();
@@ -73,6 +75,7 @@ export class Router {
 		
 		const view = route.view;
     	if (view) {
+			this.curRoute = path;
 			if (addToHistory) {
 				history.pushState({}, '', path);
 			}

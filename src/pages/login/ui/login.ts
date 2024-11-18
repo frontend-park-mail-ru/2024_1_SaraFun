@@ -1,4 +1,3 @@
-import Navbar from '../../../widgets/Navbar/navbar';
 import { Router } from '../../../app/Router';
 import template from './login.pug';
 import { loginUser } from '../api/loginUser';
@@ -9,7 +8,6 @@ import { isValidLogin, isValidPassword } from '../../../shared/utils/validation'
  */
 export class LoginPage {
 	private parent: Router;
-	private navbar: Navbar | undefined;
 	/**
    * Creates an instance of LoginPage.
    * @param {Object} parent - The parent object.
@@ -19,7 +17,6 @@ export class LoginPage {
 		this.parent.root.innerHTML = '';
 		this.parent.root.innerHTML = this.render();
 		this.addEventListeners();
-		this.navbar = new Navbar(document.querySelector('nav'), parent);
 	}
 
 	/**

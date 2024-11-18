@@ -1,29 +1,24 @@
 include ../../../shared/components/TextButton/TextButton.pug
 
-mixin navbar(isAuth, activeNavbarItem)
-    .navbar
-        .navbar__logo
-            if (isAuth)
-                a(class='navbar__logo__link' href='/feed')
-                    img(class='img navbar__logo__img' src='./img/Logo.svg' alt='logo')
+.navbar
+    .navbar__logo
+        a(class='navbar__logo__link' href=this.isAuth ? '/feed' : '/login')
+            img(class='img navbar__logo__img' src='./img/Logo.svg' alt='logo')
+    .navbar__list
+        ul.navbar__list__ul
+            if (this.isAuth)
+                li
+                    a(class=`navbar__link ${this.curRoute === 'feed' ? 'navbar__link--active' : ''}` href='/feed') Главная
+                li
+                    a(class=`navbar__link ${this.curRoute === 'matches' ? 'navbar__link--active' : ''}` href='/matches') Мэтчи
+                li
+                    a(class=`navbar__link ${this.curRoute === 'profile' ? 'navbar__link--active' : ''}` href='/profile') Профиль
             else 
-                a(class='navbar__logo__link' href='/login')
-                    img(class='img navbar__logo__img' src='./img/Logo.svg' alt='logo')
-        .navbar__list
-            ul.navbar__list__ul
-                if (isAuth)
-                    li
-                        a(class=`navbar__link ${activeNavbarItem === 'feed' ? 'navbar__link--active' : ''}` href='/feed') Главная
-                    li
-                        a(class=`navbar__link ${activeNavbarItem === 'matches' ? 'navbar__link--active' : ''}` href='/matches') Мэтчи
-                    li
-                        a(class=`navbar__link ${activeNavbarItem === 'profile' ? 'navbar__link--active' : ''}` href='/profile') Профиль
-                else 
-                    li
-                        a(class='navbar__link' href='/login') Войти
-                    li
-                        a(class='navbar__link navbar__link--active' href='/signup') Зарегистрироваться
-        if (isAuth)
-            include ../../../shared/components/Avatar/Avatar.pug
-            button#button-logout(class="text-base button button_text navbar__button", type="button") Выйти из аккаунта
+                li
+                    a(class='navbar__link' href='/login') Войти
+                li
+                    a(class='navbar__link navbar__link--active' href='/signup') Зарегистрироваться
+    if (this.isAuth)
+        include ../../../shared/components/Avatar/Avatar.pug
+        button#button-logout(class="text-base button button_text navbar__button", type="button") Выйти из аккаунта
 

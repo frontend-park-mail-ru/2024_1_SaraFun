@@ -1,6 +1,8 @@
 import { checkAuth } from '../features/checkAuth';
 import { ROUTES, ROUTES_NAME } from '../shared/constants/routes';
 import { Router } from './Router';
+import Navbar from '../widgets/Navbar/navbar';
+import template from './layouts/baseLayout.pug';
 
 /**
  * Class representing the main application.
@@ -8,7 +10,10 @@ import { Router } from './Router';
 export default class App {
 	private state: { isAuthenticated: boolean } = { isAuthenticated: false };
 	private root: HTMLElement;
+	private contentRoot: HTMLElement;
+	private navbarRoot: HTMLElement;
 	private router: Router;
+	private navbar: Navbar;
 
 	/**
      * Creates an instance of App.
@@ -16,7 +21,11 @@ export default class App {
      */
 	constructor(root: HTMLElement) {
 		this.root = root;
-		this.router = new Router(root);
+		this.root.innerHTML = template();
+		this.navbarRoot = this.root.querySelector('.navbarRoot') as HTMLElement;
+		this.contentRoot = this.root.querySelector('.contentRoot') as HTMLElement;
+		this.router = new Router(this.contentRoot);
+		this.navbar = new Navbar(this.router);
 	}
 
 	/**
@@ -31,6 +40,8 @@ export default class App {
 			});
 
 			this.router.start(this.state.isAuthenticated);
+			this.navbarRoot.innerHTML = this.navbar.render();
+			this.navbar.componentDidMount();
 
 			if (!this.state.isAuthenticated) {
 				this.router.navigateTo(ROUTES.get(ROUTES_NAME.LOGIN).path);

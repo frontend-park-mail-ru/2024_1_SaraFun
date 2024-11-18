@@ -2,28 +2,36 @@ import { logout } from './api/logout';
 import {getProfile} from "../../pages/profile/api/getProfile";
 import {checkAuth} from "../../features/checkAuth";
 import { Router } from '../../app/Router';
+import template from './ui/Navbar.pug';
 
 /**
  * Class representing the navigation bar.
  */
 export default class Navbar {
-	private nav: HTMLElement;
 	private parent: Router;
+	private isAuth: boolean;
+	private curRoute: string;
 	/**
    * Creates an instance of Navbar.
-   * @param {HTMLElement} nav - The nav element.
    * @param {Object} app - The application instance.
    */
-	constructor(nav: HTMLElement, parent: Router) {
-		this.nav = nav;
+	constructor(parent: Router) {
 		this.parent = parent;
+		this.isAuth = parent.isAuth;
+		this.curRoute = parent.curRoute;
+	}
+
+	render(): string {
+		return template();
+	}
+
+	componentDidMount(): void {
 		this.addEventListeners();
 		this.getUserAvatar();
 	}
 
 	async getUserAvatar(): Promise<void> {
-		const isAuth = await checkAuth();
-		if (!isAuth) {
+		if (!this.isAuth) {
 			return;
 		}
 

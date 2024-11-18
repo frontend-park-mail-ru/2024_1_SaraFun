@@ -1,4 +1,3 @@
-import Navbar from '../../../widgets/Navbar/navbar';
 import template from './matches.pug';
 import { getMatches } from '../api/getMatches';
 import { Router } from '../../../app/Router';
@@ -7,14 +6,10 @@ import { addCarousel } from '../../../shared/lib/carousel/addCarousel';
 
 export class MatchesPage {
 	private parent: Router;
-	private navbar: Navbar | undefined;
 
 	constructor(parent: Router) {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
-		this.render().then(() => {;
-			this.navbar = new Navbar(document.querySelector('navbar'), parent);
-		});
 	}
 
 	async render(): Promise<void> {

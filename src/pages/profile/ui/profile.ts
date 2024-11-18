@@ -1,6 +1,5 @@
 import template from './profile.pug';
 import { updProfile } from '../api/updProfile';
-import Navbar from '../../../widgets/Navbar/navbar';
 import './profile.scss';
 import { uploadImg } from '../../../features/imageUploader';
 import { UserProfile, ImgData } from '../api/profile';;
@@ -18,7 +17,6 @@ export class ProfilePage {
   private imagesNew: ImgData[] = [];
   private parent: Router;
   private isEditing: boolean;
-  private navbar: Navbar | null;
   private username: string;
   private ID: number;
   private imagesIndexes: number[];
@@ -33,7 +31,6 @@ export class ProfilePage {
   constructor(parent: Router) {
     this.parent = parent;
     this.isEditing = false;
-    this.navbar = null;
     this.username = 'andrey_918';
     this.ID = -1;
     this.imagesIndexes = [];
@@ -109,7 +106,6 @@ export class ProfilePage {
   }
 
   private componentWillMount() {
-    this.navbar = new Navbar(document.querySelector('nav') as HTMLElement, this.parent);
 
     const settingsButton = document.querySelector('.settings-button') as HTMLElement;
     if (settingsButton) {
