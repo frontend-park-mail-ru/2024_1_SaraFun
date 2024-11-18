@@ -281,7 +281,7 @@ export class ProfilePage {
     };
 
     const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel, this.imagesURLs, this.imagesIndexes);
-    
+    console.log(updateSuccess);
     if (updateSuccess) {
       const avatarSrc = this.imagesURLs?.[0] ?? './img/user.svg';
       console.log(avatarSrc);
