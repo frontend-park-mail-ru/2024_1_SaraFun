@@ -68,7 +68,6 @@ export default class App {
 	setCurRoute(route: string): void {
 		this.state.currentRoute = route;
 		this.navbar.setCurRoute(route);
-		console.log("swicth route");
 		this.navbar.componentDidUpdateActiveLink();
 	}
 
