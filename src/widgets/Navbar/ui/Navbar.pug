@@ -6,7 +6,7 @@ include ../../../shared/components/TextButton/TextButton.pug
             img(class='img navbar__logo__img' src='./img/Logo.svg' alt='logo')
     .navbar__list
         ul.navbar__list__ul
-            if (this.isAuth)
+            if (isAuth)
                 li
                     a(class=`navbar__link ${curRoute === '/feed' ? 'navbar__link--active' : ''}` href='/feed') Главная
                 li
