@@ -21,7 +21,7 @@ export default class Navbar {
 	}
 
 	render(): string {
-		return template();
+		return template({isAuth: this.isAuth, curRoute: this.curRoute});
 	}
 
 	componentDidMount(): void {
