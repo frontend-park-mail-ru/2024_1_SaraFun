@@ -284,7 +284,9 @@ export class ProfilePage {
     
     if (updateSuccess) {
       const avatarSrc = this.imagesURLs?.[0] ?? './img/user.svg';
+      console.log(avatarSrc);
       const avatarImg = document.querySelector('.user-avatar__image');
+      console.log(avatarImg);
       avatarImg.setAttribute('src', avatarSrc);
       //console.log('Profile updated successfully'); //тут бы всплывающее окно
     } else {
