@@ -34,5 +34,8 @@
                     .chat__messages__message__time
                         | 12:34 PM
         .chat__input
+            label.chat__input__attach
+                input(type='file' style='display: none;')
+                img(src='./img/Heart.svg' alt='Attach')
             input.chat__input__field(type='text' placeholder='Введите сообщение')
             button.chat__input__button Отправить
