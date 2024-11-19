@@ -1,0 +1,38 @@
+.chats-container
+    .chats-list
+        .chats-list__header 
+            h1.chats-list__header__title Чаты
+            input.chats-list__header__search(type='text' placeholder='Поиск по чатам')
+        .chats-list__content
+            for i in [1, 2, 3, 4,5,6,7, 8,9,10,11]
+                .chats-list__chat
+                    .chats-list__chat__avatar
+                        img.chats-list__chat__avatar__img(src='./img/user.svg' alt='avatar')
+                    .chats-list__chat__info
+                        .chats-list__chat__info__name
+                            | Имя пользователя
+                        .chats-list__chat__info__last-message
+                            | Последнее сообщение
+    .chat
+        .chat__header
+            .chat__header__avatar
+                img.chat__header__avatar__img(src='./img/user.svg' alt='avatar')
+            .chat__header__info
+                .chat__header__info__name
+                    | Имя пользователя
+                .chat__header__info__status
+                    | Онлайн
+        .chat__messages
+            .chat__messages__date
+                | 12 марта 2023
+            for i in [1, 2, 3, 4,5,6,7, 8,9,10,11]
+                .chat__messages__message
+                    .chat__messages__message__avatar
+                        img.chat__messages__message__avatar__img(src='./img/user.svg' alt='avatar')
+                    .chat__messages__message__text
+                        | Текст сообщения
+                    .chat__messages__message__time
+                        | 12:34 PM
+        .chat__input
+            input.chat__input__field(type='text' placeholder='Введите сообщение')
+            button.chat__input__button Отправить
