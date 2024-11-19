@@ -20,6 +20,7 @@ export class MatchesPage {
 		let allCards = document.querySelectorAll('.match-card') as NodeListOf<HTMLElement>;
 		if (allCards) {
 			addCarousel(allCards, users);
+			this.addCardClickListeners(allCards, users);
 		}
 	}
 
