@@ -17,6 +17,7 @@ import '@img/eye.svg';
 import '@img/eye-x.svg';
 import '@img/user.svg';
 import '@img/HeartBroken.svg';
+import '@img/LogReg.svg';
 
 
 const root = document.querySelector('#root') as HTMLElement;
