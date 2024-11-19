@@ -35,6 +35,7 @@ export class MatchesPage {
 	openProfileModal(user: User): void {
 		const modal = document.createElement('div');
 		modal.classList.add('profile-modal');
+		console.log(user);
 		modal.innerHTML = templateCard(user);
 		document.body.appendChild(modal);
 	
