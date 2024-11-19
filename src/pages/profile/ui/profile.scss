@@ -127,8 +127,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 1px dashed grey;
-            border-radius: 10px;
+            outline: 4px dashed var(--secondary);
+            margin-top: 7px;
+            border-radius: 20px;
             width: 200px;
             height: 200px;
 
@@ -137,7 +138,7 @@
             margin-top: 10px; 
             display: fix;
             padding: 10px 20px;
-            background-color: #007BFF;
+            background-color: var(--secondary);
             color: white;
             border: none; 
             border-radius: 5px;
