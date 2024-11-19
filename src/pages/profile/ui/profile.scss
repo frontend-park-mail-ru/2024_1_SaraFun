@@ -53,7 +53,7 @@
                 border-radius: 50%;
                 overflow: hidden;
                 flex-shrink: 0;
-                outline: 10px solid var(--primary);
+                outline: 7px solid var(--primary);
             }
             
         }
@@ -80,10 +80,10 @@
             .image-container {
                 display: flex;
                 min-width: 200px;
-                border-radius: 10px;
+                border-radius: 20px;
                 overflow: hidden;
 
-                border: 1px solid grey;
+                border: 7px solid var(--primary);
                 flex-direction: column; 
                 align-items: center; 
                 margin-bottom: 20px;
