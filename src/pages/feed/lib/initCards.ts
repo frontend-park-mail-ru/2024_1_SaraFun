@@ -2,6 +2,16 @@ import { putLikeOrDislike } from '../api/putLikeOrDislike';
 
 export function initCards(tinderContainer: HTMLElement): void { 
     let newCards = document.querySelectorAll('.tinder__card:not(.removed)') as NodeListOf<HTMLElement>;
+
+    const messageForm = document.querySelector('.form.message-form') as HTMLElement;
+    if (newCards.length === 0) {
+        tinderContainer.style.display = 'none';
+        messageForm.style.display = 'block';
+        return;
+    } else {
+        messageForm.style.display = 'none';
+    }
+
     const maxOffsetIndex = 10;
 
     newCards.forEach(function (card, index) {

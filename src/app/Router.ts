@@ -3,26 +3,43 @@
  */
 export class Router {
 	private static instance: Router;
+	private parent: any;
 	private publicRoutes: Map<string, { view: any }>;
 	private privateRoutes: Map<string, { view: any }>;
-
+	private isAuth: boolean;
+	private curRoute: string;
+	
 	root: HTMLElement;
-	isAuth: boolean;
 	/**
 	 * Creates an instance of Router.
 	 *
 	 * @param {HTMLElement} root - The root element of the application where views will be rendered.
 	 * @returns {Router} - The instance of the Router.
 	 */
-	constructor(root: HTMLElement) {
+	constructor(app: any, root: HTMLElement) {
 		if (Router.instance) {
 			return Router.instance;
 		}
+		this.parent = app;
 		this.root = root;
+		this.curRoute = '';
 		this.isAuth = false;
 		this.publicRoutes = new Map();
 		this.privateRoutes = new Map();
 		Router.instance = this;
+	}
+
+	getAuth(): boolean {
+		return this.isAuth;
+	}
+
+	setAuth(isAuth: boolean): void {
+		this.isAuth = isAuth;
+		this.parent.setAuth(isAuth);
+	}
+
+	getCurRoute(): string {
+		return this.curRoute;
 	}
 
 	/**
@@ -44,8 +61,7 @@ export class Router {
 	/**
 	 * Starts the router by setting up event listeners and navigating to the initial route.
 	 */
-	start(isAuth: boolean): void {
-		this.isAuth = isAuth;
+	start(): void {
 		window.addEventListener('popstate', () => {
 			this.navigateTo(window.location.pathname, false);
 		});
@@ -73,6 +89,8 @@ export class Router {
 		
 		const view = route.view;
     	if (view) {
+			this.curRoute = path;
+			this.parent.setCurRoute(path);
 			if (addToHistory) {
 				history.pushState({}, '', path);
 			}

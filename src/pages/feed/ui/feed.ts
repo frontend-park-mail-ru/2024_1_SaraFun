@@ -1,4 +1,3 @@
-import Navbar from '../../../widgets/Navbar/navbar';
 import template from './feed.pug';
 import { getUsers } from '../api/getUsers';
 import { User } from '../../../entities/User/User'
@@ -13,7 +12,6 @@ import { createButtonListener } from '../lib/createButtonListener';
  */
 export class FeedPage {
 	private parent: Router;
-  	private navbar: Navbar | undefined;
 	/**
      * Creates an instance of FeedPage.
      * @param {Object} parent - The parent object containing the root element.
@@ -21,9 +19,7 @@ export class FeedPage {
 	constructor(parent: Router) {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
-		this.render().then(() => {;
-			this.navbar = new Navbar(document.querySelector('navbar') as HTMLElement, parent);
-		});
+		this.render();
 	}
 
 	/**

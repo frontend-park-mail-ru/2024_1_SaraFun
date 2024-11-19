@@ -1,18 +1,16 @@
-include ../../../widgets/Navbar/ui/Navbar.pug
 include ../../../shared/components/Icons/trash.pug
 
 div.profile
   div.profile-card
-    +navbar(true, 'profile')
     if isEditing
       h1 Редактирование профиля
       .settings-form
         label
           | Имя:
-          input(type="text" id="FirstName" maxlength="50" value=FirstName required)
+          input(type="text" class='input' id="FirstName" maxlength="50" value=FirstName required)
         label
           | Фамилия:
-          input(type="text" id="LastName" maxlength="50" value=LastName required)
+          input(type="text" class='input' id="LastName" maxlength="50" value=LastName required)
         include ../../../shared/components/GenderSelection/GenderSelection.pug
         label
           | Возраст:

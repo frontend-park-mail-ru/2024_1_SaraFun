@@ -1,24 +1,16 @@
 import template from './profile.pug';
 import { updProfile } from '../api/updProfile';
-import Navbar from '../../../widgets/Navbar/navbar';
 import './profile.scss';
 import { uploadImg } from '../../../features/imageUploader';
 import { UserProfile, ImgData } from '../api/profile';;
 import { getProfile } from '../api/getProfile';
 import { Router } from '../../../app/Router';
 
-
-interface Parent {
-  curLogin: string;
-  root: HTMLElement;
-}
-
 export class ProfilePage {
   private imagesDel: number[] = [];
   private imagesNew: ImgData[] = [];
   private parent: Router;
   private isEditing: boolean;
-  private navbar: Navbar | null;
   private username: string;
   private ID: number;
   private imagesIndexes: number[];
@@ -33,17 +25,6 @@ export class ProfilePage {
   constructor(parent: Router) {
     this.parent = parent;
     this.isEditing = false;
-    this.navbar = null;
-    this.username = 'andrey_918';
-    this.ID = -1;
-    this.imagesIndexes = [];
-    this.FirstName = 'Андрей';
-    this.LastName = 'Девелопер'
-    this.Age = 18;
-    this.Gender = 'male';
-    this.Target = '-';
-    this.About = '-';
-    this.imagesURLs = ['./img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg', './img/image.svg'];
     this.loadProfile().then(() => {
       this.render();
     });
@@ -54,12 +35,12 @@ export class ProfilePage {
     if(profileData) {
       this.ID = profileData.ID || -1;
       this.imagesIndexes = profileData.imagesIndexes || [];
-      this.FirstName = profileData.FirstName || '-';
-      this.LastName = profileData.LastName || '-';
+      this.FirstName = profileData.FirstName || '';
+      this.LastName = profileData.LastName || '';
       this.Age = profileData.Age || 21;
       this.Gender = profileData.Gender || 'male';
-      this.Target = profileData.Target || '-';
-      this.About = profileData.About || '-';
+      this.Target = profileData.Target || '';
+      this.About = profileData.About || '';
       this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
     }
     
@@ -94,7 +75,6 @@ export class ProfilePage {
 
   public render(): void {
     this.parent.root.innerHTML = template({
-      //username: this.parent.curLogin,
       isEditing: this.isEditing,
       FirstName: this.FirstName,
       LastName: this.LastName,
@@ -109,7 +89,6 @@ export class ProfilePage {
   }
 
   private componentWillMount() {
-    this.navbar = new Navbar(document.querySelector('nav') as HTMLElement, this.parent);
 
     const settingsButton = document.querySelector('.settings-button') as HTMLElement;
     if (settingsButton) {
@@ -292,7 +271,6 @@ export class ProfilePage {
     };
 
     const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel, this.imagesURLs, this.imagesIndexes);
-    
     if (updateSuccess) {
       //console.log('Profile updated successfully'); //тут бы всплывающее окно
     } else {
@@ -304,6 +282,9 @@ export class ProfilePage {
     this.imagesNew = [];
     this.loadProfile().then(() => {
       this.render();
+      const avatarSrc = this.imagesURLs?.[0] ?? './img/user.svg';
+      const avatarImg = document.querySelector('.user-avatar__image');
+      avatarImg.setAttribute('src', avatarSrc);
     });
   }
 }

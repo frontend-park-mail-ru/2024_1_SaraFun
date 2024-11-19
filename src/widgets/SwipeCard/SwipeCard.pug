@@ -8,7 +8,7 @@ mixin card(user)
       else
         img(class="img image-section__img_static" src="./img/image.svg" alt="Image" draggable="false")
     .form-section
-      if (user.profile.first_name == "-" || user.profile.first_name == null)
+      if (user.profile.first_name == null || user.profile.first_name == '-')
         h1 !{user.username}
       else 
         h1 !{user.profile.first_name}

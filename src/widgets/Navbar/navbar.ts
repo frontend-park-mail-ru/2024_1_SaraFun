@@ -1,29 +1,62 @@
 import { logout } from './api/logout';
 import {getProfile} from "../../pages/profile/api/getProfile";
-import {checkAuth} from "../../features/checkAuth";
 import { Router } from '../../app/Router';
+import template from './ui/Navbar.pug';
 
 /**
  * Class representing the navigation bar.
  */
 export default class Navbar {
-	private nav: HTMLElement;
 	private parent: Router;
+	private isAuth: boolean;
+	private curRoute: string;
 	/**
    * Creates an instance of Navbar.
-   * @param {HTMLElement} nav - The nav element.
    * @param {Object} app - The application instance.
    */
-	constructor(nav: HTMLElement, parent: Router) {
-		this.nav = nav;
+	constructor(parent: Router) {
 		this.parent = parent;
+		this.isAuth = parent.getAuth();
+		this.curRoute = parent.getCurRoute();
+	}
+
+	render(): string {
+		return template({isAuth: this.isAuth, curRoute: this.curRoute});
+	}
+
+	componentDidMount(): void {
 		this.addEventListeners();
 		this.getUserAvatar();
 	}
 
+	setAuth(isAuth: boolean): void {
+		this.isAuth = isAuth;
+	}
+
+	setCurRoute(curRoute: string): void {
+		this.curRoute = curRoute;
+	}
+
+	componentDidUpdate(): void {
+		this.isAuth = this.parent.getAuth();
+		this.curRoute = this.parent.getCurRoute();
+		this.getUserAvatar();
+		this.addEventListeners();
+	}
+
+	componentDidUpdateActiveLink(): void {
+		const links = document.querySelectorAll('li a');
+		links.forEach(link => {
+			link.classList.remove('navbar__link--active');
+		});
+		const activeLink = document.querySelector(`li a[href="${this.curRoute}"]`);
+		if (activeLink) {
+			activeLink.classList.add('navbar__link--active');
+		}
+	}
+
 	async getUserAvatar(): Promise<void> {
-		const isAuth = await checkAuth();
-		if (!isAuth) {
+		if (!this.isAuth) {
 			return;
 		}
 
@@ -51,7 +84,7 @@ export default class Navbar {
 		if (button) {
 			button.addEventListener('click', async () => {
 				await logout();
-				this.parent.isAuth = false;
+				this.parent.setAuth(false);
 				this.parent.navigateTo('/login');
 			});
 		}

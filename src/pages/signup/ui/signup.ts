@@ -1,5 +1,4 @@
 import { isValidPassword, isValidLogin } from '../../../shared/utils/validation';
-import Navbar from '../../../widgets/Navbar/navbar';
 import { signupUser } from '../api/signupUser';
 import template from './signup.pug';
 import { Router } from '../../../app/Router';
@@ -9,7 +8,6 @@ import { Router } from '../../../app/Router';
  */
 export class RegistrationPage {
 	private parent: Router;
-	private navbar: Navbar | undefined;
 	/**
    * Creates an instance of RegistrationPage.
    * @param {Object} parent - The parent object.
@@ -19,7 +17,6 @@ export class RegistrationPage {
 		this.parent.root.innerHTML = '';
 		this.parent.root.innerHTML = this.render();
 		this.addEventListeners();
-		this.navbar = new Navbar(document.querySelector('nav'), parent);
 	}
   
 	/**
@@ -86,11 +83,11 @@ export class RegistrationPage {
 						document.getElementById('login-password-error').style.display = 'block';            
 					} else { 
 						//this.parent.curLogin = login;
-						this.parent.isAuth = true;
+						this.parent.setAuth(true);
 						this.parent.navigateTo('/feed');
 					}
 					//this.parent.curLogin = login;
-					this.parent.isAuth = true;
+					this.parent.setAuth(true);
 					this.parent.navigateTo('/feed');
 				} catch (error) {
 					console.error(error);
