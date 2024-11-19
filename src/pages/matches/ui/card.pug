@@ -1,14 +1,3 @@
-.tinder__card
-    .image-section
-        if (user.images != null && user.images.length > 0)
-            +carousel(user.images)
-        else
-            img(class="img image-section__img_static" src="./img/image.svg" alt="Image" draggable="false")
-    .form-section
-        h1 !{user.username}
-        if (user.profile)
-            if (user.profile.gender == "male")
-                h3 Пол: мужской
-            else
-                h3 Пол: женский
-            h3 Возраст: !{user.profile.age}
+include ../../../widgets/SwipeCard/SwipeCard.pug
+
++card(user)

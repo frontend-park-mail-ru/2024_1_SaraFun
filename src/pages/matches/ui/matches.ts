@@ -36,11 +36,11 @@ export class MatchesPage {
 		const modal = document.createElement('div');
 		modal.classList.add('profile-modal');
 		console.log(user);
-		modal.innerHTML = templateCard(user);
-		document.body.appendChild(modal);
+		modal.innerHTML = templateCard({user});
+		this.parent.root.appendChild(modal);
 	
 		const closeModal = () => {
-		  modal.remove();
+		  	modal.remove();
 		};
 	
 		modal.addEventListener('click', (event) => {
