@@ -26,7 +26,10 @@ export class MatchesPage {
 
 	addCardClickListeners(cards: NodeListOf<HTMLElement>, users: User[]): void {
 		cards.forEach((card, index) => {
-		  	card.addEventListener('click', () => {
+		  	card.addEventListener('click', (event) => {
+				if (event.target instanceof HTMLElement && event.target.tagName === 'BUTTON') {
+					return;
+				}
 				this.openProfileModal(users[index]);
 		  	});
 		});
@@ -37,7 +40,7 @@ export class MatchesPage {
 		modal.classList.add('profile-modal');
 		console.log(user);
 		modal.innerHTML = templateCard({user});
-		addCarousel(modal.querySelectorAll('.profile-modal'), [user]);
+		addCarousel(modal.querySelectorAll('.tinder__card'), [user]);
 		this.parent.root.appendChild(modal);
 	
 		const closeModal = () => {
