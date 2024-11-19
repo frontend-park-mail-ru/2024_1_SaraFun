@@ -86,7 +86,6 @@
                 border: 7px solid var(--primary);
                 flex-direction: column; 
                 align-items: center; 
-                margin-bottom: 20px;
                 position: relative;
 
 
@@ -129,6 +128,7 @@
             align-items: center;
             outline: 4px dashed var(--secondary);
             margin-top: 7px;
+            margin-left: 7px;
             border-radius: 20px;
             width: 200px;
             height: 200px;
