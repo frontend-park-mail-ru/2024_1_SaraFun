@@ -37,6 +37,7 @@ export class MatchesPage {
 		modal.classList.add('profile-modal');
 		console.log(user);
 		modal.innerHTML = templateCard({user});
+		addCarousel(modal.querySelectorAll('.profile-modal'), [user]);
 		this.parent.root.appendChild(modal);
 	
 		const closeModal = () => {
@@ -44,14 +45,9 @@ export class MatchesPage {
 		};
 	
 		modal.addEventListener('click', (event) => {
-		  if ((event.target as HTMLElement).classList.contains('profile-modal')) {
-			closeModal();
-		  }
+			if ((event.target as HTMLElement).classList.contains('profile-modal')) {
+				closeModal();
+			}
 		});
-	
-		const closeButton = modal.querySelector('.profile-modal__close');
-		if (closeButton) {
-		  closeButton.addEventListener('click', closeModal);
-		}
 	}
 }
