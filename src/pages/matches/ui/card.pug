@@ -6,8 +6,9 @@
             img(class="img image-section__img_static" src="./img/image.svg" alt="Image" draggable="false")
     .form-section
         h1 !{user.username}
-        if (user.profile.gender == "male")
-            h3 Пол: мужской
-        else
-            h3 Пол: женский
-        h3 Возраст: !{user.profile.age}
+        if (user.profile)
+            if (user.profile.gender == "male")
+                h3 Пол: мужской
+            else
+                h3 Пол: женский
+            h3 Возраст: !{user.profile.age}
