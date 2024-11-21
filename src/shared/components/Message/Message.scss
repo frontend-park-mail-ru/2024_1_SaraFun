@@ -1,0 +1,29 @@
+.chat__messages__message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    &__avatar {
+      margin-right: 15px;
+
+      &__img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
+
+    &__text {
+      background-color: var(--primary);
+      padding: 10px 15px;
+      border-radius: 10px;
+      max-width: 70%;
+    }
+
+    &__time {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--grey2);
+      padding-left: 10px;
+    }
+  }

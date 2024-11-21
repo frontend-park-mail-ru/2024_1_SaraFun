@@ -1,0 +1,12 @@
+include ../../shared/components/ChatPreview/ChatPreview.pug
+
+mixin chats-list(previews)
+    .chats-list
+        include ../../shared/components/ChatListHeader/ChatListHeader.pug
+        .chats-list__content
+            if (previews)
+                each preview in previews
+                    +chat-preview(preview)
+            else
+                h2.chats-list__no-previews
+                    | Здесь будут чаты с Вашими мэтчами!

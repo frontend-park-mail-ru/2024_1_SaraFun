@@ -34,15 +34,17 @@
         padding: 12px 18px;
         text-decoration: none;
         color: var(--black1);
+        border-radius: 10px;
+        transition: background-color 0.2s;
 
         &:hover {
-            background: var(--success);
+            background-color: var(--success);
             color: var(--white1);
             border-radius: 10px;
         }
 
         &--active {
-            background: var(--secondary);
+            background-color: var(--secondary);
             color: var(--white1);
             border-radius: 10px;
         }

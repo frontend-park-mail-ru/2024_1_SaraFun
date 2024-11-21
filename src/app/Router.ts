@@ -76,6 +76,7 @@ export class Router {
 	 */
 	navigateTo(path: string, addToHistory: boolean = true): void {
 		const route = this.publicRoutes.get(path) || this.privateRoutes.get(path);
+
 		if (this.privateRoutes.has(path) && !this.isAuth) {
 			const firstPublicRoute = Array.from(this.publicRoutes.keys())[0];
     		this.navigateTo(firstPublicRoute);

@@ -1,0 +1,10 @@
+include ../../shared/components/ChatHeader/ChatHeader.pug
+include ../../shared/components/Message/Message.pug
+
++chatHeader(chatData)
+.chat__messages
+    .chat__messages__date
+        | 12 марта 2023
+    each message in chatData.messages
+        +message(message)
+include ../../shared/components/ChatInput/ChatInput.pug

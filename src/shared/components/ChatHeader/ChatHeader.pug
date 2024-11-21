@@ -1,0 +1,9 @@
+mixin chatHeader(chat)
+    .chat__header
+        .chat__header__avatar
+            img.chat__header__avatar__img(src='./img/user.svg' alt='avatar')
+        .chat__header__info
+            .chat__header__info__name
+                | #{chat.username}
+            .chat__header__info__status
+                | Онлайн

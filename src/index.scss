@@ -14,6 +14,14 @@
 @use './shared/components/Carousel/Carousel.scss' as *;
 @use './shared/components/Avatar/avatar' as *;
 @use './pages/chats/ui/chats.scss' as *;
+@use './widgets/ChatsList/ChatsList.scss' as *;
+@use './widgets/Chat/Chat.scss' as *;
+@use './shared/components/ChatHeader/ChatHeader.scss' as *;
+@use './shared/components/ChatInput/ChatInput.scss' as *;
+@use './shared/components/Message/Message.scss' as *;
+@use './shared/components/ChatPreview/ChatPreview.scss' as *;
+@use './shared/components/ChatListHeader/ChatListHeader.scss' as *;
+@use './shared/components/Search/Search.scss' as *;
 
 
 @font-face {
@@ -31,7 +39,8 @@
     --success: #204E4AFF;
     --white1: #FFFFFFFF;
     --black1: #000000FF;
-    --grey1: #C4C4C4FF;
+    --lightGrey: #f7f7f7;
+    --grey1: rgb(217, 217, 217);
     --grey2: #8C8C8CFF;
     --nav-width: 55px;
 }
@@ -104,6 +113,7 @@ h3 {
     border: none;
     cursor: pointer;
     color: var(--white1);
+    transition: background-color 0.3s;
 
     &:hover {
         background-color: var(--success);
@@ -114,6 +124,7 @@ h3 {
     background-color: var(--primary);
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s;
 
     &:hover {
         background-color: var(--white1);
@@ -167,6 +178,7 @@ h3 {
     margin: 0 8px;
     position: relative;
     cursor: pointer;
+    transition: background-color 0.3s;
 
     &__img {
         width: 75%;
@@ -196,4 +208,22 @@ h3 {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--lightGrey);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--secondary); 
+    border-radius: 10px;
+    border: 3px solid var(--lightGrey);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: var(--success);
 }
