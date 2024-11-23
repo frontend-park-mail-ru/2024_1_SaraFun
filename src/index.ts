@@ -1,5 +1,6 @@
 import App from './app/App';
 import { SurveyPage } from './pages/survey/index';
+import { CsatPage } from './pages/csat/index';
 import './index.scss';
 import '@img/HeartWhite.svg';
 import '@img/Logo.svg';
@@ -30,7 +31,7 @@ if (root && forIframe) {
 } else {
     const csat = document.querySelector('#csat') as HTMLElement;
     if (csat) {
-        new SurveyPage(csat);
+        new CsatPage(csat);
     } else {
         console.error('Element with id "root" not found.');
         console.error('Element with id "csat" not found.');
