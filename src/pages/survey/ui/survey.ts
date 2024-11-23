@@ -55,6 +55,16 @@ export class SurveyPage {
         }
 
         this.questions.forEach((_, index) => {
+            const nextButton = document.getElementById(`nextStep${index + 1}Button`);
+            if (nextButton) {
+                nextButton.addEventListener('click', () => this.nextStep());
+            }
+    
+            const backButton = document.getElementById(`backButton${index + 1}`);
+            if (backButton) {
+                backButton.addEventListener('click', () => this.goBackToStep());
+            }
+    
             const ratingButtons = document.querySelectorAll<HTMLButtonElement>(`#step${index + 1} .rating-button`);
             ratingButtons.forEach(button => {
                 button.addEventListener('click', () => this.selectRating(button, index));
