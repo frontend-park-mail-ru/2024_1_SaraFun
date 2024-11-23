@@ -26,6 +26,7 @@ export class SurveyPage {
     private addEventListeners(): void {
         const surveyModal = document.getElementById('surveyModal');
         if (surveyModal) {
+            this.resetSurvey();
             surveyModal.style.display = 'block'; 
         }
     
