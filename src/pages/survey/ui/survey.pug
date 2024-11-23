@@ -3,15 +3,19 @@ body
     .modal-content
       button#closeModalButton.close &times; 
       each question, index in questions
-        #step#{index + 1}.step(style=index === 0 ? "" : "display: none;")
+        - var stepId = 'step' + (index + 1)
+        - var nextButtonId = 'nextStep' + (index + 1) + 'Button'
+        - var backButtonId = 'backButton' + (index + 1)
+        
+        div(id=stepId).step(style=(index === 0 ? '' : 'display: none;'))
           h2 #{question.text}
           .rating-buttons
             each rating in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
               button.rating-button(data-value=rating) #{rating}
           if index < questions.length - 1
-            button#nextStep#{index + 1}Button Далее
+            button(id=nextButtonId) Далее
           if index > 0
-            button#backButton#{index + 1} Назад
+            button(id=backButtonId) Назад
 
       #thankYouMessage(style="display: none;")
         h3 Спасибо за прохождение опроса!
