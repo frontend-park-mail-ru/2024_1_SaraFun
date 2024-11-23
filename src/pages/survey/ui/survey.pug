@@ -11,7 +11,7 @@ body
         button#nextStep1Button Далее
 
       #step2.step(style="display: none;")
-        h3 Нравятся ли вам свайпы?
+        h2 Нравятся ли вам свайпы?
         .rating-buttons
           each rating in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             button.rating-button(data-value=rating) #{rating}
@@ -19,7 +19,7 @@ body
         button#backButton2 Назад
 
       #step3.step(style="display: none;")
-        h3 Нравятся ли вам фотографии?
+        h2 Нравятся ли вам фотографии?
         .rating-buttons
           each rating in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             button.rating-button(data-value=rating) #{rating}
@@ -27,7 +27,7 @@ body
         button#backButton3 Назад
 
       #step4.step(style="display: none;")
-        h3 Удобные ли чаты?
+        h2 Удобные ли чаты?
         .rating-buttons
           each rating in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             button.rating-button(data-value=rating) #{rating}
@@ -35,7 +35,7 @@ body
         button#backButton4 Назад
 
       #step5.step(style="display: none;")
-        h3 Удобно ли настраивать профиль?
+        h2 Удобно ли настраивать профиль?
         .rating-buttons
           each rating in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             button.rating-button(data-value=rating) #{rating}
