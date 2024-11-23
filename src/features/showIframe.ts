@@ -1,16 +1,16 @@
 export function toggleCsatIframe(show: boolean) {
     const csatIframe = document.getElementById('csat-iframe');
-    console.log(csatIframe);
+    //console.log(csatIframe);
     if (show) {
-      csatIframe.style.display = 'block';
-      csatIframe.focus();
+        csatIframe.style.display = 'block';
+        csatIframe.focus();
     } else {
-      csatIframe.style.display = 'none';
+        csatIframe.style.display = 'none';
     }
 }
   
 window.addEventListener('message', function(event) {
     if (event.data === 'close-iframe') {
-      toggleCsatIframe(false);
+        toggleCsatIframe(false);
     }
 });
