@@ -1,2 +1,6 @@
 .form.message-form
     h1 Результаты опросов
+    each stat in stats
+        h3 Вопрос: #{stat.Question}
+        h2 Средний рейтинг: #{stat.AverageRating}
+        h3 Максимальная возможная оценка: #{stat.Grade}
