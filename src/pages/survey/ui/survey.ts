@@ -11,8 +11,7 @@ export class SurveyPage {
     constructor(parent: HTMLElement) {
         this.parent = parent;
         this.parent.innerHTML = '';
-        this.parent.innerHTML = this.render();
-        this.addEventListeners();
+        this.init();
     }
 
     private async init(): Promise<void> {
