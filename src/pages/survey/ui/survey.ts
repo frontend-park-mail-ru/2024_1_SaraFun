@@ -24,6 +24,7 @@ export class SurveyPage {
 
     render(): string {
         this.getQuestions();
+        console.log(this.questions);
         return template({ questions: this.questions });
     }
 
