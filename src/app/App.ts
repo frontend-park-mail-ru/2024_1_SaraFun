@@ -66,7 +66,8 @@ export default class App {
         								id="csat-iframe"
 										class="csat-iframe"
 										title="Csat survey"
-										src="http://localhost:443/csatsurvey">
+										src="http://localhost:443/csatsurvey"
+										sandbox="allow-same-origin allow-scripts allow-forms">
 									</iframe>`;
 		} else {
 			this.forIframe.innerHTML = '';
