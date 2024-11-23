@@ -48,18 +48,14 @@ export default class App {
 			this.navbar.componentDidMount();
 
 			if (!this.state.isAuthenticated) {
-				this.router.navigateTo(window.location.pathname);
-				
-				// this.router.navigateTo(ROUTES.get(ROUTES_NAME.LOGIN).path);
+				this.router.navigateTo(ROUTES.get(ROUTES_NAME.LOGIN).path);
 			}
 			else {
 				this.router.navigateTo(window.location.pathname);
 			}
 
 		} catch (error) {
-			this.router.navigateTo(window.location.pathname);
-			// this.router.navigateTo(ROUTES.get(ROUTES_NAME.LOGIN).path);
-
+			this.router.navigateTo(ROUTES.get(ROUTES_NAME.LOGIN).path);
 		}
 	}
 
