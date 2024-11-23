@@ -10,6 +10,7 @@ import template from './layouts/baseLayout.pug';
 export default class App {
 	private state: { isAuthenticated: boolean, currentRoute: any } = { isAuthenticated: false, currentRoute: null };
 	private root: HTMLElement;
+	private forIframe: HTMLElement;
 	private contentRoot: HTMLElement;
 	private navbarRoot: HTMLElement;
 	private router: Router;
@@ -19,8 +20,9 @@ export default class App {
      * Creates an instance of App.
      * @param {HTMLElement} root - The root element for rendering the application.
      */
-	constructor(root: HTMLElement) {
+	constructor(root: HTMLElement, forIframe: HTMLElement) {
 		this.root = root;
+		this.forIframe = forIframe;
 		this.root.innerHTML = template();
 		this.navbarRoot = this.root.querySelector('.navbarRoot') as HTMLElement;
 		this.contentRoot = this.root.querySelector('.contentRoot') as HTMLElement;
@@ -60,12 +62,14 @@ export default class App {
 	setAuth(isAuth: boolean): void {
 		this.state.isAuthenticated = isAuth;
 		if (isAuth) {
-			this.root.innerHTML = `<iframe
+			this.forIframe.innerHTML = `<iframe
         								id="csat-iframe"
 										class="csat-iframe"
 										title="Csat survey"
 										src="http://localhost:443/csatsurvey">
 									</iframe>`;
+		} else {
+			this.forIframe.innerHTML = '';
 		}
 		this.navbar.setAuth(isAuth);
 		this.navbarRoot.innerHTML = '';

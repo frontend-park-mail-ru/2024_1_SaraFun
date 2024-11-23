@@ -22,9 +22,10 @@ import '@img/LogReg.svg';
 
 
 const root = document.querySelector('#root') as HTMLElement;
+const forIframe = document.querySelector('#forIframe') as HTMLElement;
 
-if (root) {
-    const app = new App(root);
+if (root && forIframe) {
+    const app = new App(root, forIframe);
     await app.init();
 } else {
     console.error('Element with id "root" not found.');
