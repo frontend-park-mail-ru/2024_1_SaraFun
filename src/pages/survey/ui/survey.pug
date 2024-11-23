@@ -16,7 +16,7 @@ body
           each rating in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             button.rating-button(data-value=rating) #{rating}
         button#nextStep2Button Далее
-        button#backButton Назад
+        button#backButton2 Назад
 
       #step3.step(style="display: none;")
         h3 Нравятся ли вам фотографии?
@@ -24,7 +24,7 @@ body
           each rating in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             button.rating-button(data-value=rating) #{rating}
         button#nextStep3Button Далее 
-        button#backButton Назад
+        button#backButton3 Назад
 
       #step4.step(style="display: none;")
         h3 Удобные ли чаты?
@@ -32,7 +32,7 @@ body
           each rating in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             button.rating-button(data-value=rating) #{rating}
         button#nextStep4Button Далее 
-        button#backButton Назад
+        button#backButton4 Назад
 
       #step5.step(style="display: none;")
         h3 Удобно ли настраивать профиль?
@@ -40,7 +40,7 @@ body
           each rating in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             button.rating-button(data-value=rating) #{rating}
         button#submitFeedbackButton Отправить отзыв
-        button#backButton Назад
+        button#backButton5 Назад
 
   #thankYouMessage(style="display: none;")
     h3 Спасибо за прохождение опроса!

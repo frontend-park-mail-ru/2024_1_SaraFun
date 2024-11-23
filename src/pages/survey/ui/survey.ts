@@ -26,7 +26,7 @@ export class SurveyPage {
     private addEventListeners(): void {
         const surveyModal = document.getElementById('surveyModal');
         if (surveyModal) {
-            surveyModal.style.display = 'block'; // Открываем модальное окно
+            surveyModal.style.display = 'block'; 
         }
     
         const closeButton = document.getElementById('closeModalButton');
@@ -57,9 +57,21 @@ export class SurveyPage {
 
         
 
-        const goBack = document.getElementById('backButton');
-        if (goBack) {
-            goBack.addEventListener('click', () => this.goBackToStep());
+        const goTo1 = document.getElementById('backButton2');
+        if (goTo1) {
+            goTo1.addEventListener('click', () => this.goBackToStep(2));
+        }
+        const goTo2 = document.getElementById('backButton3');
+        if (goTo2) {
+            goTo2.addEventListener('click', () => this.goBackToStep(3));
+        }
+        const goTo3 = document.getElementById('backButton4');
+        if (goTo3) {
+            goTo3.addEventListener('click', () => this.goBackToStep(4));
+        }
+        const goTo5 = document.getElementById('backButton5');
+        if (goTo5) {
+            goTo5.addEventListener('click', () => this.goBackToStep(5));
         }
 
         const submitFeedbackButton = document.getElementById('submitFeedbackButton');
@@ -211,12 +223,12 @@ export class SurveyPage {
     }
 
 
-    private goBackToStep(): void {
-        const currentStep = document.querySelector('.step:visible') as HTMLElement;
+    private goBackToStep(stepNum : number): void {
+        const currentStep = document.querySelector(`#step${stepNum}`) as HTMLElement;
         
         if (currentStep) {
             currentStep.style.display = 'none';
-            const previousStepID = parseInt(currentStep.id.replace('step', '')) - 1;
+            const previousStepID = stepNum - 1;
             const previousStep = document.getElementById(`step${previousStepID}`) as HTMLElement;
 
             if (previousStep) {
