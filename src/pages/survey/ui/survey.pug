@@ -1,0 +1,38 @@
+body
+  #surveyModal.modal(style="display: none;") 
+    .modal-content
+      button#closeModalButton.close &times; 
+
+      #step1.step
+        h2 Оцените нас
+        .rating-buttons
+          each rating in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            button.rating-button(data-value=rating) #{rating}
+
+        button#submitRatingButton Отправить
+
+      #step2.step(style="display: none;")
+        h3#followUpQuestion
+        select#feedbackOptions
+          option(value="default") Не знаю
+          option(value="homepage") Главная страница
+          option(value="matches") Мэтчи
+          option(value="chats") Чаты
+          option(value="photoSettings") Настройка фотографий
+        button#nextStepButton Далее 
+        button#backToStep1Button Назад
+
+        
+
+      #step3.step(style="display: none;")
+        h3 Хотите рассказать подробнее?
+        textarea#detailedFeedback(placeholder="Ваши комментарии...")
+        button#submitFeedbackButton Отправить отзыв
+        button#backToStep2Button Назад
+
+
+  #thankYouMessage(style="display: none;")
+    h3 Спасибо за прохождение опроса!
+
+
+
