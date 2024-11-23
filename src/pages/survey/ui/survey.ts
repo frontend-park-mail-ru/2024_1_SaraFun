@@ -159,10 +159,27 @@ export class SurveyPage {
         window.parent.postMessage('close-iframe', '*');
     }
 
-    private submitSurvey(): void {
+    private async submitSurvey(): Promise<void> {
         this.closeModal();
     
         console.log("Опрос отправлен:", this.ratings);
+
+        const surveyData = this.questions.map((question, index) => ({
+            question,
+            rating: this.ratings[index],
+            grade: 10 
+        }));
+
+        try {
+            const response = await post('sendsurvey', surveyData);
+            if (response.ok) {
+                console.log('Опрос успешно отправлен');
+            } else {
+                console.error('Ошибка при отправке опроса');
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
     
         const thankYouMessage = document.getElementById('thankYouMessage');
         if (thankYouMessage) {
