@@ -46,8 +46,8 @@ export class SurveyPage {
         }
 
         const nextStep3Button = document.getElementById('nextStep1Button');
-        if (nextStep1Button) {
-            nextStep1Button.addEventListener('click', () => this.nextStep(3));
+        if (nextStep3Button) {
+            nextStep3Button.addEventListener('click', () => this.nextStep(3));
         }
 
         const nextStep4Button = document.getElementById('nextStep1Button');
@@ -172,13 +172,11 @@ export class SurveyPage {
     }
 
     submitRating(rating: number, ratingType: 'site' | 'swipe' | 'photo' | 'chat' | 'profile'): void {
-        // Проверяем корректность переданного рейтинга
         if (rating < 0 || rating > 10) {
             alert("Пожалуйста, выберите корректную оценку от 0 до 10.");
             return;
         }
     
-        // Сохраняем рейтинг в соответствующую переменную
         switch (ratingType) {
             case 'site':
                 this.siteRating = rating;
