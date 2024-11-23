@@ -49,11 +49,6 @@ export class SurveyPage {
             goBack.addEventListener('click', () => this.goBackToStep());
         }
 
-        const submitFeedbackButton = document.getElementById('submitFeedbackButton');
-        if (submitFeedbackButton) {
-            submitFeedbackButton.addEventListener('click', () => this.submitDetailedFeedback());
-        }
-
         this.questions.forEach((_, index) => {
             const nextButton = document.getElementById(`nextStep${index + 1}Button`);
             if (nextButton) {
