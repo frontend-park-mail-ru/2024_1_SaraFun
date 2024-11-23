@@ -1,14 +1,16 @@
 import template from './survey.pug';
+import {post, put, get} from '../../../shared/api/api';
 import './survey.scss';
 
 export class SurveyPage {
-    private questions = [
-        { text: "Оцените сайт Кирилла" },
-        { text: "Нравятся ли вам свайпы?" },
-        { text: "Нравятся ли вам фотографии?" },
-        { text: "Удобные ли чаты?" },
-        { text: "Удобно ли настраивать профиль?" }
+    private questions: string[] = [
+        "Оцените сайт Кирилла",
+        "Нравятся ли вам свайпы?",
+        "Нравятся ли вам фотографии?",
+        "Удобные ли чаты?",
+        "Удобно ли настраивать профиль?"
     ];
+    
       
     private parent: HTMLElement;
     private ratings: (number | null)[] = Array(this.questions.length).fill(null);
@@ -28,6 +30,19 @@ export class SurveyPage {
     private resetSurvey(): void {
         this.ratings = Array(this.questions.length).fill(null);
         this.currentStep = 0;
+    }
+
+    async getQuestions(): Promise<void> {
+        const response = await get('/getquestions');
+
+        if (!response.ok) {
+            throw new Error('Сеть ответила с ошибкой');
+        }
+
+        const data: { content: string; grade: number }[] = await response.json();
+
+        this.questions = data.map(item => item.content);
+
     }
     
     private addEventListeners(): void {
