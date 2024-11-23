@@ -3,15 +3,15 @@ import template from './survey.pug';
 import './survey.scss';
 
 export class SurveyPage {
-    private parent: Router;
+    private parent: HTMLElement;
     private selectedRating: number | null = null;
     private feedbackOption: string;
     private feedback: string;
 
-    constructor(parent: Router) {
+    constructor(parent: HTMLElement) {
         this.parent = parent;
-        this.parent.root.innerHTML = '';
-        this.parent.root.innerHTML = this.render();
+        this.parent.innerHTML = '';
+        this.parent.innerHTML = this.render();
         this.addEventListeners();
     }
 
@@ -109,6 +109,7 @@ export class SurveyPage {
             step3.style.display = 'none';
             const ratingButtons = document.querySelectorAll('.rating-button');
             ratingButtons.forEach(btn => btn.classList.remove('selected')); 
+            window.parent.postMessage('close-iframe', '*');
         }
     }
 
@@ -194,6 +195,7 @@ export class SurveyPage {
             if (thankYouMessage) {
                 thankYouMessage.style.display = 'none';
             }
+            window.parent.postMessage('close-iframe', '*');
         }, 2000); 
     }
 }
