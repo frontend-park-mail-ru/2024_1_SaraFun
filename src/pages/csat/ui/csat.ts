@@ -1,4 +1,6 @@
 import template from './csat.pug';
+import { Question } from '../../../entities/Question';
+import  { getQuestions } from '../api/getQuestions';
 
 interface QuestionConfig {
     [url: string]: string;
@@ -6,12 +8,8 @@ interface QuestionConfig {
 
 export class CsatPage {
     private parent: HTMLElement;
-    private questions: QuestionConfig = {
-        '/feed': 'Как вам наша главная страница?',
-        '/matches': 'Как вам наши мэтчи?',
-        '/profile': 'Как вам настройка профиля?',
-    };
     private selectedRating: number | null = null;
+    private questions: Question[];
 	/**
      * 
    * Creates an instance of Navbar.
@@ -20,20 +18,21 @@ export class CsatPage {
 	constructor(parent: HTMLElement) {
         this.parent = parent;
 		this.parent.innerHTML = '';
-        this.parent.innerHTML = this.render();
+        this.render();
         this.addEventListeners();
     }
 
-    render(): string {
-		return template({question: this.questions[window.location.pathname]});
+    async render(): Promise<void> {
+        this.questions = await getQuestions();
+		this.parent.innerHTML = template({question: this.questions[0]});
 	}
 
     addEventListeners(): void {
         const closeButton = document.getElementById('close-iframe-button');
         if (closeButton) {
-          closeButton.addEventListener('click', () => {
-            window.parent.postMessage('close-iframe', '*');
-          });
+            closeButton.addEventListener('click', () => {
+                window.parent.postMessage('close-iframe', '*');
+            });
         }
 
         const ratingButtons = document.querySelectorAll<HTMLButtonElement>('.rating-button');
