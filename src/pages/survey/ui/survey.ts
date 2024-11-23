@@ -40,17 +40,17 @@ export class SurveyPage {
             nextStep1Button.addEventListener('click', () => this.nextStep(1));
         }
 
-        const nextStep2Button = document.getElementById('nextStep1Button');
+        const nextStep2Button = document.getElementById('nextStep2Button');
         if (nextStep2Button) {
             nextStep2Button.addEventListener('click', () => this.nextStep(2));
         }
 
-        const nextStep3Button = document.getElementById('nextStep1Button');
+        const nextStep3Button = document.getElementById('nextStep3Button');
         if (nextStep3Button) {
             nextStep3Button.addEventListener('click', () => this.nextStep(3));
         }
 
-        const nextStep4Button = document.getElementById('nextStep1Button');
+        const nextStep4Button = document.getElementById('nextStep4Button');
         if (nextStep4Button) {
             nextStep4Button.addEventListener('click', () => this.nextStep(4));
         }

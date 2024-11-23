@@ -20,7 +20,7 @@ export class MatchesPage {
 	showIframeAfterDelay(): void {
 		this.csatTimeout = window.setTimeout(() => {
 		  toggleCsatIframe(true);
-		}, 5000); 
+		}, 1000); 
 	}
 
 	clearCsatTimeout(): void {
