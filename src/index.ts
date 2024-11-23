@@ -1,4 +1,5 @@
 import App from './app/App';
+import CsatPage from './widgets/Csat/Csat';
 import './index.scss';
 import '@img/HeartWhite.svg';
 import '@img/Logo.svg';

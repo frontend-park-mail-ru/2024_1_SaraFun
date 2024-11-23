@@ -4,6 +4,7 @@ import { RegistrationPage } from '../../pages/signup/index';
 import { MatchesPage } from '../../pages/matches/index';
 import { ProfilePage } from '../../pages/profile/index';
 import { StatisticsPage } from '../../pages/statistics/index';
+import  CsatPage  from '../../widgets/Csat/Csat';
 
 export const ROUTES_NAME = {
 	LOGIN: 'login',
@@ -12,6 +13,7 @@ export const ROUTES_NAME = {
 	SIGNUP: 'signup',
 	PROFILE: 'profile',
 	STATISTICS: 'statistics',
+	CSAT: 'csat',
 };
 
 export const ROUTES = new Map([
@@ -21,4 +23,5 @@ export const ROUTES = new Map([
 	[ROUTES_NAME.SIGNUP, { path: '/signup', view: RegistrationPage, isPublic: true }],
 	[ROUTES_NAME.PROFILE, { path: '/profile', view: ProfilePage, isPublic: false }],
 	[ROUTES_NAME.STATISTICS, { path: '/statistics', view: StatisticsPage, isPublic: false }],
+	[ROUTES_NAME.CSAT, { path: '/csatsurvey', view: CsatPage, isPublic: true }],
 ]);
