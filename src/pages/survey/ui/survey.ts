@@ -139,6 +139,7 @@ export class SurveyPage {
         if (surveyModal) {
             surveyModal.style.display = 'none';
         }
+        window.parent.postMessage('close-iframe', '*');
     }
 
     private submitSurvey(): void {
