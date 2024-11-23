@@ -59,6 +59,14 @@ export default class App {
 
 	setAuth(isAuth: boolean): void {
 		this.state.isAuthenticated = isAuth;
+		if (isAuth) {
+			this.root.innerHTML = `<iframe
+        								id="csat-iframe"
+										class="csat-iframe"
+										title="Csat survey"
+										src="http://localhost:443/csatsurvey">
+									</iframe>`;
+		}
 		this.navbar.setAuth(isAuth);
 		this.navbarRoot.innerHTML = '';
 		this.navbarRoot.innerHTML = this.navbar.render();
