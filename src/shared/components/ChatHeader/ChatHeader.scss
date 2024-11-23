@@ -1,7 +1,7 @@
 .chat__header {
   display: flex;
   align-items: center;
-  height: 95px; 
+  height: 80px; 
   padding: 20px;
   border-bottom: 1px solid var(--grey1);
   background-color: var(--lightGrey);
@@ -17,6 +17,9 @@
   }
 
   &__info {
+    flex: 1;
+    display:flex; 
+
     &__name {
       font-size: 18px;
       font-weight: bold;
@@ -25,6 +28,30 @@
     &__status {
       font-size: 14px;
       color: var(--grey2);
+    }
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+
+    &-button {
+      background-color: var(--white1);
+      border-radius: 50%;
+      border: solid 1px var(--grey1);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+
+      img {
+        padding-top: 2px;
+        width: 30px;
+        height: 30px;
+      }
+
+      &:hover {
+        background-color: var(--primary);
+      }
     }
   }
 }

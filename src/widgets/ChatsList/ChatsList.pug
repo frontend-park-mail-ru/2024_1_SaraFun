@@ -4,7 +4,7 @@ mixin chats-list(previews)
     .chats-list
         include ../../shared/components/ChatListHeader/ChatListHeader.pug
         .chats-list__content
-            if (previews)
+            if (previews && previews.length > 0) 
                 each preview in previews
                     +chat-preview(preview)
             else

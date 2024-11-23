@@ -1,12 +1,22 @@
 mixin chat-preview(preview)
     .chats-list__chat(data-id=preview.id)
         .chats-list__chat__avatar
-            if (preview.avatar && preview.avatar !== '')
-                img.chats-list__chat__avatar__img(src=preview.avatar alt='avatar')
+            if (preview.images && preview.images.length > 0)
+                img.chats-list__chat__avatar__img(src=`http://5.188.140.7/${preview.images[0].link.substring(preview.images[0].link.lastIndexOf('/') + 1)}` alt='avatar')
             else
                 img.chats-list__chat__avatar__img(src='./img/user.svg' alt='avatar')
         .chats-list__chat__info
-            .chats-list__chat__info__name
-                | #{preview.username}
+            .chats-list__chat__info__header
+                .chats-list__chat__info__header__name
+                    if (preview.first_name && preview.first_name !== '')
+                        | #{preview.first_name}
+                    else
+                        | #{preview.username}
+                .chats-list__chat__info__header__date
+                    if (preview.date && preview.date !== '')
+                        | #{preview.date}
             .chats-list__chat__info__last-message
-                | #{preview.lastMessage}
+                if (preview.lastMessage && preview.lastMessage !== '')
+                    | #{preview.lastMessage}
+                else
+                    .div(style='color: var(--secondary);') Начните ваше общение

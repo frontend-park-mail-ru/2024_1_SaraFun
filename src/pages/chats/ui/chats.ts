@@ -4,9 +4,16 @@ import { ChatPreview } from '../../../entities/ChatPreview/ChatPreview';
 import templateChat from '../../../widgets/Chat/Chat.pug';
 import { Chat } from '../../../entities/Chat/Chat';
 import { getChatPreviews } from '../api/getChatPreviews';
+import templateChatsPreviews from '../../../widgets/ChatPreviews/ChatPreviews.pug';
+import templatePlaceholder from '../../../shared/components/ChatPlaceholder/ChatPlaceholder.pug';
+import { postMessage } from '../api/postMessage';
+import templateMessage from '../../../shared/components/Message/AddMessage.pug';
 
 export class ChatsPage {
 	private parent: Router;
+	private previews: ChatPreview[] = [];
+	private debounceTimeout: number | undefined;
+
 	/**
      * Creates an instance of FeedPage.
      * @param {Object} parent - The parent object containing the root element.
@@ -18,24 +25,27 @@ export class ChatsPage {
 	}
 
     async render(): Promise<void> {
-		let previews = await getChatPreviews();
-		/*let previews: ChatPreview[] = [
+		//let previews: ChatPreview[] = null;
+		//let previews = await getChatPreviews();
+		this.previews = [
 			{
 			  id: 1,
 			  username: 'johndoe',
 			  first_name: 'John',
 			  last_name: 'Doe',
-			  images: [{ id: 1, link: './img/user1.svg', number: 1 }],
+			  images: null,
 			  lastMessage: 'Hello',
+			  date: '2021-07-01',
 			  self: false
 			},
 			{
 			  id: 2,
 			  username: 'janedoe',
-			  first_name: 'Jane',
+			  first_name: 'Janeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
 			  last_name: 'Doe',
-			  images: [{ id: 2, link: './img/user2.svg', number: 1 }],
+			  images: null,
 			  lastMessage: 'Hi',
+			  date: '2021-07-01',
 			  self: false
 			},
 			{
@@ -43,8 +53,9 @@ export class ChatsPage {
 				username: 'alicesmith',
 				first_name: 'Alice',
 				last_name: 'Smith',
-				images: [{ id: 3, link: './img/user3.svg', number: 1 }],
-				lastMessage: 'How are you?',
+				images: null,
+				lastMessage: 'How are you? Im fine. I wanna sleep very much :(',
+				date: '2021-07-01',
 				self: false
 			},
 			{
@@ -52,15 +63,27 @@ export class ChatsPage {
 				username: 'bobjohnson',
 				first_name: 'Bob',
 				last_name: 'Johnson',
-				images: [{ id: 4, link: './img/user4.svg', number: 1 }],
+				images: null,
 				lastMessage: 'Good morning',
+				date: '2021-07-01',
+				self: false
+			},
+			{
+				id: 5,
+				username: 'bobjohnson',
+				first_name: 'Bobby',
+				last_name: 'Johnson',
+				images: null,
+				lastMessage: null,
+				date: '2021-07-01',
 				self: false
 			}
-		];*/
+		];
 		
-		this.parent.root.innerHTML = template({ previews });
-		if (previews) {
+		this.parent.root.innerHTML = template({ previews: this.previews });
+		if (this.previews && this.previews.length > 0) {
 			this.addChatSelectionListeners();
+			this.addSearchListener();
 		}
     }
 
@@ -69,41 +92,109 @@ export class ChatsPage {
 		chatPreviews.forEach((preview) => {
 			preview.addEventListener('click', () => {
 				const index = parseInt(preview.getAttribute('data-id') as string);
-				this.loadChat(index);
+				const usernameElement = preview.querySelector('.chats-list__chat__info__header__name');
+				const avatarElement = preview.querySelector('.chats-list__chat__avatar__img');
+				const username = usernameElement ? usernameElement.textContent : '';
+				const avatar = avatarElement ? avatarElement.getAttribute('src') : './img/user.svg';
+				this.loadChat(index, username, avatar);
 			});
 		});
 	}
 
-	async loadChat(index: number): Promise<void> {
+	addSearchListener(): void {
+		const searchInput = document.querySelector('.search-container__search') as HTMLInputElement;
+		const searchButton = document.querySelector('.search-container__search-button') as HTMLButtonElement;
+		if (searchInput) {
+			searchInput.addEventListener('input', () => {
+				clearTimeout(this.debounceTimeout);
+				this.debounceTimeout = window.setTimeout(() => {
+					const searchTerm = searchInput.value.toLowerCase();
+					this.performSearch(searchTerm);
+				}, 400);
+			});
+		}
+		if (searchButton) {
+			searchButton.addEventListener('click', () => {
+				searchInput.value = '';
+				this.updateChatList(this.previews);
+			});
+		}
+	}
+
+	async performSearch(searchTerm: string): Promise<void> {
+		//const filteredPreviews = await this.performSearch(searchTerm); запрос на сервер
+		const filteredPreviews = this.previews.filter(preview =>
+		  preview.first_name.toLowerCase().includes(searchTerm)
+		);
+		this.updateChatList(filteredPreviews);
+	  }
+
+	updateChatList(filteredPreviews: ChatPreview[]): void {
+		const chatListContainer = document.querySelector('.chats-list__content');
+		if (chatListContainer) {
+		  chatListContainer.innerHTML = templateChatsPreviews({ previews: filteredPreviews });
+		  this.addChatSelectionListeners();
+		}
+	}
+
+	async loadChat(index: number, username: string, avatar: string): Promise<void> {
 		//const chatData = await getChatData(index);
 		const chatData: Chat[] = [
 			{
 			  id: 1,
-			  username: 'johndoe',
-			  first_name: 'John',
+			  username: username,
+			  first_name: username,
 			  last_name: 'Doe',
-			  messages: ['Hello', 'How are you?', 'I am fine, thank you!']
+			  images: null,
+			  messages: [
+					{ body: 'Hello', date: '2021-07-01', self: false }, 
+					{ body: 'How are you?', date: '2021-07-01', self: false }, 
+					{ body: 'I am fine, thank you!', date: '2021-07-01', self: true }
+				]
 			},
 			{
 			  id: 2,
-			  username: 'janedoe',
-			  first_name: 'Jane',
+			  username: username,
+			  first_name: username,
 			  last_name: 'Doe',
-			  messages: ['Hi', 'What are you doing?', 'Just working on a project.']
+			  images: null,
+			  messages: [
+					{body: 'Hi', date: '2021-07-01', self: true}, 
+					{body: 'What are you doing?', date: '2021-07-01', self: true}, 
+					{body: 'Just working on a project.', date: '2021-07-01', self: false}
+			]
 			},
 			{
 			  id: 3,
 			  username: 'alicesmith',
 			  first_name: 'Alice',
 			  last_name: 'Smith',
-			  messages: ['How are you?', 'I am good, how about you?', 'Doing great, thanks!']
+			  images: null,
+			  messages: [
+				{body: 'How are you?', date: '2021-07-01', self: false}, 
+				{body: 'I am good, how about you? I am good, how about you? I am good, how about you? I am good, how about you? I am good, how about you? I am good, how about you?', date: '2021-07-01', self: true}, 
+				{body: 'Doing great, thanks!', date: '2021-07-01', self: false}
+				]
 			},
 			{
 			  id: 4,
 			  username: 'bobjohnson',
 			  first_name: 'Bob',
 			  last_name: 'Johnson',
-			  messages: ['Good morning', 'Good morning! How was your night?', 'It was good, thanks!']
+			  images: null,
+			  messages: [
+				{body: 'Good morning', date: '2021-07-01', self: false}, 
+				{body: 'Good morning! How was your night?', date: '2021-07-01', self: true}, 
+				{body: 'It was good, thanks!', date: '2021-07-01', self: false}
+			]
+			},
+			{
+				id: 5,
+				username: 'bobjohnson',
+				first_name: 'Bobby',
+				last_name: 'Johnson',
+				images: null,
+				messages: null,
 			}
 		];
 		let data = chatData.find((chat) => chat.id === index);
@@ -114,6 +205,51 @@ export class ChatsPage {
 		const chatContainer = document.querySelector('.chat');
 		if (chatContainer) {
 		  	chatContainer.innerHTML = templateChat({ chatData });
+			const closeButton = chatContainer.querySelector('.chat__header__close-button') as HTMLButtonElement;
+			if (closeButton) {
+				closeButton.addEventListener('click', () => {
+					chatContainer.innerHTML = templatePlaceholder(); 
+				});
+			}
+
+			const sendButton = chatContainer.querySelector('.chat__input__button') as HTMLButtonElement;
+      		const messageInput = chatContainer.querySelector('.chat__input__field') as HTMLInputElement;
+      		if (sendButton && messageInput) {
+				const sendMessage = () => {
+					const messageText = messageInput.value.trim();
+					if (messageText) {
+						const message =  {
+							body: messageText,
+							date: '2021-07-01',
+							self: true,
+						}
+						//postMessage(chatData.id, messageText);
+						this.addMessageToChat(message); 
+						messageInput.value = ''; 
+					}
+				};
+
+				sendButton.addEventListener('click', sendMessage);
+        		messageInput.addEventListener('keydown', (event) => {
+          			if (event.key === 'Enter') {
+            			event.preventDefault();
+            			sendMessage();
+          			}
+        		});
+      		}
+		}
+	}
+
+	addMessageToChat(message: any): void {
+		const chatMessagesContainer = document.querySelector('.chat__messages');
+		if (chatMessagesContainer) {
+			const noMessagesElement = chatMessagesContainer.querySelector('.chat__no-messages');
+      		if (noMessagesElement) {
+        		noMessagesElement.remove(); 
+      		}
+		  	const messageHtml = templateMessage({ message });
+		  	chatMessagesContainer.insertAdjacentHTML('beforeend', messageHtml);
+		  	chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
 		}
 	}
 }

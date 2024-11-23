@@ -1,8 +1,6 @@
 mixin message(message)
-    .chat__messages__message
-        .chat__messages__message__avatar
-            img.chat__messages__message__avatar__img(src='./img/user.svg' alt='avatar')
+    .chat__messages__message(class=message.self ? 'chat__messages__message_self' : 'chat__messages__message_other')
         .chat__messages__message__text
-            | #{message}
-        .chat__messages__message__time
-            | 12:34 PM
+            | #{message.body}
+            .chat__messages__message__time
+                | 12:34 PM

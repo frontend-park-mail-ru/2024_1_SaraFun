@@ -3,8 +3,12 @@ include ../../shared/components/Message/Message.pug
 
 +chatHeader(chatData)
 .chat__messages
-    .chat__messages__date
+    //.chat__messages__date
         | 12 марта 2023
-    each message in chatData.messages
-        +message(message)
+    if (chatData.messages && chatData.messages.length > 0)
+        each message in chatData.messages
+            +message(message)
+    else
+        .chat__no-messages
+            | Начните ваше общение
 include ../../shared/components/ChatInput/ChatInput.pug
