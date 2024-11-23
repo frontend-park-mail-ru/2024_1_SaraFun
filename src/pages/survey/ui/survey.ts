@@ -23,9 +23,11 @@ export class SurveyPage {
     }
 
 
-    render(): string {
-        return template({ questions: this.questions });
+    render(): void {
+        // Обновляем innerHTML родительского элемента
+        this.parent.innerHTML = template({ questions: this.questions });
     }
+
 
     private resetSurvey(): void {
         this.ratings = Array(this.questions.length).fill(null);
