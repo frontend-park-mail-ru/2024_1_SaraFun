@@ -3,7 +3,7 @@ import './survey.scss';
 
 export class SurveyPage {
     private questions = [
-        { text: "Оцените сайт" },
+        { text: "Оцените сайт Кирилла" },
         { text: "Нравятся ли вам свайпы?" },
         { text: "Нравятся ли вам фотографии?" },
         { text: "Удобные ли чаты?" },
