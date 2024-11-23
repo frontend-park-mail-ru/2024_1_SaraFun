@@ -34,10 +34,10 @@ export class SurveyPage {
             closeButton.addEventListener('click', () => this.closeModal());
         }
 
-        const nextStepButton = document.getElementById('nextStepButton');
+        const nextStepButton = document.getElementById('nextStep1Button');
         if (nextStepButton) {
             console.log(this.siteRating);
-            nextStepButton.addEventListener('click', () => this.nextStep());
+            nextStepButton.addEventListener('click', () => this.nextStep(1));
         }
 
         const goBack = document.getElementById('backButton');
@@ -181,12 +181,12 @@ export class SurveyPage {
         }
     }
 
-    private nextStep(): void {
-        const currentStep = document.querySelector('.step:visible') as HTMLElement;
+    private nextStep(stepNum: number): void {
+        const currentStep = document.querySelector(`step${stepNum}`) as HTMLElement;
         
         if (currentStep) {
             currentStep.style.display = 'none';
-            const nextStepId = parseInt(currentStep.id.replace('step', '')) + 1;
+            const nextStepId = stepNum + 1;
             const nextStep = document.getElementById(`step${nextStepId}`) as HTMLElement;
 
             if (nextStep) {
