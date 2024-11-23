@@ -4,14 +4,29 @@ import { Router } from '../../../app/Router';
 import { User } from '../../../entities/User/User';
 import { addCarousel } from '../../../shared/lib/carousel/addCarousel';
 import templateCard from './card.pug';
+import { toggleCsatIframe } from '../../../features/showIframe';
 
 export class MatchesPage {
 	private parent: Router;
+	private csatTimeout: number | undefined;
 
 	constructor(parent: Router) {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
 		this.render();
+		this.showIframeAfterDelay();
+	}
+
+	showIframeAfterDelay(): void {
+		this.csatTimeout = window.setTimeout(() => {
+		  toggleCsatIframe(true);
+		}, 5000); 
+	}
+
+	clearCsatTimeout(): void {
+		if (this.csatTimeout) {
+		  clearTimeout(this.csatTimeout);
+		}
 	}
 
 	async render(): Promise<void> {

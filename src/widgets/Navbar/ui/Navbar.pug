@@ -20,6 +20,8 @@ include ../../../shared/components/TextButton/TextButton.pug
                     a(class='navbar__link' href='/login') Войти
                 li
                     a(class='navbar__link navbar__link--active' href='/signup') Зарегистрироваться
+                li
+                    a(class='navbar__link' href='/csatsurvey') Опрос
     if (isAuth)
         include ../../../shared/components/Avatar/Avatar.pug
         button#button-logout(class="text-base button button_text navbar__button", type="button") Выйти из аккаунта

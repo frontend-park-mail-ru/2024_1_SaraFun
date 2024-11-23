@@ -2,12 +2,14 @@ import { isValidPassword, isValidLogin } from '../../../shared/utils/validation'
 import { signupUser } from '../api/signupUser';
 import template from './signup.pug';
 import { Router } from '../../../app/Router';
+//import { toggleCsatIframe } from '../../../features/showIframe';
 
 /**
  * Class representing the registration page.
  */
 export class RegistrationPage {
 	private parent: Router;
+	//private csatTimeout: number | undefined;
 	/**
    * Creates an instance of RegistrationPage.
    * @param {Object} parent - The parent object.
@@ -17,7 +19,20 @@ export class RegistrationPage {
 		this.parent.root.innerHTML = '';
 		this.parent.root.innerHTML = this.render();
 		this.addEventListeners();
+		//this.showIframeAfterDelay();
 	}
+
+	/*showIframeAfterDelay(): void {
+		this.csatTimeout = window.setTimeout(() => {
+		  toggleCsatIframe(true);
+		}, 5000); 
+	}
+
+	clearCsatTimeout(): void {
+		if (this.csatTimeout) {
+		  clearTimeout(this.csatTimeout);
+		}
+	}*/
   
 	/**
    * Renders the registration page template.

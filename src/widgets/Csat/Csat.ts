@@ -13,9 +13,19 @@ export default class CsatPage {
         this.parent = router;
 		this.parent.root.innerHTML = '';
         this.parent.root.innerHTML = this.render();
+        this.addEventListeners();
     }
 
     render(): string {
 		return template();
 	}
+
+    addEventListeners(): void {
+        const closeButton = document.getElementById('close-iframe-button');
+        if (closeButton) {
+          closeButton.addEventListener('click', () => {
+            window.parent.postMessage('close-iframe', '*');
+          });
+        }
+    }
 }
