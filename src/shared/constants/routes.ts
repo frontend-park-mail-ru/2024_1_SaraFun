@@ -25,6 +25,6 @@ export const ROUTES = new Map([
 	[ROUTES_NAME.SIGNUP, { path: '/signup', view: RegistrationPage, isPublic: true }],
 	[ROUTES_NAME.PROFILE, { path: '/profile', view: ProfilePage, isPublic: false }],
 	[ROUTES_NAME.STATISTICS, { path: '/statistics', view: StatisticsPage, isPublic: false }],
-	[ROUTES_NAME.SURVEY, { path: '/csatsurvey', view: SurveyPage, isPublic: false }],
+	[ROUTES_NAME.SURVEY, { path: '/survey', view: SurveyPage, isPublic: true }],
 	//[ROUTES_NAME.CSAT, { path: '/csatsurvey', view: CsatPage, isPublic: false }],
 ]);
