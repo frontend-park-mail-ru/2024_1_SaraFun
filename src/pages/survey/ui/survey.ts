@@ -171,7 +171,7 @@ export class SurveyPage {
         }));
 
         try {
-            const response = await post('sendsurvey', surveyData);
+            const response = await post('/sendsurvey', surveyData);
             if (response.ok) {
                 console.log('Опрос успешно отправлен');
             } else {
