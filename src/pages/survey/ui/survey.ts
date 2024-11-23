@@ -34,11 +34,28 @@ export class SurveyPage {
             closeButton.addEventListener('click', () => this.closeModal());
         }
 
-        const nextStepButton = document.getElementById('nextStep1Button');
-        if (nextStepButton) {
+        const nextStep1Button = document.getElementById('nextStep1Button');
+        if (nextStep1Button) {
             console.log(this.siteRating);
-            nextStepButton.addEventListener('click', () => this.nextStep(1));
+            nextStep1Button.addEventListener('click', () => this.nextStep(1));
         }
+
+        const nextStep2Button = document.getElementById('nextStep1Button');
+        if (nextStep2Button) {
+            nextStep2Button.addEventListener('click', () => this.nextStep(2));
+        }
+
+        const nextStep3Button = document.getElementById('nextStep1Button');
+        if (nextStep1Button) {
+            nextStep1Button.addEventListener('click', () => this.nextStep(3));
+        }
+
+        const nextStep4Button = document.getElementById('nextStep1Button');
+        if (nextStep4Button) {
+            nextStep4Button.addEventListener('click', () => this.nextStep(4));
+        }
+
+        
 
         const goBack = document.getElementById('backButton');
         if (goBack) {
@@ -182,7 +199,7 @@ export class SurveyPage {
     }
 
     private nextStep(stepNum: number): void {
-        const currentStep = document.querySelector(`step${stepNum}`) as HTMLElement;
+        const currentStep = document.querySelector(`#step${stepNum}`) as HTMLElement;
         
         if (currentStep) {
             currentStep.style.display = 'none';
