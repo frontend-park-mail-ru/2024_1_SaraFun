@@ -29,4 +29,5 @@ if (root && forIframe) {
     await app.init();
 } else {
     console.error('Element with id "root" not found.');
+    const csat = document.querySelector('#csat') as HTMLElement;
 }

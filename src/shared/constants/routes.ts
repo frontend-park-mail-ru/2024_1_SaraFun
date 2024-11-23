@@ -13,7 +13,7 @@ export const ROUTES_NAME = {
 	SIGNUP: 'signup',
 	PROFILE: 'profile',
 	STATISTICS: 'statistics',
-	//CSAT: 'csat',
+	CSAT: 'csat',
 };
 
 export const ROUTES = new Map([
@@ -23,5 +23,5 @@ export const ROUTES = new Map([
 	[ROUTES_NAME.SIGNUP, { path: '/signup', view: RegistrationPage, isPublic: true }],
 	[ROUTES_NAME.PROFILE, { path: '/profile', view: ProfilePage, isPublic: false }],
 	[ROUTES_NAME.STATISTICS, { path: '/statistics', view: StatisticsPage, isPublic: false }],
-	//[ROUTES_NAME.CSAT, { path: '/csatsurvey', view: CsatPage, isPublic: false }],
+	[ROUTES_NAME.CSAT, { path: '/csatsurvey', view: CsatPage, isPublic: false }],
 ]);

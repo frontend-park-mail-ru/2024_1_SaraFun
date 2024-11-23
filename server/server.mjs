@@ -10,6 +10,10 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '../dist')));
 
+app.get('/csatsurvey', (req, res) => {
+	res.sendFile(path.join(__dirname, '../dist', 'indexCSAT.html'));
+});
+
 app.get(/^(?!.*\.(css|js|img|png|webp|webm|svg)).*$/, (req, res) => {
 	res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });

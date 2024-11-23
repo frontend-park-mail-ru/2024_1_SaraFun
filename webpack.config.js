@@ -78,5 +78,10 @@ module.exports = {
 			filename: 'index.html',
 			template: 'src/index.html',
 		}),
+		new HtmlWebpackPlugin({
+            title: 'CSAT Survey',
+            filename: 'indexCSAT.html',
+            template: 'src/indexCSAT.html',
+        }),
 	]
 };
