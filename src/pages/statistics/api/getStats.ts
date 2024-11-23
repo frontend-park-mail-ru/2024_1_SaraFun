@@ -1,0 +1,1 @@
+import {get} from '../../../shared/api/api';
