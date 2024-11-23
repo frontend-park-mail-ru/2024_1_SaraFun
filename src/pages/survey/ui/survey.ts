@@ -165,9 +165,9 @@ export class SurveyPage {
         console.log("Опрос отправлен:", this.ratings);
 
         const surveyData = this.questions.map((question, index) => ({
-            question,
-            rating: this.ratings[index],
-            grade: 10 
+            'question': question,
+            'rating': this.ratings[index],
+            'grade': 10 
         }));
 
         try {
