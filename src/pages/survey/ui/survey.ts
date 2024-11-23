@@ -69,9 +69,16 @@ export class SurveyPage {
             ratingButtons.forEach(button => {
                 button.addEventListener('click', () => this.selectRating(button, index));
             });
+            
+            if (index === this.questions.length - 1) {
+                const submitButton = document.getElementById('submitSurveyButton');
+                if (submitButton) {
+                    submitButton.addEventListener('click', () => this.submitSurvey());
+                }
+            }
+    
         });
     }
-
     private selectRating(button: HTMLButtonElement, questionIndex: number): void {
         const ratingButtons = document.querySelectorAll<HTMLButtonElement>(`#step${questionIndex + 1} .rating-button`);
         
@@ -139,9 +146,10 @@ export class SurveyPage {
         }
     }
 
-    private submitDetailedFeedback(): void {
-        // Здесь можно реализовать отправку данных на сервер или другое действие
+    private submitSurvey(): void {
         this.closeModal();
-        console.log("Ratings submitted:", this.ratings);
+        console.log("Опрос отправлен:", this.ratings);
+
+        //отправка на сервер
     }
 }

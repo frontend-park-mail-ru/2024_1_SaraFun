@@ -16,6 +16,10 @@ body
             button(id=nextButtonId) Далее
           if index > 0
             button(id=backButtonId) Назад
+          if index === questions.length - 1
+            button(id="submitSurveyButton") Отправить
+
+
 
       #thankYouMessage(style="display: none;")
         h3 Спасибо за прохождение опроса!
