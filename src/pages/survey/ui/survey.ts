@@ -131,6 +131,7 @@ export class SurveyPage {
 
     private submitDetailedFeedback(): void {
         // Здесь можно реализовать отправку данных на сервер или другое действие
+        this.closeModal();
         console.log("Ratings submitted:", this.ratings);
     }
 }
