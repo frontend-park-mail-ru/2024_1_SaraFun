@@ -76,12 +76,12 @@ export class SurveyPage {
         button.classList.add('selected');
 
         this.selectedRating = parseInt(button.getAttribute('data-value') || '0', 10);
-        console.log("Выбранный рейтинг:", this.selectedRating);
+
     }
 
     private updateFeedbackOption(selectElement: HTMLSelectElement): void {
         this.feedbackOption = selectElement.value; 
-        console.log("Выбранный вариант обратной связи:", this.feedbackOption);
+
     }
 
     openModal(): void {
@@ -118,8 +118,6 @@ export class SurveyPage {
             alert("Пожалуйста, выберите корректную оценку от 0 до 10.");
             return;
         }
-
-        console.log(this.selectedRating);
 
         const step1 = document.getElementById('step1') as HTMLElement;
         const step2 = document.getElementById('step2') as HTMLElement;
@@ -172,12 +170,7 @@ export class SurveyPage {
             step3.style.display = 'none';
         }
 
-        console.log(this.selectedRating);
-        console.log(this.feedbackOption);
-        console.log(this.feedback);
         // Логика отправки  отзыва
-        console.log("Отправка отзыва...");
-
     
         const thankYouMessage = document.getElementById('thankYouMessage');
         if( thankYouMessage ) {
