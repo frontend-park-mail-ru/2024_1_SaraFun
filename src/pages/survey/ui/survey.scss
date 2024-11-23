@@ -123,32 +123,6 @@ body {
                     margin-right: 10px; // Отступ между кнопками
                 }
             }
-
-            .rating-buttons {
-                display: flex;
-                justify-content: space-between;
-                margin: 20px 0;
-
-                .rating-button {
-                    cursor: pointer;
-                    padding: 10px;
-                    margin: 5px;
-                    border: none;
-                    background-color: #f0f0f0;
-                    border-radius: 5px;
-                    transition: background-color 0.3s;
-
-                    &:hover {
-                        background-color: #ddd; 
-                    }
-                    &.selected {
-                        background-color: #4caf50; // Цвет для выделенной кнопки
-                        color: white; // Цвет текста для выделенной кнопки
-                        border: none; // Убрать границу для выделенной кнопки
-                    }
-                }
-                
-            }
             
         }
     }
