@@ -3,17 +3,9 @@ import {post, put, get} from '../../../shared/api/api';
 import './survey.scss';
 
 export class SurveyPage {
-    private questions: string[] = [
-        "Оцените сайт Кирилла",
-        "Нравятся ли вам свайпы?",
-        "Нравятся ли вам фотографии?",
-        "Удобные ли чаты?",
-        "Удобно ли настраивать профиль?"
-    ];
-    
-      
+    private questions: string[] = [];  
     private parent: HTMLElement;
-    private ratings: (number | null)[] = Array(this.questions.length).fill(null);
+    private ratings: (number | null)[] = [];
     private currentStep: number = 0;
 
     constructor(parent: HTMLElement) {
@@ -22,6 +14,13 @@ export class SurveyPage {
         this.parent.innerHTML = this.render();
         this.addEventListeners();
     }
+
+    private async init(): Promise<void> {
+        await this.getQuestions();
+        this.render(); 
+        this.addEventListeners();
+    }
+
 
     render(): string {
         this.getQuestions();
@@ -43,7 +42,7 @@ export class SurveyPage {
         const data: { content: string; grade: number }[] = await response.json();
 
         this.questions = data.map(item => item.content);
-
+        this.ratings = Array(this.questions.length).fill(null);
     }
     
     private addEventListeners(): void {
