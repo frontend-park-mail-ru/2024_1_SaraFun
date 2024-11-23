@@ -31,7 +31,7 @@ if (root && forIframe) {
 } else {
     const csat = document.querySelector('#csat') as HTMLElement;
     if (csat) {
-        new CsatPage(csat);
+        new SurveyPage(csat);
     } else {
         console.error('Element with id "root" not found.');
         console.error('Element with id "csat" not found.');
