@@ -14,10 +14,11 @@ body
               button.rating-button(data-value=rating) #{rating}
           if index < questions.length - 1
             button(id=nextButtonId) Далее
-          if index > 0
-            button(id=backButtonId) Назад
           if index === questions.length - 1
             button(id="submitSurveyButton") Отправить
+          if index > 0
+            button(id=backButtonId) Назад
+          
 
 
 
