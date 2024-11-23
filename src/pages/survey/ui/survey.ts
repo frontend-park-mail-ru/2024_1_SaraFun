@@ -36,6 +36,7 @@ export class SurveyPage {
 
         const nextStepButton = document.getElementById('nextStepButton');
         if (nextStepButton) {
+            console.log(this.siteRating);
             nextStepButton.addEventListener('click', () => this.nextStep());
         }
 
