@@ -107,10 +107,10 @@ export class SurveyPage {
             step.style.display = index === this.currentStep ? 'block' : 'none';
         });    
 
-        const thankYouMessage = document.getElementById('thankYouMessage');
+        const thankYouMessage = document.getElementById('thankYouMessage') as HTMLElement;
         if (this.currentStep >= this.questions.length) {
             thankYouMessage.style.display = 'block';
-            const surveyModal = document.getElementById('surveyModal');
+            const surveyModal = document.getElementById('surveyModal') as HTMLElement;
             if (surveyModal) {
                 surveyModal.style.display = 'none';
             }
