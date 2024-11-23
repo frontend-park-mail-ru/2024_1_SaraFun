@@ -28,11 +28,11 @@ if (root && forIframe) {
     const app = new App(root, forIframe);
     await app.init();
 } else {
-    console.error('Element with id "root" not found.');
     const csat = document.querySelector('#csat') as HTMLElement;
     if (csat) {
         new SurveyPage(csat);
     } else {
+        console.error('Element with id "root" not found.');
         console.error('Element with id "csat" not found.');
     }
 }

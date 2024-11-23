@@ -10,7 +10,6 @@ export function toggleCsatIframe(show: boolean) {
         '*'
     );
     
-    //console.log(csatIframe);
     if (show) {
         csatIframe.style.display = 'block';
         csatIframe.focus();
