@@ -17,15 +17,14 @@ export class SurveyPage {
 
     private async init(): Promise<void> {
         await this.getQuestions();
+        console.log(this.questions);
+        console.log('nothing');
         this.render(); 
         this.addEventListeners();
     }
 
 
     render(): string {
-        this.getQuestions();
-        console.log(this.questions);
-        console.log('nothing');
         return template({ questions: this.questions });
     }
 
