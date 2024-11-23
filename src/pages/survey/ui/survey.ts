@@ -143,8 +143,16 @@ export class SurveyPage {
 
     private submitSurvey(): void {
         this.closeModal();
+    
         console.log("Опрос отправлен:", this.ratings);
-
-        //отправка на сервер
+    
+        const thankYouMessage = document.getElementById('thankYouMessage');
+        if (thankYouMessage) {
+            thankYouMessage.style.display = 'block';
+            setTimeout(() => {
+                thankYouMessage.style.display = 'none';
+                window.parent.postMessage('close-iframe', '*');
+            }, 2000);
+        }
     }
 }
