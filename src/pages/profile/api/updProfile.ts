@@ -14,7 +14,7 @@ export async function updProfile(profileData: UserProfile, imagesNew: ImgData[],
   try {
     const imgNumbers = imagesIndexes.map((id, index) => ({
       id: id,
-      number: index
+      number: index + 1
     }));
 
 
