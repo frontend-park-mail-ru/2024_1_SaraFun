@@ -85,7 +85,7 @@ button.report {
     transition: background-color 0.3s ease; // Плавный переход цвета фона
 
     &:hover {
-        background-color: darken(var(--red), 10%); // Темнее при наведении
+        background-color: #d32f2f; // Темнее при наведении
     }
 
     &:focus {
