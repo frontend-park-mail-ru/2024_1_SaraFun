@@ -25,9 +25,8 @@ export class ChatsPage {
 	}
 
     async render(): Promise<void> {
-		//let previews: ChatPreview[] = null;
-		//let previews = await getChatPreviews();
-		this.previews = [
+		this.previews = await getChatPreviews();
+		/*this.previews = [
 			{
 			  id: 1,
 			  username: 'johndoe',
@@ -78,7 +77,7 @@ export class ChatsPage {
 				date: '2021-07-01',
 				self: false
 			}
-		];
+		];*/
 		
 		this.parent.root.innerHTML = template({ previews: this.previews });
 		if (this.previews && this.previews.length > 0) {
