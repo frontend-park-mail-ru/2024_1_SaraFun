@@ -18,6 +18,7 @@ export async function getProfile(): Promise<UserProfile | null> {
     const data = await response.json();
 
     const images = Array.isArray(data.images) ? data.images : [];
+    console.log(data);
 
 
     const userProfile: UserProfile = {
