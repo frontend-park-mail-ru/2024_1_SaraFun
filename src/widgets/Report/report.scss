@@ -47,7 +47,7 @@
         }
   
         button[type='submit'] {
-          background-color: #4CAF50; // Зеленый фон кнопки
+          background-color: --secondary; // Зеленый фон кнопки
           color: white; // Белый текст на кнопке
           padding: 10px;
           border: none;
@@ -56,23 +56,19 @@
           font-size: 1em;
   
           &:hover {
-            background-color: #45a049; // Темнее при наведении
+            background-color: --success; // Темнее при наведении
           }
         }
       }
   
-      button.close-modal {
-        background-color: #f44336; // Красный фон для кнопки закрытия
-        color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 1em;
-        margin-top: 10px; // Отступ сверху от формы
+      .close-button {
+        cursor: pointer; // Указатель при наведении
+        font-size: 1.5em; // Размер шрифта для крестика
+        color: #f44336; // Цвет крестика
+        float: right; // Выравнивание вправо
   
         &:hover {
-          background-color: #d32f2f; // Темнее при наведении
+          color: #d32f2f; // Темнее при наведении
         }
       }
     }
