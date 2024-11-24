@@ -85,7 +85,6 @@ export class ChatsPage {
 
 	async loadChat(index: number, username: string, avatar: string): Promise<void> {
 		const chatData: Chat = await getChat(index);
-		chatData.messages.reverse();
 		this.renderChat(chatData);
 	}
 
