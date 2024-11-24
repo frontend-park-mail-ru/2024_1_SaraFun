@@ -4,6 +4,7 @@ import { Router } from '../../../app/Router';
 import { User } from '../../../entities/User/User';
 import { addCarousel } from '../../../shared/lib/carousel/addCarousel';
 import templateCard from './card.pug';
+import { openReportModal } from '../../../features/report';
 
 export class MatchesPage {
 	private parent: Router;
@@ -41,6 +42,11 @@ export class MatchesPage {
 		modal.innerHTML = templateCard({user});
 		addCarousel(modal.querySelectorAll('.tinder__card'), [user]);
 		this.parent.root.appendChild(modal);
+		
+		if (user) {
+			const reportButton = modal.querySelector('.report') as HTMLButtonElement;
+			reportButton.addEventListener('click', () => openReportModal(user.user));
+		}
 	
 		const closeModal = () => {
 		  	modal.remove();
