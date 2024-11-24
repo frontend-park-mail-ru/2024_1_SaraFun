@@ -52,7 +52,7 @@ export class ChatsPage {
     }
 
 	handleNewMessage(message: any): void {
-		const chatPreview = this.previews.find(preview => preview.id === message.chatId);
+		const chatPreview = this.previews.find(preview => preview.id === message.userId);
 		console.log('chatPreview:', chatPreview);
         if (chatPreview) {
             chatPreview.last_message = message.text;
