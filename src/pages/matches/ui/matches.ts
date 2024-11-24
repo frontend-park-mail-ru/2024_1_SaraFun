@@ -45,8 +45,6 @@ export class MatchesPage {
 		
 		if (user) {
 			const reportButton = modal.querySelector('.report') as HTMLButtonElement;
-
-			// Обработчик нажатия на кнопку "пожаловаться"
 			reportButton.addEventListener('click', () => openReportModal(user.user));
 		}
 	
