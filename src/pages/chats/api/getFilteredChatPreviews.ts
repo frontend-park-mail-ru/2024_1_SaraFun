@@ -4,7 +4,7 @@ import {ChatPreview} from '../../../entities/ChatPreview/ChatPreview';
 export async function getFilteredChatPreviews(name: string): Promise<ChatPreview[]> {
 	try {
         const body = {
-			'first_name': name,
+			'search': name,
 		};
 		const response = await post('/chatsearch', body);
 		const previews: ChatPreview[] = await response.json();

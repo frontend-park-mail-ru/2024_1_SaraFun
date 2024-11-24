@@ -169,7 +169,7 @@ export class ChatsPage {
 							date: '2021-07-01',
 							self: true,
 						}
-						//postMessage(chatData.id, messageText);
+						postMessage(chatData.id, messageText);
 						this.addMessageToChat(message); 
 						messageInput.value = ''; 
 					}
