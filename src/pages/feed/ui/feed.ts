@@ -45,15 +45,10 @@ export class FeedPage {
 			if (user) {
 				card.setAttribute('data-item-id', `${user.user}`);
 
-
-				const reportButton = document.createElement('button');
-				reportButton.id = 'report';
-				reportButton.textContent = 'Пожаловаться';
-				card.appendChild(reportButton);
+				const reportButton = card.querySelector('.report') as HTMLButtonElement;
 
 				// Обработчик нажатия на кнопку "пожаловаться"
 				reportButton.addEventListener('click', () => openReportModal(user.user));
-
 			}
 		});
 
