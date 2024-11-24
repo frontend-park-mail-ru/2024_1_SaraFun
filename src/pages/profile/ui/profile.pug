@@ -22,6 +22,21 @@ div.profile
         label
           | О себе:
           textarea(id="About" rows="1" maxlength="600")= About
+
+      // Новый раздел для смены пароля
+      .password-change-section
+        h2 Смена пароля
+        label
+          | Старый пароль:
+          input(type="password" class='input' id="OldPassword" required)
+        label
+          | Новый пароль:
+          input(type="password" class='input' id="NewPassword" required)
+        label
+          | Повторите новый пароль:
+          input(type="password" class='input' id="RepeatNewPassword" required)
+        button.new-password Сменить пароль
+
       div 
         h3 Фотографии
         .image-section-profile

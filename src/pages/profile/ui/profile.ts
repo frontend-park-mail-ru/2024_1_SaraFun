@@ -2,9 +2,11 @@ import template from './profile.pug';
 import { updProfile } from '../api/updProfile';
 import './profile.scss';
 import { uploadImg } from '../../../features/imageUploader';
-import { UserProfile, ImgData } from '../api/profile';;
+import { UserProfile, ImgData } from '../lib/profile';;
 import { getProfile } from '../api/getProfile';
 import { Router } from '../../../app/Router';
+import { limitInput, limitText } from '../lib/limitInput';
+import { PasswordChanger } from '../lib/changePassword';
 
 export class ProfilePage {
   private imagesDel: number[] = [];
@@ -44,33 +46,6 @@ export class ProfilePage {
       this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
     }    
   }
-  
-
-  private limitText(textarea: HTMLTextAreaElement, limit: number): void {
-    const limitLines = (): void => {
-      const lines = textarea.value.split("\n");
-      if (lines.length > limit) {
-        textarea.value = lines.slice(0, limit).join("\n");
-      };
-    };
-
-    limitLines();
-
-    let timeout: NodeJS.Timeout;
-    textarea.addEventListener("input", () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(limitLines, 1);
-    });
-  }
-
-  private limitInput(input: HTMLInputElement): void {
-    const regex = /^[A-Za-zА-Яа-яЁё-]*$/;
-    input.addEventListener("input", () => {
-      if (!regex.test(input.value)) {
-        input.value = input.value.split('').filter(char => regex.test(char)).join('');
-      }
-    });
-  }
 
   public render(): void {
     this.parent.root.innerHTML = template({
@@ -102,6 +77,13 @@ export class ProfilePage {
     const saveButton = document.querySelector('.save-settings') as HTMLElement;
     if (saveButton) {
       saveButton.addEventListener('click', () => this.saveSettings());
+    }
+
+    const newPasswordButton = document.querySelector('.new-password') as HTMLElement;
+
+    // Инициализация класса PasswordChanger
+    if (newPasswordButton) {
+      const passwordChanger = new PasswordChanger(newPasswordButton);
     }
 
     
@@ -185,17 +167,17 @@ export class ProfilePage {
 
     if (this.isEditing) {
       const textarea = document.getElementById('About') as HTMLTextAreaElement; 
-      this.limitText(textarea, 10); 
+      limitText(textarea, 10); 
 
       const firstNameInput = document.getElementById('FirstName') as HTMLInputElement; 
       if (firstNameInput) {
-        this.limitInput(firstNameInput); 
+        limitInput(firstNameInput); 
       }
       
 
       const lastNameInput = document.getElementById('LastName') as HTMLInputElement; 
       if (lastNameInput) {
-        this.limitInput(lastNameInput); 
+        limitInput(lastNameInput); 
       }
 
       textarea.addEventListener('input', () => {

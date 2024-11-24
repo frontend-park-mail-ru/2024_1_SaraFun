@@ -1,7 +1,7 @@
 import {post, put, del} from '../../../shared/api/api';
 import { delImg } from './delImg';
-import { ImgData, UserProfile } from './profile';
-import { uploadImg } from './uploadImg';
+import { ImgData, UserProfile } from '../lib/profile';
+import { uploadImg } from '../lib/uploadImg';
 
 /**
  * Updates the profile of a user by ID.
