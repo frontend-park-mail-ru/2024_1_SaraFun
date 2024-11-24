@@ -51,11 +51,11 @@ export class ChatsPage {
 		});
     }
 
-	handleNewMessage(message: any): void {
-		const chatPreview = this.previews.find(preview => preview.id === message.userId);
+	handleNewMessage(message: { user_id: number, message: string }): void {
+		const chatPreview = this.previews.find(preview => preview.id === message.user_id);
 		console.log('chatPreview:', chatPreview);
         if (chatPreview) {
-            chatPreview.last_message = message.text;
+            chatPreview.last_message = message.message;
 			console.log('last_message:', chatPreview.last_message);
             chatPreview.time = new Date().toLocaleTimeString();
 			chatPreview.self = false;
