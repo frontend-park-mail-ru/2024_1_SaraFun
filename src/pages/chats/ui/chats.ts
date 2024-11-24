@@ -4,6 +4,7 @@ import { Chat } from '../../../entities/Chat/Chat';
 import { getChatPreviews } from '../api/getChatPreviews';
 import { postMessage } from '../api/postMessage';
 import { getFilteredChatPreviews } from '../api/getFilteredChatPreviews';
+import { getChat } from '../api/getChat';
 import template from './chats.pug';
 import templateChat from '../../../widgets/Chat/Chat.pug';
 import templateChatsPreviews from '../../../widgets/ChatPreviews/ChatPreviews.pug';
@@ -71,9 +72,6 @@ export class ChatsPage {
 
 	async performSearch(searchTerm: string): Promise<void> {
 		const filteredPreviews = await getFilteredChatPreviews(searchTerm); 
-		/*const filteredPreviews = this.previews.filter(preview =>
-		  preview.first_name.toLowerCase().includes(searchTerm)
-		);*/
 		this.updateChatList(filteredPreviews);
 	  }
 
@@ -86,8 +84,8 @@ export class ChatsPage {
 	}
 
 	async loadChat(index: number, username: string, avatar: string): Promise<void> {
-		//const chatData = await getChatData(index);
-		const chatData: Chat[] = [
+		const chatData = await getChat(index);
+		/*const chatData: Chat[] = [
 			{
 			  id: 1,
 			  username: username,
@@ -144,9 +142,9 @@ export class ChatsPage {
 				images: null,
 				messages: null,
 			}
-		];
-		let data = chatData.find((chat) => chat.id === index);
-		this.renderChat(data);
+		];*/
+		//let data = chatData.find((chat as ) => chat.id === index);
+		this.renderChat(chatData);
 	}
 
 	renderChat(chatData: any): void {
