@@ -5,6 +5,7 @@ import { Router } from '../../../app/Router';
 import { initCards } from '../lib/initCards';
 import { addCarousel } from '../../../shared/lib/carousel/addCarousel';
 import { createButtonListener } from '../lib/createButtonListener';
+import { openReportModal } from '../../../features/report';
 
 
 /**
@@ -43,6 +44,16 @@ export class FeedPage {
 			const user = users[index];
 			if (user) {
 				card.setAttribute('data-item-id', `${user.user}`);
+
+
+				const reportButton = document.createElement('button');
+				reportButton.id = 'report';
+				reportButton.textContent = 'Пожаловаться';
+				card.appendChild(reportButton);
+
+				// Обработчик нажатия на кнопку "пожаловаться"
+				reportButton.addEventListener('click', () => openReportModal(user.user));
+
 			}
 		});
 
