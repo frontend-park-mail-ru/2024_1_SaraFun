@@ -44,7 +44,6 @@ export async function updProfile(profileData: UserProfile, imagesNew: ImgData[],
       console.error('Failed to update profile:', response.statusText);
       return false; 
     }
-    console.log(data);
     return true; 
   } catch (error) {
     console.error('Error updating user profile:', error);

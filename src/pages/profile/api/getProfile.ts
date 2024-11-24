@@ -16,10 +16,7 @@ export async function getProfile(): Promise<UserProfile | null> {
     }
 
     const data = await response.json();
-
     const images = Array.isArray(data.images) ? data.images : [];
-    console.log(data);
-
 
     const userProfile: UserProfile = {
       ID: data.profile.id,
@@ -35,7 +32,6 @@ export async function getProfile(): Promise<UserProfile | null> {
         return `http://5.188.140.7/${fileName}`;
       }),
     };
-    console.log(userProfile);
     return userProfile;
   } catch (error) {
     console.error('Error fetching user profile:', error);
