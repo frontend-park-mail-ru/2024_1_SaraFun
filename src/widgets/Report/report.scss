@@ -47,7 +47,7 @@
         }
   
         button[type='submit'] {
-          background-color: --secondary; // Зеленый фон кнопки
+          background-color: var(--secondary); // Зеленый фон кнопки
           color: white; // Белый текст на кнопке
           padding: 10px;
           border: none;
@@ -56,7 +56,7 @@
           font-size: 1em;
   
           &:hover {
-            background-color: --success; // Темнее при наведении
+            background-color: var(--success); // Темнее при наведении
           }
         }
       }
