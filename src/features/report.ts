@@ -17,10 +17,12 @@ export function openReportModal(userId: number): void {
       alert('Не удалось отправить жалобу. Попробуйте еще раз.');
     }
   }
+  
   const modalHTML = reportModalTemplate();
   document.body.insertAdjacentHTML('beforeend', modalHTML);
 
   const modal = document.getElementById('reportModal') as HTMLElement;
+  modal.style.display = 'block';
   const closeModalButton = modal.querySelector('.close-modal') as HTMLElement;
   
   

@@ -1,12 +1,14 @@
-.modal#reportModal
+//- report.pug
+div#reportModal.modal
   .modal-content
+    span.close-modal &times;
     h2 Пожаловаться
     form#reportForm
-      label(for="reason") Причина:
-      select#reason(name="reason")
+      label(for="reason") Причина
+      select#reason
         option(value="spam") Спам
-        option(value="inappropriate") Неприемлемый контент
-        option(value="other") Другое
-      textarea#comment(name="comment" placeholder="Ваш комментарий...")
+        option(value="abuse") Оскорбление
+        // Добавьте другие причины по мере необходимости
+      label(for="comment") Комментарий
+      textarea#comment(rows="4" placeholder="Ваш комментарий...")
       button(type="submit") Отправить
-    button.close-modal Закрыть
