@@ -84,66 +84,8 @@ export class ChatsPage {
 	}
 
 	async loadChat(index: number, username: string, avatar: string): Promise<void> {
-		const chatData = await getChat(index);
-		/*const chatData: Chat[] = [
-			{
-			  id: 1,
-			  username: username,
-			  first_name: username,
-			  last_name: 'Doe',
-			  images: null,
-			  messages: [
-					{ body: 'Hello', date: '2021-07-01', self: false }, 
-					{ body: 'How are you?', date: '2021-07-01', self: false }, 
-					{ body: 'I am fine, thank you!', date: '2021-07-01', self: true }
-				]
-			},
-			{
-			  id: 2,
-			  username: username,
-			  first_name: username,
-			  last_name: 'Doe',
-			  images: null,
-			  messages: [
-					{body: 'Hi', date: '2021-07-01', self: true}, 
-					{body: 'What are you doing?', date: '2021-07-01', self: true}, 
-					{body: 'Just working on a project.', date: '2021-07-01', self: false}
-			]
-			},
-			{
-			  id: 3,
-			  username: 'alicesmith',
-			  first_name: 'Alice',
-			  last_name: 'Smith',
-			  images: null,
-			  messages: [
-				{body: 'How are you?', date: '2021-07-01', self: false}, 
-				{body: 'I am good, how about you? I am good, how about you? I am good, how about you? I am good, how about you? I am good, how about you? I am good, how about you?', date: '2021-07-01', self: true}, 
-				{body: 'Doing great, thanks!', date: '2021-07-01', self: false}
-				]
-			},
-			{
-			  id: 4,
-			  username: 'bobjohnson',
-			  first_name: 'Bob',
-			  last_name: 'Johnson',
-			  images: null,
-			  messages: [
-				{body: 'Good morning', date: '2021-07-01', self: false}, 
-				{body: 'Good morning! How was your night?', date: '2021-07-01', self: true}, 
-				{body: 'It was good, thanks!', date: '2021-07-01', self: false}
-			]
-			},
-			{
-				id: 5,
-				username: 'bobjohnson',
-				first_name: 'Bobby',
-				last_name: 'Johnson',
-				images: null,
-				messages: null,
-			}
-		];*/
-		//let data = chatData.find((chat as ) => chat.id === index);
+		const chatData: Chat = await getChat(index);
+		chatData.messages.reverse();
 		this.renderChat(chatData);
 	}
 
