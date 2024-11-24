@@ -5,7 +5,7 @@ import { getChatPreviews } from '../api/getChatPreviews';
 import { postMessage } from '../api/postMessage';
 import { getFilteredChatPreviews } from '../api/getFilteredChatPreviews';
 import { getChat } from '../api/getChat';
-import { ws } from '../api/ws';
+import { createWebSocket } from '../api/ws';
 import template from './chats.pug';
 import templateChat from '../../../widgets/Chat/Chat.pug';
 import templateChatsPreviews from '../../../widgets/ChatPreviews/ChatPreviews.pug';
@@ -29,26 +29,8 @@ export class ChatsPage {
 		this.render();
 	}
 
-	async initWebSocket(): Promise<void> {
-		await ws();
-        this.socket = new WebSocket('ws://your-websocket-url');
-
-        this.socket.addEventListener('open', () => {
-            console.log('WebSocket connection established');
-        });
-
-        this.socket.addEventListener('message', (event) => {
-            const message = JSON.parse(event.data);
-            this.handleNewMessage(message);
-        });
-
-        this.socket.addEventListener('close', () => {
-            console.log('WebSocket connection closed');
-        });
-
-        this.socket.addEventListener('error', (error) => {
-            console.error('WebSocket error:', error);
-        });
+	initWebSocket(): void {
+		this.socket = createWebSocket();
     }
 
 	handleNewMessage(message: any): void {
