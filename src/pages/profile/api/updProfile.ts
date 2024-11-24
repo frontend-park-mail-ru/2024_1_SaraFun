@@ -12,14 +12,20 @@ import { uploadImg } from './uploadImg';
  */
 export async function updProfile(profileData: UserProfile, imagesNew: ImgData[], imagesDel: number[], imagesURLs: string[], imagesIndexes: number[]): Promise<boolean> {
   try {
+    const imgNumbers = imagesIndexes.map((id, index) => ({
+      id: id,
+      number: index
+    }));
+
+
     const data = {
-      id: profileData.ID,
       first_name: profileData.FirstName,
       last_name: profileData.LastName,
       gender: profileData.Gender,
       age: profileData.Age,
       target: profileData.Target,
       about: profileData.About,
+      imgNumbers: imgNumbers,
     };
 
     if (!( await uploadImg(imagesNew, imagesURLs, imagesIndexes) )) {

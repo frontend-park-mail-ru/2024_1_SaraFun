@@ -6,6 +6,7 @@ export async function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imag
         for (const image of imagesNew) {
             const formData = new FormData();
             formData.append('image', image.file);
+            formData.append('number', String(image.index));
             const response = await postFormData('/uploadimage', formData);
             if (!response.ok) {
               console.error('Failed to upload the image:', response.statusText);
@@ -14,6 +15,8 @@ export async function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imag
 
             const data = await response.json(); 
 
+            imagesURLs[image.index] = data.link;
+            imagesIndexes[image.index] = data.id;
         }
         return true;
     }
