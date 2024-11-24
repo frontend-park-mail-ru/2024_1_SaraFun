@@ -25,32 +25,31 @@ div.profile
       div 
         h3 Фотографии
         .image-section-profile
-          each image, index in imagesURLs
-            .image-container(
-              draggable="true"
-              data-index=index
-            )
-              img(src=image, alt="Фотография в профиле")
-              .delete-button
-                +trash
+          if imagesURLs && imagesURLs.length > 0
+            each image, index in imagesURLs
+              .image-container(
+                draggable="true"
+                data-index=index
+              )
+                img(src=image, alt="Фотография в профиле")
+                .delete-button
+                  +trash
+          else
+            p Пока нет фотографий
           div.upload
             button.upload-button Добавить фото +
       div.button-wrapper
         button.save-settings Сохранить
         button.cancel-settings Отмена
-
     else 
       h1 Профиль
-      
       div.info
         div.info-avatar
           div.info-avatar__wrapper
-            if imagesURLs.length === 0 
+            if !imagesURLs || imagesURLs.length === 0 
               img(src="./img/user.svg").info-avatar__image
             else 
               img(src=imagesURLs[0]).info-avatar__image
-            
-            
           | #{username}
         .info-section
           p Имя: #{FirstName}
@@ -62,8 +61,11 @@ div.profile
       div
         h3 Фотографии
         .image-section-profile
-          each image in imagesURLs
-            .image-container
-              img(src=image, alt="Фотография в профиле")
+          if imagesURLs && imagesURLs.length > 0
+            each image in imagesURLs
+              .image-container
+                img(src=image, alt="Фотография в профиле")
+          else
+            p Пока нет фотографий
       div.button-wrapper
         button.settings-button Настройки

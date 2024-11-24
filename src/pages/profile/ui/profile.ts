@@ -32,7 +32,7 @@ export class ProfilePage {
 
   private async loadProfile(): Promise<void> {
     const profileData = await getProfile();
-    if(profileData) {
+    if (profileData) {
       this.ID = profileData.ID || -1;
       this.imagesIndexes = profileData.imagesIndexes || [];
       this.FirstName = profileData.FirstName || '';
@@ -42,8 +42,7 @@ export class ProfilePage {
       this.Target = profileData.Target || '';
       this.About = profileData.About || '';
       this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
-    }
-    
+    }    
   }
   
 
