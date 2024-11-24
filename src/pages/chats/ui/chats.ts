@@ -58,6 +58,7 @@ export class ChatsPage {
             chatPreview.last_message = message.text;
 			console.log('last_message:', chatPreview.last_message);
             chatPreview.time = new Date().toLocaleTimeString();
+			chatPreview.self = false;
             this.updateChatList(this.previews);
         }
     }
