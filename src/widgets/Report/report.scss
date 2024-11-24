@@ -8,68 +8,88 @@
     height: 100%;
     overflow: auto; // Прокрутка при необходимости
     background-color: rgba(0, 0, 0, 0.5); // Полупрозрачный фон
-  
+
     &.show {
-      display: block; // Показываем модальное окно
+        display: block; // Показываем модальное окно
     }
-  
+
     .modal-content {
-      background-color: #fff; // Белый фон для содержимого
-      margin: 15% auto; // Центрирование по вертикали и горизонтали
-      padding: 20px;
-      border: 1px solid #888;
-      border-radius: 5px;
-      width: 80%; // Ширина модального окна
-  
-      h2 {
+        background-color: #fff; // Белый фон для содержимого
+        margin: 15% auto; // Центрирование по вертикали и горизонтали
+        padding: 20px;
+        border: 1px solid #888;
+        border-radius: 5px;
+        width: 80%; // Ширина модального окна
+
+        h2 {
         margin-bottom: 20px; // Отступ снизу заголовка
         font-size: 1.5em; // Размер шрифта заголовка
         text-align: center; // Центрирование заголовка
-      }
-  
-      form {
+        }
+
+        form {
         display: flex;
         flex-direction: column; // Вертикальная компоновка элементов формы
-  
+
         label {
-          margin-bottom: 10px; // Отступ снизу от метки
-          font-weight: bold; // Жирный шрифт для метки
+            margin-bottom: 10px; // Отступ снизу от метки
+            font-weight: bold; // Жирный шрифт для метки
         }
-  
+
         select,
         textarea {
-          margin-bottom: 15px; // Отступ снизу от полей ввода
-          padding: 10px; // Внутренний отступ
-          border: 1px solid #ccc; // Рамка вокруг поля
-          border-radius: 4px; // Закругленные углы
-          font-size: 1em; // Размер шрифта
-          resize: vertical; // Позволяем изменять размер только по вертикали для textarea
+            margin-bottom: 15px; // Отступ снизу от полей ввода
+            padding: 10px; // Внутренний отступ
+            border: 1px solid #ccc; // Рамка вокруг поля
+            border-radius: 4px; // Закругленные углы
+            font-size: 1em; // Размер шрифта
+            resize: vertical; // Позволяем изменять размер только по вертикали для textarea
         }
-  
+
         button[type='submit'] {
-          background-color: var(--secondary); // Зеленый фон кнопки
-          color: white; // Белый текст на кнопке
-          padding: 10px;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          font-size: 1em;
-  
-          &:hover {
+            background-color: var(--secondary); // Зеленый фон кнопки
+            color: white; // Белый текст на кнопке
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+
+            &:hover {
             background-color: var(--success); // Темнее при наведении
-          }
+            }
         }
-      }
-  
-      .close-button {
+        }
+
+        .close-button {
         cursor: pointer; // Указатель при наведении
         font-size: 1.5em; // Размер шрифта для крестика
         color: #f44336; // Цвет крестика
         float: right; // Выравнивание вправо
-  
+
         &:hover {
-          color: #d32f2f; // Темнее при наведении
+            color: #d32f2f; // Темнее при наведении
         }
-      }
+        }
     }
-  }
+}
+
+button.report {
+    background-color: var(--red); // Используйте переменную для красного цвета или укажите цвет напрямую
+    color: white; // Белый текст
+    padding: 10px 15px; // Внутренние отступы
+    border: none; // Убираем рамку
+    border-radius: 5px; // Закругленные углы
+    font-size: 1em; // Размер шрифта
+    cursor: pointer; // Указатель при наведении
+    transition: background-color 0.3s ease; // Плавный переход цвета фона
+
+    &:hover {
+        background-color: darken(var(--red), 10%); // Темнее при наведении
+    }
+
+    &:focus {
+        outline: none; // Убираем стандартный контур при фокусе
+        box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.5); // Добавляем эффект тени при фокусе
+    }
+}
