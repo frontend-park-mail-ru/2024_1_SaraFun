@@ -35,6 +35,11 @@ export class PasswordChanger {
         }
 
         try {
+            const oldpasswordErrors = isValidPassword(oldPassword);
+            if (oldpasswordErrors.length > 0 ){
+                this.showError('old-password-error', 'Неправильный старый пароль!');
+                return;
+            }
             const isOldPasswordValid = await validateOldPassword(oldPassword);
             if (!isOldPasswordValid) {
                 this.showError('old-password-error', 'Старый пароль неверный.');
