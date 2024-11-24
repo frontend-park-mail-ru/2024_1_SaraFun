@@ -1,17 +1,11 @@
+import { post } from '../shared/api/api';
 import reportModalTemplate from '../widgets/Report/report.pug'
 
 export function openReportModal(userId: number): void {
   async function submitReport(userId: number, reason: string, comment: string): Promise<void> {
     try {
-      const response = await fetch('/api/report', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-
-
-        body: JSON.stringify({ userId, reason, comment }),
-      });
+      const body = { 'receiver': userId, 'body': comment}; //no "reason" yet
+      const response = await post('/report', body);
 
       if (!response.ok) {
         throw new Error('Ошибка при отправке жалобы');
