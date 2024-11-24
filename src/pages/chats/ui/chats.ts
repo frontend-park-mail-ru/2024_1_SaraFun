@@ -5,6 +5,7 @@ import { getChatPreviews } from '../api/getChatPreviews';
 import { postMessage } from '../api/postMessage';
 import { getFilteredChatPreviews } from '../api/getFilteredChatPreviews';
 import { getChat } from '../api/getChat';
+import { ws } from '../api/ws';
 import template from './chats.pug';
 import templateChat from '../../../widgets/Chat/Chat.pug';
 import templateChatsPreviews from '../../../widgets/ChatPreviews/ChatPreviews.pug';
@@ -15,6 +16,7 @@ export class ChatsPage {
 	private parent: Router;
 	private previews: ChatPreview[] = [];
 	private debounceTimeout: number | undefined;
+	private socket: WebSocket | undefined;
 
 	/**
      * Creates an instance of FeedPage.
@@ -23,8 +25,35 @@ export class ChatsPage {
 	constructor(parent: Router) {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
+		this.initWebSocket();
 		this.render();
 	}
+
+	async initWebSocket(): Promise<void> {
+		await ws();
+        this.socket = new WebSocket('ws://your-websocket-url');
+
+        this.socket.addEventListener('open', () => {
+            console.log('WebSocket connection established');
+        });
+
+        this.socket.addEventListener('message', (event) => {
+            const message = JSON.parse(event.data);
+            this.handleNewMessage(message);
+        });
+
+        this.socket.addEventListener('close', () => {
+            console.log('WebSocket connection closed');
+        });
+
+        this.socket.addEventListener('error', (error) => {
+            console.error('WebSocket error:', error);
+        });
+    }
+
+	handleNewMessage(message: any): void {
+        console.log('New message received:', message);
+    }
 
     async render(): Promise<void> {
 		this.previews = await getChatPreviews();
