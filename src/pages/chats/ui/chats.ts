@@ -17,6 +17,7 @@ export class ChatsPage {
 	private previews: ChatPreview[] = [];
 	private debounceTimeout: number | undefined;
 	private socket: WebSocket | undefined;
+	private pingInterval: number | undefined;
 
 	/**
      * Creates an instance of FeedPage.
@@ -29,11 +30,21 @@ export class ChatsPage {
 		this.render();
 	}
 
+	startPing(): void {
+        this.pingInterval = window.setInterval(() => {
+            if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+                this.socket.send(JSON.stringify({ type: 'ping' }));
+                console.log('Ping sent');
+            }
+        }, 29000);
+    }
+
 	initWebSocket(): void {
 		this.socket = createWebSocket();
 
 		this.socket.addEventListener('open', () => {
 			console.log('WebSocket connection established');
+			this.startPing();
 		});
 	
 		this.socket.addEventListener('message', (event) => {
