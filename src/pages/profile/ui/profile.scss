@@ -240,8 +240,9 @@
             color: rgb(89, 88, 88);
 
             &:hover {
-                background-color: rgb(249, 113, 113); 
-              }
+                background-color: var(--red1); 
+                color: white;
+            }
         }
       }
 }
