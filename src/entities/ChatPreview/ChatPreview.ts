@@ -4,7 +4,7 @@ export interface ChatPreview {
     first_name: string;
     last_name: string;
     images: Image[];
-    lastMessage: string;
+    last_message: string;
     self: boolean;
     time: string;
 }
