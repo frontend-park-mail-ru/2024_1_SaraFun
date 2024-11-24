@@ -56,7 +56,7 @@ export class ChatsPage {
 			searchInput.addEventListener('input', () => {
 				clearTimeout(this.debounceTimeout);
 				this.debounceTimeout = window.setTimeout(() => {
-					const searchTerm = searchInput.value.toLowerCase();
+					const searchTerm = searchInput.value;
 					this.performSearch(searchTerm);
 				}, 400);
 			});
