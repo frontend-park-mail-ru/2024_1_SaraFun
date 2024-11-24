@@ -5,8 +5,8 @@ export interface ChatPreview {
     last_name: string;
     images: Image[];
     lastMessage: string;
-    date: string;
     self: boolean;
+    time: string;
 }
 
 export interface Image {

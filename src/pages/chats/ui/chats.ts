@@ -1,12 +1,13 @@
 import { Router } from '../../../app/Router';
-import template from './chats.pug';
 import { ChatPreview } from '../../../entities/ChatPreview/ChatPreview';
-import templateChat from '../../../widgets/Chat/Chat.pug';
 import { Chat } from '../../../entities/Chat/Chat';
 import { getChatPreviews } from '../api/getChatPreviews';
+import { postMessage } from '../api/postMessage';
+import { getFilteredChatPreviews } from '../api/getFilteredChatPreviews';
+import template from './chats.pug';
+import templateChat from '../../../widgets/Chat/Chat.pug';
 import templateChatsPreviews from '../../../widgets/ChatPreviews/ChatPreviews.pug';
 import templatePlaceholder from '../../../shared/components/ChatPlaceholder/ChatPlaceholder.pug';
-import { postMessage } from '../api/postMessage';
 import templateMessage from '../../../shared/components/Message/AddMessage.pug';
 
 export class ChatsPage {
@@ -26,58 +27,6 @@ export class ChatsPage {
 
     async render(): Promise<void> {
 		this.previews = await getChatPreviews();
-		/*this.previews = [
-			{
-			  id: 1,
-			  username: 'johndoe',
-			  first_name: 'John',
-			  last_name: 'Doe',
-			  images: null,
-			  lastMessage: 'Hello',
-			  date: '2021-07-01',
-			  self: false
-			},
-			{
-			  id: 2,
-			  username: 'janedoe',
-			  first_name: 'Janeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
-			  last_name: 'Doe',
-			  images: null,
-			  lastMessage: 'Hi',
-			  date: '2021-07-01',
-			  self: false
-			},
-			{
-				id: 3,
-				username: 'alicesmith',
-				first_name: 'Alice',
-				last_name: 'Smith',
-				images: null,
-				lastMessage: 'How are you? Im fine. I wanna sleep very much :(',
-				date: '2021-07-01',
-				self: false
-			},
-			{
-				id: 4,
-				username: 'bobjohnson',
-				first_name: 'Bob',
-				last_name: 'Johnson',
-				images: null,
-				lastMessage: 'Good morning',
-				date: '2021-07-01',
-				self: false
-			},
-			{
-				id: 5,
-				username: 'bobjohnson',
-				first_name: 'Bobby',
-				last_name: 'Johnson',
-				images: null,
-				lastMessage: null,
-				date: '2021-07-01',
-				self: false
-			}
-		];*/
 		
 		this.parent.root.innerHTML = template({ previews: this.previews });
 		if (this.previews && this.previews.length > 0) {
@@ -121,10 +70,10 @@ export class ChatsPage {
 	}
 
 	async performSearch(searchTerm: string): Promise<void> {
-		//const filteredPreviews = await this.performSearch(searchTerm); запрос на сервер
-		const filteredPreviews = this.previews.filter(preview =>
+		const filteredPreviews = await getFilteredChatPreviews(searchTerm); 
+		/*const filteredPreviews = this.previews.filter(preview =>
 		  preview.first_name.toLowerCase().includes(searchTerm)
-		);
+		);*/
 		this.updateChatList(filteredPreviews);
 	  }
 
