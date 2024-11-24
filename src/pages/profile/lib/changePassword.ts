@@ -14,8 +14,8 @@ export class PasswordChanger {
         const newPassword = (document.getElementById('NewPassword') as HTMLInputElement).value;
         const repeatNewPassword = (document.getElementById('RepeatNewPassword') as HTMLInputElement).value;
 
-
-        if (!isValidPassword(newPassword)) {
+        const passwordErrors = isValidPassword(newPassword);
+        if ( passwordErrors.length > 0 ) {
             alert('Новый пароль не удовлетворяет условиям.');
             return;
         }
