@@ -1,4 +1,5 @@
 .modal {
+    display: none; // Скрыто по умолчанию
     position: fixed;
     z-index: 1000; // Поверх остальных элементов
     left: 0;
