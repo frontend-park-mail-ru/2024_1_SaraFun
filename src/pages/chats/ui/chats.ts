@@ -161,7 +161,7 @@ export class ChatsPage {
 			const sendButton = chatContainer.querySelector('.chat__input__button') as HTMLButtonElement;
       		const messageInput = chatContainer.querySelector('.chat__input__field') as HTMLInputElement;
       		if (sendButton && messageInput) {
-				const sendMessage = () => {
+				const sendMessage = async () => {
 					const messageText = messageInput.value.trim();
 					if (messageText) {
 						const message =  {
@@ -169,7 +169,7 @@ export class ChatsPage {
 							date: '2021-07-01',
 							self: true,
 						}
-						postMessage(chatData.id, messageText);
+						await postMessage(chatData.profile.id, messageText);
 						this.addMessageToChat(message); 
 						messageInput.value = ''; 
 					}
