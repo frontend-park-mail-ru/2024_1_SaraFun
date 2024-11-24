@@ -29,13 +29,17 @@ div.profile
         label
           | Старый пароль:
           input(type="password" class='input' id="OldPassword" required)
+          p.error#old-password-error(style='display:none') Неправильный старый пароль.
         label
           | Новый пароль:
           input(type="password" class='input' id="NewPassword" required)
+          p.error#new-password-error(style='display:none') Новый пароль не удовлетворяет условиям.
         label
           | Повторите новый пароль:
           input(type="password" class='input' id="RepeatNewPassword" required)
+          p.error#repeat-password-error(style='display:none') Новый пароль и его повторение не совпадают.
         button.new-password Сменить пароль
+        p.success-message#success-message(style='display:none; color:green') Пароль успешно изменен.
 
       div 
         h3 Фотографии
