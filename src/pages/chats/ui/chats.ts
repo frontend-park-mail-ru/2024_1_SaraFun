@@ -31,10 +31,33 @@ export class ChatsPage {
 
 	initWebSocket(): void {
 		this.socket = createWebSocket();
+
+		this.socket.addEventListener('open', () => {
+			console.log('WebSocket connection established');
+		});
+	
+		this.socket.addEventListener('message', (event) => {
+			const message = JSON.parse(event.data);
+			console.log('New message received:', message);
+			this.handleNewMessage(message);
+		});
+	
+		this.socket.addEventListener('close', () => {
+			console.log('WebSocket connection closed');
+		});
+	
+		this.socket.addEventListener('error', (error) => {
+			console.error('WebSocket error:', error);
+		});
     }
 
 	handleNewMessage(message: any): void {
-        console.log('New message received:', message);
+		const chatPreview = this.previews.find(preview => preview.id === message.chatId);
+        if (chatPreview) {
+            chatPreview.last_message = message.text;
+            chatPreview.time = new Date().toLocaleTimeString();
+            this.updateChatList(this.previews);
+        }
     }
 
     async render(): Promise<void> {

@@ -29,23 +29,5 @@ export function createWebSocket(): WebSocket {
     const wsUrl = `${BASE_URL.replace(/^http/, 'ws')}/ws`;
     const socket = new WebSocket(wsUrl);
 
-    socket.addEventListener('open', () => {
-        console.log('WebSocket connection established');
-    });
-
-    socket.addEventListener('message', (event) => {
-        const message = JSON.parse(event.data);
-        console.log('New message received:', message);
-        // Добавьте логику для обработки полученных сообщений
-    });
-
-    socket.addEventListener('close', () => {
-        console.log('WebSocket connection closed');
-    });
-
-    socket.addEventListener('error', (error) => {
-        console.error('WebSocket error:', error);
-    });
-
     return socket;
 }
