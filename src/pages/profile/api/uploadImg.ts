@@ -14,8 +14,6 @@ export async function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imag
 
             const data = await response.json(); 
 
-            imagesURLs[image.index] = data.link;
-            imagesIndexes[image.index] = data.id;
         }
         return true;
     }
