@@ -167,7 +167,7 @@ export class SurveyPage {
         const surveyData = this.questions.map((question, index) => ({
             'question': question,
             'comment': '',
-            'rating': Number(this.ratings[index]) || null,
+            'rating': Number(this.ratings[index]) || 0,
             'grade': 10 
         }));
 
