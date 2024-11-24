@@ -10,11 +10,9 @@ export function openReportModal(userId: number): void {
       if (!response.ok) {
         throw new Error('Ошибка при отправке жалобы');
       }
-
-      alert('Жалоба успешно отправлена!');
     } catch (error) {
       console.error(error);
-      alert('Не удалось отправить жалобу. Попробуйте еще раз.');
+      //тут бы писать, что надо попробовать позже
     }
   }
   
