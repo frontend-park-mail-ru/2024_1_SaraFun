@@ -1,6 +1,5 @@
 import { isValidPassword } from "../../../shared/utils/validation";
 import { saveNewPassword } from "../api/changePassword";
-import { validateOldPassword } from "../api/validOldPassword";
 
 export class PasswordChanger {
     constructor(button: HTMLElement) {
@@ -16,12 +15,6 @@ export class PasswordChanger {
         const oldPassword = (document.getElementById('OldPassword') as HTMLInputElement).value;
         const newPassword = (document.getElementById('NewPassword') as HTMLInputElement).value;
         const repeatNewPassword = (document.getElementById('RepeatNewPassword') as HTMLInputElement).value;
-
-        // Вызов showError в обработчике событий
-        if (!validateOldPassword(oldPassword)) {
-            this.showError('old-password-error', 'Неправильный старый пароль.');
-            return;
-        }
 
         const passwordErrors = isValidPassword(newPassword);
         if (passwordErrors.length > 0) {
@@ -40,13 +33,13 @@ export class PasswordChanger {
                 this.showError('old-password-error', 'Неправильный старый пароль!');
                 return;
             }
-            const isOldPasswordValid = await validateOldPassword(oldPassword);
+            
+            const isOldPasswordValid = await saveNewPassword(oldPassword, newPassword);
             if (!isOldPasswordValid) {
                 this.showError('old-password-error', 'Старый пароль неверный.');
                 return;
             }
-            await saveNewPassword(newPassword);
-            this.showSuccessMessage('Пароль успешно изменен.'); // Метод для отображения успешного сообщения
+            this.showSuccessMessage('Пароль успешно изменен.'); 
         } catch (error) {
             console.error('Ошибка при смене пароля:', error);
             this.showError('new-password-error', 'Произошла ошибка при смене пароля. Попробуйте еще раз.');
@@ -66,8 +59,6 @@ export class PasswordChanger {
         }
     }
 
-
-    // Метод для отображения ошибок
     private showError(errorElementId: string, message: string): void {
         const errorElement = document.getElementById(errorElementId);
         if (errorElement) {
@@ -76,7 +67,6 @@ export class PasswordChanger {
         }
     }
 
-    // Метод для добавления обработчиков событий input
     private addInputListeners(): void {
         const oldPasswordInput = document.getElementById('OldPassword') as HTMLInputElement;
         const newPasswordInput = document.getElementById('NewPassword') as HTMLInputElement;
@@ -90,7 +80,6 @@ export class PasswordChanger {
             }
         };
 
-        // Добавление обработчиков события input
         oldPasswordInput?.addEventListener('input', () => clearError('old-password-error'));
         newPasswordInput?.addEventListener('input', () => {
             clearError('new-password-error');
