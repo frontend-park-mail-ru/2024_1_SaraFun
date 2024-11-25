@@ -204,10 +204,10 @@ export class ProfilePage {
   private deleteImage(index: number): void {
     const imageIndex = this.imagesIndexes[index];
     
-    const isNewImage = this.imagesNew.some(img => img.index === index + 1);
+    const isNewImage = this.imagesNew.some(img => img.index === index);
     
     if (isNewImage) {
-        this.imagesNew = this.imagesNew.filter(img => img.index !== index + 1);
+        this.imagesNew = this.imagesNew.filter(img => img.index !== index);
     } else {
         this.imagesDel.push(imageIndex);
     }
@@ -218,6 +218,7 @@ export class ProfilePage {
       }
       return img;
     });
+    console.log(this.imagesNew);
 
 
     this.imagesIndexes.splice(index, 1);
