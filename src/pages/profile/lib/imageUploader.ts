@@ -27,10 +27,10 @@ export function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imagesInde
                     reader.onload = (e) => {
                         const result = e.target!.result; 
                         if (typeof result === 'string') { 
-                            const index = imagesURLs.length + 1; 
+                            imagesURLs.push(result); 
+                            const index = imagesURLs.length; 
                             imagesNew.push({ file, index }); 
                             imagesIndexes.push(-1);
-                            imagesURLs.push(result); 
                             resolve(); 
                         }
                     };
