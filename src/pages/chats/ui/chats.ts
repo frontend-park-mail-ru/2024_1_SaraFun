@@ -30,15 +30,6 @@ export class ChatsPage {
 		this.render();
 	}
 
-	startPing(): void {
-        this.pingInterval = window.setInterval(() => {
-            if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-                this.socket.send(JSON.stringify({ type: 'ping' }));
-                console.log('Ping sent');
-            }
-        }, 29000);
-    }
-
 	initWebSocket(): void {
 		this.socket = createWebSocket();
 
@@ -50,38 +41,40 @@ export class ChatsPage {
 		this.socket.addEventListener('message', (event) => {
 			const message = JSON.parse(event.data);
 			console.log('New message received:', message);
-			this.handleNewMessage(message);
+			this.handleNewMessage(message, new Date().toLocaleTimeString(), false);
 		});
 	
 		this.socket.addEventListener('close', () => {
 			console.log('WebSocket connection closed');
+			this.stopPing();
 		});
 	
 		this.socket.addEventListener('error', (error) => {
 			console.error('WebSocket error:', error);
+			this.stopPing();
 		});
     }
 
-	handleNewMessage(message: { user_id: number, message: string }): void {
-		const chatPreview = this.previews.find(preview => preview.id === message.user_id);
-		console.log('chatPreview:', chatPreview);
-        if (chatPreview) {
-            chatPreview.last_message = message.message;
-			console.log('last_message:', chatPreview.last_message);
-            chatPreview.time = new Date().toLocaleTimeString();
-			chatPreview.self = false;
-            this.updateChatList(this.previews);
+	startPing(): void {
+        this.pingInterval = window.setInterval(() => {
+            if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+                this.socket.send(JSON.stringify({ type: 'ping' }));
+                console.log('Ping sent');
+            }
+        }, 29000);
+    }
+
+	stopPing(): void {
+        if (this.pingInterval) {
+            clearInterval(this.pingInterval);
+            this.pingInterval = undefined;
         }
     }
 
     async render(): Promise<void> {
 		this.previews = await getChatPreviews();
 
-		this.previews.sort((a, b) => {
-			const timeA = new Date(a.time).getTime();
-			const timeB = new Date(b.time).getTime();
-			return timeB - timeA;
-		});
+		this.previews = this.sortPreviewsByTime(this.previews);
 
 		this.parent.root.innerHTML = template({ previews: this.previews });
 		if (this.previews && this.previews.length > 0) {
@@ -90,18 +83,27 @@ export class ChatsPage {
 		}
     }
 
+	sortPreviewsByTime(previews: ChatPreview[]): ChatPreview[] {
+        return previews.sort((a, b) => {
+            const timeA = new Date(a.time).getTime();
+            const timeB = new Date(b.time).getTime();
+            return timeB - timeA;
+        });
+    }
+
 	addChatSelectionListeners(): void {
 		const chatPreviews = document.querySelectorAll('.chats-list__chat');
 		chatPreviews.forEach((preview) => {
 			preview.addEventListener('click', () => {
 				const index = parseInt(preview.getAttribute('data-id') as string);
-				const usernameElement = preview.querySelector('.chats-list__chat__info__header__name');
-				const avatarElement = preview.querySelector('.chats-list__chat__avatar__img');
-				const username = usernameElement ? usernameElement.textContent : '';
-				const avatar = avatarElement ? avatarElement.getAttribute('src') : './img/user.svg';
-				this.loadChat(index, username, avatar);
+				this.loadChat(index);
 			});
 		});
+	}
+
+	async loadChat(index: number): Promise<void> {
+		const chatData: Chat = await getChat(index);
+		this.renderChat(chatData);
 	}
 
 	addSearchListener(): void {
@@ -140,11 +142,6 @@ export class ChatsPage {
 		  	chatListContainer.innerHTML = templateChatsPreviews({ previews: filteredPreviews });
 		  	this.addChatSelectionListeners();
 		}
-	}
-
-	async loadChat(index: number, username: string, avatar: string): Promise<void> {
-		const chatData: Chat = await getChat(index);
-		this.renderChat(chatData);
 	}
 
 	renderChat(chatData: any): void {
@@ -192,6 +189,18 @@ export class ChatsPage {
 		}
 	}
 
+	handleNewMessage(message: { user_id: number, message: string }, time: string, self: boolean): void {
+		const chatPreview = this.previews.find(preview => preview.id === message.user_id);
+		console.log('chatPreview:', chatPreview);
+        if (chatPreview) {
+            chatPreview.last_message = message.message;
+			console.log('last_message:', chatPreview.last_message);
+            chatPreview.time = time;
+			chatPreview.self = self;
+            this.updateChatList(this.previews);
+        }
+    }
+
 	addMessageToChat(message: any): void {
 		const chatMessagesContainer = document.querySelector('.chat__messages');
 		if (chatMessagesContainer) {
@@ -202,6 +211,13 @@ export class ChatsPage {
 		  	const messageHtml = templateMessage({ message });
 		  	chatMessagesContainer.insertAdjacentHTML('beforeend', messageHtml);
 		  	chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+
+			const chatId = chatMessagesContainer.getAttribute('data-id');
+			if (chatId) {
+				this.previews.find(preview => preview.id === parseInt(chatId)).last_message = message.body;
+				this.previews.find(preview => preview.id === parseInt(chatId)).time= message.time;
+				this.updateChatList(this.previews);
+			}
 		}
 	}
 }

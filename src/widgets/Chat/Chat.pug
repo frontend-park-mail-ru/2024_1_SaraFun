@@ -2,7 +2,7 @@ include ../../shared/components/ChatHeader/ChatHeader.pug
 include ../../shared/components/Message/Message.pug
 
 +chatHeader(chatData)
-.chat__messages
+.chat__messages(data-id=chatData.profile.id)
     if (chatData.messages && chatData.messages.length > 0)
         - let lastDate = null;
         each message in chatData.messages
