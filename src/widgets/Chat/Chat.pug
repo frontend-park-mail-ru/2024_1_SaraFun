@@ -6,7 +6,14 @@ include ../../shared/components/Message/Message.pug
     //.chat__messages__date
         | 12 марта 2023
     if (chatData.messages && chatData.messages.length > 0)
+        - let lastDate = null;
         each message in chatData.messages
+        - const messageDate = new Date(message.time);
+        - const formattedDate = messageDate.toLocaleDateString();
+        if (!lastDate || lastDate !== formattedDate)
+            .chat__messages__date 
+                | #{formattedDate}
+            - lastDate = formattedDate;
             +message(message)
     else
         .chat__no-messages
