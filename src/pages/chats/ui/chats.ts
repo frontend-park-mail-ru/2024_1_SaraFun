@@ -143,7 +143,7 @@ export class ChatsPage {
 
 			const chatMessagesContainer = document.querySelector('.chat__messages');
 			if (chatMessagesContainer) {
-				chatMessagesContainer.scrollTop = chatContainer.scrollHeight;
+				chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
 			}
 			
 			const closeButton = chatContainer.querySelector('.chat__header__close-button') as HTMLButtonElement;
