@@ -194,6 +194,16 @@ export class ChatsPage {
             chatPreview.time = time;
 			chatPreview.self = self;
             this.updateChatList(this.previews);
+
+			const chatMessagesContainer = document.querySelector('.chat__messages');
+			if (chatMessagesContainer) {
+				const chatId = chatMessagesContainer.getAttribute('data-id');
+				if (chatId && parseInt(chatId) === message.author_id) {
+					const messageHtml = templateMessage({ message: { body: message.message, time, self } });
+					chatMessagesContainer.insertAdjacentHTML('beforeend', messageHtml);
+					chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+				}
+			}
         }
     }
 
