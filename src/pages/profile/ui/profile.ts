@@ -211,8 +211,6 @@ export class ProfilePage {
     } else {
         this.imagesDel.push(imageIndex);
     }
-    console.log(this.imagesNew);
-    console.log(index);
 
     this.imagesNew = this.imagesNew.map(img => {
       if (img.index > index) {
