@@ -134,11 +134,7 @@ export class ChatsPage {
 	updateChatList(filteredPreviews: ChatPreview[]): void {
 		const chatListContainer = document.querySelector('.chats-list__content');
 		if (chatListContainer) {
-			filteredPreviews.sort((a, b) => {
-				const timeA = new Date(a.time).getTime();
-				const timeB = new Date(b.time).getTime();
-				return timeB - timeA;
-			});
+			filteredPreviews = this.sortPreviewsByTime(filteredPreviews);
 		  	chatListContainer.innerHTML = templateChatsPreviews({ previews: filteredPreviews });
 		  	this.addChatSelectionListeners();
 		}
