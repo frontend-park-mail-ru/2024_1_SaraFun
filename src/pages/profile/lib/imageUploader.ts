@@ -27,9 +27,9 @@ export function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imagesInde
                     reader.onload = (e) => {
                         const result = e.target!.result; 
                         if (typeof result === 'string') { 
-                            imagesURLs.push(result); 
                             const index = imagesURLs.length; 
                             imagesNew.push({ file, index }); 
+                            imagesURLs.push(result); 
                             imagesIndexes.push(-1);
                             resolve(); 
                         }
