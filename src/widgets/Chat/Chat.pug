@@ -3,11 +3,10 @@ include ../../shared/components/Message/Message.pug
 
 +chatHeader(chatData)
 .chat__messages
-    //.chat__messages__date
-        | 12 марта 2023
     if (chatData.messages && chatData.messages.length > 0)
         - let lastDate = null;
         each message in chatData.messages
+            - console.log(message.body);
             - const messageDate = new Date(message.time);
             - const formattedDate = messageDate.toLocaleDateString();
             if (!lastDate || lastDate !== formattedDate)
