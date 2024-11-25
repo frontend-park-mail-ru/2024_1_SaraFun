@@ -41,7 +41,7 @@ export class ChatsPage {
 		this.socket.addEventListener('message', (event) => {
 			const message = JSON.parse(event.data);
 			console.log('New message received:', message);
-			this.handleNewMessage(message, new Date().toLocaleTimeString(), false);
+			this.handleNewMessage(message, new Date().toISOString(), false);
 		});
 	
 		this.socket.addEventListener('close', () => {
