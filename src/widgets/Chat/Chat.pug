@@ -14,7 +14,7 @@ include ../../shared/components/Message/Message.pug
                 .chat__messages__date 
                     | #{formattedDate}
                 - lastDate = formattedDate;
-                +message(message)
+            +message(message)
     else
         .chat__no-messages
             | Начните ваше общение
