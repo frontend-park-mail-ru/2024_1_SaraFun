@@ -42,14 +42,15 @@
                 padding: 10px;
                 border: 1px solid #ccc;
                 border-radius: 4px;
-                font-size: 1em;
-                resize: vertical;
-                #comment {
-                    resize: none; /* Запретить изменение размера */
-                    width: 100%; /* Установить ширину на 100% родительского элемента */
-                    height: auto; /* Автоматическая высота, если нужно */
-                  }
-                
+                font-size: 1em;        
+            }
+            textarea {
+                margin-left: 0; 
+                padding: 5px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                width: 100%; 
+                resize: none; 
             }
 
             button[type='submit'] {
