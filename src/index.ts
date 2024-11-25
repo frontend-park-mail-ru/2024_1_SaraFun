@@ -16,6 +16,8 @@ import '@img/right.svg';
 import '@img/eye.svg';
 import '@img/eye-x.svg';
 import '@img/user.svg';
+import '@img/paperclip.svg';
+import '@img/search.svg';
 import '@img/HeartBroken.svg';
 import '@img/LogReg.svg';
 

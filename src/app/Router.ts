@@ -4,8 +4,8 @@
 export class Router {
 	private static instance: Router;
 	private parent: any;
-	private publicRoutes: Map<string, { view: any }>;
-	private privateRoutes: Map<string, { view: any }>;
+	private publicRoutes: Map<string, { view: any; regex: RegExp; paramNames: string[] }>;
+	private privateRoutes: Map<string, { view: any; regex: RegExp; paramNames: string[] }>;
 	private isAuth: boolean;
 	private curRoute: string;
 	
@@ -50,11 +50,25 @@ export class Router {
 	 * @returns {Router} - The instance of the Router for chaining method calls.
 	 */
 	register(path: string, view: any, isPublic: boolean): Router {
-		if (isPublic) {
-			this.publicRoutes.set(path, { view });
-		} else {
-			this.privateRoutes.set(path, { view });
+		const paramNames: string[] = [];
+    	let regex: RegExp | null = null;
+
+		if (path.includes(':')) {
+			const regexPath = path.replace(/:([^\/]+)/g, (_, paramName) => {
+				paramNames.push(paramName);
+				return '([^\/]+)';
+			});
+			regex = new RegExp(`^${regexPath}$`);
 		}
+
+		const route = { view, regex, paramNames };
+
+		if (isPublic) {
+			this.publicRoutes.set(path, route);
+		} else {
+			this.privateRoutes.set(path, route);
+		}
+
 		return this;
 	}
 
@@ -66,6 +80,8 @@ export class Router {
 			this.navigateTo(window.location.pathname, false);
 		});
 		this.navigateTo(window.location.pathname, false);
+		console.log(this.privateRoutes);
+		console.log(this.publicRoutes);
 	}
 
 	/**
@@ -75,7 +91,12 @@ export class Router {
 	 * @param {boolean} addToHistory - Whether to add the navigation to the browser history. Defaults to true.
 	 */
 	navigateTo(path: string, addToHistory: boolean = true): void {
-		const route = this.publicRoutes.get(path) || this.privateRoutes.get(path);
+		if (path === this.curRoute) {
+			return;
+		}
+
+		const route = this.findRoute(path, this.privateRoutes) || this.findRoute(path, this.publicRoutes);
+
 		if (this.privateRoutes.has(path) && !this.isAuth) {
 			const firstPublicRoute = Array.from(this.publicRoutes.keys())[0];
     		this.navigateTo(firstPublicRoute);
@@ -86,7 +107,12 @@ export class Router {
     		this.navigateTo(firstPrivateRoute);
 			return;
 		}
-		
+
+		if (!route.regex && path !== route.path) {
+			this.navigateTo('/login');
+			return;
+		}
+
 		const view = route.view;
     	if (view) {
 			this.curRoute = path;
@@ -94,8 +120,30 @@ export class Router {
 			if (addToHistory) {
 				history.pushState({}, '', path);
 			}
-      		new view(this);
+			if (route.params) {
+      			new view(this, route.params);
+			} else {
+				new view(this);
+			}
     	} 
+	}
+
+	findRoute(path: string, routes: Map<string, any>): any {
+		for (const [routePath, route] of routes) {
+			if (route.regex) {
+				const match = path.match(route.regex);
+				if (match) {
+					const params = route.paramNames.reduce((acc: { [key: string]: string }, paramName: string, index: number) => {
+						acc[paramName] = match[index + 1];
+						return acc;
+					}, {});
+					return { ...route, path: routePath, params };
+				}
+			} else if (routePath === path) {
+				return { ...route, path: routePath, params: {} };
+			}
+		}
+		return null;
 	}
 
 	/**

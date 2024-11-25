@@ -1,0 +1,15 @@
+.chats-container {
+  display: flex;
+  height: 85vh;
+  width: 80vw;
+  gap: 20px;
+}
+
+.chat__no-previews {
+  text-align: center;
+  padding: 20px;
+  border: 1px dashed var(--grey1);
+  border-radius: 10px;
+  background-color: var(--lightGrey);
+  margin: auto;
+}

@@ -45,13 +45,6 @@ export default class App {
 			this.navbarRoot.innerHTML = this.navbar.render();
 			this.navbar.componentDidMount();
 
-			if (!this.state.isAuthenticated) {
-				this.router.navigateTo(ROUTES.get(ROUTES_NAME.LOGIN).path);
-			}
-			else {
-				this.router.navigateTo(window.location.pathname);
-			}
-
 		} catch (error) {
 			this.router.navigateTo(ROUTES.get(ROUTES_NAME.LOGIN).path);
 		}

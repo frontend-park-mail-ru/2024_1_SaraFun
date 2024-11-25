@@ -1,0 +1,10 @@
+include ../../../widgets/ChatsList/ChatsList.pug
+
+.chats-container
+    +chats-list(previews)
+    .chat
+        h2.chat__no-previews
+            if (previews && previews.length > 0)
+                | Выберите, кому хотели бы написать
+            else 
+                | Чаты станут доступны сразу после мэтча!
