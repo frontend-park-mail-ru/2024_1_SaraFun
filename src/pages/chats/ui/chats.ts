@@ -76,7 +76,13 @@ export class ChatsPage {
 
     async render(): Promise<void> {
 		this.previews = await getChatPreviews();
-		
+
+		this.previews.sort((a, b) => {
+			const timeA = new Date(a.time).getTime();
+			const timeB = new Date(b.time).getTime();
+			return timeB - timeA;
+		});
+
 		this.parent.root.innerHTML = template({ previews: this.previews });
 		if (this.previews && this.previews.length > 0) {
 			this.addChatSelectionListeners();
@@ -121,13 +127,18 @@ export class ChatsPage {
 	async performSearch(searchTerm: string): Promise<void> {
 		const filteredPreviews = await getFilteredChatPreviews(searchTerm); 
 		this.updateChatList(filteredPreviews);
-	  }
+	}
 
 	updateChatList(filteredPreviews: ChatPreview[]): void {
 		const chatListContainer = document.querySelector('.chats-list__content');
 		if (chatListContainer) {
-		  chatListContainer.innerHTML = templateChatsPreviews({ previews: filteredPreviews });
-		  this.addChatSelectionListeners();
+			filteredPreviews.sort((a, b) => {
+				const timeA = new Date(a.time).getTime();
+				const timeB = new Date(b.time).getTime();
+				return timeB - timeA;
+			});
+		  	chatListContainer.innerHTML = templateChatsPreviews({ previews: filteredPreviews });
+		  	this.addChatSelectionListeners();
 		}
 	}
 
