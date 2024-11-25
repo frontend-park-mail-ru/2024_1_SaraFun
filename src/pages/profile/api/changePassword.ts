@@ -4,8 +4,8 @@ export async function saveNewPassword(oldPassword: string, newPassword: string) 
     const response = await post('/changepassword', JSON.stringify({ oldPassword, newPassword }))
 
     if (!response.ok) {
-      throw new Error('Ошибка при сохранении нового пароля');
+      return false;
     }
 
-    return response.json(); 
+    return true; 
   }
