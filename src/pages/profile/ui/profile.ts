@@ -134,7 +134,7 @@ export class ProfilePage {
                 } else if (dragIndex < index && image.index > dragIndex && image.index <= index) {
                   // Если элемент находится между старым и новым индексами, уменьшаем индекс на 1
                   image.index -= 1;
-                } else if (dragIndex > index && image.index < dragIndex && image.index > index) {
+                } else if (dragIndex > index && image.index < dragIndex && image.index >= index) {
                   // Если элемент находится между новым и старым индексами, увеличиваем индекс на 1
                   image.index += 1;
                 }
