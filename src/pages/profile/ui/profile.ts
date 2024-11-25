@@ -101,7 +101,6 @@ export class ProfilePage {
       updateOutput();
       rangeInput.addEventListener('input', updateOutput);
 
-      //перетаскивание фотографий
       const imageContainers = document.querySelectorAll('.image-container') as NodeListOf<HTMLElement>;
 
       if (imageContainers) {
@@ -205,10 +204,10 @@ export class ProfilePage {
   private deleteImage(index: number): void {
     const imageIndex = this.imagesIndexes[index];
     
-    const isNewImage = this.imagesNew.some(img => img.index === index);
+    const isNewImage = this.imagesNew.some(img => img.index === index + 1);
     
     if (isNewImage) {
-        this.imagesNew = this.imagesNew.filter(img => img.index !== index);
+        this.imagesNew = this.imagesNew.filter(img => img.index !== index + 1);
     } else {
         this.imagesDel.push(imageIndex);
     }
