@@ -5,7 +5,5 @@ mixin message(message)
             .chat__messages__message__time
                 if (message.time && message.time !== '')
                     - const messageDate = new Date(message.time);
-                    - const today = new Date();
-                    - const isToday = messageDate.toDateString() === today.toDateString();
-                    - const formattedTime = isToday ? messageDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : messageDate.toLocaleDateString();
+                    - const formattedTime = messageDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                     | #{formattedTime}
