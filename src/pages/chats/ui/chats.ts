@@ -162,7 +162,7 @@ export class ChatsPage {
 						const message =  {
 							body: messageText,
 							self: true,
-							time: new Date().toLocaleTimeString(),
+							time: new Date().toISOString(),
 						}
 						await postMessage(chatData.profile.id, messageText);
 						this.addMessageToChat(message); 
