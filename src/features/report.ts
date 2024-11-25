@@ -1,5 +1,6 @@
 import { post } from '../shared/api/api';
 import reportModalTemplate from '../widgets/Report/report.pug'
+import { limitText } from './limitInput';
 
 export function openReportModal(userId: number): void {
   async function submitReport(userId: number, reason: string, comment: string): Promise<void> {
@@ -29,6 +30,10 @@ export function openReportModal(userId: number): void {
   closeModalButton.addEventListener('click', () => {
     modal.remove();
   });
+
+  const commentTextarea = document.getElementById('comment') as HTMLTextAreaElement;
+  
+  limitText(commentTextarea, 5);
 
   const reportForm = document.getElementById('reportForm') as HTMLFormElement;
   
@@ -60,8 +65,4 @@ export function openReportModal(userId: number): void {
         successElement.style.display = 'block';
     }
   }
-
-
 }
-
-

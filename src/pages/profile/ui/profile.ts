@@ -5,7 +5,7 @@ import { uploadImg } from '../lib/imageUploader';
 import { UserProfile, ImgData } from '../lib/profile';;
 import { getProfile } from '../api/getProfile';
 import { Router } from '../../../app/Router';
-import { limitInput, limitText } from '../lib/limitInput';
+import { limitInput, limitText } from '../../../features/limitInput';
 import { PasswordChanger } from '../lib/changePassword';
 
 export class ProfilePage {
