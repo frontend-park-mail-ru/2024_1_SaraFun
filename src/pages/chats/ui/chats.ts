@@ -185,8 +185,8 @@ export class ChatsPage {
 		}
 	}
 
-	handleNewMessage(message: { user_id: number, message: string }, time: string, self: boolean): void {
-		const chatPreview = this.previews.find(preview => preview.id === message.user_id);
+	handleNewMessage(message: { author_id: number, message: string }, time: string, self: boolean): void {
+		const chatPreview = this.previews.find(preview => preview.id === message.author_id);
 		console.log('chatPreview:', chatPreview);
         if (chatPreview) {
             chatPreview.last_message = message.message;
