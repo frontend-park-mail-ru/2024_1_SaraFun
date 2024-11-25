@@ -1,11 +1,12 @@
 import { post } from "../../../shared/api/api";
 
 export async function saveNewPassword(oldPassword: string, newPassword: string) {
-    const response = await post('/changepassword', JSON.stringify({ oldPassword, newPassword }))
+  const body = {'current_password': oldPassword, 'new_password': newPassword };
+  const response = await post('/changepassword', body);
 
-    if (!response.ok) {
-      return false;
-    }
-
-    return true; 
+  if (!response.ok) {
+    return false;
   }
+
+  return true; 
+}

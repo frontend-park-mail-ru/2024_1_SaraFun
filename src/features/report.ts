@@ -4,15 +4,17 @@ import reportModalTemplate from '../widgets/Report/report.pug'
 export function openReportModal(userId: number): void {
   async function submitReport(userId: number, reason: string, comment: string): Promise<void> {
     try {
-      const body = { 'receiver': userId, 'body': comment}; //no "reason" yet
+      const body = { 'receiver': userId, 'reason': reason, 'body': comment}; 
       const response = await post('/report', body);
 
       if (!response.ok) {
         throw new Error('Ошибка при отправке жалобы');
       }
+
+      showSuccess('report-success', 'Жалоба успешно отправлена.');
     } catch (error) {
       console.error(error);
-      //тут бы писать, что надо попробовать позже
+      showError('report-error', 'Ошибка при отправке жалобы. Попробуйте позже.');
     }
   }
   
@@ -39,8 +41,27 @@ export function openReportModal(userId: number): void {
 
     await submitReport(userId, reason, comment);
     
-    modal.remove();
+    setTimeout(() => {
+      modal.remove(); 
+    }, 2000);
   });
+
+  function showError(elementId: string, message: string): void {
+    const errorElement = document.getElementById(elementId) as HTMLElement;
+    errorElement.textContent = message;
+    errorElement.style.display = 'block';
+  }
+
+  function showSuccess(elementId: string, message: string): void {
+    const successElement = document.createElement('p');
+    successElement.id = elementId;
+    successElement.textContent = message;
+    successElement.style.color = 'green'; // Цвет текста для успеха
+    successElement.style.display = 'block';
+    modal.appendChild(successElement); // Добавляем сообщение в модальное окно
+  }
+
+
 }
 
 
