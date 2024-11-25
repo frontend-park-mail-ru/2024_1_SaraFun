@@ -1,7 +1,7 @@
 import {post, put, del} from '../../../shared/api/api';
 import { delImg } from './delImg';
 import { ImgData, UserProfile } from '../lib/profile';
-import { uploadImg } from '../lib/uploadImg';
+import { uploadImg } from './uploadImg';
 
 /**
  * Updates the profile of a user by ID.
@@ -12,6 +12,15 @@ import { uploadImg } from '../lib/uploadImg';
  */
 export async function updProfile(profileData: UserProfile, imagesNew: ImgData[], imagesDel: number[], imagesURLs: string[], imagesIndexes: number[]): Promise<boolean> {
   try {
+    if (!( await uploadImg(imagesNew, imagesURLs, imagesIndexes) )) {
+      return false;
+    };
+    
+    
+    if (!( await delImg(imagesDel) )) {
+      return false
+    };
+
     const imgNumbers = imagesIndexes.map((id, index) => ({
       id: id,
       number: index + 1
@@ -26,15 +35,6 @@ export async function updProfile(profileData: UserProfile, imagesNew: ImgData[],
       target: profileData.Target,
       about: profileData.About,
       imgNumbers: imgNumbers,
-    };
-
-    if (!( await uploadImg(imagesNew, imagesURLs, imagesIndexes) )) {
-      return false;
-    };
-    
-    
-    if (!( await delImg(imagesDel) )) {
-      return false
     };
     
   

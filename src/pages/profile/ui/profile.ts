@@ -1,7 +1,7 @@
 import template from './profile.pug';
 import { updProfile } from '../api/updProfile';
 import './profile.scss';
-import { uploadImg } from '../../../features/imageUploader';
+import { uploadImg } from '../lib/imageUploader';
 import { UserProfile, ImgData } from '../lib/profile';;
 import { getProfile } from '../api/getProfile';
 import { Router } from '../../../app/Router';
@@ -226,7 +226,7 @@ export class ProfilePage {
 
     this.getInfoFromPage();
     this.render();
-}
+  }
 
 
   private toggleEditMode(): void {

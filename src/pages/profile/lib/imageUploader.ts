@@ -1,4 +1,4 @@
-import { ImgData } from '../pages/profile/lib/profile';
+import { ImgData } from './profile';
 
 export function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imagesIndexes: number[], getInfoFromPage: () => void, render: () => void) {
     const input = document.createElement('input');
