@@ -7,8 +7,8 @@ mixin chatHeader(chat)
                 img.chat__header__avatar__img(src='./img/user.svg' alt='avatar')
         .chat__header__info
             .chat__header__info__name
-                if (chat.first_name && chat.first_name !== '')
-                    | #{chat.first_name}
+                if (chat.profile.first_name && chat.profile.first_name !== '')
+                    | #{chat.profile.first_name}
                 else
                     | #{chat.username}
         .chat__header__close
