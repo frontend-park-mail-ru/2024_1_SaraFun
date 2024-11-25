@@ -51,7 +51,9 @@
                 border: 1px solid #ccc;
                 width: 100%; 
                 resize: none; 
-                height: auto;
+                #comment {
+                    height: 200px;
+                }
             }
 
             button[type='submit'] {
