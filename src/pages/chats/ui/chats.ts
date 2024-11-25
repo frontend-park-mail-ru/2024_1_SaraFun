@@ -140,6 +140,12 @@ export class ChatsPage {
 		const chatContainer = document.querySelector('.chat');
 		if (chatContainer) {
 		  	chatContainer.innerHTML = templateChat({ chatData });
+
+			const chatMessagesContainer = document.querySelector('.chat__messages');
+			if (chatMessagesContainer) {
+				chatMessagesContainer.scrollTop = chatContainer.scrollHeight;
+			}
+			
 			const closeButton = chatContainer.querySelector('.chat__header__close-button') as HTMLButtonElement;
 			if (closeButton) {
 				closeButton.addEventListener('click', () => {
