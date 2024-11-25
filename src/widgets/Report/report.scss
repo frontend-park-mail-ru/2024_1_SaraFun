@@ -44,6 +44,12 @@
                 border-radius: 4px;
                 font-size: 1em;
                 resize: vertical;
+                #comment {
+                    resize: none; /* Запретить изменение размера */
+                    width: 100%; /* Установить ширину на 100% родительского элемента */
+                    height: auto; /* Автоматическая высота, если нужно */
+                  }
+                
             }
 
             button[type='submit'] {
