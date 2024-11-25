@@ -23,6 +23,6 @@ export interface Image {
 
 export interface Message {
     body: string;
-    date: string;
     self: boolean;
+    time: string;
 }
