@@ -42,18 +42,8 @@
                 padding: 10px;
                 border: 1px solid #ccc;
                 border-radius: 4px;
-                font-size: 1em;        
-            }
-            textarea {
-                margin-left: 0; 
-                padding: 5px;
-                border-radius: 5px;
-                border: 1px solid #ccc;
-                width: 100%; 
-                resize: none; 
-                #comment {
-                    height: 200px;
-                }
+                font-size: 1em;   
+                resize: none;      
             }
 
             button[type='submit'] {
