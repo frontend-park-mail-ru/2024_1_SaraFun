@@ -4,17 +4,17 @@ import reportModalTemplate from '../widgets/Report/report.pug'
 export function openReportModal(userId: number): void {
   async function submitReport(userId: number, reason: string, comment: string): Promise<void> {
     try {
-      const body = { 'receiver': userId, 'reason': reason, 'body': comment}; 
+      const body = { 'receiver': userId, 'reason': reason, 'loh': comment}; 
       const response = await post('/report', body);
 
       if (!response.ok) {
         throw new Error('Ошибка при отправке жалобы');
       }
 
-      showSuccess('report-success', 'Жалоба успешно отправлена.');
+      showSuccessMessage('Жалоба успешно отправлена.');
     } catch (error) {
       console.error(error);
-      showError('report-error', 'Ошибка при отправке жалобы. Попробуйте позже.');
+      showError('Ошибка при отправке жалобы. Попробуйте позже.');
     }
   }
   
@@ -46,19 +46,19 @@ export function openReportModal(userId: number): void {
     }, 2000);
   });
 
-  function showError(elementId: string, message: string): void {
-    const errorElement = document.getElementById(elementId) as HTMLElement;
+  function showError(message: string): void {
+    const errorElement = document.getElementById('report-error') as HTMLElement;
     errorElement.textContent = message;
     errorElement.style.display = 'block';
   }
 
-  function showSuccess(elementId: string, message: string): void {
-    const successElement = document.createElement('p');
-    successElement.id = elementId;
-    successElement.textContent = message;
-    successElement.style.color = 'green'; // Цвет текста для успеха
-    successElement.style.display = 'block';
-    modal.appendChild(successElement); // Добавляем сообщение в модальное окно
+  function showSuccessMessage(message: string): void {
+    const successElement = document.getElementById('report-error');
+    if (successElement) {
+        successElement.textContent = message;
+        successElement.style.color = 'green'; 
+        successElement.style.display = 'block';
+    }
   }
 
 
