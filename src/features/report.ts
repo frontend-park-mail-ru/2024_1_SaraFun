@@ -4,7 +4,7 @@ import reportModalTemplate from '../widgets/Report/report.pug'
 export function openReportModal(userId: number): void {
   async function submitReport(userId: number, reason: string, comment: string): Promise<void> {
     try {
-      const body = { userId };//'receiver': userId, 'reason': reason, 'loh': comment}; 
+      const body = { 'receiver': userId, 'reason': reason, 'body': comment }; 
       const response = await post('/report', body);
 
       if (!response.ok) {
