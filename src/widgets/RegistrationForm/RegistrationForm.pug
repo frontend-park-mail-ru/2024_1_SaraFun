@@ -2,6 +2,7 @@ include ../../shared/components/CustomInput/CustomInput.pug
 include ../../shared/components/Header/Header.pug
 include ../../shared/components/TextButton/TextButton.pug
 include ../../shared/components/FooterText/FooterText.pug
+include ../../shared/components/GenderSelection/GenderSelection.pug
 
 block registration
   +header('Добро пожаловать!')
@@ -9,7 +10,7 @@ block registration
   +customInput('login', 'registration')
   +customInput('password', 'registration')
 
-  include ../../shared/components/GenderSelection/GenderSelection.pug
+  +genderSelection('male')
 
   label(for="age" class=".text-base") Возраст
   input(class="range-input" type="range" id="age" name="age" min="18" max="100" value="18" oninput="this.nextElementSibling.value = this.value")
