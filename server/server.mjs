@@ -17,9 +17,7 @@ app.get(/^(?!.*.(css|js|img|png|webp|webm|svg)).*$/, (req, res) => {
 	res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 
-console.log(process.env.PORT); 
-
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || process.argv[2] || 8001;
 
 app.listen(port, () => {
 	console.info(`Сервер запущен на порту ${port}`);
