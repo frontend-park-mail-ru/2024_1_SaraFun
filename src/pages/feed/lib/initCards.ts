@@ -126,10 +126,15 @@ export function initCards(tinderContainer: HTMLElement): void {
 
     const reportForm = document.getElementById('reportForm') as HTMLFormElement;
     reportForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
         let moveOutWidth = document.body.clientWidth * 1.5;
         firstCard.classList.add('removed');
-        firstCard.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
-        initCards(tinderContainer);
+        
+        setTimeout(() => {
+            firstCard.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+            initCards(tinderContainer);
+        }, 500);
     });
         
     tinderContainer.classList.add('loaded');
