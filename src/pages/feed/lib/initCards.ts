@@ -121,7 +121,6 @@ export function initCards(tinderContainer: HTMLElement): void {
 
     const reportButton = firstCard.querySelector('.report') as HTMLButtonElement;
 
-				// Обработчик нажатия на кнопку "пожаловаться"
     reportButton.addEventListener('click', () => openReportModal(parseInt(firstCard.getAttribute('data-item-id'))));
 
     const reportForm = document.getElementById('reportForm') as HTMLFormElement;
@@ -130,7 +129,7 @@ export function initCards(tinderContainer: HTMLElement): void {
 
         let moveOutWidth = document.body.clientWidth * 1.5;
         firstCard.classList.add('removed');
-        
+
         setTimeout(() => {
             firstCard.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
             initCards(tinderContainer);
