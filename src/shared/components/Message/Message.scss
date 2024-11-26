@@ -26,6 +26,9 @@
       position: relative;
       min-width: 40px;
       box-sizing: content-box;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-word;
 
       &::after {
         content: '';
@@ -52,6 +55,9 @@
       display: flex;
       min-width: 40px;
       box-sizing: content-box;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-word;
 
       &::after {
         content: '';
