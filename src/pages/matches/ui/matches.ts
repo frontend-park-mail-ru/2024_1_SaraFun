@@ -47,7 +47,11 @@ export class MatchesPage {
 			const reportButton = modal.querySelector('.report') as HTMLButtonElement;
 			reportButton.addEventListener('click', () => {
 				openReportModal(user.user);
-				modal.remove();
+				const reportForm = document.getElementById('reportForm') as HTMLFormElement;
+				reportForm.addEventListener('submit', async (event) => {
+					event.preventDefault();
+					modal.remove();
+				});
 			});
 		}
 	
