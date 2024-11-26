@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import dotenv from 'dotenv/config'
+import dotenv from 'dotenv'
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
