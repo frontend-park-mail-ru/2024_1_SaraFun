@@ -49,6 +49,14 @@ export class FeedPage {
 
 				// Обработчик нажатия на кнопку "пожаловаться"
 				reportButton.addEventListener('click', () => openReportModal(user.user));
+
+				const reportForm = document.getElementById('reportForm') as HTMLFormElement;
+				reportForm.addEventListener('submit', async (event) => {
+					let moveOutWidth = document.body.clientWidth * 1.5;
+					card.classList.add('removed');
+					card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+					initCards(tinderContainer);
+				});
 			}
 		});
 
