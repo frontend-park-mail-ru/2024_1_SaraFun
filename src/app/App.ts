@@ -59,6 +59,7 @@ export default class App {
 	}
 
 	setCurRoute(route: string): void {
+		console.log('setCurRoute', route);
 		this.state.currentRoute = route;
 		this.navbar.setCurRoute(route);
 		this.navbar.componentDidUpdateActiveLink();
