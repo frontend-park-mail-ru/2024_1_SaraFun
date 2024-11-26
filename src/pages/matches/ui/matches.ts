@@ -45,6 +45,7 @@ export class MatchesPage {
 		
 		modal.classList.add('opening');
 		modal.addEventListener('animationend', () => {
+			modal.classList.add('open');
 			modal.classList.remove('opening');
 		}, { once: true });
 		

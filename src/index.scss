@@ -257,6 +257,10 @@ h3 {
         animation: fadeInModal 0.3s forwards;
     }
 
+    &.open {
+        opacity: 1;
+    }
+
     &.closing {
         animation: fadeOutModal 0.3s forwards;
     }
