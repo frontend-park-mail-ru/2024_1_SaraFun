@@ -74,7 +74,9 @@ export class ChatsPage {
     async render(): Promise<void> {
 		this.previews = await getChatPreviews();
 
-		this.previews = this.sortPreviewsByTime(this.previews);
+		if (this.previews) {
+			this.previews = this.sortPreviewsByTime(this.previews);
+		}
 
 		this.parent.root.innerHTML = template({ previews: this.previews });
 		if (this.previews && this.previews.length > 0) {
