@@ -51,14 +51,18 @@ export class MatchesPage {
 				reportForm.addEventListener('submit', async (event) => {
 					event.preventDefault();
 					setTimeout(() => {
-						modal.remove();
+						closeModal();
 					}, 500);
 				});
 			});
 		}
 	
 		const closeModal = () => {
-		  	modal.remove();
+			modal.classList.add('closing');
+			modal.addEventListener('animationend', () => {
+				modal.style.display = 'none';
+				modal.classList.remove('closing');
+			}, { once: true });
 		};
 	
 		modal.addEventListener('click', (event) => {
