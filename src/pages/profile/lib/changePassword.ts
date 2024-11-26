@@ -28,23 +28,20 @@ export class PasswordChanger {
             return;
         }
 
-        try {
-            const oldpasswordErrors = isValidPassword(oldPassword);
-            if (oldpasswordErrors.length > 0 ){
-                this.showError('old-password-error', 'Неправильный старый пароль!');
-                return;
-            }
-            
-            const isOldPasswordValid = await saveNewPassword(oldPassword, newPassword);
-            if (!isOldPasswordValid) {
-                this.showError('old-password-error', 'Старый пароль неверный.');
-                return;
-            }
-            notificationManager.addNotification('Пароль успешно изменен.', 'success'); 
-        } catch (error) {
-            console.error('Ошибка при смене пароля:', error);
-            notificationManager.addNotification('Произошла ошибка при смене пароля. Попробуйте еще раз.', 'fail');
+        
+        const oldpasswordErrors = isValidPassword(oldPassword);
+        if (oldpasswordErrors.length > 0 ){
+            this.showError('old-password-error', 'Неправильный старый пароль!');
+            return;
         }
+        
+        const isOldPasswordValid = await saveNewPassword(oldPassword, newPassword);
+        if (!isOldPasswordValid) {
+            this.showError('old-password-error', 'Старый пароль неверный.');
+            return;
+        }
+         
+        
 
     }
 
