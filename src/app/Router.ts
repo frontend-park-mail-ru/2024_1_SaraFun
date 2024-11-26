@@ -91,7 +91,11 @@ export class Router {
 			return;
 		}
 
-		path = this.trimPath(path);
+		if (path !== this.trimPath(path)) {
+			this.navigateTo(this.trimPath(path));
+			return;
+		}
+		
 		const route = this.publicRoutes.get(path) || this.privateRoutes.get(path);
 		const view = route.view;
     	if (view) {

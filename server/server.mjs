@@ -10,13 +10,13 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '../dist')));
 
-/*app.get(/^(?!.*\.(css|js|img|png|webp|webm|svg)).*$/, (req, res) => {
-	res.sendFile(path.join(__dirname, '../dist', 'index.html'));
-});*/
-
-app.get('*', (req, res) => {
+app.get(/^(?!.*\.(css|js|img|png|webp|webm|svg)).*$/, (req, res) => {
 	res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
+
+/*app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, '../dist', 'index.html'));
+});*/
 
 const port = 443;
 
