@@ -45,7 +45,10 @@ export class MatchesPage {
 		
 		if (user) {
 			const reportButton = modal.querySelector('.report') as HTMLButtonElement;
-			reportButton.addEventListener('click', () => openReportModal(user.user));
+			reportButton.addEventListener('click', () => {
+				openReportModal(user.user);
+				modal.remove();
+			});
 		}
 	
 		const closeModal = () => {
