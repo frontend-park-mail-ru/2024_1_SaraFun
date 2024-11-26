@@ -19,6 +19,7 @@ app.get(/^(?!.*\.(css|js|img|png|webp|webm|svg)).*$/, (req, res) => {
 /*app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });*/
+console.log(process.env);
 
 const port = process.env.PORT || 8005;
 
