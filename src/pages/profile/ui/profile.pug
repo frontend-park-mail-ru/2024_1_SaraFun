@@ -38,8 +38,8 @@ div.profile
           | Повторите новый пароль:
           input(type="password" class='input' id="RepeatNewPassword" required)
           p.error#repeat-password-error(style='display:none') Новый пароль и его повторение не совпадают.
-        button.new-password Сменить пароль
-        p.success-message#success-message(style='display:none; color:green') Пароль успешно изменен.
+        div.button-wrapper
+          button.new-password Сменить пароль
 
       div 
         h3 Фотографии
