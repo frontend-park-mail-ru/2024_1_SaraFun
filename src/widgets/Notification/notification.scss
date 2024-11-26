@@ -11,14 +11,14 @@
         transition: background-color 0.3s ease, transform 0.2s ease; 
         margin-bottom: 10px;
         border-radius: 10px;
-        width: 300px; // Задайте фиксированную ширину
-        overflow-wrap: break-word; // Позволяет переносить длинные слова
-        word-wrap: break-word; // Поддержка для старых браузеров
-
+        width: 300px; 
+        overflow-wrap: break-word; 
+        word-wrap: break-word;
         .notification {
             padding: 10px;
             color: white;
             border-radius: 10px;
+            text-align: center;
 
             &:hover {
                 background-color: rgba(0, 0, 0, 0.5);
