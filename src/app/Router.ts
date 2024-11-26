@@ -79,20 +79,18 @@ export class Router {
 			return;
 		}
 
-		const route = this.findRoute(path);
-		//const route = this.publicRoutes.get(path) || this.privateRoutes.get(path);
-
-		if (this.privateRoutes.has(route.path) && !this.isAuth) {
+		if (this.privateRoutes.has(path) && !this.isAuth) {
 			const firstPublicRoute = Array.from(this.publicRoutes.keys())[0];
     		this.navigateTo(firstPublicRoute);
 			return;
 		}
-		if (this.publicRoutes.has(route.path) && this.isAuth) {
+		if (this.publicRoutes.has(path) && this.isAuth) {
 			const firstPrivateRoute = Array.from(this.privateRoutes.keys())[0];
     		this.navigateTo(firstPrivateRoute);
 			return;
 		}
-		
+
+		const route = this.publicRoutes.get(path) || this.privateRoutes.get(path);
 		const view = route.view;
     	if (view) {
 			this.curRoute = path;
@@ -101,60 +99,13 @@ export class Router {
 				history.pushState({}, '', path);
 			}
 			if (route.useParams) {
-				const params = this.extractParams(route.path, path);
-            	new view(this, params);
+				//const params = this.extractParams(route.path, path);
+            	new view(this);
 			} else {
       			new view(this);
 			}
     	} 
 	}
-
-	private extractParams(routePath: string, currentPath: string): any {
-		const params: any = {};
-		const routeParts = routePath.split('/');
-		const currentParts = currentPath.split('/');
-		for (let i = 0; i < routeParts.length; i++) {
-			if (routeParts[i].startsWith(':')) {
-				const paramName = routeParts[i].substring(1);
-				params[paramName] = currentParts[i];
-			}
-		}
-		return params;
-	}
-
-	private findRoute(path: string): any {
-        for (const [routePath, route] of this.publicRoutes) {
-            if (this.matchRoute(routePath, path, route.useParams)) {
-                return route;
-            }
-        }
-        for (const [routePath, route] of this.privateRoutes) {
-            if (this.matchRoute(routePath, path, route.useParams)) {
-                return route;
-            }
-        }
-        return null;
-    }
-
-	private matchRoute(routePath: string, currentPath: string, useParams: boolean): boolean {
-        if (!useParams) {
-            return routePath === currentPath;
-        }
-        const routeParts = routePath.split('/');
-        const currentParts = currentPath.split('/');
-        if (routeParts.length !== currentParts.length) {
-            return false;
-        }
-        for (let i = 0; i < routeParts.length; i++) {
-            if (routeParts[i].startsWith(':')) {
-                continue;
-            }
-            if (routeParts[i] !== currentParts[i]) {
-                return false;
-            }
-        }
-        return true;
-    }
 
 	/**
 	 * Navigates to the previous page in the browser history.
