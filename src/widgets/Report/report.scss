@@ -75,7 +75,6 @@
 }
 
 button.report {
-    background-color: rgb(255, 152, 152);
     color: white; 
     padding: 10px 15px; 
     border: none; 
@@ -88,11 +87,15 @@ button.report {
     right: 10px; 
 
     &:hover {
-        background-color: #fe4848; 
+        background-color: #8d8787; 
     }
 
     &:focus {
         outline: none; 
-        box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.5); 
+        box-shadow: 0 0 0 3px rgba(72, 68, 68, 0.5); 
+    }
+    img {
+        width: 20px;
+        height: 20px;
     }
 }
