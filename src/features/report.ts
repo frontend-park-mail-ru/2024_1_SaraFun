@@ -1,6 +1,7 @@
 import { post } from '../shared/api/api';
 import reportModalTemplate from '../widgets/Report/report.pug'
 import { limitText } from './limitInput';
+import { notificationManager } from '../widgets/Notification/notification';
 
 export function openReportModal(userId: number): void {
   async function submitReport(userId: number, reason: string, comment: string): Promise<void> {
@@ -9,13 +10,12 @@ export function openReportModal(userId: number): void {
       const response = await post('/report', body);
 
       if (!response.ok) {
-        throw new Error('Ошибка при отправке жалобы');
+        notificationManager.addNotification('Ошибка при отправке жалобы. Попробуйте позже.', 'fail');
       }
-
-      showSuccessMessage('Жалоба успешно отправлена.');
+      notificationManager.addNotification('Жалоба успешно отправлена.', 'success');
     } catch (error) {
       console.error(error);
-      showError('Ошибка при отправке жалобы. Попробуйте позже.');
+      notificationManager.addNotification('Ошибка при отправке жалобы. Попробуйте позже.', 'fail');
     }
   }
   
@@ -50,19 +50,4 @@ export function openReportModal(userId: number): void {
       modal.remove(); 
     }, 2000);
   });
-
-  function showError(message: string): void {
-    const errorElement = document.getElementById('report-error') as HTMLElement;
-    errorElement.textContent = message;
-    errorElement.style.display = 'block';
-  }
-
-  function showSuccessMessage(message: string): void {
-    const successElement = document.getElementById('report-error');
-    if (successElement) {
-        successElement.textContent = message;
-        successElement.style.color = 'green'; 
-        successElement.style.display = 'block';
-    }
-  }
 }

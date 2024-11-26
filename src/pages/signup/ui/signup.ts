@@ -2,6 +2,7 @@ import { isValidPassword, isValidLogin } from '../../../shared/utils/validation'
 import { signupUser } from '../api/signupUser';
 import template from './signup.pug';
 import { Router } from '../../../app/Router';
+import { notificationManager } from '../../../widgets/Notification/notification';
 
 /**
  * Class representing the registration page.
@@ -82,15 +83,14 @@ export class RegistrationPage {
 					if (!isSignedUp) {
 						document.getElementById('login-password-error').style.display = 'block';            
 					} else { 
-						//this.parent.curLogin = login;
 						this.parent.setAuth(true);
 						this.parent.navigateTo('/feed');
 					}
-					//this.parent.curLogin = login;
 					this.parent.setAuth(true);
 					this.parent.navigateTo('/feed');
 				} catch (error) {
 					console.error(error);
+					notificationManager.addNotification('Ошибка при регистрации. Попробуйте ещё раз.', 'fail');
 				}
 			}
 		});

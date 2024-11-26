@@ -1,5 +1,6 @@
 import { isValidPassword } from "../../../shared/utils/validation";
 import { saveNewPassword } from "../api/changePassword";
+import { notificationManager } from "../../../widgets/Notification/notification";
 
 export class PasswordChanger {
     constructor(button: HTMLElement) {
@@ -39,10 +40,10 @@ export class PasswordChanger {
                 this.showError('old-password-error', 'Старый пароль неверный.');
                 return;
             }
-            this.showSuccessMessage('Пароль успешно изменен.'); 
+            notificationManager.addNotification('Пароль успешно изменен.', 'success'); 
         } catch (error) {
             console.error('Ошибка при смене пароля:', error);
-            this.showError('new-password-error', 'Произошла ошибка при смене пароля. Попробуйте еще раз.');
+            notificationManager.addNotification('Произошла ошибка при смене пароля. Попробуйте еще раз.', 'fail');
         }
 
     }

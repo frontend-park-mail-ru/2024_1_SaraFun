@@ -7,6 +7,7 @@ import { getProfile } from '../api/getProfile';
 import { Router } from '../../../app/Router';
 import { limitInput, limitText } from '../../../features/limitInput';
 import { PasswordChanger } from '../lib/changePassword';
+import { notificationManager } from '../../../widgets/Notification/notification';
 
 export class ProfilePage {
   private imagesDel: number[] = [];
@@ -253,16 +254,19 @@ export class ProfilePage {
 
     const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel, this.imagesURLs, this.imagesIndexes);
     if (updateSuccess) {
-      //console.log('Profile updated successfully'); //тут бы всплывающее окно
+      notificationManager.addNotification('Успешно сохранено!', 'success');
     } else {
-      // console.error('Failed to update profile'); //тут тоже
+      notificationManager.addNotification('Ошибка при сохранении, попробуйте позже!', 'fail');
     }
-
+    
+    
+    
     this.isEditing = false;
     this.imagesDel = [];
     this.imagesNew = [];
     this.loadProfile().then(() => {
       this.render();
+      
       const avatarSrc = this.imagesURLs?.[0] ?? './img/user.svg';
       const avatarImg = document.querySelector('.user-avatar__image');
       avatarImg.setAttribute('src', avatarSrc);
