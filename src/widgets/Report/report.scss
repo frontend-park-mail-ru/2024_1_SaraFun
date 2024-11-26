@@ -75,7 +75,7 @@
 }
 
 button.report {
-    background-color: var(--red1);
+    background-color: rgb(255, 152, 152);
     color: white; 
     padding: 10px 15px; 
     border: none; 
@@ -88,7 +88,7 @@ button.report {
     right: 10px; // Отступ справа
 
     &:hover {
-        background-color: #d32f2f; 
+        background-color: #fe4848; 
     }
 
     &:focus {
