@@ -1,0 +1,19 @@
+include ../../shared/components/ChatHeader/ChatHeader.pug
+include ../../shared/components/Message/Message.pug
+
++chatHeader(chatData)
+.chat__messages(data-id=chatData.profile.id)
+    if (chatData.messages && chatData.messages.length > 0)
+        - let lastDate = null;
+        each message in chatData.messages
+            - const messageDate = new Date(message.time);
+            - const formattedDate = messageDate.toLocaleDateString();
+            if (!lastDate || lastDate !== formattedDate)
+                .chat__messages__date 
+                    | #{formattedDate}
+                - lastDate = formattedDate;
+            +message(message)
+    else
+        .chat__no-messages
+            | Начните ваше общение
+include ../../shared/components/ChatInput/ChatInput.pug

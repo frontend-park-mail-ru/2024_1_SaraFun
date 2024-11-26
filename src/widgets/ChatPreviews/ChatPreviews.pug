@@ -1,0 +1,9 @@
+include ../../shared/components/ChatPreview/ChatPreview.pug
+
+.chats-list__content
+    if (previews && previews.length > 0) 
+        each preview in previews
+            +chat-preview(preview)
+    else
+        h2.chats-list__no-previews
+            | Не нашлось ни одного совпадения
