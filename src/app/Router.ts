@@ -125,12 +125,12 @@ export class Router {
 	private findRoute(path: string): any {
         for (const [routePath, route] of this.publicRoutes) {
             if (this.matchRoute(routePath, path, route.useParams)) {
-                return { ...route, path: routePath };
+                return route;
             }
         }
         for (const [routePath, route] of this.privateRoutes) {
             if (this.matchRoute(routePath, path, route.useParams)) {
-                return { ...route, path: routePath };
+                return route;
             }
         }
         return null;
