@@ -1,4 +1,5 @@
 import { putLikeOrDislike } from '../api/putLikeOrDislike';
+import { openReportModal } from '../../../features/report';
 
 export function initCards(tinderContainer: HTMLElement): void { 
     let newCards = document.querySelectorAll('.tinder__card:not(.removed)') as NodeListOf<HTMLElement>;
@@ -117,6 +118,19 @@ export function initCards(tinderContainer: HTMLElement): void {
     firstCard.addEventListener('touchmove', drag);
     firstCard.addEventListener('touchend', endDrag);
     firstCard.addEventListener('touchcancel', endDrag);
+
+    const reportButton = firstCard.querySelector('.report') as HTMLButtonElement;
+
+				// Обработчик нажатия на кнопку "пожаловаться"
+    reportButton.addEventListener('click', () => openReportModal(parseInt(firstCard.getAttribute('data-item-id'))));
+
+    const reportForm = document.getElementById('reportForm') as HTMLFormElement;
+    reportForm.addEventListener('submit', async (event) => {
+        let moveOutWidth = document.body.clientWidth * 1.5;
+        firstCard.classList.add('removed');
+        firstCard.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+        initCards(tinderContainer);
+    });
         
     tinderContainer.classList.add('loaded');
 }
