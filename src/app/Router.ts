@@ -93,7 +93,7 @@ export class Router {
 
 		const route = this.publicRoutes.get(path) || this.privateRoutes.get(path);
 
-		if (path !== this.trimPath(path) && !route.useParams) {
+		if (path !== this.trimPath(path)) {
 			this.navigateTo(this.trimPath(path));
 			return;
 		}
