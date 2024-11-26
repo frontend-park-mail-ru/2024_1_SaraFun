@@ -2,8 +2,6 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import dotenv from 'dotenv'
-dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -21,7 +19,7 @@ app.get(/^(?!.*\.(css|js|img|png|webp|webm|svg)).*$/, (req, res) => {
 });*/
 console.log(process.env);
 
-const port = process.env.PORT || 8005;
+const port = 8005;
 
 app.listen(port, () => {
 	console.info(`Сервер запущен на порту ${port}`);
