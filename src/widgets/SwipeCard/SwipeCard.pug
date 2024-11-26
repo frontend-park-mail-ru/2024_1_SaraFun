@@ -21,5 +21,6 @@ mixin card(user)
         h3 Цель знакомства: !{user.profile.target}
       if (user.profile.about != "-" && user.profile.about != null)
         h3 О себе: !{user.profile.about}
-      button.report Пожаловаться
+      button.report 
+        img(src="./img/ban-icon.svg" alt="Пожаловаться" class="report-icon")
   include ../Report/report.pug

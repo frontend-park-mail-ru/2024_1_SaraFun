@@ -20,6 +20,7 @@ import '@img/paperclip.svg';
 import '@img/search.svg';
 import '@img/HeartBroken.svg';
 import '@img/LogReg.svg';
+import '@img/ban-icon.svg';
 
 
 const root = document.querySelector('#root') as HTMLElement;
