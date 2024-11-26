@@ -50,7 +50,9 @@ export class MatchesPage {
 				const reportForm = document.getElementById('reportForm') as HTMLFormElement;
 				reportForm.addEventListener('submit', async (event) => {
 					event.preventDefault();
-					modal.remove();
+					setTimeout(() => {
+						modal.remove();
+					}, 500);
 				});
 			});
 		}
