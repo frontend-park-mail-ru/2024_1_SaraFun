@@ -18,7 +18,7 @@ app.get(/^(?!.*\.(css|js|img|png|webp|webm|svg)).*$/, (req, res) => {
 	res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });*/
 
-const port = 3001;
+const port = process.env.PORT || 443;
 
 app.listen(port, () => {
 	console.info(`Сервер запущен на порту ${port}`);
