@@ -5,17 +5,21 @@
     z-index: 100;
     display: flex;
     flex-direction: column;
-    
+
     .notification-container {
         position: relative; 
         transition: background-color 0.3s ease, transform 0.2s ease; 
         margin-bottom: 10px;
         border-radius: 10px;
+        width: 300px; // Задайте фиксированную ширину
+        overflow-wrap: break-word; // Позволяет переносить длинные слова
+        word-wrap: break-word; // Поддержка для старых браузеров
 
         .notification {
             padding: 10px;
             color: white;
             border-radius: 10px;
+
             &:hover {
                 background-color: rgba(0, 0, 0, 0.5);
                 cursor: pointer;
