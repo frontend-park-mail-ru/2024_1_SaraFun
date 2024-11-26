@@ -46,8 +46,6 @@ export function openReportModal(userId: number): void {
 
     await submitReport(userId, reason, comment);
     
-    setTimeout(() => {
-      modal.remove(); 
-    }, 2000);
+    modal.remove(); 
   });
 }
