@@ -91,6 +91,7 @@ export class Router {
 			return;
 		}
 
+		path = this.trimPath(path);
 		const route = this.publicRoutes.get(path) || this.privateRoutes.get(path);
 		const view = route.view;
     	if (view) {
@@ -106,6 +107,14 @@ export class Router {
       			new view(this);
 			}
     	} 
+	}
+
+	trimPath(path: string): string {
+		const segments = path.split('/');
+		if (segments.length > 2) {
+		  return `/${segments[1]}`;
+		}
+		return path;
 	}
 
 	/**
