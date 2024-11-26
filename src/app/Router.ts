@@ -4,8 +4,8 @@
 export class Router {
 	private static instance: Router;
 	private parent: any;
-	private publicRoutes: Map<string, { view: any; regex: RegExp; paramNames: string[] }>;
-	private privateRoutes: Map<string, { view: any; regex: RegExp; paramNames: string[] }>;
+	private publicRoutes: Map<string, { view: any, useParams: boolean, params: any }>;
+	private privateRoutes: Map<string, { view: any, useParams: boolean, params: any }>;
 	private isAuth: boolean;
 	private curRoute: string;
 	
@@ -49,26 +49,12 @@ export class Router {
 	 * @param {Function} view - The class of view associated with the route.
 	 * @returns {Router} - The instance of the Router for chaining method calls.
 	 */
-	register(path: string, view: any, isPublic: boolean): Router {
-		const paramNames: string[] = [];
-    	let regex: RegExp | null = null;
-
-		if (path.includes(':')) {
-			const regexPath = path.replace(/:([^\/]+)/g, (_, paramName) => {
-				paramNames.push(paramName);
-				return '([^\/]+)';
-			});
-			regex = new RegExp(`^${regexPath}$`);
-		}
-
-		const route = { view, regex, paramNames };
-
+	register(path: string, view: any, isPublic: boolean, useParams: boolean, params: any): Router {
 		if (isPublic) {
-			this.publicRoutes.set(path, route);
+			this.publicRoutes.set(path, { view, useParams, params });
 		} else {
-			this.privateRoutes.set(path, route);
+			this.privateRoutes.set(path, { view, useParams, params });
 		}
-
 		return this;
 	}
 
@@ -80,8 +66,6 @@ export class Router {
 			this.navigateTo(window.location.pathname, false);
 		});
 		this.navigateTo(window.location.pathname, false);
-		console.log(this.privateRoutes);
-		console.log(this.publicRoutes);
 	}
 
 	/**
@@ -91,28 +75,24 @@ export class Router {
 	 * @param {boolean} addToHistory - Whether to add the navigation to the browser history. Defaults to true.
 	 */
 	navigateTo(path: string, addToHistory: boolean = true): void {
-		if (path === this.curRoute) {
+		if (this.curRoute === path) {
 			return;
 		}
 
-		const route = this.findRoute(path, this.privateRoutes) || this.findRoute(path, this.publicRoutes);
+		const route = this.findRoute(path);
+		//const route = this.publicRoutes.get(path) || this.privateRoutes.get(path);
 
-		if (this.privateRoutes.has(path) && !this.isAuth) {
+		if (this.privateRoutes.has(route.path) && !this.isAuth) {
 			const firstPublicRoute = Array.from(this.publicRoutes.keys())[0];
     		this.navigateTo(firstPublicRoute);
 			return;
 		}
-		if (this.publicRoutes.has(path) && this.isAuth) {
+		if (this.publicRoutes.has(route.path) && this.isAuth) {
 			const firstPrivateRoute = Array.from(this.privateRoutes.keys())[0];
     		this.navigateTo(firstPrivateRoute);
 			return;
 		}
-
-		if (!route.regex && path !== route.path) {
-			this.navigateTo('/login');
-			return;
-		}
-
+		
 		const view = route.view;
     	if (view) {
 			this.curRoute = path;
@@ -120,31 +100,61 @@ export class Router {
 			if (addToHistory) {
 				history.pushState({}, '', path);
 			}
-			if (route.params) {
-      			new view(this, route.params);
+			if (route.useParams) {
+				const params = this.extractParams(route.path, path);
+            	new view(this, params);
 			} else {
-				new view(this);
+      			new view(this);
 			}
     	} 
 	}
 
-	findRoute(path: string, routes: Map<string, any>): any {
-		for (const [routePath, route] of routes) {
-			if (route.regex) {
-				const match = path.match(route.regex);
-				if (match) {
-					const params = route.paramNames.reduce((acc: { [key: string]: string }, paramName: string, index: number) => {
-						acc[paramName] = match[index + 1];
-						return acc;
-					}, {});
-					return { ...route, path: routePath, params };
-				}
-			} else if (routePath === path) {
-				return { ...route, path: routePath, params: {} };
+	private extractParams(routePath: string, currentPath: string): any {
+		const params: any = {};
+		const routeParts = routePath.split('/');
+		const currentParts = currentPath.split('/');
+		for (let i = 0; i < routeParts.length; i++) {
+			if (routeParts[i].startsWith(':')) {
+				const paramName = routeParts[i].substring(1);
+				params[paramName] = currentParts[i];
 			}
 		}
-		return null;
+		return params;
 	}
+
+	private findRoute(path: string): any {
+        for (const [routePath, route] of this.publicRoutes) {
+            if (this.matchRoute(routePath, path, route.useParams)) {
+                return { ...route, path: routePath };
+            }
+        }
+        for (const [routePath, route] of this.privateRoutes) {
+            if (this.matchRoute(routePath, path, route.useParams)) {
+                return { ...route, path: routePath };
+            }
+        }
+        return null;
+    }
+
+	private matchRoute(routePath: string, currentPath: string, useParams: boolean): boolean {
+        if (!useParams) {
+            return routePath === currentPath;
+        }
+        const routeParts = routePath.split('/');
+        const currentParts = currentPath.split('/');
+        if (routeParts.length !== currentParts.length) {
+            return false;
+        }
+        for (let i = 0; i < routeParts.length; i++) {
+            if (routeParts[i].startsWith(':')) {
+                continue;
+            }
+            if (routeParts[i] !== currentParts[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 	/**
 	 * Navigates to the previous page in the browser history.
