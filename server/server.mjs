@@ -14,12 +14,10 @@ app.get(/^(?!.*\.(css|js|img|png|webp|webm|svg)).*$/, (req, res) => {
 	res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 
-/*app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, '../dist', 'index.html'));
-});*/
 console.log(process.env);
 
-const port = 8005;
+const port = process.env.PORT || 8002;
+
 
 app.listen(port, () => {
 	console.info(`Сервер запущен на порту ${port}`);

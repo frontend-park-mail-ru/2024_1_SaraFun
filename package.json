@@ -11,7 +11,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint . --fix",
-    "start": "PORT=8006 npm run build && PORT=$PORT node server/server.mjs",
+    "start": "cross-env PORT=8005 npm run build && node server/server.mjs",
+    "start-custom": "cross-env PORT=$PORT npm run build && node server/server.mjs",
     "dev": "webpack && webpack serve --mode development",
     "build": "webpack --mode production"
   },
@@ -32,6 +33,7 @@
     "@eslint/js": "^9.11.1",
     "@types/pug": "^2.0.10",
     "babel-loader": "^9.2.1",
+    "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "eslint": "^8.57.1",
     "eslint-plugin-import": "^2.31.0",
