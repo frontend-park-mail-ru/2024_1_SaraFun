@@ -7,7 +7,13 @@ export async function saveNewPassword(oldPassword: string, newPassword: string) 
     const response = await post('/changepassword', body);
 
     if (!response.ok) {
-      return false;
+      if (response.status === 412) {
+        notificationManager.addNotification('Старый пароль неверный. Пожалуйста, попробуйте снова.', 'fail');
+        return false;
+      } else {
+        notificationManager.addNotification('Произошла ошибка при смене пароля. Попробуйте еще раз.', 'fail');
+        return true;
+      }
     }
     notificationManager.addNotification('Пароль успешно изменен.', 'success');
 
