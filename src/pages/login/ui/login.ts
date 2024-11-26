@@ -2,6 +2,7 @@ import { Router } from '../../../app/Router';
 import template from './login.pug';
 import { loginUser } from '../api/loginUser';
 import { isValidLogin, isValidPassword } from '../../../shared/utils/validation';
+import { notificationManager } from '../../../widgets/Notification/notification';
 
 /**
  * Class representing the login page.
@@ -88,6 +89,7 @@ export class LoginPage {
 				}
 			} else {
 				console.error('Error in authorization');
+				notificationManager.addNotification('Ошибка при авторизации. Попробуйте ещё раз.', 'fail');
 			}
 		});
 	}

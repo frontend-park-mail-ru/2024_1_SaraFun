@@ -1,5 +1,5 @@
 import { get } from '../../../shared/api/api';
-import { UserProfile } from './profile';
+import { UserProfile } from '../lib/profile';
 
 /**
  * Fetches the profile of a user by ID.

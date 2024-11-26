@@ -23,6 +23,25 @@ div.profile
         label
           | О себе:
           textarea(id="About" rows="1" maxlength="600")= About
+
+      // Новый раздел для смены пароля
+      .password-change-section
+        h2 Смена пароля
+        label
+          | Старый пароль:
+          input(type="password" class='input' id="OldPassword" required)
+          p.error#old-password-error(style='display:none') Неправильный старый пароль.
+        label
+          | Новый пароль:
+          input(type="password" class='input' id="NewPassword" required)
+          p.error#new-password-error(style='display:none') Новый пароль не удовлетворяет условиям.
+        label
+          | Повторите новый пароль:
+          input(type="password" class='input' id="RepeatNewPassword" required)
+          p.error#repeat-password-error(style='display:none') Новый пароль и его повторение не совпадают.
+        div.button-wrapper
+          button.new-password Сменить пароль
+
       div 
         h3 Фотографии
         .image-section-profile

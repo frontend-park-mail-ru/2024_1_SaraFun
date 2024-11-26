@@ -1,18 +1,21 @@
 import { post } from '../shared/api/api';
 import reportModalTemplate from '../widgets/Report/report.pug'
+import { limitText } from './limitInput';
+import { notificationManager } from '../widgets/Notification/notification';
 
 export function openReportModal(userId: number): void {
   async function submitReport(userId: number, reason: string, comment: string): Promise<void> {
     try {
-      const body = { 'receiver': userId, 'body': comment}; //no "reason" yet
+      const body = { 'receiver': userId, 'reason': reason, 'body': comment }; 
       const response = await post('/report', body);
 
       if (!response.ok) {
-        throw new Error('Ошибка при отправке жалобы');
+        notificationManager.addNotification('Ошибка при отправке жалобы. Попробуйте позже.', 'fail');
       }
+      notificationManager.addNotification('Жалоба успешно отправлена.', 'success');
     } catch (error) {
       console.error(error);
-      //тут бы писать, что надо попробовать позже
+      notificationManager.addNotification('Ошибка при отправке жалобы. Попробуйте позже.', 'fail');
     }
   }
   
@@ -28,6 +31,10 @@ export function openReportModal(userId: number): void {
     modal.remove();
   });
 
+  const commentTextarea = document.getElementById('comment') as HTMLTextAreaElement;
+  
+  limitText(commentTextarea, 5);
+
   const reportForm = document.getElementById('reportForm') as HTMLFormElement;
   
   
@@ -39,8 +46,6 @@ export function openReportModal(userId: number): void {
 
     await submitReport(userId, reason, comment);
     
-    modal.remove();
+    modal.remove(); 
   });
 }
-
-

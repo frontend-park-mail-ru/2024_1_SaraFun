@@ -217,6 +217,14 @@
         cursor: pointer; 
         font-size: 16px; 
         margin-bottom: 5px;
+
+        &.new-password {
+            background-color: var(--secondary); 
+            color: white;
+            &:hover {
+              background-color: var(--success); 
+            }
+        }
       
         &.settings-button {
           background-color: rgb(204, 204, 204); 
@@ -235,13 +243,15 @@
             background-color: var(--success); 
           }
         }
+
         &.cancel-settings {
             background-color: rgb(180, 179, 179); 
             color: rgb(89, 88, 88);
 
             &:hover {
-                background-color: rgb(249, 113, 113); 
-              }
+                background-color: var(--red1); 
+                color: white;
+            }
         }
       }
 }

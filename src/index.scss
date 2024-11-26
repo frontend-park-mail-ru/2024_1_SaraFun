@@ -14,6 +14,7 @@
 @use './pages/matches/ui/messageForm.scss' as *;
 @use './shared/components/Carousel/Carousel.scss' as *;
 @use './shared/components/Avatar/avatar' as *;
+@use './widgets/Notification/notification.scss' as *;
 @use './pages/chats/ui/chats.scss' as *;
 @use './widgets/ChatsList/ChatsList.scss' as *;
 @use './widgets/Chat/Chat.scss' as *;
@@ -23,6 +24,7 @@
 @use './shared/components/ChatPreview/ChatPreview.scss' as *;
 @use './shared/components/ChatListHeader/ChatListHeader.scss' as *;
 @use './shared/components/Search/Search.scss' as *;
+
 
 
 @font-face {

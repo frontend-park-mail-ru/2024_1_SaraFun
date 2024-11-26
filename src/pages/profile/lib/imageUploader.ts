@@ -1,4 +1,5 @@
-import { ImgData } from '../pages/profile/api/profile';
+import { ImgData } from './profile';
+import { notificationManager } from '../../../widgets/Notification/notification';
 
 export function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imagesIndexes: number[], getInfoFromPage: () => void, render: () => void) {
     const input = document.createElement('input');
@@ -18,7 +19,7 @@ export function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imagesInde
                 const file = files[i];
 
                 if (!validImageTypes.includes(file.type)) {
-                    alert(`Файл ${file.name} имеет недопустимый формат. Пожалуйста, загрузите изображение в формате JPEG, PNG или SVG.`);
+                    notificationManager.addNotification(`Файл ${file.name} имеет недопустимый формат. Пожалуйста, загрузите изображение в формате JPEG, PNG или SVG.`, 'fail');
                     continue; 
                 }
 
@@ -29,8 +30,8 @@ export function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imagesInde
                         if (typeof result === 'string') { 
                             const index = imagesURLs.length; 
                             imagesNew.push({ file, index }); 
-                            imagesIndexes.push(-1);
                             imagesURLs.push(result); 
+                            imagesIndexes.push(-1);
                             resolve(); 
                         }
                     };

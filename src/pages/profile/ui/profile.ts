@@ -1,10 +1,13 @@
 import template from './profile.pug';
 import { updProfile } from '../api/updProfile';
 import './profile.scss';
-import { uploadImg } from '../../../features/imageUploader';
-import { UserProfile, ImgData } from '../api/profile';;
+import { uploadImg } from '../lib/imageUploader';
+import { UserProfile, ImgData } from '../lib/profile';;
 import { getProfile } from '../api/getProfile';
 import { Router } from '../../../app/Router';
+import { limitInput, limitText } from '../../../features/limitInput';
+import { PasswordChanger } from '../lib/changePassword';
+import { notificationManager } from '../../../widgets/Notification/notification';
 
 export class ProfilePage {
   private imagesDel: number[] = [];
@@ -44,33 +47,6 @@ export class ProfilePage {
       this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
     }    
   }
-  
-
-  private limitText(textarea: HTMLTextAreaElement, limit: number): void {
-    const limitLines = (): void => {
-      const lines = textarea.value.split("\n");
-      if (lines.length > limit) {
-        textarea.value = lines.slice(0, limit).join("\n");
-      };
-    };
-
-    limitLines();
-
-    let timeout: NodeJS.Timeout;
-    textarea.addEventListener("input", () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(limitLines, 1);
-    });
-  }
-
-  private limitInput(input: HTMLInputElement): void {
-    const regex = /^[A-Za-zА-Яа-яЁё-]*$/;
-    input.addEventListener("input", () => {
-      if (!regex.test(input.value)) {
-        input.value = input.value.split('').filter(char => regex.test(char)).join('');
-      }
-    });
-  }
 
   public render(): void {
     this.parent.root.innerHTML = template({
@@ -104,6 +80,13 @@ export class ProfilePage {
       saveButton.addEventListener('click', () => this.saveSettings());
     }
 
+    const newPasswordButton = document.querySelector('.new-password') as HTMLElement;
+
+    // Инициализация класса PasswordChanger
+    if (newPasswordButton) {
+      const passwordChanger = new PasswordChanger(newPasswordButton);
+    }
+
     
 
 
@@ -119,7 +102,6 @@ export class ProfilePage {
       updateOutput();
       rangeInput.addEventListener('input', updateOutput);
 
-      //перетаскивание фотографий
       const imageContainers = document.querySelectorAll('.image-container') as NodeListOf<HTMLElement>;
 
       if (imageContainers) {
@@ -185,17 +167,17 @@ export class ProfilePage {
 
     if (this.isEditing) {
       const textarea = document.getElementById('About') as HTMLTextAreaElement; 
-      this.limitText(textarea, 10); 
+      limitText(textarea, 10); 
 
       const firstNameInput = document.getElementById('FirstName') as HTMLInputElement; 
       if (firstNameInput) {
-        this.limitInput(firstNameInput); 
+        limitInput(firstNameInput); 
       }
       
 
       const lastNameInput = document.getElementById('LastName') as HTMLInputElement; 
       if (lastNameInput) {
-        this.limitInput(lastNameInput); 
+        limitInput(lastNameInput); 
       }
 
       textarea.addEventListener('input', () => {
@@ -237,6 +219,7 @@ export class ProfilePage {
       }
       return img;
     });
+    
 
 
     this.imagesIndexes.splice(index, 1);
@@ -244,7 +227,7 @@ export class ProfilePage {
 
     this.getInfoFromPage();
     this.render();
-}
+  }
 
 
   private toggleEditMode(): void {
@@ -271,16 +254,19 @@ export class ProfilePage {
 
     const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel, this.imagesURLs, this.imagesIndexes);
     if (updateSuccess) {
-      //console.log('Profile updated successfully'); //тут бы всплывающее окно
+      notificationManager.addNotification('Успешно сохранено!', 'success');
     } else {
-      // console.error('Failed to update profile'); //тут тоже
+      notificationManager.addNotification('Ошибка при сохранении, попробуйте позже!', 'fail');
     }
-
+    
+    
+    
     this.isEditing = false;
     this.imagesDel = [];
     this.imagesNew = [];
     this.loadProfile().then(() => {
       this.render();
+      
       const avatarSrc = this.imagesURLs?.[0] ?? './img/user.svg';
       const avatarImg = document.querySelector('.user-avatar__image');
       avatarImg.setAttribute('src', avatarSrc);
