@@ -27,7 +27,14 @@ module.exports = {
 	   
 		hot: true,
 		compress: true,
-		historyApiFallback: true,
+		//historyApiFallback: true,
+		historyApiFallback: {
+			rewrites: [
+				{ from: /^\/$/, to: '/index.html' },
+      			{ from: /^\/login/, to: '/index.html' },
+			  	{ from: /./, to: '/index.html' }
+			]
+		},
 	},
 	module: {
 		rules: [

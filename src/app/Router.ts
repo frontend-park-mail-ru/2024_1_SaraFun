@@ -75,6 +75,7 @@ export class Router {
 	 * @param {boolean} addToHistory - Whether to add the navigation to the browser history. Defaults to true.
 	 */
 	navigateTo(path: string, addToHistory: boolean = true): void {
+		console.log(path);
 		if (this.curRoute === path) {
 			return;
 		}
