@@ -90,10 +90,10 @@ export class Router {
     		this.navigateTo(firstPrivateRoute);
 			return;
 		}
+		const trimmedPath = this.trimPath(path);
+		const route = this.publicRoutes.get(trimmedPath) || this.privateRoutes.get(trimmedPath);
 
-		const route = this.publicRoutes.get(path) || this.privateRoutes.get(path);
-
-		if (path !== this.trimPath(path)) {
+		if (path !== trimmedPath && !(route.useParams)) {
 			this.navigateTo(this.trimPath(path));
 			return;
 		}
