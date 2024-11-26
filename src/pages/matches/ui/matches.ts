@@ -43,6 +43,11 @@ export class MatchesPage {
 		addCarousel(modal.querySelectorAll('.tinder__card'), [user]);
 		this.parent.root.appendChild(modal);
 		
+		modal.classList.add('opening');
+		modal.addEventListener('animationend', () => {
+			modal.classList.remove('opening');
+		}, { once: true });
+		
 		if (user) {
 			const reportButton = modal.querySelector('.report') as HTMLButtonElement;
 			reportButton.addEventListener('click', () => {

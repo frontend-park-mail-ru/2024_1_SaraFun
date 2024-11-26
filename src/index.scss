@@ -231,6 +231,15 @@ h3 {
     background-color: var(--success);
 }
 
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 @keyframes fadeOutModal {
     from {
       opacity: 1;
@@ -241,10 +250,14 @@ h3 {
 }
 
 .profile-modal {
-    opacity: 1;
-    transition: opacity 0.5s ease-out; 
+    opacity: 0;
+    transition: opacity 0.3s ease-out; 
+
+    &.opening {
+        animation: fadeInModal 0.3s forwards;
+    }
 
     &.closing {
-        animation: fadeOutModal 0.5s forwards;
+        animation: fadeOutModal 0.3s forwards;
     }
 }
