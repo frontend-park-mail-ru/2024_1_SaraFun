@@ -14,6 +14,10 @@ app.get(/^(?!.*\.(css|js|img|png|webp|webm|svg)).*$/, (req, res) => {
 	res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 
+/*app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, '../dist', 'index.html'));
+});*/
+
 const port = 443;
 
 app.listen(port, () => {

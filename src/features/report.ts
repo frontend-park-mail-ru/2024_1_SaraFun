@@ -6,7 +6,11 @@ import { notificationManager } from '../widgets/Notification/notification';
 export function openReportModal(userId: number): void {
   async function submitReport(userId: number, reason: string, comment: string): Promise<void> {
     try {
-      const body = { 'receiver': userId, 'reason': reason, 'body': comment }; 
+      const body = { 
+        'receiver': userId, 
+        'reason': reason,
+        'body': comment
+      };
       const response = await post('/report', body);
 
       if (!response.ok) {

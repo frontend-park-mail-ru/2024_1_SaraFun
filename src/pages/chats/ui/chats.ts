@@ -18,13 +18,15 @@ export class ChatsPage {
 	private debounceTimeout: number | undefined;
 	private socket: WebSocket | undefined;
 	private pingInterval: number | undefined;
+	private chatId: string | undefined;
 
 	/**
      * Creates an instance of FeedPage.
      * @param {Object} parent - The parent object containing the root element.
      */
-	constructor(parent: Router) {
+	constructor(parent: Router, chatId?: string) {
 		this.parent = parent;
+		this.chatId = chatId;
 		this.parent.root.innerHTML = '';
 		this.initWebSocket();
 		this.render();

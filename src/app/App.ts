@@ -35,8 +35,8 @@ export default class App {
 	async init(): Promise<void> {
 		try {
 			this.state.isAuthenticated = await checkAuth();
-			ROUTES.forEach(({ path, view, isPublic })=> {
-				this.router.register(path, view, isPublic);
+			ROUTES.forEach(({ path, view, isPublic, useParams, params })=> {
+				this.router.register(path, view, isPublic, useParams, params);
 			});
 
 			this.router.setAuth(this.state.isAuthenticated);
