@@ -8,6 +8,7 @@ import { openReportModal } from '../../../features/report';
 
 export class MatchesPage {
 	private parent: Router;
+	private matches: NodeListOf<HTMLElement>;
 
 	constructor(parent: Router) {
 		this.parent = parent;
@@ -18,25 +19,25 @@ export class MatchesPage {
 	async render(): Promise<void> {
 		let users: User[] = await getMatches();
 		this.parent.root.innerHTML = template({ users });
-		let allCards = document.querySelectorAll('.match-card') as NodeListOf<HTMLElement>;
-		if (allCards) {
-			addCarousel(allCards, users);
-			this.addCardClickListeners(allCards, users);
+		this.matches = document.querySelectorAll('.match-card') as NodeListOf<HTMLElement>;
+		if (this.matches) {
+			addCarousel(this.matches, users);
+			this.addCardClickListeners(users);
 		}
 	}
 
-	addCardClickListeners(cards: NodeListOf<HTMLElement>, users: User[]): void {
-		cards.forEach((card, index) => {
+	addCardClickListeners(users: User[]): void {
+		this.matches.forEach((card, index) => {
 		  	card.addEventListener('click', (event) => {
 				if (event.target instanceof HTMLElement && event.target.tagName === 'BUTTON') {
 					return;
 				}
-				this.openProfileModal(users[index]);
+				this.openProfileModal(users[index], card);
 		  	});
 		});
 	}
 
-	openProfileModal(user: User): void {
+	openProfileModal(user: User, card: HTMLElement): void {
 		const modal = document.createElement('div');
 		modal.classList.add('profile-modal');
 		modal.innerHTML = templateCard({user});
@@ -59,7 +60,9 @@ export class MatchesPage {
 					setTimeout(() => {
 						closeModal();
 					}, 500);
+                	card.remove();
 				});
+				
 			});
 		}
 	
