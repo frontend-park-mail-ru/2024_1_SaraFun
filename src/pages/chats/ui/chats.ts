@@ -120,6 +120,7 @@ export class ChatsPage {
 					const searchTerm = searchInput.value;
 					if (searchTerm !== "") {
 						this.performSearch(searchTerm);
+					} else {
 						this.updateChatList(this.previews);
 					}
 				}, 400);
