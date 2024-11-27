@@ -46,16 +46,13 @@ export default class Navbar {
 	}
 
 	componentDidUpdateActiveLink(): void {
-		console.log('update active link');
 		const links = document.querySelectorAll('li a');
 		links.forEach(link => {
 			link.classList.remove('navbar__link--active');
 		});
 		const activeLink = document.querySelector(`li a[href="${this.curRoute}"]`);
-		console.log(activeLink);
 		if (activeLink) {
 			activeLink.classList.add('navbar__link--active');
-			console.log(activeLink);
 		}
 	}
 
