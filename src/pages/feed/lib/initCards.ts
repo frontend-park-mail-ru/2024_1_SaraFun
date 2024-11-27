@@ -8,7 +8,7 @@ export function initCards(tinderContainer: HTMLElement): void {
     if (newCards.length === 0) {
         setTimeout(() => {
             tinderContainer.style.display = 'none';
-            messageForm.style.display = 'block';
+            messageForm.style.display = 'flex';
         }, 500);
         return;
     } else {

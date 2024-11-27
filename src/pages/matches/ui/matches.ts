@@ -23,7 +23,9 @@ export class MatchesPage {
 		const messageForm = document.querySelector('.form.message-form.message-form--matches') as HTMLElement;
 		if (this.matches.length === 0) {
 			const messageForm = document.querySelector('.form.message-form.message-form--matches') as HTMLElement;
-			messageForm.style.display = 'block';
+			const matchesContainer = document.querySelector('.matches') as HTMLElement;
+			matchesContainer.style.display = 'none';
+			messageForm.style.display = 'flex';
 		} else {
 			messageForm.style.display = 'none';
 		}
@@ -73,7 +75,9 @@ export class MatchesPage {
 						this.matches = document.querySelectorAll('.match-card') as NodeListOf<HTMLElement>;
 						if (!this.matches || this.matches.length === 0) {
 							const messageForm = document.querySelector('.form.message-form.message-form--matches') as HTMLElement;
-							messageForm.style.display = 'block';
+							const matchesContainer = document.querySelector('.matches') as HTMLElement;
+							matchesContainer.style.display = 'none';
+							messageForm.style.display = 'flex';
 						}
 					}, 500);
 				});
