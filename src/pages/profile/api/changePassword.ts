@@ -5,7 +5,7 @@ export async function saveNewPassword(oldPassword: string, newPassword: string) 
   try {
     const body = {'current_password': oldPassword, 'new_password': newPassword };
     const response = await post('/changepassword', body);
-
+    
     if (!response.ok) {
       return false
     }
@@ -14,7 +14,7 @@ export async function saveNewPassword(oldPassword: string, newPassword: string) 
     return true; 
   } catch (error) {
     console.error('Ошибка при смене пароля:', error);
-    notificationManager.addNotification('Произошла ошибка при смене пароля. Попробуйте еще раз.', 'fail');
+    // notificationManager.addNotification('Произошла ошибка при смене пароля. Попробуйте еще раз.', 'fail');
     return false;
   }
 }
