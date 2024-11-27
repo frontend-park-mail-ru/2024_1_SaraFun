@@ -27,6 +27,7 @@ export default class Navbar {
 	componentDidMount(): void {
 		this.addEventListeners();
 		this.getUserAvatar();
+		this.componentDidUpdateActiveLink();
 	}
 
 	setAuth(isAuth: boolean): void {
