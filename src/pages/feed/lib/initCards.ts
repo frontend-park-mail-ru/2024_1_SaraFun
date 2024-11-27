@@ -4,7 +4,7 @@ import { openReportModal } from '../../../features/report';
 export function initCards(tinderContainer: HTMLElement): void { 
     let newCards = document.querySelectorAll('.tinder__card:not(.removed)') as NodeListOf<HTMLElement>;
 
-    const messageForm = document.querySelector('.form.message-form') as HTMLElement;
+    const messageForm = document.querySelector('.form.message-form.message-form--feed') as HTMLElement;
     if (newCards.length === 0) {
         setTimeout(() => {
             tinderContainer.style.display = 'none';

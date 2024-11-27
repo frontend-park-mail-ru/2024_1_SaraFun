@@ -20,14 +20,14 @@ export class MatchesPage {
 		let users: User[] = await getMatches();
 		this.parent.root.innerHTML = template({ users });
 		this.matches = document.querySelectorAll('.match-card') as NodeListOf<HTMLElement>;
-		const messageForm = document.querySelector('.form.message-form') as HTMLElement;
+		const messageForm = document.querySelector('.form.message-form.message-form--matches') as HTMLElement;
 		if (this.matches.length === 0) {
-			const messageForm = document.querySelector('.form.message-form') as HTMLElement;
+			const messageForm = document.querySelector('.form.message-form.message-form--matches') as HTMLElement;
 			messageForm.style.display = 'block';
 		} else {
 			messageForm.style.display = 'none';
 		}
-		
+
 		if (this.matches) {
 			addCarousel(this.matches, users);
 			this.addCardClickListeners(users);
@@ -72,7 +72,7 @@ export class MatchesPage {
 						card.remove();
 						this.matches = document.querySelectorAll('.match-card') as NodeListOf<HTMLElement>;
 						if (this.matches.length === 0) {
-							const messageForm = document.querySelector('.form.message-form') as HTMLElement;
+							const messageForm = document.querySelector('.form.message-form.message-form--matches') as HTMLElement;
 							messageForm.style.display = 'block';
 						}
 					}, 500);
