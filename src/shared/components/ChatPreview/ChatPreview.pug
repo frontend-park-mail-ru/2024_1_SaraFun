@@ -22,5 +22,7 @@ mixin chat-preview(preview)
             .chats-list__chat__info__last-message
                 if (preview.last_message && preview.last_message !== '')
                     | #{preview.last_message}
+                else if (preview.message && preview.message !== '')
+                    | #{preview.message}
                 else
                     .div(style='color: var(--secondary);') Начните ваше общение
