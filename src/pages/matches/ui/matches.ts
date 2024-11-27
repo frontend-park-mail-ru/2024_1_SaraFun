@@ -60,7 +60,9 @@ export class MatchesPage {
 					setTimeout(() => {
 						closeModal();
 					}, 500);
-                	card.remove();
+					setTimeout(() => {
+						card.remove();
+					}, 500);
 				});
 				
 			});
