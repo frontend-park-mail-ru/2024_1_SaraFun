@@ -36,18 +36,18 @@ export class ChatsPage {
 		this.socket = createWebSocket();
 
 		this.socket.addEventListener('open', () => {
-			console.log('WebSocket connection established');
+
 			this.startPing();
 		});
 	
 		this.socket.addEventListener('message', (event) => {
 			const message = JSON.parse(event.data);
-			console.log('New message received:', message);
+
 			this.handleNewMessage(message, new Date().toISOString(), false);
 		});
 	
 		this.socket.addEventListener('close', () => {
-			console.log('WebSocket connection closed');
+
 			this.stopPing();
 		});
 	
@@ -61,7 +61,7 @@ export class ChatsPage {
         this.pingInterval = window.setInterval(() => {
             if (this.socket && this.socket.readyState === WebSocket.OPEN) {
                 this.socket.send(JSON.stringify({ type: 'ping' }));
-                console.log('Ping sent');
+
             }
         }, 29000);
     }
@@ -191,10 +191,10 @@ export class ChatsPage {
 
 	handleNewMessage(message: { author_id: number, message: string }, time: string, self: boolean): void {
 		const chatPreview = this.previews.find(preview => preview.id === message.author_id);
-		console.log('chatPreview:', chatPreview);
+
         if (chatPreview) {
             chatPreview.last_message = message.message;
-			console.log('last_message:', chatPreview.last_message);
+
             chatPreview.time = time;
 			chatPreview.self = self;
             this.updateChatList(this.previews);
