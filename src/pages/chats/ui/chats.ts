@@ -118,7 +118,9 @@ export class ChatsPage {
 				clearTimeout(this.debounceTimeout);
 				this.debounceTimeout = window.setTimeout(() => {
 					const searchTerm = searchInput.value;
-					this.performSearch(searchTerm);
+					if (searchTerm !== "") {
+						this.performSearch(searchTerm);
+					}
 				}, 400);
 			});
 		}
@@ -138,9 +140,12 @@ export class ChatsPage {
 	updateChatList(filteredPreviews: ChatPreview[]): void {
 		const chatListContainer = document.querySelector('.chats-list__content');
 		if (chatListContainer) {
-			filteredPreviews = this.sortPreviewsByTime(filteredPreviews);
-		  	chatListContainer.innerHTML = templateChatsPreviews({ previews: filteredPreviews });
-		  	this.addChatSelectionListeners();
+			if (filteredPreviews) {
+				filteredPreviews = this.sortPreviewsByTime(filteredPreviews);
+			}
+			chatListContainer.innerHTML = templateChatsPreviews({ previews: filteredPreviews });
+			this.addChatSelectionListeners();
+			
 		}
 	}
 
