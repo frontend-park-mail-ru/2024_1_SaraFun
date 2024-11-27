@@ -54,6 +54,7 @@ export default class Navbar {
 		console.log(activeLink);
 		if (activeLink) {
 			activeLink.classList.add('navbar__link--active');
+			console.log(activeLink);
 		}
 	}
 
