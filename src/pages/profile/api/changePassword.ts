@@ -13,7 +13,6 @@ export async function saveNewPassword(oldPassword: string, newPassword: string) 
     notificationManager.addNotification('Пароль успешно изменен.', 'success');
     return true; 
   } catch (error) {
-    console.log(error === '412 Precodition Failed');
     console.error('Ошибка при смене пароля:', error);
     // notificationManager.addNotification('Произошла ошибка при смене пароля. Попробуйте еще раз.', 'fail');
     return false;
