@@ -71,7 +71,7 @@ export class MatchesPage {
 					setTimeout(() => {
 						card.remove();
 						this.matches = document.querySelectorAll('.match-card') as NodeListOf<HTMLElement>;
-						if (this.matches.length === 0) {
+						if (!this.matches || this.matches.length === 0) {
 							const messageForm = document.querySelector('.form.message-form.message-form--matches') as HTMLElement;
 							messageForm.style.display = 'block';
 						}
