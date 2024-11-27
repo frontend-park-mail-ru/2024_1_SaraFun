@@ -201,6 +201,10 @@ export class ChatsPage {
 
 			const chatMessagesContainer = document.querySelector('.chat__messages');
 			if (chatMessagesContainer) {
+				const noMessagesElement = chatMessagesContainer.querySelector('.chat__no-messages');
+				if (noMessagesElement) {
+					noMessagesElement.remove(); 
+				}
 				const chatId = chatMessagesContainer.getAttribute('data-id');
 				if (chatId && parseInt(chatId) === message.author_id) {
 					const messageHtml = templateMessage({ message: { body: message.message, time, self } });
