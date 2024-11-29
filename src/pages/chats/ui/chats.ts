@@ -81,7 +81,7 @@ export class ChatsPage {
 		const chatIdParam = this.params['param'];
 		console.log(chatIdParam);
 
-        if (!chatIdParam || isNaN(Number(chatIdParam)) || !Number.isInteger(Number(chatIdParam))) {
+        if (!chatIdParam ||  !Number.isInteger(Number(chatIdParam))) {
 			console.log('wrong params');
             this.parent.navigateTo('/chats');
             return;
