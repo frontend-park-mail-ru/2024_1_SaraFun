@@ -26,7 +26,7 @@ export class ChatsPage {
      * Creates an instance of FeedPage.
      * @param {Object} parent - The parent object containing the root element.
      */
-	constructor(parent: Router, chatId?: string) {
+	constructor(parent: Router) {
 		this.parent = parent;
 		this.params = getParams();
 		this.parent.root.innerHTML = '';
@@ -87,12 +87,14 @@ export class ChatsPage {
             return;
         }
 
-		const chatId = Number(chatIdParam);
-		const preview = this.previews.find(preview => preview.id === chatId);
+		if (chatIdParam) {
+			const chatId = Number(chatIdParam);
+			const preview = this.previews.find(preview => preview.id === chatId);
 
-		if (!preview) {
-            this.parent.navigateTo('/chats');
-        }
+			if (!preview) {
+				this.parent.navigateTo('/chats');
+			}
+		}
 
 		if (this.previews) {
 			this.previews = this.sortPreviewsByTime(this.previews);
@@ -103,8 +105,11 @@ export class ChatsPage {
 			this.addChatSelectionListeners();
 			this.addSearchListener();
 		}
-
-		this.loadChat(chatId);
+		
+		if (chatIdParam) {
+			const chatId = Number(chatIdParam);
+			this.loadChat(chatId);
+		}
     }
 
 	sortPreviewsByTime(previews: ChatPreview[]): ChatPreview[] {
