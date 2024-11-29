@@ -81,7 +81,7 @@ export class ChatsPage {
 		const chatIdParam = this.params['chatId'];
 		console.log(chatIdParam);
 
-        if (!chatIdParam || isNaN(Number(chatIdParam)) || !Number.isInteger(Number(chatIdParam))) {
+        /*if (!chatIdParam || isNaN(Number(chatIdParam)) || !Number.isInteger(Number(chatIdParam))) {
 			console.log('wrong params');
             this.parent.navigateTo('/chats');
             return;
@@ -94,7 +94,7 @@ export class ChatsPage {
 			if (!preview) {
 				this.parent.navigateTo('/chats');
 			}
-		}
+		}*/
 
 		if (this.previews) {
 			this.previews = this.sortPreviewsByTime(this.previews);
@@ -106,10 +106,10 @@ export class ChatsPage {
 			this.addSearchListener();
 		}
 		
-		if (chatIdParam) {
+		/*if (chatIdParam) {
 			const chatId = Number(chatIdParam);
 			this.loadChat(chatId);
-		}
+		}*/
     }
 
 	sortPreviewsByTime(previews: ChatPreview[]): ChatPreview[] {
