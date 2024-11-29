@@ -49,6 +49,9 @@ export class ProfilePage {
   }
 
   public render(): void {
+    const avatarSrc = this.imagesURLs?.[0] ?? './img/user.svg';
+    const avatarImg = document.querySelector('.user-avatar__image');
+    avatarImg.setAttribute('src', avatarSrc);
     this.parent.root.innerHTML = template({
       isEditing: this.isEditing,
       FirstName: this.FirstName,
@@ -265,10 +268,6 @@ export class ProfilePage {
     this.imagesDel = [];
     this.imagesNew = [];
     this.loadProfile().then(() => {
-      const avatarSrc = this.imagesURLs?.[0] ?? './img/user.svg';
-      const avatarImg = document.querySelector('.user-avatar__image');
-      avatarImg.setAttribute('src', avatarSrc);
-      
       this.render();
     });
   }
