@@ -121,6 +121,7 @@ export class ChatsPage {
 			preview.addEventListener('click', () => {
 				const index = parseInt(preview.getAttribute('data-id') as string);
 				this.loadChat(index);
+				history.pushState({}, '', `/chats/${index}`);
 			});
 		});
 	}
@@ -128,7 +129,6 @@ export class ChatsPage {
 	async loadChat(index: number): Promise<void> {
 		const chatData: Chat = await getChat(index);
 		this.renderChat(chatData);
-		history.pushState({}, '', `/chats/${index}`);
 	}
 
 	addSearchListener(): void {
