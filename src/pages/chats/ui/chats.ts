@@ -93,6 +93,7 @@ export class ChatsPage {
 
 			if (!preview) {
 				this.parent.navigateTo('/chats');
+				return;
 			}
 		}
 
