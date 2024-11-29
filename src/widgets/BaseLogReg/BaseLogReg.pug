@@ -8,4 +8,5 @@ mixin base(typeOfPage)
                 include ../RegistrationForm/RegistrationForm.pug
             else if typeOfPage === 'login'
                 include ../LoginForm/LoginForm.pug
-        +imageSection('/img/LogReg.svg')
+        .base-log-reg__image-section
+            +imageSection('/img/LogReg.svg')
