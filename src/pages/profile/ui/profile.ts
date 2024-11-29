@@ -265,11 +265,11 @@ export class ProfilePage {
     this.imagesDel = [];
     this.imagesNew = [];
     this.loadProfile().then(() => {
-      this.render();
-      
       const avatarSrc = this.imagesURLs?.[0] ?? './img/user.svg';
       const avatarImg = document.querySelector('.user-avatar__image');
       avatarImg.setAttribute('src', avatarSrc);
+      
+      this.render();
     });
   }
 }
