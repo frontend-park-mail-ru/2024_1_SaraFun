@@ -76,11 +76,6 @@ export class ChatsPage {
     }
 
     async render(): Promise<void> {
-		if (Object.values(this.params).length > 2) {
-			this.parent.navigateTo('/chats');
-			return;
-		}
-
 		const chatIdParam = this.params['param'];
 
         if (chatIdParam && !Number.isInteger(Number(chatIdParam))) {
