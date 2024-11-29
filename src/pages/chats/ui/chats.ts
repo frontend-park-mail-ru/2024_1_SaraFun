@@ -76,7 +76,10 @@ export class ChatsPage {
     }
 
     async render(): Promise<void> {
-		this.previews = await getChatPreviews();
+		if (Object.keys(this.params).length > 2) {
+			this.parent.navigateTo('/chats');
+			return;
+		}
 
 		const chatIdParam = this.params['param'];
 
@@ -84,6 +87,8 @@ export class ChatsPage {
             this.parent.navigateTo('/chats');
             return;
         }
+
+		this.previews = await getChatPreviews();
 
 		if (chatIdParam) {
 			const chatId = Number(chatIdParam);
