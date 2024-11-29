@@ -6,7 +6,7 @@ mixin matchCard(user)
       if (user.images != null && user.images.length > 0)
         +carousel(user.images)
       else
-        img(class="img image-section__img_static" src="./img/image.svg" alt="Image" draggable="false")
+        img(class="img image-section__img_static" src="/img/image.svg" alt="Image" draggable="false")
     if (user.profile.first_name == null || user.profile.first_name == '-')
       h3.match-card__title !{user.username}, !{user.profile.age}
     else 
