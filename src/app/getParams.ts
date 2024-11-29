@@ -4,9 +4,9 @@ export function getParams(): { [key: string]: string } {
     console.log(pathSegments);
 
     if (pathSegments.length >= 2) {
-        params['chatId'] = pathSegments[1];
+        params['param'] = pathSegments[1];
     }
-    
+
     console.log(params);
     return params;
 }
