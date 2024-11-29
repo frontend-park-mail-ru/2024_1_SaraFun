@@ -1,13 +1,12 @@
 export function getParams(): { [key: string]: string } {
     const params: { [key: string]: string } = {};
-    const queryString = window.location.search;
-    console.log(queryString);
-    const urlParams = new URLSearchParams(queryString);
-    console.log(urlParams);
+    const pathSegments = window.location.pathname.split('/').filter(segment => segment);
+    console.log(pathSegments);
 
-    urlParams.forEach((value, key) => {
-        params[key] = value;
-    });
-
+    if (pathSegments.length >= 2) {
+        params['chatId'] = pathSegments[1];
+    }
+    
+    console.log(params);
     return params;
 }
