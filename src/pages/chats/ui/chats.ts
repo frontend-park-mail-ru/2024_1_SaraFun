@@ -12,7 +12,6 @@ import templateChat from '../../../widgets/Chat/Chat.pug';
 import templateChatsPreviews from '../../../widgets/ChatPreviews/ChatPreviews.pug';
 import templatePlaceholder from '../../../shared/components/ChatPlaceholder/ChatPlaceholder.pug';
 import templateMessage from '../../../shared/components/Message/AddMessage.pug';
-import { get } from '../../../shared/api/api';
 
 export class ChatsPage {
 	private parent: Router;
@@ -38,18 +37,15 @@ export class ChatsPage {
 		this.socket = createWebSocket();
 		
 		this.socket.addEventListener('open', () => {
-
 			this.startPing();
 		});
 	
 		this.socket.addEventListener('message', (event) => {
 			const message = JSON.parse(event.data);
-
 			this.handleNewMessage(message, new Date().toISOString(), false);
 		});
 	
 		this.socket.addEventListener('close', () => {
-
 			this.stopPing();
 		});
 	
@@ -132,6 +128,7 @@ export class ChatsPage {
 	async loadChat(index: number): Promise<void> {
 		const chatData: Chat = await getChat(index);
 		this.renderChat(chatData);
+		history.pushState({}, '', `/chats/${index}`);
 	}
 
 	addSearchListener(): void {
