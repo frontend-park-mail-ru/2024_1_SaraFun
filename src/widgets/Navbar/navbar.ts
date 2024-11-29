@@ -62,7 +62,7 @@ export default class Navbar {
 		}
 
 		const userData = await getProfile();
-		const avatarSrc = userData?.imagesURLs?.[0] ?? './img/user.svg';
+		const avatarSrc = userData?.imagesURLs?.[0] ?? '/img/user.svg';
 		const avatarImg = document.querySelector('.user-avatar__image');
 		avatarImg.setAttribute('src', avatarSrc);
 	}
