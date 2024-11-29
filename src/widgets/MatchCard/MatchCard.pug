@@ -8,8 +8,8 @@ mixin matchCard(user)
         +carousel(user.images)
       else
         img(class="img image-section__img_static" src="/img/image.svg" alt="Image" draggable="false")
+    +textButton('Перейти в чат', 'button match-card__button')
     if (user.profile.first_name == null || user.profile.first_name == '-')
       h3.match-card__title !{user.username}, !{user.profile.age}
     else 
       h3.match-card__title !{user.profile.first_name}, !{user.profile.age}
-    +textButton('Перейти в чат', 'button match-card__button')
