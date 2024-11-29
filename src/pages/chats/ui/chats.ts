@@ -1,4 +1,5 @@
 import { Router } from '../../../app/Router';
+import { getParams } from '../../../app/getParams';
 import { ChatPreview } from '../../../entities/ChatPreview/ChatPreview';
 import { Chat } from '../../../entities/Chat/Chat';
 import { getChatPreviews } from '../api/getChatPreviews';
@@ -11,6 +12,7 @@ import templateChat from '../../../widgets/Chat/Chat.pug';
 import templateChatsPreviews from '../../../widgets/ChatPreviews/ChatPreviews.pug';
 import templatePlaceholder from '../../../shared/components/ChatPlaceholder/ChatPlaceholder.pug';
 import templateMessage from '../../../shared/components/Message/AddMessage.pug';
+import { get } from '../../../shared/api/api';
 
 export class ChatsPage {
 	private parent: Router;
@@ -18,7 +20,7 @@ export class ChatsPage {
 	private debounceTimeout: number | undefined;
 	private socket: WebSocket | undefined;
 	private pingInterval: number | undefined;
-	private chatId: string | undefined;
+	private params: { [key: string]: string };
 
 	/**
      * Creates an instance of FeedPage.
@@ -26,7 +28,7 @@ export class ChatsPage {
      */
 	constructor(parent: Router, chatId?: string) {
 		this.parent = parent;
-		this.chatId = chatId;
+		this.params = getParams();
 		this.parent.root.innerHTML = '';
 		this.initWebSocket();
 		this.render();
@@ -34,7 +36,7 @@ export class ChatsPage {
 
 	initWebSocket(): void {
 		this.socket = createWebSocket();
-
+		
 		this.socket.addEventListener('open', () => {
 
 			this.startPing();
@@ -76,6 +78,22 @@ export class ChatsPage {
     async render(): Promise<void> {
 		this.previews = await getChatPreviews();
 
+		const chatIdParam = this.params['chatId'];
+		console.log(chatIdParam);
+
+        if (!chatIdParam || isNaN(Number(chatIdParam)) || !Number.isInteger(Number(chatIdParam))) {
+			console.log('wrong params');
+            this.parent.navigateTo('/chats');
+            return;
+        }
+
+		const chatId = Number(chatIdParam);
+		const preview = this.previews.find(preview => preview.id === chatId);
+
+		if (!preview) {
+            this.parent.navigateTo('/chats');
+        }
+
 		if (this.previews) {
 			this.previews = this.sortPreviewsByTime(this.previews);
 		}
@@ -85,6 +103,8 @@ export class ChatsPage {
 			this.addChatSelectionListeners();
 			this.addSearchListener();
 		}
+
+		this.loadChat(chatId);
     }
 
 	sortPreviewsByTime(previews: ChatPreview[]): ChatPreview[] {

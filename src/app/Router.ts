@@ -104,28 +104,8 @@ export class Router {
 			if (addToHistory) {
 				history.pushState({}, '', path);
 			}
-			if (route.useParams) {
-				const params = this.extractParams(trimmedPath, path);
-            	new view(this);
-			} else {
-      			new view(this);
-			}
+      		new view(this);
     	} 
-	}
-
-	private extractParams(routePath: string, currentPath: string): any {
-		const params: any = {};
-		const routeParts = routePath.split('/');
-		const currentParts = currentPath.split('/');
-	  
-		for (let i = 0; i < routeParts.length; i++) {
-		  if (routeParts[i].startsWith(':')) {
-			const paramName = routeParts[i].substring(1);
-			params[paramName] = currentParts[i];
-		  }
-		}
-	  
-		return params;
 	}
 
 	trimPath(path: string): string {
