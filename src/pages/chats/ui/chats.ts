@@ -120,7 +120,8 @@ export class ChatsPage {
 		chatPreviews.forEach((preview) => {
 			preview.addEventListener('click', () => {
 				const index = parseInt(preview.getAttribute('data-id') as string);
-				this.loadChat(index);
+				this.parent.navigateTo(`/chats/${index}`);
+				//this.loadChat(index);
 			});
 		});
 	}
