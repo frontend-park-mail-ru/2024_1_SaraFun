@@ -186,6 +186,7 @@ export class ChatsPage {
 			if (closeButton) {
 				closeButton.addEventListener('click', () => {
 					chatContainer.innerHTML = templatePlaceholder(); 
+					history.pushState({}, '', `/chats`);
 				});
 			}
 
