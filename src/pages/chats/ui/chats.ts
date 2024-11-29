@@ -76,7 +76,7 @@ export class ChatsPage {
     }
 
     async render(): Promise<void> {
-		if (Object.keys(this.params).length > 2) {
+		if (Object.values(this.params).length > 2) {
 			this.parent.navigateTo('/chats');
 			return;
 		}
