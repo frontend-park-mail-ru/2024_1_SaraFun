@@ -160,6 +160,10 @@ body {
 }
 
 @media (max-width: 890px) {
+    .form {
+        width: 90%;
+        min-width: 90%; 
+    }
     .image-section {
         display: none;
     }
