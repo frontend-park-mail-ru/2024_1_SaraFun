@@ -9,3 +9,13 @@
         align-self: center;
     }
 }
+
+@media (max-width: 450px) {
+    .header {
+        &__logo {
+            &__img {
+                width: 70px;
+            }
+        }
+    }
+}
