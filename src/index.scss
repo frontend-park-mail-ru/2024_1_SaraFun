@@ -162,7 +162,9 @@ body {
 @media (max-width: 890px) {
     .form {
         width: 90%;
-        min-width: 90%; 
+        min-width: 270px; 
+        height: auto;
+        min-height: 80%;
     }
     .image-section {
         display: none;
@@ -172,7 +174,7 @@ body {
 @media (max-width: 450px) {
     .form {
         width: 90%;
-        min-width: 90%; 
+        min-width: 270px; 
         min-height: 580px; 
         height: auto;
         gap: 10px; 
