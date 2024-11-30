@@ -90,12 +90,10 @@ body {
     background-image: url(./shared/assets/img/background.svg);
     background-size: cover;
     background-position: center;
-    //margin: 0;
-    //height: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    //padding-top: var(--nav-width);
     box-sizing: border-box;
 }
 
@@ -103,9 +101,7 @@ body {
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
-    height: 100vh;
-    //margin-bottom: auto;
-    //margin-top: auto;
+    height: 100%;
 }
 
 .navbarRoot {
