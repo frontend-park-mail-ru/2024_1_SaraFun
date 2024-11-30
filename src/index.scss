@@ -169,18 +169,6 @@ body {
 }
 
 @media (max-width: 450px) {
-    .contentRoot {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        box-sizing: border-box;
-    }
-}
-
-@media (max-width: 450px) {
     .form {
         width: 90%;
         height: auto;
