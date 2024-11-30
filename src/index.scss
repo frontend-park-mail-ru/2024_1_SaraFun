@@ -62,7 +62,7 @@ body {
     background-size: cover;
     background-position: center;
     margin: 0;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -166,14 +166,14 @@ h3 {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: auto;
+        height: 100%;
         box-sizing: border-box;
     }
 }
 
 @media (max-width: 450px) {
     .form {
-        width: 90vw;
+        width: 90%;
         height: auto;
         padding: 15px; 
         gap: 10px; 
