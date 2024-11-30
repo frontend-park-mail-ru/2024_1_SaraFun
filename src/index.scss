@@ -163,6 +163,11 @@ h3 {
     .contentRoot {
         padding-top: 10px;
         padding-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh - 50px;
+        box-sizing: border-box;
     }
 }
 
