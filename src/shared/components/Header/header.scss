@@ -14,8 +14,14 @@
     .header {
         &__logo {
             &__img {
-                width: 70px;
+                width: 80px;
             }
         }
+    }
+
+    &__description {
+        align-self: center;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }

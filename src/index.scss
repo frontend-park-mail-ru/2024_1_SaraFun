@@ -161,8 +161,10 @@ h3 {
 
 @media (max-width: 450px) {
     .form {
-        width: 90vw;
-        height: 85vh; 
+        min-width: 90vw;
+        width: auto;
+        min-height: 80vh; 
+        height: auto;
         padding: 15px; 
         gap: 10px; 
         border-radius: 15px; 
