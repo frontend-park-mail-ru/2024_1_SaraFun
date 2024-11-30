@@ -102,6 +102,7 @@ body {
     box-sizing: border-box;
     flex-direction: column;
     height: 100%;
+    width: 100%;
 }
 
 .navbarRoot {
@@ -161,7 +162,7 @@ body {
 @media (max-width: 450px) {
     .form {
         width: 90%;
-        min-width: auto; 
+        min-width: 90%; 
         min-height: 580px; 
         height: auto;
         gap: 10px; 
