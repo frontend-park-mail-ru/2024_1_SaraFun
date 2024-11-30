@@ -148,15 +148,21 @@ body {
 .form {
     background-color: var(--white1);
     border-radius: 25px;
-    width: 70vw;
+    width: 70%;
     min-width: 890px;
     height: auto;
-    min-height: 80vh;
+    min-height: 80%;
     display: flex;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     padding: 20px;
     gap: 20px;
+}
+
+@media (max-width: 890px) {
+    .image-section {
+        display: none;
+    }
 }
 
 @media (max-width: 450px) {
