@@ -29,7 +29,7 @@ export async function getProfile(): Promise<UserProfile | null> {
       About: data.profile.about,
       imagesURLs: images.map((image: { link: string }) => {
         const fileName = image.link.substring(image.link.lastIndexOf('/') + 1);
-        return `http://5.188.140.7/${fileName}`;
+        return `https://5.188.140.7/${fileName}`;
       }),
     };
     return userProfile;

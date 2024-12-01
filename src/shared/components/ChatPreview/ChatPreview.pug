@@ -2,7 +2,7 @@ mixin chat-preview(preview)
     .chats-list__chat(data-id=preview.id)
         .chats-list__chat__avatar
             if (preview.images && preview.images.length > 0)
-                img.chats-list__chat__avatar__img(src=`http://5.188.140.7/${preview.images[0].link.substring(preview.images[0].link.lastIndexOf('/') + 1)}` alt='avatar')
+                img.chats-list__chat__avatar__img(src=`https://5.188.140.7/${preview.images[0].link.substring(preview.images[0].link.lastIndexOf('/') + 1)}` alt='avatar')
             else
                 img.chats-list__chat__avatar__img(src='./img/user.svg' alt='avatar')
         .chats-list__chat__info
