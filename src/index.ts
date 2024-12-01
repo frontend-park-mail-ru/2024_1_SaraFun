@@ -31,3 +31,4 @@ if (root) {
 } else {
     console.error('Element with id "root" not found.');
 }
+

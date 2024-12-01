@@ -86,5 +86,10 @@ module.exports = {
 			filename: 'index.html',
 			template: 'src/index.html',
 		}),
+		new CopyWebpackPlugin({
+            patterns: [
+                { from: 'sw.js', to: 'sw.js' },
+			],
+        }),
 	]
 };
