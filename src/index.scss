@@ -167,9 +167,10 @@ body {
         min-width: 280px; 
         height: auto;
         min-height: 90%;
-    }
-    .form.image-section {
-        display: none;
+
+        .image-section {
+            display: none;
+        }
     }
 }
 
@@ -180,10 +181,10 @@ body {
         min-height: 80%; 
         height: auto;
         border-radius: 15px; 
-    }
 
-    .form.image-section {
-        display: none;
+        .image-section {
+            display: none;
+        }
     }
 }
 
