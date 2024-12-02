@@ -1,6 +1,11 @@
 include ../../../widgets/MatchCard/MatchCard.pug
 
 if (users != null && users.length > 0)
+    .matches_title
+        if (users.length % 10 == 1 && users.length % 100 != 11)
+            h2 Вы понравились #{users.length} пользователю
+        else
+            h2 Вы понравились #{users.length} пользователям
     .matches
         for user in users
             +matchCard(user)
