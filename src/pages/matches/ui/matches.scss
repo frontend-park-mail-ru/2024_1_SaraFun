@@ -7,6 +7,12 @@
     box-sizing: border-box;
 }
 
+.matches_container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
 @media (max-width: 700px) { 
     .matches { 
         display: grid;
