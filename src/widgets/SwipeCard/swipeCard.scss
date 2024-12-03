@@ -21,3 +21,15 @@
         cursor: grabbing;
     }
 }
+
+@media (max-width: 768px) {
+    .tinder__card {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 450px) {
+    .tinder__card {
+        flex-direction: column;
+    }
+}
