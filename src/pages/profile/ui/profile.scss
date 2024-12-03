@@ -1,16 +1,15 @@
 .profile {
+    height: 92vh;
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: flex-start; 
-    flex-direction: column; 
-    margin-bottom: 20px;
+    align-items: center;
 
     .profile-card {
-        padding: 40px 40px 40px 40px;
-        width: 70vw;
+        padding: 40px;
+        width: 70%;
         min-width: 400px;
         margin-top: 20px;
-        position: sticky;
         background: var(--white1);
         border-radius: 25px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
