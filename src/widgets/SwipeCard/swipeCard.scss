@@ -22,14 +22,18 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
     .tinder__card {
         flex-direction: column;
+        min-width: 200px;
+        width: 75%;
     }
 }
 
 @media (max-width: 450px) {
     .tinder__card {
         flex-direction: column;
+        min-width: 200px;
+        width: 90%;
     }
 }
