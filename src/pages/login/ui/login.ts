@@ -89,7 +89,7 @@ export class LoginPage {
 					notificationManager.addNotification('Ошибка при авторизации. Попробуйте ещё раз.', 'fail');
 				}
 			} else {
-				(document.getElementById('login-password-error') as HTMLElement).style.display = 'none';            
+				(document.getElementById('login-password-error') as HTMLElement).style.display = 'block';            
 			}
 		});
 	}
