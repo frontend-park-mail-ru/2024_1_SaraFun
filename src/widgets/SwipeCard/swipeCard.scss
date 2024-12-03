@@ -37,8 +37,16 @@
         width: 90%;
         gap: 10px;
 
+        .image-section {
+            flex: 2;
+        }
+
         .form-section {
             h3 {
+                font-size: smaller;
+            }
+
+            h2 {
                 font-size: smaller;
             }
         }
