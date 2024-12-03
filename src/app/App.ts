@@ -34,7 +34,7 @@ export default class App {
      */
 	async init(): Promise<void> {
 		try {
-			//this.registerServiceWorker();
+			this.registerServiceWorker();
 	
 			this.state.isAuthenticated = await checkAuth();
 			ROUTES.forEach(({ path, view, isPublic, useParams, params })=> {

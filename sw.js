@@ -34,10 +34,29 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
     console.log('Service Worker: Fetching...', event.request.url);
-    event.respondWith(
-        caches.match(event.request).then((response) => {
-            return response || fetch(event.request);
-        })
-    );
+    
+    // Проверяем, является ли запрос POST-запросом на регистрацию или авторизацию
+    if (event.request.method === 'POST' && 
+        (event.request.url.includes('/signin') || event.request.url.includes('/signup'))) {
+        
+        // Прямой запрос к сети без кэширования
+        event.respondWith(
+            fetch(event.request)
+                .then(response => {
+                    // Обработка ответа, если нужно
+                    return response;
+                })
+                .catch(error => {
+                    console.error('Fetch failed:', error);
+                    throw error; // Перебрасываем ошибку для обработки на клиенте
+                })
+        );
+    } else {
+        // Для остальных запросов используем кэш
+        event.respondWith(
+            caches.match(event.request).then((response) => {
+                return response || fetch(event.request);
+            })
+        );
+    }
 });
-
