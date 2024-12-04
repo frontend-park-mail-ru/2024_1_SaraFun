@@ -1,62 +1,90 @@
-const CACHE_NAME = 'my-cache-v1';
-const URLS_TO_CACHE = [
-    '/',
-    '/index.html',
-    '/styles.css',
-    '/script.js',
-];
+const CACHE = 'jimder-cache-v18';
+const PRECACHE_URLS = ['/offline', '/176c4714b229b0ae6633.webp'];
 
-self.addEventListener('install', (event) => {
-    console.log('Service Worker: Installing...');
+const NETWORK_ONLY = ['isAuth', 'cards', 'getAllChats'];
+
+const checkNetOnly = (path) => {
+    for (const p of NETWORK_ONLY) {
+        if (path.toLowerCase().includes(p.toLowerCase())) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
+self.addEventListener('install', function (event) {
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            console.log('Service Worker: Caching files');
-            return cache.addAll(URLS_TO_CACHE);
-        })
+        caches.open(CACHE).then((cache) => {
+            return cache.addAll(PRECACHE_URLS);
+        }),
     );
 });
 
-self.addEventListener('activate', (event) => {
-    console.log('Service Worker: Activating...');
+self.addEventListener('activate', function (event) {
     event.waitUntil(
-        caches.keys().then((cacheNames) => {
+        caches.keys().then((cacheKeys) => {
             return Promise.all(
-                cacheNames.map((cacheName) => {
-                    if (cacheName !== CACHE_NAME) {
-                        console.log('Service Worker: Removing old cache', cacheName);
-                        return caches.delete(cacheName);
+                cacheKeys.map((currentCache) => {
+                    if (currentCache !== CACHE) {
+                        return caches.delete(currentCache);
                     }
-                })
+                }),
             );
-        })
+        }),
     );
 });
 
-self.addEventListener('fetch', (event) => {
-    console.log('Service Worker: Fetching...', event.request.url);
-    
-    // Проверяем, является ли запрос POST-запросом на регистрацию или авторизацию
-    if (event.request.method === 'POST' && 
-        (event.request.url.includes('/signin') || event.request.url.includes('/signup'))) {
-        
-        // Прямой запрос к сети без кэширования
-        event.respondWith(
-            fetch(event.request)
-                .then(response => {
-                    // Обработка ответа, если нужно
-                    return response;
-                })
-                .catch(error => {
-                    console.error('Fetch failed:', error);
-                    throw error; // Перебрасываем ошибку для обработки на клиенте
-                })
-        );
-    } else {
-        // Для остальных запросов используем кэш
-        event.respondWith(
-            caches.match(event.request).then((response) => {
-                return response || fetch(event.request);
-            })
-        );
+self.addEventListener('fetch', async (event) => {
+    if (!event.request.url.startsWith('http')) {
+        // our domain here (contains - not starts)
+        return;
+    }
+    event.respondWith(
+        caches.open(CACHE).then(async (cache) => {
+            return cache.match(event.request).then((cachedResponse) => {
+                if (cachedResponse) {
+                    if (!checkNetOnly(event.request.url)) {
+                        return cachedResponse;
+                    }
+                }
+
+                return fetch(event.request)
+                    .then((response) => {
+                        if (event.request.method === 'GET' && response.ok) {
+                            cache.put(event.request, response.clone());
+                        }
+
+                        return response;
+                    })
+                    .catch((error) => {
+                        if (cachedResponse) return cachedResponse;
+                        self.clients.matchAll().then((clients) => {
+                            clients.forEach((client) => {
+                                client.postMessage({
+                                    offline: true,
+                                    error: error,
+                                });
+                            });
+                        });
+                    });
+            });
+        }),
+    );
+});
+
+self.addEventListener('message', (event) => {
+    if (event.data.type === 'ERROR_OCCURRED') {
+        self.clients.matchAll().then((clients) => {
+            clients.forEach((client) => {
+                client.postMessage({ cacheRevalidation: true });
+            });
+        });
+        caches.open(CACHE).then((cache) => {
+            cache.delete(event.data.filename);
+        });
+    }
+    if (event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
     }
 });
