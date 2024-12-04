@@ -3,9 +3,10 @@ const URLS_TO_CACHE = [
     '/',
     '/index.html',
     '/styles.css',
-    '/script.js',
+    '/index.ts',
 ];
 
+// Установка кэша
 self.addEventListener('install', (event) => {
     console.log('Service Worker: Installing...');
     event.waitUntil(
@@ -16,6 +17,7 @@ self.addEventListener('install', (event) => {
     );
 });
 
+// Активация сервис-воркера и удаление старых кэшей
 self.addEventListener('activate', (event) => {
     console.log('Service Worker: Activating...');
     event.waitUntil(
@@ -32,6 +34,7 @@ self.addEventListener('activate', (event) => {
     );
 });
 
+// Обработка запросов
 self.addEventListener('fetch', (event) => {
     console.log('Service Worker: Fetching...', event.request.url);
     
@@ -55,7 +58,20 @@ self.addEventListener('fetch', (event) => {
         // Для остальных запросов используем кэш
         event.respondWith(
             caches.match(event.request).then((response) => {
-                return response || fetch(event.request);
+                // Если в кэше есть ответ, возвращаем его, иначе загружаем из сети
+                return response || fetch(event.request).then((networkResponse) => {
+                    // Кэшируем ответ, если это GET-запрос
+                    if (event.request.method === 'GET' && networkResponse.ok) {
+                        return caches.open(CACHE_NAME).then((cache) => {
+                            cache.put(event.request, networkResponse.clone());
+                            return networkResponse;
+                        });
+                    }
+                    return networkResponse;
+                });
+            }).catch(() => {
+                // Если произошла ошибка и нет кэшированного ответа, можно вернуть страницу оффлайна
+                return caches.match('/index.html'); // или другой ресурс для отображения в оффлайне
             })
         );
     }
