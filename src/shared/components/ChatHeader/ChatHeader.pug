@@ -2,7 +2,7 @@ mixin chatHeader(chat)
     .chat__header
         .chat__header__avatar
             if (chat.images && chat.images.length > 0)
-                img.chat__header__avatar__img(src=`https://5.188.140.7/${chat.images[0].link.substring(chat.images[0].link.lastIndexOf('/') + 1)}` alt='avatar')
+                img.chat__header__avatar__img(src=`http://5.188.140.7/${chat.images[0].link.substring(chat.images[0].link.lastIndexOf('/') + 1)}` alt='avatar')
             else
                 img.chat__header__avatar__img(src='./img/user.svg' alt='avatar')
         .chat__header__info
