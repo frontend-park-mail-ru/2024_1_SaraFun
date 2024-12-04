@@ -29,7 +29,7 @@ export async function getProfile(): Promise<UserProfile | null> {
       About: data.profile.about,
       imagesURLs: images.map((image: { link: string }) => {
         const fileName = image.link.substring(image.link.lastIndexOf('/') + 1);
-        return `http://spark-it.site/login/${fileName}`;
+        return `http://spark-it.site//${fileName}`;
       }),
     };
     return userProfile;

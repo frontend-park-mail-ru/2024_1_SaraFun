@@ -3,7 +3,7 @@
 
 ▎Spark It
 
-[Spark It](http://spark-it.site/login) — это веб-приложение для знакомств, 
+[Spark It](http://spark-it.site/) — это веб-приложение для знакомств, 
 которое позволяет пользователям находить и 
 общаться с потенциальными партнёрами на основе 
 совместных интересов и предпочтений.
@@ -36,4 +36,4 @@ Spark It предлагает интуитивно понятный интерф
 - [Backend](https://github.com/go-park-mail-ru/2024_2_SaraFun): Golang
 - База данных: Postgres
 - Аутентификация: 
-- Хостинг: http://spark-it.site/login/
+- Хостинг: http://spark-it.site//

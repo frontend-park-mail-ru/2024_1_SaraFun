@@ -1,1 +1,1 @@
-export const BASE_URL = 'http://spark-it.site/login:8080';
+export const BASE_URL = 'http://spark-it.site/:8080';
