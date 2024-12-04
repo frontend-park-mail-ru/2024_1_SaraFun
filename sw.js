@@ -3,7 +3,8 @@ const URLS_TO_CACHE = [
     '/',
     '/index.html',
     '/styles.css',
-    '/index.ts',
+    '/script.js',
+    '/offline.html', // Страница для отображения в оффлайне
 ];
 
 // Установка кэша
@@ -37,7 +38,7 @@ self.addEventListener('activate', (event) => {
 // Обработка запросов
 self.addEventListener('fetch', (event) => {
     console.log('Service Worker: Fetching...', event.request.url);
-    
+
     // Проверяем, является ли запрос POST-запросом на регистрацию или авторизацию
     if (event.request.method === 'POST' && 
         (event.request.url.includes('/signin') || event.request.url.includes('/signup'))) {
@@ -70,8 +71,8 @@ self.addEventListener('fetch', (event) => {
                     return networkResponse;
                 });
             }).catch(() => {
-                // Если произошла ошибка и нет кэшированного ответа, можно вернуть страницу оффлайна
-                return caches.match('/index.html'); // или другой ресурс для отображения в оффлайне
+                // Если произошла ошибка и нет кэшированного ответа, возвращаем страницу оффлайна
+                return caches.match('/offline.html'); // Возвращаем страницу для оффлайна
             })
         );
     }

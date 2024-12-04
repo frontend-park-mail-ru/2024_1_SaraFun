@@ -89,9 +89,9 @@ module.exports = {
 			template: 'src/index.html',
 		}),
 		new CopyWebpackPlugin({
-            patterns: [
-                { from: 'sw.js', to: 'sw.js' },
+			patterns: [
+				{ from: 'sw.js', to: 'sw.js' },
 			],
-        }),
+		}),
 	]
 };
