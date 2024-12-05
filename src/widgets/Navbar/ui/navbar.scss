@@ -69,6 +69,12 @@
 @media (max-width: 900px) {
     .navbar {
         padding: 0 5%;
+
+        &__list {
+            &__ul {
+                gap: 10px;
+            }
+        }
     }
 }
 
