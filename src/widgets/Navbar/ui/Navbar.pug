@@ -1,11 +1,12 @@
 include ../../../shared/components/TextButton/TextButton.pug
 
 .navbar
-    .navbar__hamburger
-        button(class="navbar__hamburger__button", type="button")
-            span(class="navbar__hamburger__icon")
-            span(class="navbar__hamburger__icon")
-            span(class="navbar__hamburger__icon")
+    if (isAuth)
+        .navbar__hamburger
+            button(class="navbar__hamburger__button", type="button")
+                span(class="navbar__hamburger__icon")
+                span(class="navbar__hamburger__icon")
+                span(class="navbar__hamburger__icon")
     .navbar__logo
         a(class='navbar__logo__link' href=isAuth ? '/feed' : '/login')
             img(class='img navbar__logo__img' src='/img/Logo.svg' alt='logo')
