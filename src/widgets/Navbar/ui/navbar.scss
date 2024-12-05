@@ -15,10 +15,6 @@
 
     &__hamburger {
         display: none;
-        
-        &__icon {
-            color: var(--secondary);
-        }
     }
 
     &__logo {
@@ -72,15 +68,7 @@
 
 @media (max-width: 450px) {
     .navbar {
-        padding: 0 2%;
-
-        &__list {
-            &__ul {
-                list-style: none;
-                display: flex;
-                gap: 10px;
-            }
-        }
+        padding: 0 5%;
 
         &__hamburger {
             display: block;
@@ -94,10 +82,10 @@
             right: 0;
             background-color: white;
             width: 100%;
-        }
 
-        &__list__ul {
-            flex-direction: column;
+            &__ul {
+                flex-direction: column;
+            }
         }
     
         &__link {
@@ -114,7 +102,7 @@
             display: block;
             width: 25px;
             height: 3px;
-            background-color: black;
+            background-color: var(--secondary);
             margin: 5px 0;
         }
     
