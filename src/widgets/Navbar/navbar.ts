@@ -122,6 +122,14 @@ export default class Navbar {
 			hamburgerButton.addEventListener('click', () => {
 				navbarList.classList.toggle('navbar__list--active');
 			});
+
+			navLinks.forEach(link => {
+				link.addEventListener('click', () => {
+					if (navbarList.classList.contains('navbar__list--active')) {
+						navbarList.classList.remove('navbar__list--active');
+					}
+				});
+			});
 		}
 	}
 };
