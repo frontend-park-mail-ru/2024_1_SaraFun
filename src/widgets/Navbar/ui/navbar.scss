@@ -15,11 +15,16 @@
 
     &__hamburger {
         display: none;
+        color: var(--secondary);
     }
 
     &__logo {
         height: 100%;
         display: flex;
+
+        &__link {
+            width: 84px;
+        }
 
         &__img {
             height: 100%;
