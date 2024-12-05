@@ -115,5 +115,13 @@ export default class Navbar {
 				this.parent.navigateTo('/profile');
 			});
 		}
+
+		const hamburgerButton = document.getElementById('hamburger-button');
+		const navbarList = document.getElementById('navbar-list');
+		if (hamburgerButton && navbarList) {
+			hamburgerButton.addEventListener('click', () => {
+				navbarList.classList.toggle('navbar__list--active');
+			});
+		}
 	}
 };
