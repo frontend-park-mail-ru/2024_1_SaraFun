@@ -66,9 +66,14 @@
     }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 900px) {
     .navbar {
         padding: 0 5%;
+    }
+}
+
+@media (max-width: 450px) {
+    .navbar {
 
         &__hamburger {
             display: block;
