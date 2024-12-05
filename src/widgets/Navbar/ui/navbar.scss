@@ -15,7 +15,10 @@
 
     &__hamburger {
         display: none;
-        color: var(--secondary);
+        
+        &__icon {
+            color: var(--secondary);
+        }
     }
 
     &__logo {

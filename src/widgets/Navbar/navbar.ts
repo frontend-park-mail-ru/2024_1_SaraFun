@@ -116,8 +116,8 @@ export default class Navbar {
 			});
 		}
 
-		const hamburgerButton = document.getElementById('hamburger-button');
-		const navbarList = document.getElementById('navbar-list');
+		const hamburgerButton = document.querySelector('.navbar__hamburger__button');
+		const navbarList = document.querySelector('.navbar__list');
 		if (hamburgerButton && navbarList) {
 			hamburgerButton.addEventListener('click', () => {
 				navbarList.classList.toggle('navbar__list--active');
