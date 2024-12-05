@@ -72,13 +72,13 @@
 
         &__list {
             &__ul {
-                gap: 10px;
+                gap: 0px;
             }
         }
     }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 750px) {
     .navbar {
 
         &__hamburger {
