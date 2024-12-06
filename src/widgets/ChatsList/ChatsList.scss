@@ -13,10 +13,6 @@
     overflow-y: auto;
   }
 
-  @media (max-width: 800px) { 
-    display: none;
-  }
-
   &__no-previews {
     text-align: center;
     padding: 20px;

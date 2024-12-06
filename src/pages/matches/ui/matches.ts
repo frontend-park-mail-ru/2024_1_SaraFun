@@ -45,7 +45,7 @@ export class MatchesPage {
 				this.openProfileModal(users[index], card);
 		  	});
 
-			const button = card.querySelector('#match-card__button') as HTMLButtonElement;
+			const button = card.querySelector('.match-card__button') as HTMLButtonElement;
 			if (button) {
 				button.addEventListener('click', () => {
 					this.parent.navigateTo(`/chats/${users[index].user}`);
