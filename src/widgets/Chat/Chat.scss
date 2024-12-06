@@ -35,3 +35,15 @@
     border-radius: 10px;
   }
 }
+
+@media (max-width: 800px) {
+  .chat {
+    width: 80%;
+  }
+}
+
+@media (max-width: 450px) {
+  .chat {
+    width: 90%;
+  }
+}

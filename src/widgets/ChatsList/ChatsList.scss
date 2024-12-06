@@ -21,3 +21,15 @@
     background-color: var(--lightGrey);
   }
 }
+
+@media (max-width: 800px) {
+  .chats-list {
+    width: 80%;
+  }
+}
+
+@media (max-width: 450px) {
+  .chats-list {
+    width: 90%;
+  }
+}

@@ -38,7 +38,7 @@ export class ChatsPage {
         const width = window.innerWidth;
 		const chatContainer = document.querySelector('.chat') as HTMLElement;
 		const chatPreviewsContainer = document.querySelector('.chats-list') as HTMLElement;
-        if (width < 500) {
+        if (width < 800) {
 			if (chatContainer.classList.contains('chat--active')) {
 				chatPreviewsContainer.style.display = 'none';
 			} else {
@@ -123,14 +123,14 @@ export class ChatsPage {
 		if (chatIdParam) {
 			const chatId = Number(chatIdParam);
 			this.loadChat(chatId);
-			if (width <= 500) {
+			if (width <= 800) {
 				const chatList = document.querySelector('.chats-list') as HTMLElement;
 				if (chatList) {
 					chatList.style.display = 'none';
 				}
 			}
 		} else {
-			if (width <= 500) {
+			if (width <= 800) {
 				const chat = document.querySelector('.chat') as HTMLElement;
 				if (chat) {
 					chat.style.display = 'none';
@@ -155,7 +155,7 @@ export class ChatsPage {
 				this.loadChat(index);
 				history.pushState({}, '', `/chats/${index}`);
 				const width = window.innerWidth;
-				if (width <= 500) {
+				if (width <= 800) {
 					const chat = document.querySelector('.chat') as HTMLElement;
 					if (chat) {
 						chat.style.display = 'flex';
@@ -232,7 +232,7 @@ export class ChatsPage {
 					chatContainer.innerHTML = templatePlaceholder(); 
 					history.pushState({}, '', `/chats`);
 					const width = window.innerWidth;
-					if (width <= 500) {
+					if (width <= 800) {
 						const chat = document.querySelector('.chat') as HTMLElement;
 						if (chat) {
 							chat.style.display = 'none';
