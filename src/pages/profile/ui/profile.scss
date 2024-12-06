@@ -253,3 +253,21 @@
         }
       }
 }
+
+@media (max-width: 750px) {
+    .profile-card {
+        padding: 20px;
+        width: 90%;
+        min-width: 300px;
+        border-radius: 20px;
+
+        h3 {
+            padding-top: 20px;
+        }
+    }
+
+    .info {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
