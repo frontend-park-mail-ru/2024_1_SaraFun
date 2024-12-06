@@ -13,3 +13,9 @@
   background-color: var(--lightGrey);
   margin: auto;
 }
+
+@media (max-width: 450px) {
+  .chat {
+    width: 90%;
+  }
+}
