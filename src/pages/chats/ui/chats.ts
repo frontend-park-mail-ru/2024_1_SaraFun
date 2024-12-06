@@ -208,6 +208,10 @@ export class ChatsPage {
 						if (chat) {
 							chat.style.display = 'none';
 						}
+						const chatList = document.querySelector('.chats-list') as HTMLElement;
+						if (chatList) {
+							chatList.style.display = 'flex';
+						}
 					}
 				});
 			}
