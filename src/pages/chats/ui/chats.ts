@@ -202,6 +202,13 @@ export class ChatsPage {
 				closeButton.addEventListener('click', () => {
 					chatContainer.innerHTML = templatePlaceholder(); 
 					history.pushState({}, '', `/chats`);
+					const width = window.innerWidth;
+					if (width <= 500) {
+						const chat = document.querySelector('.chat') as HTMLElement;
+						if (chat) {
+							chat.style.display = 'none';
+						}
+					}
 				});
 			}
 
