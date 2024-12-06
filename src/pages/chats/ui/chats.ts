@@ -155,16 +155,16 @@ export class ChatsPage {
 				this.loadChat(index);
 				history.pushState({}, '', `/chats/${index}`);
 				const width = window.innerWidth;
-					if (width <= 500) {
-						const chat = document.querySelector('.chat') as HTMLElement;
-						if (chat) {
-							chat.style.display = 'flex';
-						}
-						const chatList = document.querySelector('.chats-list') as HTMLElement;
-						if (chatList) {
-							chatList.style.display = 'none';
-						}
+				if (width <= 500) {
+					const chat = document.querySelector('.chat') as HTMLElement;
+					if (chat) {
+						chat.style.display = 'flex';
 					}
+					const chatList = document.querySelector('.chats-list') as HTMLElement;
+					if (chatList) {
+						chatList.style.display = 'none';
+					}
+				}
 			});
 		});
 	}
