@@ -100,10 +100,25 @@ export class ChatsPage {
 			this.addChatSelectionListeners();
 			this.addSearchListener();
 		}
-		
+
+		const width = window.innerWidth;
+
 		if (chatIdParam) {
 			const chatId = Number(chatIdParam);
 			this.loadChat(chatId);
+			if (width <= 500) {
+				const chatList = document.querySelector('.chats-list') as HTMLElement;
+				if (chatList) {
+					chatList.style.display = 'none';
+				}
+			}
+		} else {
+			if (width <= 500) {
+				const chat = document.querySelector('.chat') as HTMLElement;
+				if (chat) {
+					chat.style.display = 'none';
+				}
+			}
 		}
     }
 
