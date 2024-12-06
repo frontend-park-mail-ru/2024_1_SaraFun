@@ -31,7 +31,24 @@ export class ChatsPage {
 		this.parent.root.innerHTML = '';
 		this.initWebSocket();
 		this.render();
+		window.addEventListener('resize', this.handleResize);
 	}
+
+	private handleResize(): void {
+        const width = window.innerWidth;
+		const chatContainer = document.querySelector('.chat') as HTMLElement;
+		const chatPreviewsContainer = document.querySelector('.chats-list') as HTMLElement;
+        if (width < 500) {
+			if (chatContainer.classList.contains('chat--active')) {
+				chatPreviewsContainer.style.display = 'none';
+			} else {
+				chatContainer.style.display = 'none';
+			}
+        } else {
+            chatContainer.style.display = 'flex';
+			chatPreviewsContainer.style.display = 'flex';
+        }
+    }
 
 	initWebSocket(): void {
 		this.socket = createWebSocket();
@@ -200,6 +217,7 @@ export class ChatsPage {
 
 	renderChat(chatData: any): void {
 		const chatContainer = document.querySelector('.chat');
+		chatContainer.classList.add('chat--active');
 		if (chatContainer) {
 		  	chatContainer.innerHTML = templateChat({ chatData });
 
@@ -224,6 +242,7 @@ export class ChatsPage {
 							chatList.style.display = 'flex';
 						}
 					}
+					chatContainer.classList.remove('chat--active');
 				});
 			}
 
