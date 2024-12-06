@@ -1,12 +1,11 @@
 .profile {
-    height: auto;
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
 
     .profile-card {
-        padding: 40px;
+        padding: 30px;
         width: 70%;
         min-width: 400px;
         margin-top: 20px;
@@ -15,8 +14,8 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
+        height: fit-content;
 
-        
         .settings-button {
             background-color: var(--secondary); 
             color: white; 
