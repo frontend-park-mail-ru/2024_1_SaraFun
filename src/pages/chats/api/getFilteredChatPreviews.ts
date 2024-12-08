@@ -8,7 +8,10 @@ export async function getFilteredChatPreviews(name: string): Promise<ChatPreview
 			'page': 1,
 		};
 		const response = await post('/api/message/chatsearch', body);
-		const previews: ChatPreview[] = await response.json();
+		const data = await response.json();
+		if (data.Responses === null)
+			return null;
+		const previews: ChatPreview[] = data.Responses.map((response: any) => response as ChatPreview);
 		return previews;
 
 	} catch (error) {
