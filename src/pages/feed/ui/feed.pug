@@ -1,7 +1,6 @@
 include ../../../widgets/SwipeCard/SwipeCard.pug
 
-if (users != null)
-  - console.log(users)
+if (users != null && users.length > 0)
   div.tinder
     div.tinder__cards
       for user in users
