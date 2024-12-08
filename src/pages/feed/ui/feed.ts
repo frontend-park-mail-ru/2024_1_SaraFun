@@ -30,7 +30,7 @@ export class FeedPage {
 		let users: User[] = await getUsers();
 		this.parent.root.innerHTML = template({ users });
 
-		if (users === null) {
+		if (users === null || users.length == 0) {
 			return;
 		}
 
