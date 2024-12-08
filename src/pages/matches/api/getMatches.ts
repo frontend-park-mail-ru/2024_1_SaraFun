@@ -12,7 +12,7 @@ export async function getMatches(): Promise<User[]> {
 		const data = await response.json();
 		if (data.Cards === null)
 			return null;
-		const matches: User[] = data.Responses.map((response: any) => response as User);
+		const matches: User[] = data.Cards.map((response: any) => response as User);
 		return matches;
 
 	} catch (error) {
