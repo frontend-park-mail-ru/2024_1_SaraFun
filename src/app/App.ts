@@ -34,6 +34,8 @@ export default class App {
      */
 	async init(): Promise<void> {
 		try {
+			this.registerServiceWorker();
+	
 			this.state.isAuthenticated = await checkAuth();
 			ROUTES.forEach(({ path, view, isPublic, useParams, params })=> {
 				this.router.register(path, view, isPublic, useParams, params);
@@ -70,5 +72,21 @@ export default class App {
 
 	getCurRoute(): string {
 		return this.state.currentRoute;
+	}
+
+	registerServiceWorker() {
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+			  navigator.serviceWorker.register('/sw.js')
+				.then(registration => {
+				  console.log('Service Worker registered with scope:', registration.scope);
+				})
+				.catch(error => {
+				  console.error('Service Worker registration failed:', error);
+				});
+			});
+		} else {
+			console.warn('Service workers are not supported in this browser.');
+		}
 	}
 }
