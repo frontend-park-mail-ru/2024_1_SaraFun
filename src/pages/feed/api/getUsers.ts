@@ -10,7 +10,8 @@ export async function getUsers(): Promise<User[]> {
 	try {
 		const response = await get('/api/personalities/getusers');
 		const data = await response.json();
-		const users: User[] = data.Responses.map((response: any) => response.user);
+		const users: User[] = data.Responses.map((response: any) => response as User);
+		console.log(users);
 		return users;
 
 	} catch (error) {
