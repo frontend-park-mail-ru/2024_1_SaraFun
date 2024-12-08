@@ -108,8 +108,6 @@ export class ChatsPage {
 			}
 		}
 
-		console.log(this.previews);
-
 		if (this.previews) {
 			this.previews = this.sortPreviewsByTime(this.previews);
 		}
