@@ -13,16 +13,14 @@ import {post} from '../../../shared/api/api';
 export async function signupUser(login: string, password: string, gender: string, age: number): Promise<boolean> {
 	try {
 		const body = {
-			user: {
-				'username': login,
-				'password': password,
-			},
-			profile: {
-				'gender': gender, 
-				'age': age,
-			}
+			'username': login,
+			'password': password,
+			'first_name': login,
+			'last_name': login,
+			'gender': gender, 
+			'age': age,
 		};
-		await post('/signup', body);
+		await post('/api/auth/signup', body);
 		return true;
 
 	} catch (error) {

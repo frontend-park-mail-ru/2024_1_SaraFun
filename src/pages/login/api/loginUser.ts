@@ -11,7 +11,7 @@ import {post} from '../../../shared/api/api';
 export async function loginUser(login: string, password: string): Promise<boolean> {
 	try {
 		const body = {'username': login, 'password': password};
-		await post('/signin', body);
+		await post('/api/auth/signin', body);
 		return true;
 
 	} catch (error) {

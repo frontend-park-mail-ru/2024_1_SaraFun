@@ -46,7 +46,7 @@ export class LoginPage {
 			passwordInputIcon.setAttribute('src', passwordInput.type === 'password' ? './img/eye-x.svg' : './img/eye.svg');
 		});
 
-		document.querySelector('button').addEventListener('click', async () => {
+		document.querySelector('.login-button').addEventListener('click', async () => {
 			const login = (document.getElementById('login') as HTMLInputElement).value;
 			const password = (document.getElementById('password') as HTMLInputElement).value;
 
@@ -88,7 +88,10 @@ export class LoginPage {
 					console.error(error);
 					notificationManager.addNotification('Ошибка при авторизации. Попробуйте ещё раз.', 'fail');
 				}
-			} 
+			} else {
+				console.error('Error in authorization');
+				notificationManager.addNotification('Ошибка при авторизации. Попробуйте ещё раз.', 'fail');
+			}
 		});
 	}
 }

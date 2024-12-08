@@ -8,7 +8,7 @@ import {get} from '../shared/api/api';
  */
 export async function checkAuth(): Promise<boolean> {
 	try {
-		await get('/checkauth');
+		await get('/api/auth/checkauth');
 		return true;
 
 	} catch (error) {

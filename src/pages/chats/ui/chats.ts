@@ -1,4 +1,5 @@
 import { Router } from '../../../app/Router';
+import { getParams } from '../../../app/getParams';
 import { ChatPreview } from '../../../entities/ChatPreview/ChatPreview';
 import { Chat } from '../../../entities/Chat/Chat';
 import { getChatPreviews } from '../api/getChatPreviews';
@@ -18,36 +19,50 @@ export class ChatsPage {
 	private debounceTimeout: number | undefined;
 	private socket: WebSocket | undefined;
 	private pingInterval: number | undefined;
-	private chatId: string | undefined;
+	private params: { [key: string]: string };
 
 	/**
      * Creates an instance of FeedPage.
      * @param {Object} parent - The parent object containing the root element.
      */
-	constructor(parent: Router, chatId?: string) {
+	constructor(parent: Router) {
 		this.parent = parent;
-		this.chatId = chatId;
+		this.params = getParams();
 		this.parent.root.innerHTML = '';
 		this.initWebSocket();
 		this.render();
+		window.addEventListener('resize', this.handleResize);
 	}
+
+	private handleResize(): void {
+        const width = window.innerWidth;
+		const chatContainer = document.querySelector('.chat') as HTMLElement;
+		const chatPreviewsContainer = document.querySelector('.chats-list') as HTMLElement;
+        if (width < 800) {
+			if (chatContainer.classList.contains('chat--active')) {
+				chatPreviewsContainer.style.display = 'none';
+			} else {
+				chatContainer.style.display = 'none';
+			}
+        } else {
+            chatContainer.style.display = 'flex';
+			chatPreviewsContainer.style.display = 'flex';
+        }
+    }
 
 	initWebSocket(): void {
 		this.socket = createWebSocket();
-
+		
 		this.socket.addEventListener('open', () => {
-
 			this.startPing();
 		});
 	
 		this.socket.addEventListener('message', (event) => {
 			const message = JSON.parse(event.data);
-
 			this.handleNewMessage(message, new Date().toISOString(), false);
 		});
 	
 		this.socket.addEventListener('close', () => {
-
 			this.stopPing();
 		});
 	
@@ -74,7 +89,24 @@ export class ChatsPage {
     }
 
     async render(): Promise<void> {
+		const chatIdParam = this.params['param'];
+
+        if (chatIdParam && !Number.isInteger(Number(chatIdParam))) {
+            this.parent.navigateTo('/chats');
+            return;
+        }
+
 		this.previews = await getChatPreviews();
+
+		if (chatIdParam) {
+			const chatId = Number(chatIdParam);
+			const preview = this.previews.find(preview => preview.id === chatId);
+
+			if (!preview) {
+				this.parent.navigateTo('/chats');
+				return;
+			}
+		}
 
 		if (this.previews) {
 			this.previews = this.sortPreviewsByTime(this.previews);
@@ -84,6 +116,26 @@ export class ChatsPage {
 		if (this.previews && this.previews.length > 0) {
 			this.addChatSelectionListeners();
 			this.addSearchListener();
+		}
+
+		const width = window.innerWidth;
+
+		if (chatIdParam) {
+			const chatId = Number(chatIdParam);
+			this.loadChat(chatId);
+			if (width <= 800) {
+				const chatList = document.querySelector('.chats-list') as HTMLElement;
+				if (chatList) {
+					chatList.style.display = 'none';
+				}
+			}
+		} else {
+			if (width <= 800) {
+				const chat = document.querySelector('.chat') as HTMLElement;
+				if (chat) {
+					chat.style.display = 'none';
+				}
+			}
 		}
     }
 
@@ -101,6 +153,18 @@ export class ChatsPage {
 			preview.addEventListener('click', () => {
 				const index = parseInt(preview.getAttribute('data-id') as string);
 				this.loadChat(index);
+				history.pushState({}, '', `/chats/${index}`);
+				const width = window.innerWidth;
+				if (width <= 800) {
+					const chat = document.querySelector('.chat') as HTMLElement;
+					if (chat) {
+						chat.style.display = 'flex';
+					}
+					const chatList = document.querySelector('.chats-list') as HTMLElement;
+					if (chatList) {
+						chatList.style.display = 'none';
+					}
+				}
 			});
 		});
 	}
@@ -153,6 +217,7 @@ export class ChatsPage {
 
 	renderChat(chatData: any): void {
 		const chatContainer = document.querySelector('.chat');
+		chatContainer.classList.add('chat--active');
 		if (chatContainer) {
 		  	chatContainer.innerHTML = templateChat({ chatData });
 
@@ -165,6 +230,19 @@ export class ChatsPage {
 			if (closeButton) {
 				closeButton.addEventListener('click', () => {
 					chatContainer.innerHTML = templatePlaceholder(); 
+					history.pushState({}, '', `/chats`);
+					const width = window.innerWidth;
+					if (width <= 800) {
+						const chat = document.querySelector('.chat') as HTMLElement;
+						if (chat) {
+							chat.style.display = 'none';
+						}
+						const chatList = document.querySelector('.chats-list') as HTMLElement;
+						if (chatList) {
+							chatList.style.display = 'flex';
+						}
+					}
+					chatContainer.classList.remove('chat--active');
 				});
 			}
 

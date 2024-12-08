@@ -4,7 +4,7 @@ import { notificationManager } from "../../../widgets/Notification/notification"
 export async function saveNewPassword(oldPassword: string, newPassword: string) {
   try {
     const body = {'current_password': oldPassword, 'new_password': newPassword };
-    const response = await post('/changepassword', body);
+    const response = await post('/api/auth/changepassword', body);
     
     if (!response.ok) {
       return false

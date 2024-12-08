@@ -8,12 +8,15 @@ import { User } from '../../../entities/User/User'
  */
 export async function getUsers(): Promise<User[]> {
 	try {
-		const response = await get('/getusers');
-		const users: User[] = await response.json();
+		const response = await get('/api/personalities/getusers');
+		const data = await response.json();
+		if (data.Responses === null)
+			return null;
+		const users: User[] = data.Responses.map((response: any) => response as User);
 		return users;
 
 	} catch (error) {
 		console.error(error);
-		return [];
+		return null;
 	}
 }

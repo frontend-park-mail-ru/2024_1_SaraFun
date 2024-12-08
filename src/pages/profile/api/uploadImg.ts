@@ -7,7 +7,7 @@ export async function uploadImg(imagesNew: ImgData[], imagesURLs: string[], imag
             const formData = new FormData();
             formData.append('image', image.file);
             formData.append('number', String(image.index + 1));
-            const response = await postFormData('/uploadimage', formData);
+            const response = await postFormData('/api/uploadimage', formData);
             if (!response.ok) {
               console.error('Failed to upload the image:', response.statusText);
               return false; 
