@@ -9,7 +9,8 @@ import { User } from '../../../entities/User/User'
 export async function getUsers(): Promise<User[]> {
 	try {
 		const response = await get('/api/personalities/getusers');
-		const users: User[] = await response.json();
+		const data = await response.json();
+		const users: User[] = data.Responses.map((response: any) => response.user);
 		return users;
 
 	} catch (error) {
