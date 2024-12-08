@@ -8,7 +8,7 @@ import {get} from '../../../shared/api/api';
  */
 export async function logout(): Promise<boolean> {
 	try {
-		await get('/logout');
+		await get('/api/auth/logout');
 		return true;
 
 	} catch (error) {

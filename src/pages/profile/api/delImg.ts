@@ -6,7 +6,7 @@ export async function delImg(imagesDel: number[]): Promise<boolean> {
             if (imageId === -1) {
               continue;
             }
-            const response = await del(`/image/${imageId}`);
+            const response = await del(`/api/image/${imageId}`);
             if (!response.ok) {
               console.error('Failed to delete the image:', response.statusText);
               return false; 

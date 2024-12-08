@@ -22,7 +22,7 @@ export async function signupUser(login: string, password: string, gender: string
 				'age': age,
 			}
 		};
-		await post('/signup', body);
+		await post('/api/auth/signup', body);
 		return true;
 
 	} catch (error) {

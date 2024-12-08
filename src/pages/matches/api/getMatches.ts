@@ -8,7 +8,7 @@ import {User} from '../../../entities/User/User';
  */
 export async function getMatches(): Promise<User[]> {
 	try {
-		const response = await get('/matches');
+		const response = await get('/api/communications/matches');
 		const matches: User[] = await response.json();
 		return matches;
 

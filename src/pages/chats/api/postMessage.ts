@@ -6,7 +6,7 @@ export async function postMessage(receiverId: number, message: string): Promise<
 			'receiver': receiverId,
 			'body': message,
 		};
-		await post('/message', body);
+		await post('/api/message/message', body);
 		return true;
 
 	} catch (error) {

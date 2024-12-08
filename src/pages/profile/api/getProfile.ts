@@ -8,7 +8,7 @@ import { UserProfile } from '../lib/profile';
  */
 export async function getProfile(): Promise<UserProfile | null> {
   try {
-    const response = await get('/profile');
+    const response = await get('/api/personalities/profile');
     
     if (!response.ok) {
       console.error('Failed to fetch profile:', response.statusText);
@@ -29,7 +29,7 @@ export async function getProfile(): Promise<UserProfile | null> {
       About: data.profile.about,
       imagesURLs: images.map((image: { link: string }) => {
         const fileName = image.link.substring(image.link.lastIndexOf('/') + 1);
-        return `http://5.188.140.7/${fileName}`;
+        return `https://spark-it.site/${fileName}`;
       }),
     };
     return userProfile;

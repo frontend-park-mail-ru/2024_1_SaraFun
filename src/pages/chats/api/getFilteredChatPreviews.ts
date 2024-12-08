@@ -7,7 +7,7 @@ export async function getFilteredChatPreviews(name: string): Promise<ChatPreview
 			'search': name,
 			'page': 1,
 		};
-		const response = await post('/chatsearch', body);
+		const response = await post('/api/message/chatsearch', body);
 		const previews: ChatPreview[] = await response.json();
 		return previews;
 

@@ -38,7 +38,7 @@ export async function updProfile(profileData: UserProfile, imagesNew: ImgData[],
     };
     
   
-    const response = await put('/updateprofile', data);
+    const response = await put('/api/personalities/updateprofile', data);
     
     if (!response.ok) {
       console.error('Failed to update profile:', response.statusText);
