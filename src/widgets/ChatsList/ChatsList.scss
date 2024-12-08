@@ -13,15 +13,17 @@
     overflow-y: auto;
   }
 
-  @media (max-width: 800px) { 
-    display: none;
-  }
-
   &__no-previews {
     text-align: center;
     padding: 20px;
     border: 1px dashed var(--grey1);
     border-radius: 10px;
     background-color: var(--lightGrey);
+  }
+}
+
+@media (max-width: 800px) {
+  .chats-list {
+    width: 100%;
   }
 }

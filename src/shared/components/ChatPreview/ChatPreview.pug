@@ -4,7 +4,7 @@ mixin chat-preview(preview)
             if (preview.images && preview.images.length > 0)
                 img.chats-list__chat__avatar__img(src=`http://5.188.140.7/${preview.images[0].link.substring(preview.images[0].link.lastIndexOf('/') + 1)}` alt='avatar')
             else
-                img.chats-list__chat__avatar__img(src='./img/user.svg' alt='avatar')
+                img.chats-list__chat__avatar__img(src='/img/user.svg' alt='avatar')
         .chats-list__chat__info
             .chats-list__chat__info__header
                 .chats-list__chat__info__header__name

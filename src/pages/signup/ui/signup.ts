@@ -46,7 +46,7 @@ export class RegistrationPage {
 			passwordInputIcon.setAttribute('src', passwordInput.type === 'password' ? './img/eye-x.svg' : './img/eye.svg');
 		});
 
-		document.querySelector('button').addEventListener('click', async () => {
+		document.querySelector('.signup-button').addEventListener('click', async () => {
 			const login = (document.getElementById('login') as HTMLInputElement).value;
 			const password = (document.getElementById('password') as HTMLInputElement).value;
 			const gender = (document.querySelector('input[name="gender"]:checked') as HTMLInputElement).value;
