@@ -62,7 +62,7 @@ export default class Navbar {
 		}
 
 		const userData = await getProfile();
-		const avatarSrc = userData?.imagesURLs?.[0] ?? './img/user.svg';
+		const avatarSrc = userData?.imagesURLs?.[0] ?? '/img/user.svg';
 		const avatarImg = document.querySelector('.user-avatar__image');
 		avatarImg.setAttribute('src', avatarSrc);
 	}
@@ -113,6 +113,22 @@ export default class Navbar {
 				event.preventDefault();
 				const path = logoLink.getAttribute('href');
 				this.parent.navigateTo('/profile');
+			});
+		}
+
+		const hamburgerButton = document.querySelector('.navbar__hamburger__button');
+		const navbarList = document.querySelector('.navbar__list');
+		if (hamburgerButton && navbarList) {
+			hamburgerButton.addEventListener('click', () => {
+				navbarList.classList.toggle('navbar__list--active');
+			});
+
+			navLinks.forEach(link => {
+				link.addEventListener('click', () => {
+					if (navbarList.classList.contains('navbar__list--active')) {
+						navbarList.classList.remove('navbar__list--active');
+					}
+				});
 			});
 		}
 	}

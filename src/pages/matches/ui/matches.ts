@@ -24,6 +24,8 @@ export class MatchesPage {
 		if (this.matches.length === 0) {
 			const messageForm = document.querySelector('.form.message-form.message-form--matches') as HTMLElement;
 			messageForm.style.display = 'flex';
+			const matchesTitle = document.querySelector('.matches_title') as HTMLElement;
+			matchesTitle.style.display = 'none';
 		} else {
 			messageForm.style.display = 'none';
 		}
@@ -42,6 +44,13 @@ export class MatchesPage {
 				}
 				this.openProfileModal(users[index], card);
 		  	});
+
+			const button = card.querySelector('.match-card__button') as HTMLButtonElement;
+			if (button) {
+				button.addEventListener('click', () => {
+					this.parent.navigateTo(`/chats/${users[index].user}`);
+				});
+			}
 		});
 	}
 

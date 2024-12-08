@@ -1,9 +1,9 @@
 .tinder__card {
-    padding: 17px;
-    gap: 17px;
+    padding: 20px;
+    gap: 20px;
     min-width: 700px;
-    width: 65vw;
-    height: 75vh;
+    width: 65%;
+    height: 80%;
     background: var(--white1);
     border-radius: 20px;
     overflow: hidden;
@@ -19,5 +19,32 @@
     &.moving {
         transition: none;
         cursor: grabbing;
+    }
+}
+
+@media (max-width: 700px) {
+    .tinder__card {
+        flex-direction: column;
+        min-width: 300px;
+        width: 75%;
+    }
+}
+
+@media (max-width: 450px) {
+    .tinder__card {
+        flex-direction: column;
+        min-width: 300px;
+        width: 90%;
+        gap: 10px;
+
+        .image-section {
+            flex: 2;
+        }
+
+        .form-section {
+            h3 {
+                font-size: smaller;
+            }
+        }
     }
 }

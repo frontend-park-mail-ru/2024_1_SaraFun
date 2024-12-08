@@ -1,4 +1,5 @@
 include ../../shared/components/Carousel/Carousel.pug
+include ../../shared/components/TextButton/TextButton.pug
 
 mixin matchCard(user)
   .match-card
@@ -6,7 +7,8 @@ mixin matchCard(user)
       if (user.images != null && user.images.length > 0)
         +carousel(user.images)
       else
-        img(class="img image-section__img_static" src="./img/image.svg" alt="Image" draggable="false")
+        img(class="img image-section__img_static" src="/img/image.svg" alt="Image" draggable="false")
+    +textButton('Перейти в чат', 'match-card__button')
     if (user.profile.first_name == null || user.profile.first_name == '-')
       h3.match-card__title !{user.username}, !{user.profile.age}
     else 

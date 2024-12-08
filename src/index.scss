@@ -48,28 +48,6 @@
     --nav-width: 55px;
 }
 
-.root {
-    display: flex;
-    box-sizing: border-box;
-    margin-bottom: auto;
-    margin-top: auto;
-}
-
-body {
-    font-family: 'Rubik';
-    background-color: var(--primary);
-    background-image: url(./shared/assets/img/background.svg);
-    background-size: cover;
-    background-position: center;
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: var(--nav-width);
-    box-sizing: border-box;
-}
-
 h1 {
     line-height: normal;
     letter-spacing: 0;
@@ -106,6 +84,42 @@ h3 {
     font-weight: 500;
 }
 
+body {
+    font-family: 'Rubik';
+    background-color: var(--primary);
+    background-image: url(./shared/assets/img/background.svg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.root {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.navbarRoot {
+    display: flex;
+    height: var(--nav-width);
+    width: 100%;
+}
+
+.contentRoot {
+    width: 100%;
+    height: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
 .img {
     user-select: none;
     pointer-events: none;
@@ -137,15 +151,42 @@ h3 {
 .form {
     background-color: var(--white1);
     border-radius: 25px;
-    width: 70vw;
+    width: 70%;
     min-width: 890px;
     height: auto;
-    min-height: 85vh;
+    min-height: 90%;
     display: flex;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     padding: 20px;
     gap: 20px;
+}
+
+@media (max-width: 890px) {
+    .form {
+        width: 90%;
+        min-width: 280px; 
+        height: auto;
+        min-height: 90%;
+
+        .image-section {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .form {
+        width: 90%;
+        min-width: 280px; 
+        min-height: 80%; 
+        height: auto;
+        border-radius: 15px; 
+
+        .image-section {
+            display: none;
+        }
+    }
 }
 
 .wrapper {
