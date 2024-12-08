@@ -14,6 +14,6 @@ export async function getUsers(): Promise<User[]> {
 
 	} catch (error) {
 		console.error(error);
-		return [];
+		return null;
 	}
 }
