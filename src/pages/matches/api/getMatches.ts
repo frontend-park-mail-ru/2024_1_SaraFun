@@ -9,7 +9,10 @@ import {User} from '../../../entities/User/User';
 export async function getMatches(): Promise<User[]> {
 	try {
 		const response = await get('/api/communications/matches');
-		const matches: User[] = await response.json();
+		const data = await response.json();
+		if (data.Cards === null)
+			return null;
+		const matches: User[] = data.Responses.map((response: any) => response as User);
 		return matches;
 
 	} catch (error) {
