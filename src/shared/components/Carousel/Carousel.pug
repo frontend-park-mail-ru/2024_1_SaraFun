@@ -1,7 +1,7 @@
 mixin carousel(images)
     .carousel
         each image, index in images
-            img(class="img image-section__img" src=`https://5.188.140.7/${image.link.substring(image.link.lastIndexOf('/') + 1)}` alt="Image #{index + 1}" draggable="false")
+            img(class="img image-section__img" src=`https://spark-it.site/${image.link.substring(image.link.lastIndexOf('/') + 1)}` alt="Image #{index + 1}" draggable="false")
     if (images.length > 1)
         button.button_light.carousel__button.carousel__button_left
             img(class="img button_img__img" src="/img/left.svg" alt="X")
