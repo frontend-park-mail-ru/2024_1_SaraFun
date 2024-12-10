@@ -10,7 +10,7 @@ import { post } from '../../../shared/api/api';
  * @returns {Promise<boolean>} - A promise that resolves to true 
  *         if registration is successful, otherwise false.
  */
-export async function signupUser(login: string, password: string, gender: string, age: string): Promise<boolean> {
+export async function signupUser(login: string, password: string, gender: string, birth_date: string): Promise<boolean> {
   try {
     const body = {
       'username': login,
@@ -18,7 +18,7 @@ export async function signupUser(login: string, password: string, gender: string
       'first_name': login,
       'last_name': login,
       'gender': gender, 
-      'age': age, 
+      'birth_date': birth_date, 
     };
     await post('/api/auth/signup', body);
     return true;

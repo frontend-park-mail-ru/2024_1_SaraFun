@@ -52,10 +52,10 @@ export class RegistrationPage {
 		const password = (document.getElementById('password') as HTMLInputElement).value;
 		const gender = (document.querySelector('input[name="gender"]:checked') as HTMLInputElement).value;
 	
-		const ageInput = (document.getElementById('birth_date') as HTMLInputElement).value; 
-		console.log(ageInput);
+		const birth_date = (document.getElementById('birth_date') as HTMLInputElement).value; 
+		console.log(birth_date);
 		
-		if (!/\d{4}-\d{2}-\d{2}/.test(ageInput)) {
+		if (!/\d{4}-\d{2}-\d{2}/.test(birth_date)) {
 			notificationManager.addNotification('Некорректный формат даты. Используйте YYYY-MM-DD.', 'fail');
 			return;
 		}
@@ -70,25 +70,25 @@ export class RegistrationPage {
 	
 		if (passwordErrors.length > 0) {
 			passwordErrors.forEach((error, index) => {
-			document.getElementById(`password-error-${index + 1}).innerText = error`);
-			document.getElementById(`password-error-${index + 1}).style.display = 'block'`);
+			document.getElementById(`password-error-${index + 1}`).innerText = error;
+			document.getElementById(`password-error-${index + 1}`).style.display = 'block';
 			});
 			valid = false;
 		}
 	
 		if (loginErrors.length > 0) {
 			loginErrors.forEach((error, index) => {
-			document.getElementById(`login-error-${index + 1}).innerText = error`);
-			document.getElementById(`login-error-${index + 1}).style.display = 'block'`);
+			document.getElementById(`login-error-${index + 1}`).innerText = error;
+			document.getElementById(`login-error-${index + 1}`).style.display = 'block';
 			});
 			valid = false;
 		}
 	
 		if (valid) {
 			try {
-				const isSignedUp = await signupUser(login, password, gender, ageInput);
+				const isSignedUp = await signupUser(login, password, gender, birth_date);
 				if (!isSignedUp) {
-					document.getElementById('login-password-error').style.display = 'block';            
+					document.getElementById('login-password-error').style.display = 'block'; 
 				} else { 
 					this.parent.setAuth(true);
 					this.parent.navigateTo('/feed');
