@@ -136,6 +136,9 @@ export class RegistrationPage {
 		};
 	
 		loginInput?.addEventListener('input', () => {
+			for (let i = 1; i <= 4; i++) { 
+				clearError(`login-error-${i}`);
+			}			
 			const loginErrors = isValidLogin(loginInput.value);
 			if (loginErrors.length > 0) {
 				loginErrors.forEach((error, index) => {
@@ -146,6 +149,9 @@ export class RegistrationPage {
 		});
 	
 		passwordInput?.addEventListener('input', () => {
+			for (let i = 1; i <= 3; i++) { 
+				clearError(`password-error-${i}`);
+			}	
 			const passwordErrors = isValidPassword(passwordInput.value);
 			if (passwordErrors.length > 0) {
 				passwordErrors.forEach((error, index) => {
