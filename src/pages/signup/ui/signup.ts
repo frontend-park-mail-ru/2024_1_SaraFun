@@ -53,7 +53,6 @@ export class RegistrationPage {
 		const gender = (document.querySelector('input[name="gender"]:checked') as HTMLInputElement).value;
 	
 		const birth_date = (document.getElementById('birth_date') as HTMLInputElement).value; 
-		console.log(birth_date);
 		
 		if (!/\d{4}-\d{2}-\d{2}/.test(birth_date)) {
 			notificationManager.addNotification('Некорректный формат даты. Используйте YYYY-MM-DD.', 'fail');

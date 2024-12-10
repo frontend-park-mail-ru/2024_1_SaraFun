@@ -37,6 +37,7 @@ export async function updProfile(profileData: UserProfile, imagesNew: ImgData[],
       imgNumbers: imgNumbers,
     };
     
+    console.log(data);
   
     const response = await put('/api/personalities/updateprofile', data);
     
