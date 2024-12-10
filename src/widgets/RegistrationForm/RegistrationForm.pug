@@ -4,12 +4,15 @@ include ../../shared/components/TextButton/TextButton.pug
 include ../../shared/components/FooterText/FooterText.pug
 include ../../shared/components/GenderSelection/GenderSelection.pug
 include ../../shared/components/Data/Data.pug
+include ../../shared/components/NameInput/nameInput.pug
 
 block registration
   +header('Добро пожаловать!')
 
   +customInput('login', 'registration')
   +customInput('password', 'registration')
+
+  +name('', '')
 
   +genderSelection('male')
 

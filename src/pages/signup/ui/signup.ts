@@ -3,6 +3,7 @@ import { signupUser } from '../api/signupUser';
 import template from './signup.pug';
 import { Router } from '../../../app/Router';
 import { notificationManager } from '../../../widgets/Notification/notification';
+import { limitInput } from '../../../features/limitInput';
 
 /**
  * Class representing the registration page.
@@ -46,10 +47,14 @@ export class RegistrationPage {
 		passwordInput.setAttribute('type', passwordInput.type === 'password' ? 'text' : 'password');
 		passwordInputIcon.setAttribute('src', passwordInput.type === 'password' ? './img/eye-x.svg' : './img/eye.svg');
 		});
+
+		this.limits();
 	
 		document.querySelector('.signup-button').addEventListener('click', async () => {
 		const login = (document.getElementById('login') as HTMLInputElement).value;
 		const password = (document.getElementById('password') as HTMLInputElement).value;
+		const first_name = (document.getElementById('first_name') as HTMLInputElement).value; 
+		const last_name = (document.getElementById('last_name') as HTMLInputElement).value;
 		const gender = (document.querySelector('input[name="gender"]:checked') as HTMLInputElement).value;
 	
 		const birth_date = (document.getElementById('birth_date') as HTMLInputElement).value; 
@@ -85,7 +90,7 @@ export class RegistrationPage {
 	
 		if (valid) {
 			try {
-				const isSignedUp = await signupUser(login, password, gender, birth_date);
+				const isSignedUp = await signupUser(login, password, first_name, last_name, gender, birth_date);
 				if (!isSignedUp) {
 					document.getElementById('login-password-error').style.display = 'block'; 
 				} else { 
@@ -98,5 +103,17 @@ export class RegistrationPage {
 			}
 		}
 		});
+	}
+
+	limits(): void {
+		const first_nameInput = document.getElementById('first_name') as HTMLInputElement; 
+		if (first_nameInput) {
+			limitInput(first_nameInput); 
+		}
+		
+		const last_nameInput = document.getElementById('last_name') as HTMLInputElement; 
+		if (last_nameInput) {
+			limitInput(last_nameInput); 
+		}
 	}
 }

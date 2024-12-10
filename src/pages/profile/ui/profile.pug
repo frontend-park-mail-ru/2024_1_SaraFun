@@ -1,6 +1,7 @@
 include ../../../shared/components/Icons/trash.pug
 include ../../../shared/components/Data/Data.pug
 include ../../../shared/components/GenderSelection/GenderSelection.pug
+include ../../../shared/components/NameInput/nameInput.pug
 
 div.profile
   div.profile-card
@@ -8,11 +9,8 @@ div.profile
       h1 Редактирование профиля
       .settings-form
         label
-          | Имя:
-          input(type="text" class='input' id="first_name" maxlength="50" value=first_name required)
-        label
-          | Фамилия:
-          input(type="text" class='input' id="last_name" maxlength="50" value=last_name required)
+          +name(first_name, last_name)
+
         +genderSelection(gender)
         label
           +data(birth_date)

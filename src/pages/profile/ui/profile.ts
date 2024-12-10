@@ -154,24 +154,7 @@ export class ProfilePage {
 
 
     if (this.isEditing) {
-      const textarea = document.getElementById('about') as HTMLTextAreaElement; 
-      limitText(textarea, 10); 
-
-      const first_nameInput = document.getElementById('first_name') as HTMLInputElement; 
-      if (first_nameInput) {
-        limitInput(first_nameInput); 
-      }
-      
-
-      const last_nameInput = document.getElementById('last_name') as HTMLInputElement; 
-      if (last_nameInput) {
-        limitInput(last_nameInput); 
-      }
-
-      textarea.addEventListener('input', () => {
-        textarea.style.height = 'auto'; 
-        textarea.style.height = `${textarea.scrollHeight}px`; 
-      });
+      this.limits();
     }
   }
 
@@ -224,6 +207,26 @@ export class ProfilePage {
       this.render();
     });
   }
+
+  private limits(): void {
+    const textarea = document.getElementById('about') as HTMLTextAreaElement; 
+    limitText(textarea, 10); 
+
+    const first_nameInput = document.getElementById('first_name') as HTMLInputElement; 
+    if (first_nameInput) {
+      limitInput(first_nameInput); 
+    }
+
+    const last_nameInput = document.getElementById('last_name') as HTMLInputElement; 
+    if (last_nameInput) {
+      limitInput(last_nameInput); 
+    }
+
+    textarea.addEventListener('input', () => {
+      textarea.style.height = 'auto'; 
+      textarea.style.height = `${textarea.scrollHeight}px`; 
+    });
+	}
   
   private async saveSettings(): Promise<void> {
     this.getInfoFromPdata()
