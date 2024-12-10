@@ -1,4 +1,5 @@
 include ../../../shared/components/Icons/trash.pug
+include ../../../shared/components/Data/data.pug
 include ../../../shared/components/GenderSelection/GenderSelection.pug
 
 div.profile
@@ -8,21 +9,19 @@ div.profile
       .settings-form
         label
           | Имя:
-          input(type="text" class='input' id="FirstName" maxlength="50" value=FirstName required)
+          input(type="text" class='input' id="first_name" maxlength="50" value=first_name required)
         label
           | Фамилия:
-          input(type="text" class='input' id="LastName" maxlength="50" value=LastName required)
-        +genderSelection(Gender)
+          input(type="text" class='input' id="last_name" maxlength="50" value=last_name required)
+        +genderSelection(gender)
         label
-          | Возраст:
-          input(class="range-input" type="range" id="Age" name="Age" min="18" max="100" value=Age)
-          output 18
+          +data(birthday_data)
         label
           | Цель:
-          input(type="string" id="Target" value=Target maxlength="300")
+          input(type="string" id="target" value=target maxlength="300")
         label
           | О себе:
-          textarea(id="About" rows="1" maxlength="600")= About
+          textarea(id="about" rows="1" maxlength="600")= about
 
       // Новый раздел для смены пароля
       .password-change-section
