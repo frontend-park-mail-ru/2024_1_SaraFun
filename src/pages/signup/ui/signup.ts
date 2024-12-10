@@ -35,73 +35,74 @@ export class RegistrationPage {
 	// Обновлённый метод addEventListeners
 	addEventListeners(): void {
 		document.getElementById('link').addEventListener('click', (event) => {
-		event.preventDefault();
-		const url = new URL((event.target as HTMLAnchorElement).href);
-		const path = url.pathname;
-		this.parent.navigateTo(path);
+			event.preventDefault();
+			const url = new URL((event.target as HTMLAnchorElement).href);
+			const path = url.pathname;
+			this.parent.navigateTo(path);
 		});
 	
 		const passwordInputIcon = document.querySelector('.password__icon') as HTMLElement;
 		passwordInputIcon.addEventListener('click', (event) => {
-		const passwordInput = document.getElementById('password') as HTMLInputElement;
-		passwordInput.setAttribute('type', passwordInput.type === 'password' ? 'text' : 'password');
-		passwordInputIcon.setAttribute('src', passwordInput.type === 'password' ? './img/eye-x.svg' : './img/eye.svg');
+			const passwordInput = document.getElementById('password') as HTMLInputElement;
+			passwordInput.setAttribute('type', passwordInput.type === 'password' ? 'text' : 'password');
+			passwordInputIcon.setAttribute('src', passwordInput.type === 'password' ? './img/eye-x.svg' : './img/eye.svg');
 		});
 
 		this.limits();
+
+		this.addInputListeners();
+
 	
 		document.querySelector('.signup-button').addEventListener('click', async () => {
-		const login = (document.getElementById('login') as HTMLInputElement).value;
-		const password = (document.getElementById('password') as HTMLInputElement).value;
-		const first_name = (document.getElementById('first_name') as HTMLInputElement).value; 
-		const last_name = (document.getElementById('last_name') as HTMLInputElement).value;
-		const gender = (document.querySelector('input[name="gender"]:checked') as HTMLInputElement).value;
-	
-		const birth_date = (document.getElementById('birth_date') as HTMLInputElement).value; 
-		
-		if (!/\d{4}-\d{2}-\d{2}/.test(birth_date)) {
-			notificationManager.addNotification('Некорректный формат даты. Используйте YYYY-MM-DD.', 'fail');
-			return;
-		}
-	
-		const passwordErrors = isValidPassword(password);
-		const loginErrors = isValidLogin(login);
-		let valid = true;
-	
-		document.querySelectorAll('.error').forEach(error => {
-			(error as HTMLElement).style.display = 'none';
-		});
-	
-		if (passwordErrors.length > 0) {
-			passwordErrors.forEach((error, index) => {
-			document.getElementById(`password-error-${index + 1}`).innerText = error;
-			document.getElementById(`password-error-${index + 1}`).style.display = 'block';
-			});
-			valid = false;
-		}
-	
-		if (loginErrors.length > 0) {
-			loginErrors.forEach((error, index) => {
-			document.getElementById(`login-error-${index + 1}`).innerText = error;
-			document.getElementById(`login-error-${index + 1}`).style.display = 'block';
-			});
-			valid = false;
-		}
-	
-		if (valid) {
-			try {
-				const isSignedUp = await signupUser(login, password, first_name, last_name, gender, birth_date);
-				if (!isSignedUp) {
-					notificationManager.addNotification('Ошибка при регистрации. Попробуйте ещё раз.', 'fail'); 
-				} else { 
-					this.parent.setAuth(true);
-					this.parent.navigateTo('/feed');
-				}
-			} catch (error) {
-				console.error(error);
-				notificationManager.addNotification('Ошибка при регистрации. Попробуйте ещё раз.', 'fail');
+			const login = (document.getElementById('login') as HTMLInputElement).value;
+			const password = (document.getElementById('password') as HTMLInputElement).value;
+			const first_name = (document.getElementById('first_name') as HTMLInputElement).value; 
+			const last_name = (document.getElementById('last_name') as HTMLInputElement).value;
+			const gender = (document.querySelector('input[name="gender"]:checked') as HTMLInputElement).value;
+			const birth_date = (document.getElementById('birth_date') as HTMLInputElement).value; 
+			let valid = true;
+			
+			if (!/\d{4}-\d{2}-\d{2}/.test(birth_date)) {
+				valid = false;
+				notificationManager.addNotification('Некорректный формат даты. Используйте YYYY-MM-DD.', 'fail');
+				return;
 			}
-		}
+
+			if (first_name === '') {
+				this.showError('first-name-error', 'Имя не может быть пустым');
+				valid = false;
+			}
+
+			if (last_name === '') {
+				this.showError('last-name-error', 'Фамилия не может быть пустым');
+				valid = false;
+			}
+
+			const loginErrors = isValidLogin(login);
+			const passwordErrors = isValidPassword(password);
+			
+			if (loginErrors.length > 0 || passwordErrors.length > 0 || first_name === '' || last_name === '') {
+				notificationManager.addNotification('Пожалуйста, исправьте ошибки в форме.', 'fail');
+				valid = false;
+			}
+
+						
+		
+			if (valid) {
+				try {
+					const isSignedUp = await signupUser(login, password, first_name, last_name, gender, birth_date);
+					if (!isSignedUp) {
+						notificationManager.addNotification('Ошибка при регистрации. Попробуйте ещё раз.', 'fail'); 
+					} else { 
+						notificationManager.addNotification('Успешная регистрация', 'success');
+						this.parent.setAuth(true);
+						this.parent.navigateTo('/feed');
+					}
+				} catch (error) {
+					console.error(error);
+					notificationManager.addNotification('Ошибка при регистрации. Попробуйте ещё раз.', 'fail');
+				}
+			}
 		});
 	}
 
@@ -114,6 +115,56 @@ export class RegistrationPage {
 		const last_nameInput = document.getElementById('last_name') as HTMLInputElement; 
 		if (last_nameInput) {
 			limitInput(last_nameInput); 
+		}
+	}
+
+	private addInputListeners(): void {
+		document.querySelectorAll('.error').forEach(error => {
+			(error as HTMLElement).style.display = 'none';
+		});
+		const loginInput = document.getElementById('login') as HTMLInputElement;
+		const passwordInput = document.getElementById('password') as HTMLInputElement;
+		const firstNameInput = document.getElementById('first_name') as HTMLInputElement;
+		const lastNameInput = document.getElementById('last_name') as HTMLInputElement;
+	
+		const clearError = (errorElementId: string): void => {
+			const errorElement = document.getElementById(errorElementId);
+			if (errorElement) {
+				errorElement.textContent = '';
+				errorElement.style.display = 'none';
+			}
+		};
+	
+		loginInput?.addEventListener('input', () => {
+			const loginErrors = isValidLogin(loginInput.value);
+			if (loginErrors.length > 0) {
+				loginErrors.forEach((error, index) => {
+					document.getElementById(`login-error-${index + 1}`).innerText = error;
+					document.getElementById(`login-error-${index + 1}`).style.display = 'block';
+				});
+			}
+		});
+	
+		passwordInput?.addEventListener('input', () => {
+			const passwordErrors = isValidPassword(passwordInput.value);
+			if (passwordErrors.length > 0) {
+				passwordErrors.forEach((error, index) => {
+					document.getElementById(`password-error-${index + 1}`).innerText = error;
+					document.getElementById(`password-error-${index + 1}`).style.display = 'block';
+				});
+			}
+		});
+	
+		firstNameInput?.addEventListener('input', () => clearError('first-name-error')); 
+		
+		lastNameInput?.addEventListener('input', () => clearError('last-name-error')); 
+	}
+	
+	private showError(errorElementId: string, message: string): void {
+		const errorElement = document.getElementById(errorElementId);
+		if (errorElement) {
+			errorElement.textContent = message;
+			errorElement.style.display = 'block';
 		}
 	}
 }
