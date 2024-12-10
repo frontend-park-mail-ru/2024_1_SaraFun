@@ -1,3 +1,4 @@
+
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -10,11 +11,11 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '../dist')));
 
-app.get(/^(?!.*\.(css|js|img|png|webp|webm|svg)).*$/, (req, res) => {
+app.get(/^(?!.*.(css|js|img|png|webp|webm|svg)).*$/, (req, res) => {
 	res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 
-const port = 3001;
+const port = process.argv[2] || 3000;
 
 app.listen(port, () => {
 	console.info(`Сервер запущен на порту ${port}`);

@@ -1,19 +1,28 @@
 .matches {
     display: grid;
     grid-template-columns: repeat(3, minmax(200px, 300px));
-    gap: 20px; 
-    height: 92vh;                                         
-    padding: 25px;                          
+    gap: 20px;                                                                 
     box-sizing: border-box;
+}
+
+.matches_container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    padding: 20px;
+    height: 92vh;
+    width: 100%;
+    align-items: center;
 }
 
 @media (max-width: 700px) { 
     .matches { 
-        display: grid;
-        grid-template-columns: repeat(2, minmax(200px, 250px));
-        gap: 20px; 
-        height: 92vh;                                         
-        padding: 25px;                      
-        box-sizing: border-box;
+        grid-template-columns: repeat(2, minmax(200px, 250px));                    
+    }
+}
+
+@media (max-width: 450px) { 
+    .matches { 
+        grid-template-columns: repeat(1, minmax(200px, 400px));
     }
 }

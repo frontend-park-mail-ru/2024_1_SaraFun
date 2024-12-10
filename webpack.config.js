@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 
 module.exports = {
@@ -9,6 +11,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
+		publicPath: '/',
 		filename: '[name][contenthash].js',
 		clean: true,
 		assetModuleFilename: '[name][ext]',
@@ -28,6 +31,13 @@ module.exports = {
 		hot: true,
 		compress: true,
 		historyApiFallback: true,
+		/*historyApiFallback: {
+			rewrites: [
+				{ from: /^\/$/, to: '/index.html' },
+      			{ from: /^\/login/, to: '/index.html' },
+			  	{ from: /./, to: '/index.html' }
+			]
+		},*/
 	},
 	module: {
 		rules: [
@@ -77,6 +87,11 @@ module.exports = {
 			title: 'SparkIt',
 			filename: 'index.html',
 			template: 'src/index.html',
+		}),
+		new CopyWebpackPlugin({
+			patterns: [
+				{ from: 'sw.js', to: 'sw.js' },
+			],
 		}),
 	]
 };

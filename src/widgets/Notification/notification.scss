@@ -1,0 +1,38 @@
+.notifications-container {
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+
+    .notification-container {
+        position: relative; 
+        transition: background-color 0.3s ease, transform 0.2s ease; 
+        margin-bottom: 10px;
+        border-radius: 10px;
+        width: 300px; 
+        overflow-wrap: break-word; 
+        word-wrap: break-word;
+        .notification {
+            padding: 10px;
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.5);
+                cursor: pointer;
+                transform: scale(1.02);
+            }
+        }
+
+        &.success {
+            background-color: rgb(119, 220, 119);
+        }
+
+        &.fail {
+            background-color: rgb(251, 126, 126);
+        }
+    }
+}
