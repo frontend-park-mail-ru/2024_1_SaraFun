@@ -15,7 +15,7 @@ div.profile
           input(type="text" class='input' id="last_name" maxlength="50" value=last_name required)
         +genderSelection(gender)
         label
-          +data(birthday_data)
+          +data(birth_data)
         label
           | Цель:
           input(type="string" id="target" value=target maxlength="300")
@@ -74,7 +74,7 @@ div.profile
           p Имя: #{first_name}
           p Фамилия: #{last_name}
           p Пол: #{gender === 'male' ? 'Мужской' : 'Женский'}
-          p Дата рождения: #{birthday_data}
+          p Дата рождения: #{birth_data}
           p Цель: #{target}
           p О себе: #{about}
       div

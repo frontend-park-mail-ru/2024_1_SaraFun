@@ -19,7 +19,7 @@ export class ProfilePage {
   private imagesIndexes: number[];
   private first_name: string;
   private last_name: string;
-  private birthday_data: string;
+  private birth_data: string;
   private gender: string;
   private target: string;
   private about: string;
@@ -40,7 +40,7 @@ export class ProfilePage {
       this.imagesIndexes = profileData.imagesIndexes || [];
       this.first_name = profileData.first_name || '';
       this.last_name = profileData.last_name || '';
-      this.birthday_data = profileData.birthday_data || '2000-01-01';
+      this.birth_data = profileData.birth_data || '2000-01-01';
       this.gender = profileData.gender || 'male';
       this.target = profileData.target || '';
       this.about = profileData.about || '';
@@ -53,7 +53,7 @@ export class ProfilePage {
       isEditing: this.isEditing,
       first_name: this.first_name,
       last_name: this.last_name,
-      birthday_data: this.birthday_data,
+      birth_data: this.birth_data,
       gender: this.gender,
       target: this.target,
       about: this.about,
@@ -183,7 +183,7 @@ export class ProfilePage {
     this.first_name = (document.getElementById('first_name') as HTMLInputElement).value;
     this.last_name = (document.getElementById('last_name') as HTMLInputElement).value;
     this.gender = (document.querySelector('input[name="gender"]:checked') as HTMLSelectElement).value;
-    this.birthday_data = (document.getElementById('birthday_data') as HTMLInputElement).value;
+    this.birth_data = (document.getElementById('birth_data') as HTMLInputElement).value;
     this.target = (document.getElementById('target') as HTMLTextAreaElement).value;
     this.about = (document.getElementById('about') as HTMLTextAreaElement).value;
     return;
@@ -233,7 +233,7 @@ export class ProfilePage {
       imagesIndexes: this.imagesIndexes,
       first_name: this.first_name,
       last_name: this.last_name,
-      birthday_data: this.birthday_data,
+      birth_data: this.birth_data,
       gender: this.gender,
       target: this.target,
       about: this.about,
