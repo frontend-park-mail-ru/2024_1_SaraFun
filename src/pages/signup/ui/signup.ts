@@ -69,12 +69,12 @@ export class RegistrationPage {
 			}
 
 			if (first_name === '') {
-				this.showError('first-name-error', 'Имя не может быть пустым');
+				this.showError('first-name-error', 'Имя не может быть пустым полем');
 				valid = false;
 			}
 
 			if (last_name === '') {
-				this.showError('last-name-error', 'Фамилия не может быть пустым');
+				this.showError('last-name-error', 'Фамилия не может быть пустым полем');
 				valid = false;
 			}
 
