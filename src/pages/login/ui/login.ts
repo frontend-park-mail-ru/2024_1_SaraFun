@@ -88,6 +88,9 @@ export class LoginPage {
 					console.error(error);
 					notificationManager.addNotification('Ошибка при авторизации. Попробуйте ещё раз.', 'fail');
 				}
+			} else {
+				console.error('Error in authorization');
+				notificationManager.addNotification('Ошибка при авторизации. Попробуйте ещё раз.', 'fail');
 			}
 		});
 	}
