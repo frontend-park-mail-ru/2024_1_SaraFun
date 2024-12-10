@@ -32,7 +32,6 @@ export async function getProfile(): Promise<UserProfile | null> {
         return `https://spark-it.site/${fileName}`;
       }),
     };
-    console.log(userProfile);
     return userProfile;
   } catch (error) {
     console.error('Error fetching user profile:', error);
