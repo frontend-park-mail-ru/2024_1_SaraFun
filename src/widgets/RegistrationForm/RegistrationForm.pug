@@ -3,7 +3,7 @@ include ../../shared/components/Header/Header.pug
 include ../../shared/components/TextButton/TextButton.pug
 include ../../shared/components/FooterText/FooterText.pug
 include ../../shared/components/GenderSelection/GenderSelection.pug
-include ../../shared/components/Data/Data.pug
+include ../../shared/components/Birth_date/birth_date.pug
 include ../../shared/components/NameInput/nameInput.pug
 
 block registration
@@ -16,7 +16,7 @@ block registration
 
   +genderSelection('male')
 
-  +data('2000-01-01')
+  +birth_date('2000-01-01')
 
   +textButton('Зарегистрироваться', 'signup-button')
 

@@ -1,5 +1,5 @@
 include ../../../shared/components/Icons/trash.pug
-include ../../../shared/components/Data/Data.pug
+include ../../../shared/components/Birth_date/birth_date.pug
 include ../../../shared/components/GenderSelection/GenderSelection.pug
 include ../../../shared/components/NameInput/nameInput.pug
 include ../../../shared/components/Target/target.pug
@@ -13,6 +13,7 @@ div.profile
       .settings-form
         label
           +name(first_name, last_name)
+        +birth_date(birth_date)
         +genderSelection(gender)
         +target(target)
         +about(about)
