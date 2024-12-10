@@ -24,7 +24,7 @@ export async function getProfile(): Promise<UserProfile | null> {
       first_name: data.profile.first_name,
       last_name: data.profile.last_name,
       gender: data.profile.gender,
-      birth_data: data.profile.birth_data,
+      birth_date: data.profile.birth_date,
       target: data.profile.target,
       about: data.profile.about,
       imagesURLs: images.map((image: { link: string }) => {

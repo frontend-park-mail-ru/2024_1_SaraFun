@@ -4,7 +4,7 @@ export interface UserProfile {
   imagesIndexes: number[],
   first_name: string,
   last_name: string,
-  birth_data: string,
+  birth_date: string,
   gender: string,
   target: string,
   about: string,

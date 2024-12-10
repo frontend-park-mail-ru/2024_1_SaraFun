@@ -52,7 +52,7 @@ export class RegistrationPage {
 		const password = (document.getElementById('password') as HTMLInputElement).value;
 		const gender = (document.querySelector('input[name="gender"]:checked') as HTMLInputElement).value;
 	
-		const ageInput = (document.getElementById('age') as HTMLInputElement).value; 
+		const ageInput = (document.getElementById('birth_date') as HTMLInputElement).value; 
 		console.log(ageInput);
 		
 		if (!/\d{4}-\d{2}-\d{2}/.test(ageInput)) {
