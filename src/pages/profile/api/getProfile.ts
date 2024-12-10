@@ -24,7 +24,7 @@ export async function getProfile(): Promise<UserProfile | null> {
       first_name: data.profile.first_name,
       last_name: data.profile.last_name,
       gender: data.profile.gender,
-      birthday_data: data.profile.age,
+      birthday_data: data.profile.birthday_data,
       target: data.profile.target,
       about: data.profile.about,
       imagesURLs: images.map((image: { link: string }) => {
@@ -32,6 +32,7 @@ export async function getProfile(): Promise<UserProfile | null> {
         return `https://spark-it.site/${fileName}`;
       }),
     };
+    console.log(userProfile);
     return userProfile;
   } catch (error) {
     console.error('Error fetching user profile:', error);
