@@ -2,6 +2,9 @@ include ../../../shared/components/Icons/trash.pug
 include ../../../shared/components/Data/Data.pug
 include ../../../shared/components/GenderSelection/GenderSelection.pug
 include ../../../shared/components/NameInput/nameInput.pug
+include ../../../shared/components/Target/target.pug
+include ../../../shared/components/PassChange/passChange.pug
+include ../../../shared/components/About/about.pug
 
 div.profile
   div.profile-card
@@ -10,34 +13,11 @@ div.profile
       .settings-form
         label
           +name(first_name, last_name)
-
         +genderSelection(gender)
-        label
-          +data(birth_date)
-        label
-          | Цель:
-          input(type="string" id="target" value=target maxlength="300")
-        label
-          | О себе:
-          textarea(id="about" rows="1" maxlength="600")= about
+        +target(target)
+        +about(about)
 
-      // Новый раздел для смены пароля
-      .password-change-section
-        h2 Смена пароля
-        label
-          | Старый пароль:
-          input(type="password" class='input' id="OldPassword" required)
-          p.error#old-password-error(style='display:none') Неправильный старый пароль.
-        label
-          | Новый пароль:
-          input(type="password" class='input' id="NewPassword" required)
-          p.error#new-password-error(style='display:none') Новый пароль не удовлетворяет условиям.
-        label
-          | Повторите новый пароль:
-          input(type="password" class='input' id="RepeatNewPassword" required)
-          p.error#repeat-password-error(style='display:none') Новый пароль и его повторение не совпадают.
-        div.button-wrapper
-          button.new-password Сменить пароль
+      +password-change
 
       div 
         h3 Фотографии
