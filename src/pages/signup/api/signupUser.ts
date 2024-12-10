@@ -18,7 +18,7 @@ export async function signupUser(login: string, password: string, first_name: st
       'first_name': first_name,
       'last_name': last_name,
       'gender': gender, 
-      'birth_date': birth_date, 
+      // 'birth_date': birth_date, 
     };
     await post('/api/auth/signup', body);
     return true;
