@@ -80,6 +80,21 @@ export class RegistrationPage {
 
 			const loginErrors = isValidLogin(login);
 			const passwordErrors = isValidPassword(password);
+
+			if (passwordErrors.length > 0) {
+				passwordErrors.forEach((error, index) => {
+					document.getElementById(`password-error-${index + 1}`).innerText = error;
+					document.getElementById(`password-error-${index + 1}`).style.display = 'block';
+				});
+			}	
+			  
+			if (loginErrors.length > 0) {
+				loginErrors.forEach((error, index) => {
+					document.getElementById(`login-error-${index + 1}`).innerText = error;
+					document.getElementById(`login-error-${index + 1}`).style.display = 'block';
+				});
+			}
+			 
 			
 			if (loginErrors.length > 0 || passwordErrors.length > 0 || first_name === '' || last_name === '') {
 				notificationManager.addNotification('Пожалуйста, исправьте ошибки в форме.', 'fail');
