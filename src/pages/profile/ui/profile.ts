@@ -109,11 +109,11 @@ export class ProfilePage {
 
             if (dragIndex !== index) {
               const draggedimage = this.imagesURLs[dragIndex];
-              const drbirthday_datadId = this.imagesIndexes[dragIndex];
+              const drdatadId = this.imagesIndexes[dragIndex];
               this.imagesURLs.splice(dragIndex, 1); 
               this.imagesIndexes.splice(dragIndex, 1);
               this.imagesURLs.splice(index, 0, draggedimage); 
-              this.imagesIndexes.splice(index, 0, drbirthday_datadId); 
+              this.imagesIndexes.splice(index, 0, drdatadId); 
               
               this.imagesNew.forEach((image, i) => { //мне кажется, что непонятный код, поэтому есть комменты
                 if (image.index === dragIndex) {
@@ -129,7 +129,7 @@ export class ProfilePage {
               });
         
 
-              this.getInfoFromPbirthday_data();
+              this.getInfoFromPdata();
               this.render();
             }
           });
@@ -176,10 +176,10 @@ export class ProfilePage {
   }
 
   private handleUploadImg() {
-    uploadImg(this.imagesNew, this.imagesURLs, this.imagesIndexes, () => this.getInfoFromPbirthday_data(), () => this.render());
+    uploadImg(this.imagesNew, this.imagesURLs, this.imagesIndexes, () => this.getInfoFromPdata(), () => this.render());
   }
   
-  private getInfoFromPbirthday_data() {
+  private getInfoFromPdata() {
     this.first_name = (document.getElementById('first_name') as HTMLInputElement).value;
     this.last_name = (document.getElementById('last_name') as HTMLInputElement).value;
     this.gender = (document.querySelector('input[name="gender"]:checked') as HTMLSelectElement).value;
@@ -213,7 +213,7 @@ export class ProfilePage {
     this.imagesIndexes.splice(index, 1);
     this.imagesURLs.splice(index, 1);
 
-    this.getInfoFromPbirthday_data();
+    this.getInfoFromPdata();
     this.render();
   }
 
@@ -226,7 +226,7 @@ export class ProfilePage {
   }
   
   private async saveSettings(): Promise<void> {
-    this.getInfoFromPbirthday_data()
+    this.getInfoFromPdata()
 
     const profileData: UserProfile = {
       ID: this.ID, 
