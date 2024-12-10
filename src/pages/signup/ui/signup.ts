@@ -92,7 +92,7 @@ export class RegistrationPage {
 			try {
 				const isSignedUp = await signupUser(login, password, first_name, last_name, gender, birth_date);
 				if (!isSignedUp) {
-					document.getElementById('login-password-error').style.display = 'block'; 
+					notificationManager.addNotification('Ошибка при регистрации. Попробуйте ещё раз.', 'fail'); 
 				} else { 
 					this.parent.setAuth(true);
 					this.parent.navigateTo('/feed');
