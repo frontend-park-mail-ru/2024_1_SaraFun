@@ -10,8 +10,9 @@ export class WebSocketManager {
         this.socket = new WebSocket(url);
 
         this.socket.addEventListener('message', (event) => {
+            console.log('WebSocket send message:', event.data);
             const data = JSON.parse(event.data);
-            notificationManager.addNotification('Ошибка при авторизации. Попробуйте ещё раз.', 'match');
+            notificationManager.addNotification(data, 'match');
         });
 
         this.socket.addEventListener('open', () => {
