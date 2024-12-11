@@ -54,6 +54,7 @@ export class ChatsPage {
 		this.socket = createWebSocket();
 		
 		this.socket.addEventListener('open', () => {
+			console.log('open ws');
 			this.startPing();
 		});
 	
@@ -63,6 +64,7 @@ export class ChatsPage {
 		});
 	
 		this.socket.addEventListener('close', () => {
+			console.log('close ws');
 			this.stopPing();
 		});
 	

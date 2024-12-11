@@ -3,6 +3,8 @@ import { ROUTES, ROUTES_NAME } from '../shared/constants/routes';
 import { Router } from './Router';
 import Navbar from '../widgets/Navbar/navbar';
 import template from './layouts/baseLayout.pug';
+import { WebSocketManager } from '../features/WebSocket';
+import { BASE_URL } from "../shared/constants/baseURL";
 
 /**
  * Class representing the main application.
@@ -14,6 +16,7 @@ export default class App {
 	private navbarRoot: HTMLElement;
 	private router: Router;
 	private navbar: Navbar;
+	private webSocketManager: WebSocketManager | null = null;
 
 	/**
      * Creates an instance of App.
@@ -37,6 +40,7 @@ export default class App {
 			this.registerServiceWorker();
 	
 			this.state.isAuthenticated = await checkAuth();
+
 			ROUTES.forEach(({ path, view, isPublic, useParams, params })=> {
 				this.router.register(path, view, isPublic, useParams, params);
 			});
@@ -46,6 +50,10 @@ export default class App {
 
 			this.navbarRoot.innerHTML = this.navbar.render();
 			this.navbar.componentDidMount();
+
+			if (this.state.isAuthenticated) {
+				this.openWebSocket();
+			}
 
 		} catch (error) {
 			this.router.navigateTo(ROUTES.get(ROUTES_NAME.LOGIN).path);
@@ -58,6 +66,11 @@ export default class App {
 		this.navbarRoot.innerHTML = '';
 		this.navbarRoot.innerHTML = this.navbar.render();
 		this.navbar.componentDidUpdate();
+		if (isAuth) {
+			this.openWebSocket();
+		} else {
+			this.closeWebSocket();
+		}
 	}
 
 	setCurRoute(route: string): void {
@@ -89,4 +102,14 @@ export default class App {
 			console.warn('Service workers are not supported in this browser.');
 		}
 	}
+
+	openWebSocket() {
+		const wsUrl = `${BASE_URL.replace(/^https/, 'wss')}/api/ws`;
+		this.webSocketManager = new WebSocketManager(wsUrl);
+	}
+
+	closeWebSocket() {
+        this.webSocketManager.close();
+        this.webSocketManager = null;
+    }
 }
