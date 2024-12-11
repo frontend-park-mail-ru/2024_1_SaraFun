@@ -2,7 +2,7 @@ import notificationTemplate from './notification.pug';
 
 interface Notification {
     message: string;
-    type: 'success' | 'fail' | 'match';
+    type: 'success' | 'fail' | 'info';
 }
 
 class NotificationManager {
@@ -15,7 +15,7 @@ class NotificationManager {
         document.body.appendChild(this.notificationsContainer);
     }
 
-    public addNotification(message: string, type: 'success' | 'fail' | 'match'): void {
+    public addNotification(message: string, type: 'success' | 'fail' | 'info'): void {
         const notification: Notification = { message, type };
         this.notifications.push(notification);
         this.render();

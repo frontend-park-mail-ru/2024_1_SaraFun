@@ -16,7 +16,7 @@ export class WebSocketManager {
             console.log('WebSocket send message:', event.data);
             const data: {author_id: string, message: string} = JSON.parse(event.data);
             console.log(data.message);
-            notificationManager.addNotification(data.message, 'match');
+            notificationManager.addNotification(`Вам пришло сообщение: ${data.message}`, 'info');
         });
 
         this.socket.addEventListener('open', () => {
