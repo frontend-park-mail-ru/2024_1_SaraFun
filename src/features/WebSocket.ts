@@ -1,3 +1,5 @@
+import { notificationManager } from '../widgets/Notification/notification';
+
 type WebSocketMessageHandler = (data: any) => void;
 
 export class WebSocketManager {
@@ -9,6 +11,7 @@ export class WebSocketManager {
 
         this.socket.addEventListener('message', (event) => {
             const data = JSON.parse(event.data);
+            notificationManager.addNotification('Ошибка при авторизации. Попробуйте ещё раз.', 'match');
         });
 
         this.socket.addEventListener('open', () => {
