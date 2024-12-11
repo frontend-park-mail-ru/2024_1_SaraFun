@@ -34,5 +34,9 @@
         &.fail {
             background-color: rgb(251, 126, 126);
         }
+
+        &.fail {
+            background-color: var(--success);
+        }
     }
 }
