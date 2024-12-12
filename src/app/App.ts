@@ -41,6 +41,10 @@ export default class App {
 	
 			this.state.isAuthenticated = await checkAuth();
 
+			if (this.state.isAuthenticated) {
+				this.openWebSocket();
+			}
+
 			ROUTES.forEach(({ path, view, isPublic, useParams, params })=> {
 				this.router.register(path, view, isPublic, useParams, params);
 			});
@@ -50,10 +54,6 @@ export default class App {
 
 			this.navbarRoot.innerHTML = this.navbar.render();
 			this.navbar.componentDidMount();
-
-			if (this.state.isAuthenticated) {
-				this.openWebSocket();
-			}
 
 		} catch (error) {
 			this.router.navigateTo(ROUTES.get(ROUTES_NAME.LOGIN).path);
