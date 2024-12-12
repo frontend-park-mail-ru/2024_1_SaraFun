@@ -10,7 +10,7 @@ import { BASE_URL } from "../shared/constants/baseURL";
  * Class representing the main application.
  */
 export default class App {
-	private state: { isAuthenticated: boolean, currentRoute: any } = { isAuthenticated: false, currentRoute: null };
+	private state: { isAuthenticated: boolean, currentRoute: any, currentView: any } = { isAuthenticated: false, currentRoute: null, currentView: null };
 	private root: HTMLElement;
 	private contentRoot: HTMLElement;
 	private navbarRoot: HTMLElement;
@@ -73,8 +73,12 @@ export default class App {
 		}
 	}
 
-	setCurRoute(route: string): void {
+	setCurRoute(route: string, view: any): void {
 		this.state.currentRoute = route;
+		this.state.currentView = view;
+		if (this.webSocketManager) {
+			this.webSocketManager.handler = view;
+		}
 		this.navbar.setCurRoute(route);
 		this.navbar.componentDidUpdateActiveLink();
 	}

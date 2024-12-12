@@ -5,6 +5,7 @@ import { User } from '../../../entities/User/User';
 import { addCarousel } from '../../../shared/lib/carousel/addCarousel';
 import templateCard from './card.pug';
 import { openReportModal } from '../../../features/report';
+import { notificationManager } from '../../../widgets/Notification/notification';
 
 export class MatchesPage {
 	private parent: Router;
@@ -14,6 +15,12 @@ export class MatchesPage {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
 		this.render();
+	}
+
+	handleMessage(data: any) {
+		const info: {author_id: string, message: string} = JSON.parse(data);
+		console.log(info.message);
+		notificationManager.addNotification(`Вам пришло сообщение: ${info.message}`, 'info');
 	}
 
 	async render(): Promise<void> {

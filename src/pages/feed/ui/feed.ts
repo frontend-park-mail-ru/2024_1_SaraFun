@@ -5,6 +5,7 @@ import { Router } from '../../../app/Router';
 import { initCards } from '../lib/initCards';
 import { addCarousel } from '../../../shared/lib/carousel/addCarousel';
 import { createButtonListener } from '../lib/createButtonListener';
+import { notificationManager } from '../../../widgets/Notification/notification';
 
 
 /**
@@ -20,6 +21,12 @@ export class FeedPage {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
 		this.render();
+	}
+
+	handleMessage(data: any) {
+		const info: {author_id: string, message: string} = JSON.parse(data);
+		console.log(info.message);
+		notificationManager.addNotification(`Вам пришло сообщение: ${info.message}`, 'info');
 	}
 
 	/**

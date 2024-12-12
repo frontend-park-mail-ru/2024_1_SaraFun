@@ -33,6 +33,12 @@ export class ProfilePage {
     });
   }
 
+  handleMessage(data: any) {
+		const info: {author_id: string, message: string} = JSON.parse(data);
+		console.log(info.message);
+		notificationManager.addNotification(`Вам пришло сообщение: ${info.message}`, 'info');
+	}
+
   private async loadProfile(): Promise<void> {
     const profileData = await getProfile();
     if (profileData) {

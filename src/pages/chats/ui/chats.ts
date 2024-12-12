@@ -12,6 +12,7 @@ import templateChat from '../../../widgets/Chat/Chat.pug';
 import templateChatsPreviews from '../../../widgets/ChatPreviews/ChatPreviews.pug';
 import templatePlaceholder from '../../../shared/components/ChatPlaceholder/ChatPlaceholder.pug';
 import templateMessage from '../../../shared/components/Message/AddMessage.pug';
+import { notificationManager } from '../../../widgets/Notification/notification';
 
 export class ChatsPage {
 	private parent: Router;
@@ -29,7 +30,7 @@ export class ChatsPage {
 		this.parent = parent;
 		this.params = getParams();
 		this.parent.root.innerHTML = '';
-		this.initWebSocket();
+		//this.initWebSocket();
 		this.render();
 		window.addEventListener('resize', this.handleResize);
 	}
@@ -50,7 +51,12 @@ export class ChatsPage {
         }
     }
 
-	initWebSocket(): void {
+	handleMessage(data: any) {
+		const message = JSON.parse(data);
+		this.handleNewMessage(message, new Date().toISOString(), false);
+	}
+
+	/*initWebSocket(): void {
 		this.socket = createWebSocket();
 		
 		this.socket.addEventListener('open', () => {
@@ -72,9 +78,9 @@ export class ChatsPage {
 			console.error('WebSocket error:', error);
 			this.stopPing();
 		});
-    }
+    }*/
 
-	startPing(): void {
+	/*startPing(): void {
         this.pingInterval = window.setInterval(() => {
             if (this.socket && this.socket.readyState === WebSocket.OPEN) {
                 this.socket.send(JSON.stringify({ type: 'ping' }));
@@ -88,7 +94,7 @@ export class ChatsPage {
             clearInterval(this.pingInterval);
             this.pingInterval = undefined;
         }
-    }
+    }*/
 
     async render(): Promise<void> {
 		const chatIdParam = this.params['param'];

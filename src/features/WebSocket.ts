@@ -5,7 +5,7 @@ type WebSocketMessageHandler = (data: any) => void;
 export class WebSocketManager {
     private socket: WebSocket;
     private pingInterval: number | undefined;
-    private handlers: Map<string, WebSocketMessageHandler[]> = new Map();
+    public handler: any;
 
     constructor(url: string) {
         this.socket = new WebSocket(url);
@@ -14,9 +14,7 @@ export class WebSocketManager {
 
         this.socket.addEventListener('message', (event) => {
             console.log('WebSocket send message:', event.data);
-            const data: {author_id: string, message: string} = JSON.parse(event.data);
-            console.log(data.message);
-            notificationManager.addNotification(`Вам пришло сообщение: ${data.message}`, 'info');
+            this.handler.handleMessage(event.data);
         });
 
         this.socket.addEventListener('open', () => {
