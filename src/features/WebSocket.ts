@@ -1,4 +1,4 @@
-import { notificationManager } from '../widgets/Notification/notification';
+import { WsMessage } from '../entities/WsMessage/WsMessage';
 
 type WebSocketMessageHandler = (data: any) => void;
 
@@ -14,7 +14,8 @@ export class WebSocketManager {
 
         this.socket.addEventListener('message', (event) => {
             console.log('WebSocket send message:', event.data);
-            this.handler.handleMessage(event.data);
+            const info: WsMessage = JSON.parse(event.data);
+            this.handler.handleMessage(info);
         });
 
         this.socket.addEventListener('open', () => {

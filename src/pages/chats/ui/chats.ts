@@ -6,7 +6,7 @@ import { getChatPreviews } from '../api/getChatPreviews';
 import { postMessage } from '../api/postMessage';
 import { getFilteredChatPreviews } from '../api/getFilteredChatPreviews';
 import { getChat } from '../api/getChat';
-import { createWebSocket } from '../api/ws';
+import { WsMessage } from '../../../entities/WsMessage/WsMessage';
 import template from './chats.pug';
 import templateChat from '../../../widgets/Chat/Chat.pug';
 import templateChatsPreviews from '../../../widgets/ChatPreviews/ChatPreviews.pug';
@@ -51,9 +51,12 @@ export class ChatsPage {
         }
     }
 
-	handleMessage(data: any) {
-		const message = JSON.parse(data);
-		this.handleNewMessage(message, new Date().toISOString(), false);
+	handleMessage(data: WsMessage) {
+		if (data.type === "message") {
+			this.handleNewMessage(data, new Date().toISOString(), false);
+		} else {
+			notificationManager.addNotification(`У вас новый мэтч с пользователем ${data.username}`, 'info');
+		}
 	}
 
 	/*initWebSocket(): void {

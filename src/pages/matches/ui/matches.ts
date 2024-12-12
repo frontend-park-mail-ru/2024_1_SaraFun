@@ -6,6 +6,7 @@ import { addCarousel } from '../../../shared/lib/carousel/addCarousel';
 import templateCard from './card.pug';
 import { openReportModal } from '../../../features/report';
 import { notificationManager } from '../../../widgets/Notification/notification';
+import { WsMessage } from '../../../entities/WsMessage/WsMessage';
 
 export class MatchesPage {
 	private parent: Router;
@@ -17,10 +18,12 @@ export class MatchesPage {
 		this.render();
 	}
 
-	handleMessage(data: any) {
-		const info: {author_id: string, message: string} = JSON.parse(data);
-		console.log(info.message);
-		notificationManager.addNotification(`Вам пришло сообщение: ${info.message}`, 'info');
+	handleMessage(data: WsMessage) {
+		if (data.type === "message") {
+			notificationManager.addNotification(`Новое сообщение: ${data.username}: ${data.message} $`, 'info');
+		} else {
+			notificationManager.addNotification(`У вас новый мэтч с пользователем ${data.username}`, 'info');
+		}
 	}
 
 	async render(): Promise<void> {

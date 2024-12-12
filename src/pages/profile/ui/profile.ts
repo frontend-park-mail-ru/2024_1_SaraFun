@@ -8,6 +8,7 @@ import { Router } from '../../../app/Router';
 import { limitInput, limitText } from '../../../features/limitInput';
 import { PasswordChanger } from '../lib/changePassword';
 import { notificationManager } from '../../../widgets/Notification/notification';
+import { WsMessage } from '../../../entities/WsMessage/WsMessage';
 
 export class ProfilePage {
   private imagesDel: number[] = [];
@@ -33,10 +34,12 @@ export class ProfilePage {
     });
   }
 
-  handleMessage(data: any) {
-		const info: {author_id: string, message: string} = JSON.parse(data);
-		console.log(info.message);
-		notificationManager.addNotification(`Вам пришло сообщение: ${info.message}`, 'info');
+  handleMessage(data: WsMessage) {
+		if (data.type === "message") {
+			notificationManager.addNotification(`Новое сообщение: ${data.username}: ${data.message} $`, 'info');
+		} else {
+			notificationManager.addNotification(`У вас новый мэтч с пользователем ${data.username}`, 'info');
+		}
 	}
 
   private async loadProfile(): Promise<void> {
