@@ -3,23 +3,21 @@ mixin customInput(inputType, formType)
         label(for="password" class=".text-base label") Пароль
         div(class="password__wrapper")
             input(class='input' type="password" id="password" placeholder="Введите пароль")
-            img(class="password__icon" src='./img/eye-x.svg')
+            img(class="password__icon" src='/img/eye-x.svg')
         if formType=='registration'
-            //p.error#password-error(style='display:none') Пароль должен соблюдать следующие требования:
             p.error#password-error-1(style='display:none')
             p.error#password-error-2(style='display:none')
             p.error#password-error-3(style='display:none')
         else if formType=='login'
-            p.error(id="password-error") Ошибка: Введите пароль
-            p.error(id="login-password-error") Ошибка: Неправильный логин или пароль
+            p.error(id="password-error") Введите пароль
+            p.error(id="login-password-error") Неправильный логин или пароль
     else if inputType=='login'
         label(for="login" class=".text-base label") Логин
         input(class='input' type="text" id="login" class=".text-base" placeholder="Введите логин")
         if formType=='registration'
-            //p.error#login-error(style='display:none') Логин должен соблюдать следующие требования:
             p.error#login-error-1(style='display:none')
             p.error#login-error-2(style='display:none')
             p.error#login-error-3(style='display:none')
             p.error#login-error-4(style='display:none')
         else if formType=='login'
-            p.error(id="login-error") Ошибка: Введите правильный логин
+            p.error(id="login-error") Введите логин

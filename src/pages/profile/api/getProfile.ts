@@ -1,5 +1,5 @@
-import { get } from '../../../shared/api/api.js';
-import { UserProfile } from './profile';
+import { get } from '../../../shared/api/api';
+import { UserProfile } from '../lib/profile';
 
 /**
  * Fetches the profile of a user by ID.
@@ -8,7 +8,7 @@ import { UserProfile } from './profile';
  */
 export async function getProfile(): Promise<UserProfile | null> {
   try {
-    const response = await get('http://5.188.140.7:8080/profile');
+    const response = await get('/api/personalities/profile');
     
     if (!response.ok) {
       console.error('Failed to fetch profile:', response.statusText);
@@ -16,9 +16,7 @@ export async function getProfile(): Promise<UserProfile | null> {
     }
 
     const data = await response.json();
-
     const images = Array.isArray(data.images) ? data.images : [];
-
 
     const userProfile: UserProfile = {
       ID: data.profile.id,
@@ -31,13 +29,9 @@ export async function getProfile(): Promise<UserProfile | null> {
       About: data.profile.about,
       imagesURLs: images.map((image: { link: string }) => {
         const fileName = image.link.substring(image.link.lastIndexOf('/') + 1);
-        return `http://5.188.140.7/${fileName}`;
+        return `https://spark-it.site/${fileName}`;
       }),
     };
-
-    
-
-
     return userProfile;
   } catch (error) {
     console.error('Error fetching user profile:', error);

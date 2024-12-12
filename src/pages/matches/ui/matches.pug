@@ -1,13 +1,15 @@
-include ../../../widgets/Navbar/ui/Navbar.pug
 include ../../../widgets/MatchCard/MatchCard.pug
 
-+navbar(true, 'matches')
-
 if (users != null && users.length > 0)
-    .matches
-        for user in users
-            +matchCard(user)
-else
-    .form.message-form
-        h1 Пока что у вас нет мэтчей
-        h3 Подсказка: чем больше лайков Вы поставите другим пользователям, тем больше вероятность мэтча!
+    .matches_container
+        .matches_title
+            if (users.length % 10 == 1 && users.length % 100 != 11)
+                h2 Вы понравились #{users.length} пользователю
+            else
+                h2 Вы понравились #{users.length} пользователям
+        .matches
+            for user in users
+                +matchCard(user)
+.form.message-form.message-form--matches
+    h1 Пока что у вас нет мэтчей
+    h3 Подсказка: чем больше лайков Вы поставите другим пользователям, тем больше вероятность мэтча!

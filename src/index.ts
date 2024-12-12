@@ -1,4 +1,4 @@
-import App from './app/App.js';
+import App from './app/App';
 import './index.scss';
 import '@img/HeartWhite.svg';
 import '@img/Logo.svg';
@@ -16,6 +16,11 @@ import '@img/right.svg';
 import '@img/eye.svg';
 import '@img/eye-x.svg';
 import '@img/user.svg';
+import '@img/paperclip.svg';
+import '@img/search.svg';
+import '@img/HeartBroken.svg';
+import '@img/LogReg.svg';
+import '@img/ban-icon.svg';
 
 
 const root = document.querySelector('#root') as HTMLElement;
@@ -26,3 +31,4 @@ if (root) {
 } else {
     console.error('Element with id "root" not found.');
 }
+

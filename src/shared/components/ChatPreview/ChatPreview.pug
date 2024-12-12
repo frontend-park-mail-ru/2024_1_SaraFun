@@ -1,0 +1,28 @@
+mixin chat-preview(preview)
+    .chats-list__chat(data-id=preview.id)
+        .chats-list__chat__avatar
+            if (preview.images && preview.images.length > 0)
+                img.chats-list__chat__avatar__img(src=`https://spark-it.site/${preview.images[0].link.substring(preview.images[0].link.lastIndexOf('/') + 1)}` alt='avatar')
+            else
+                img.chats-list__chat__avatar__img(src='/img/user.svg' alt='avatar')
+        .chats-list__chat__info
+            .chats-list__chat__info__header
+                .chats-list__chat__info__header__name
+                    if (preview.first_name && preview.first_name !== '')
+                        | #{preview.first_name}
+                    else
+                        | #{preview.username}
+                .chats-list__chat__info__header__date
+                    if (preview.time && preview.time !== '')
+                        - const messageDate = new Date(preview.time);
+                        - const today = new Date();
+                        - const isToday = messageDate.toDateString() === today.toDateString();
+                        - const formattedTime = isToday ? messageDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : messageDate.toLocaleDateString();
+                        | #{formattedTime}
+            .chats-list__chat__info__last-message
+                if (preview.last_message && preview.last_message !== '')
+                    | #{preview.last_message}
+                else if (preview.message && preview.message !== '')
+                    | #{preview.message}
+                else
+                    .div(style='color: var(--secondary);') Начните ваше общение

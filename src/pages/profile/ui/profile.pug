@@ -1,25 +1,18 @@
-include ../../../widgets/Navbar/ui/Navbar.pug
 include ../../../shared/components/Icons/trash.pug
+include ../../../shared/components/GenderSelection/GenderSelection.pug
 
 div.profile
-  
-
   div.profile-card
-    +navbar(true, 'profile')
     if isEditing
       h1 Редактирование профиля
       .settings-form
         label
           | Имя:
-          input(type="text" id="FirstName" maxlength="50" value=FirstName required)
+          input(type="text" class='input' id="FirstName" maxlength="50" value=FirstName required)
         label
           | Фамилия:
-          input(type="text" id="LastName" maxlength="50" value=LastName required)
-        label
-          | Пол:
-          select(id="Gender" required)
-            option(value="male", selected=Gender === 'male') Мужской
-            option(value="female", selected=Gender === 'female') Женский
+          input(type="text" class='input' id="LastName" maxlength="50" value=LastName required)
+        +genderSelection(Gender)
         label
           | Возраст:
           input(class="range-input" type="range" id="Age" name="Age" min="18" max="100" value=Age)
@@ -30,32 +23,53 @@ div.profile
         label
           | О себе:
           textarea(id="About" rows="1" maxlength="600")= About
+
+      // Новый раздел для смены пароля
+      .password-change-section
+        h2 Смена пароля
+        label
+          | Старый пароль:
+          input(type="password" class='input' id="OldPassword" required)
+          p.error#old-password-error(style='display:none') Неправильный старый пароль.
+        label
+          | Новый пароль:
+          input(type="password" class='input' id="NewPassword" required)
+          p.error#new-password-error(style='display:none') Новый пароль не удовлетворяет условиям.
+        label
+          | Повторите новый пароль:
+          input(type="password" class='input' id="RepeatNewPassword" required)
+          p.error#repeat-password-error(style='display:none') Новый пароль и его повторение не совпадают.
+        div.button-wrapper
+          button.new-password Сменить пароль
+
       div 
         h3 Фотографии
         .image-section-profile
-          each image in imagesURLs
-            .image-container
-              img(src=image, alt="Фотография в профиле")
-              .delete-button
-                +trash
+          if imagesURLs && imagesURLs.length > 0
+            each image, index in imagesURLs
+              .image-container(
+                draggable="true"
+                data-index=index
+              )
+                img(src=image, alt="Фотография в профиле")
+                .delete-button
+                  +trash
+          else
+            p Пока нет фотографий
           div.upload
             button.upload-button Добавить фото +
       div.button-wrapper
         button.save-settings Сохранить
         button.cancel-settings Отмена
-
     else 
       h1 Профиль
-      
       div.info
         div.info-avatar
           div.info-avatar__wrapper
-            if imagesURLs.length === 0 
+            if !imagesURLs || imagesURLs.length === 0 
               img(src="./img/user.svg").info-avatar__image
             else 
               img(src=imagesURLs[0]).info-avatar__image
-            
-            
           | #{username}
         .info-section
           p Имя: #{FirstName}
@@ -67,8 +81,11 @@ div.profile
       div
         h3 Фотографии
         .image-section-profile
-          each image in imagesURLs
-            .image-container
-              img(src=image, alt="Фотография в профиле")
+          if imagesURLs && imagesURLs.length > 0
+            each image in imagesURLs
+              .image-container
+                img(src=image, alt="Фотография в профиле")
+          else
+            p Пока нет фотографий
       div.button-wrapper
         button.settings-button Настройки

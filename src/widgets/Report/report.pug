@@ -1,0 +1,17 @@
+div#reportModal.modal
+  .modal-content
+    span.close-modal(class="close-button") &times;
+    h2 Пожаловаться
+    form#reportForm
+      label(for="reason") Причина
+      select#reason
+        option(value="about") Оскорбительное описание
+        option(value="photo") Неприемлемые фотографии
+        option(value="fake") Выдает себя за другого человека
+        option(value="abuse") Оскорбление
+        option(value="another") Другое
+      label(for="comment") Комментарий
+      textarea#comment(rows="4" placeholder="Ваш комментарий...")
+      h3(style="color: grey") После жалобы пользователь будет заблокирован, и Вы не сможете с ним связаться!
+      button(type="submit") Отправить
+      

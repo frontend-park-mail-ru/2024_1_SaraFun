@@ -1,0 +1,9 @@
+mixin message(message)
+    .chat__messages__message(class=message.self ? 'chat__messages__message_self' : 'chat__messages__message_other')
+        .chat__messages__message__text
+            | #{message.body}
+            .chat__messages__message__time
+                if (message.time && message.time !== '')
+                    - const messageDate = new Date(message.time);
+                    - const formattedTime = messageDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    | #{formattedTime}
