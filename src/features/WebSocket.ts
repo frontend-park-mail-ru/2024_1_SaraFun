@@ -15,6 +15,8 @@ export class WebSocketManager {
         this.socket.addEventListener('message', (event) => {
             console.log('WebSocket send message:', event.data);
             const info: WsMessage = JSON.parse(event.data);
+            console.log(this.handler);
+            console.log(info);
             this.handler.handleMessage(info as WsMessage);
         });
 
