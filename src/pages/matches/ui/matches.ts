@@ -20,7 +20,7 @@ export class MatchesPage {
 
 	handleMessage(data: WsMessage) {
 		if (data.type === "message") {
-			notificationManager.addNotification(`Новое сообщение: ${data.username}: ${data.message} $`, 'info');
+			notificationManager.addNotification(`Новое сообщение от ${data.username}: ${data.message}`, 'info');
 		} else {
 			notificationManager.addNotification(`У вас новый мэтч с пользователем ${data.username}`, 'info');
 		}
