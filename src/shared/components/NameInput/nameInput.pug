@@ -1,0 +1,9 @@
+mixin name(first_name, last_name)
+
+    | Имя
+    input(type="text" class='input' id="first_name" maxlength="50" value=first_name required)
+    p.error#first-name-error(style='display:none')
+
+    | Фамилия
+    input(type="text" class='input' id="last_name" maxlength="50" value=last_name required)
+    p.error#last-name-error(style='display:none')

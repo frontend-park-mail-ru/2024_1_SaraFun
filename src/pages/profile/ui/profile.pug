@@ -1,5 +1,10 @@
 include ../../../shared/components/Icons/trash.pug
+include ../../../shared/components/Birth_date/birth_date.pug
 include ../../../shared/components/GenderSelection/GenderSelection.pug
+include ../../../shared/components/NameInput/nameInput.pug
+include ../../../shared/components/Target/target.pug
+include ../../../shared/components/PassChange/passChange.pug
+include ../../../shared/components/About/about.pug
 
 div.profile
   div.profile-card
@@ -7,40 +12,13 @@ div.profile
       h1 Редактирование профиля
       .settings-form
         label
-          | Имя:
-          input(type="text" class='input' id="FirstName" maxlength="50" value=FirstName required)
-        label
-          | Фамилия:
-          input(type="text" class='input' id="LastName" maxlength="50" value=LastName required)
-        +genderSelection(Gender)
-        label
-          | Возраст:
-          input(class="range-input" type="range" id="Age" name="Age" min="18" max="100" value=Age)
-          output 18
-        label
-          | Цель:
-          input(type="string" id="Target" value=Target maxlength="300")
-        label
-          | О себе:
-          textarea(id="About" rows="1" maxlength="600")= About
+          +name(first_name, last_name)
+        +birth_date(birth_date)
+        +genderSelection(gender)
+        +target(target)
+        +about(about)
 
-      // Новый раздел для смены пароля
-      .password-change-section
-        h2 Смена пароля
-        label
-          | Старый пароль:
-          input(type="password" class='input' id="OldPassword" required)
-          p.error#old-password-error(style='display:none') Неправильный старый пароль.
-        label
-          | Новый пароль:
-          input(type="password" class='input' id="NewPassword" required)
-          p.error#new-password-error(style='display:none') Новый пароль не удовлетворяет условиям.
-        label
-          | Повторите новый пароль:
-          input(type="password" class='input' id="RepeatNewPassword" required)
-          p.error#repeat-password-error(style='display:none') Новый пароль и его повторение не совпадают.
-        div.button-wrapper
-          button.new-password Сменить пароль
+      +password-change
 
       div 
         h3 Фотографии
@@ -72,12 +50,12 @@ div.profile
               img(src=imagesURLs[0]).info-avatar__image
           | #{username}
         .info-section
-          p Имя: #{FirstName}
-          p Фамилия: #{LastName}
-          p Пол: #{Gender === 'male' ? 'Мужской' : 'Женский'}
-          p Возраст: #{Age}
-          p Цель: #{Target}
-          p О себе: #{About}
+          p Имя: #{first_name}
+          p Фамилия: #{last_name}
+          p Пол: #{gender === 'male' ? 'Мужской' : 'Женский'}
+          p Дата рождения: #{birth_date}
+          p Цель: #{target}
+          p О себе: #{about}
       div
         h3 Фотографии
         .image-section-profile
