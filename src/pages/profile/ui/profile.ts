@@ -82,7 +82,6 @@ export class ProfilePage {
 
     const newPasswordButton = document.querySelector('.new-password') as HTMLElement;
 
-    // Инициализация класса PasswordChanger
     if (newPasswordButton) {
       const passwordChanger = new PasswordChanger(newPasswordButton);
     }
@@ -127,15 +126,12 @@ export class ProfilePage {
               this.imagesURLs.splice(index, 0, draggedImage); 
               this.imagesIndexes.splice(index, 0, dragedId); 
               
-              this.imagesNew.forEach((image, i) => { //мне кажется, что непонятный код, поэтому есть комменты
+              this.imagesNew.forEach((image, i) => { 
                 if (image.index === dragIndex) {
-                  // Если индекс совпадает с перетаскиваемым, обновляем его на новый индекс
                   image.index = index;
                 } else if (dragIndex < index && image.index > dragIndex && image.index <= index) {
-                  // Если элемент находится между старым и новым индексами, уменьшаем индекс на 1
                   image.index -= 1;
                 } else if (dragIndex > index && image.index < dragIndex && image.index >= index) {
-                  // Если элемент находится между новым и старым индексами, увеличиваем индекс на 1
                   image.index += 1;
                 }
               });
@@ -174,7 +170,6 @@ export class ProfilePage {
         limitInput(firstNameInput); 
       }
       
-
       const lastNameInput = document.getElementById('LastName') as HTMLInputElement; 
       if (lastNameInput) {
         limitInput(lastNameInput); 

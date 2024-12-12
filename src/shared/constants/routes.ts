@@ -4,6 +4,7 @@ import { RegistrationPage } from '../../pages/signup/index';
 import { MatchesPage } from '../../pages/matches/index';
 import { ProfilePage } from '../../pages/profile/index';
 import { ChatsPage } from '../../pages/chats/index';
+import { ShopPage } from '../../pages/shop/index';
 
 export const ROUTES_NAME = {
 	LOGIN: 'login',
@@ -12,6 +13,7 @@ export const ROUTES_NAME = {
 	MATCHES: 'matches',
 	SIGNUP: 'signup',
 	PROFILE: 'profile',
+	SHOP: 'shop',
 };
 
 export const ROUTES = new Map([
@@ -19,7 +21,7 @@ export const ROUTES = new Map([
 	[ROUTES_NAME.FEED, { path: '/feed', view: FeedPage, isPublic: false, useParams: false, params: null }],
 	[ROUTES_NAME.MATCHES, { path: '/matches', view: MatchesPage, isPublic: false, useParams: false, params: null }],
 	[ROUTES_NAME.CHATS, { path: '/chats', view: ChatsPage, isPublic: false, useParams: true, params: { chat: '' } }],
-	//[ROUTES_NAME.CHATS, { path: '/chats/:chat', view: ChatsPage, isPublic: false }],
 	[ROUTES_NAME.SIGNUP, { path: '/signup', view: RegistrationPage, isPublic: true, useParams: false, params: null }],
 	[ROUTES_NAME.PROFILE, { path: '/profile', view: ProfilePage, isPublic: false, useParams: false, params: null }],
+	[ROUTES_NAME.PROFILE, { path: '/shop', view: ShopPage, isPublic: false, useParams: false, params: null }],
 ]);

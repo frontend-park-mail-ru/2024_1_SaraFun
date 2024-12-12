@@ -1,0 +1,9 @@
+.shop-container
+    h1 Магазин
+    .product-list
+        each product in products
+            .product-card
+                img(src=product.imageURL, alt=product.name)
+                h2= product.name
+                p Цена: #{product.price}₽
+                button.add-to-cart-button(data-product-id=product.id) Купить
