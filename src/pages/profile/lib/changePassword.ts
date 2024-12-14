@@ -8,7 +8,6 @@ export class PasswordChanger {
             button.addEventListener('click', () => this.changePassword());
         }
 
-        // Добавление обработчиков событий для полей ввода
         this.addInputListeners();
     }
 

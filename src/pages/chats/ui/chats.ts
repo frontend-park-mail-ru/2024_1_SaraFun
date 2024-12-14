@@ -59,46 +59,6 @@ export class ChatsPage {
 		}
 	}
 
-	/*initWebSocket(): void {
-		this.socket = createWebSocket();
-		
-		this.socket.addEventListener('open', () => {
-			console.log('open ws');
-			this.startPing();
-		});
-	
-		this.socket.addEventListener('message', (event) => {
-			const message = JSON.parse(event.data);
-			this.handleNewMessage(message, new Date().toISOString(), false);
-		});
-	
-		this.socket.addEventListener('close', () => {
-			console.log('close ws');
-			this.stopPing();
-		});
-	
-		this.socket.addEventListener('error', (error) => {
-			console.error('WebSocket error:', error);
-			this.stopPing();
-		});
-    }*/
-
-	/*startPing(): void {
-        this.pingInterval = window.setInterval(() => {
-            if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-                this.socket.send(JSON.stringify({ type: 'ping' }));
-
-            }
-        }, 29000);
-    }
-
-	stopPing(): void {
-        if (this.pingInterval) {
-            clearInterval(this.pingInterval);
-            this.pingInterval = undefined;
-        }
-    }*/
-
     async render(): Promise<void> {
 		const chatIdParam = this.params['param'];
 

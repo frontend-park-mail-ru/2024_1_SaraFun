@@ -80,7 +80,6 @@ export class LoginPage {
 					if (!isLogedIn) {
 						(document.getElementById('login-password-error') as HTMLElement).style.display = 'block';            
 					} else { 
-						//this.parent.curLogin = login;
 						this.parent.setAuth(true);
 						this.parent.navigateTo('/feed');
 					}

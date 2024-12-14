@@ -32,7 +32,6 @@ export class RegistrationPage {
 	/**
    * Adds event listeners to the registration page elements.
    */
-	// Обновлённый метод addEventListeners
 	addEventListeners(): void {
 		document.getElementById('link').addEventListener('click', (event) => {
 			event.preventDefault();
@@ -57,7 +56,6 @@ export class RegistrationPage {
 			const login = (document.getElementById('login') as HTMLInputElement).value;
 			const password = (document.getElementById('password') as HTMLInputElement).value;
 			const first_name = (document.getElementById('first_name') as HTMLInputElement).value; 
-			//const last_name = (document.getElementById('last_name') as HTMLInputElement).value;
 			const gender = (document.querySelector('input[name="gender"]:checked') as HTMLInputElement).value;
 			const birth_date = (document.getElementById('birth_date') as HTMLInputElement).value; 
 			let valid = true;
@@ -72,11 +70,6 @@ export class RegistrationPage {
 				this.showError('first-name-error', 'Имя не может быть пустым полем');
 				valid = false;
 			}
-
-			/*if (last_name === '') {
-				this.showError('last-name-error', 'Фамилия не может быть пустым полем');
-				valid = false;
-			}*/
 
 			const loginErrors = isValidLogin(login);
 			const passwordErrors = isValidPassword(password);
