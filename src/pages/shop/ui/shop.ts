@@ -54,9 +54,7 @@ export class ShopPage {
   private buyBoost(productId: string): void {
     const product = this.products.find(p => p.id === productId);
     if (product) {
-        createPayment(product.price, product.name).then(() => {
-            notificationManager.addNotification(`Товар ${product.name} куплен!`, 'success');
-        });
+          notificationManager.addNotification(`Товар ${product.name} куплен!`, 'success');
     }
   }
 }

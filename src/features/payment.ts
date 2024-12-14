@@ -26,8 +26,3 @@ export async function createPayment(amount: number, description: string): Promis
         console.error('Error creating payment:', error);
     }
 }
-
-// Пример вызова функции
-const productPrice = 100; // Замените на реальную цену продукта
-const productDescription = 'Тестовый платеж'; // Замените на описание продукта
-createPayment(productPrice, productDescription);

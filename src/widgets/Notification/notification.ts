@@ -1,6 +1,7 @@
 import notificationTemplate from './notification.pug';
 
 interface Notification {
+    id: string; // Уникальный идентификатор
     message: string;
     type: 'success' | 'fail';
 }
@@ -8,6 +9,7 @@ interface Notification {
 class NotificationManager {
     private notificationsContainer: HTMLElement;
     private notifications: Notification[] = [];
+    private timeoutIds: { [key: string]: ReturnType<typeof setTimeout> } = {};
 
     constructor() {
         this.notificationsContainer = document.createElement('div');
@@ -16,9 +18,17 @@ class NotificationManager {
     }
 
     public addNotification(message: string, type: 'success' | 'fail'): void {
-        const notification: Notification = { message, type };
+        const notification: Notification = { 
+            id: this.generateId(),
+            message, 
+            type 
+        };
         this.notifications.push(notification);
         this.render();
+    }
+
+    private generateId(): string {
+        return Math.random().toString(36).substr(2, 9);
     }
 
     private render(): void {
@@ -27,20 +37,31 @@ class NotificationManager {
         this.notificationsContainer.insertAdjacentHTML('beforeend', modalHTML);
 
         const modals = this.notificationsContainer.querySelectorAll('.notification-container');
-        modals.forEach((modal, index) => {
+        modals.forEach((modal) => {
+            const notificationId = (modal as HTMLElement).dataset.id;
+
             modal.addEventListener('click', () => {
-                this.removeNotification(index);
+                this.removeNotification(notificationId);
             });
 
-            setTimeout(() => {
-                this.removeNotification(index);
+            const timeoutId = setTimeout(() => {
+                this.removeNotification(notificationId);
             }, 5000);
+
+            this.timeoutIds[notificationId] = timeoutId;
         });
     }
 
-    public removeNotification(index: number): void {
-        this.notifications.splice(index, 1); 
-        this.render(); 
+    public removeNotification(id: string): void {
+
+        this.notifications = this.notifications.filter(notification => notification.id !== id);
+        
+        if (this.timeoutIds[id]) {
+            clearTimeout(this.timeoutIds[id]);
+            delete this.timeoutIds[id];
+        }
+        
+        this.render();
     }
 }
 
