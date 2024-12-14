@@ -3,7 +3,6 @@ import { getProducts } from '../api/getProducts';
 import { Router } from '../../../app/Router';
 import { Product } from '../lib/product';
 import { notificationManager } from '../../../widgets/Notification/notification';
-// import { createPayment } from '../../../shared/api/yookassaApi'; 
 
 export class ShopPage {
   private parent: Router;
