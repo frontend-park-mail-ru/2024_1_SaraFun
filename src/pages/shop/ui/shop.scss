@@ -46,26 +46,26 @@
             h2 {
                 font-size: 18px;
                 margin: 10px 0; 
-                height: auto; // Убираем фиксированную высоту для названия
-                overflow: hidden; // Скрыть переполнение
-                text-overflow: ellipsis; // Добавить многоточие, если текст слишком длинный
+                height: auto;
+                overflow: hidden; 
+                text-overflow: ellipsis; 
 
             }
 
             .description {
                 font-size: 16px;
                 color: #555;
-                margin-bottom: 10px; // Отступ снизу для разделения с ценой
-                overflow: hidden; // Скрыть переполнение
-                display: block; // Изменяем на блочный элемент
-                line-height: 1.4; // Установите желаемую высоту строки
+                margin-bottom: 10px; 
+                overflow: hidden; 
+                display: block; 
+                line-height: 1.4; 
             }
 
             .price {
-                font-size: 16px; // Размер шрифта для цены
-                color: #000; // Цвет текста цены
-                margin-top: auto; // Позволяет цене находиться внизу карточки
-                margin-bottom: 10px; // Отступ снизу для разделения с кнопкой
+                font-size: 16px;
+                color: #000;
+                margin-top: auto; 
+                margin-bottom: 10px;
             }
 
             .buy-button {
