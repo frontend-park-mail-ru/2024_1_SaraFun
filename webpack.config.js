@@ -2,8 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-
-
 module.exports = {
 	mode: 'development',
 	entry: {
@@ -24,63 +22,58 @@ module.exports = {
 		port: 4000,
 		open: {
 			app: {
-			  name: 'Google Chrome', 
+				name: 'Google Chrome',
 			},
-		  },
-	   
+		},
 		hot: true,
 		compress: true,
 		historyApiFallback: true,
-		/*historyApiFallback: {
-			rewrites: [
-				{ from: /^\/$/, to: '/index.html' },
-      			{ from: /^\/login/, to: '/index.html' },
-			  	{ from: /./, to: '/index.html' }
-			]
-		},*/
 	},
 	module: {
 		rules: [
 			{
-				test: /.(scss|css)$/, 
+				test: /.(scss|css)$/,
 				use: [
-				  'style-loader', 
-				  'css-loader',   
-				  'sass-loader'  
+					'style-loader',
+					'css-loader',
+					'sass-loader'
 				]
 			},
 			{
-				test: /\.(png|jpg|jpeg|gif|svg)$/i,
+				test: /.(png|jpg|jpeg|gif|svg)$/i,
 				type: 'asset/resource',
 				generator: {
-					filename: 'img/[name][ext]', 
+					filename: 'img/[name][ext]',
 				},
-		  
 			},
 			{
 				test: /.(woff|woff2|eot|ttf|otf)$/i,
 				type: 'asset/resource',
 				generator: {
-				  filename: 'fonts/[name][ext]', 
+					filename: 'fonts/[name][ext]',
 				},
 			},
-		
 			{
-				test: /\.tsx?$/,
+				test: /.tsx?$/,
 				use: 'ts-loader',
 				exclude: /node_modules/,
 			},
 			{
-				test: /\.pug$/,
+				test: /.pug$/,
 				loader: 'pug-loader',
 			},
 		],
 	},
 	resolve: {
+		fallback: {
+			"http": require.resolve("stream-http"),
+			"https": require.resolve("https-browserify"),
+			"assert": require.resolve("assert/"),
+		},
 		alias: {
 			'@img': path.resolve(__dirname, 'src/shared/assets/img')
 		},
-		extensions:['.tsx', '.ts', '.js', '.pug', '.svg'],
+		extensions: ['.tsx', '.ts', '.js', '.pug', '.svg'],
 	},
 	plugins: [
 		new HtmlWebpackPlugin({

@@ -5,5 +5,6 @@
             .product-card
                 img(src=product.imageURL, alt=product.name)
                 h2= product.name
-                p Цена: #{product.price}₽
-                button.add-to-cart-button(data-product-id=product.id) Купить
+                p.description #{product.description} 
+                p.price Цена: #{product.price}₽
+                button.buy-button(data-product-id=product.id) Купить

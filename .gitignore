@@ -3,3 +3,4 @@ src/templates
 server/.env
 dist
 .DS_Store
+yookassa.config.ts

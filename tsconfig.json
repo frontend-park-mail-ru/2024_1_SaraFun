@@ -1,4 +1,4 @@
-{
+  {
   "compilerOptions": {
     "module": "ESNext", 
     "outDir": "./dist",
@@ -10,8 +10,11 @@
     "downlevelIteration": true, 
     "allowSyntheticDefaultImports": true, 
     "noEmit": false, 
-    "typeRoots": ["./node_modules/@types"], 
+    "typeRoots": [
+      "./node_modules/@types", 
+      "./@types" 
+    ],
     "allowJs": true
   },
-  "include": ["src/**/*", "pug.d.ts"]
+  "include": ["src/**/*", "@types/pug.d.ts"]
 }

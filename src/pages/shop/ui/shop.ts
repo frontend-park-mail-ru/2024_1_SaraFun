@@ -3,6 +3,9 @@ import { getProducts } from '../api/getProducts';
 import { Router } from '../../../app/Router';
 import { Product } from '../lib/product';
 import { notificationManager } from '../../../widgets/Notification/notification';
+import { Payment, PaymentData } from 'yookassa';
+import { createPayment } from '../../../features/payment';
+
 
 export class ShopPage {
   private parent: Router;
@@ -16,9 +19,16 @@ export class ShopPage {
   }
 
   private async loadProducts(): Promise<void> {
-    const productData = await getProducts();
-    if (productData) {
-      this.products = productData;
+    try {
+        const productData = await getProducts();
+        if (productData) {
+            this.products = productData;
+        } else {
+            throw new Error('No products found');
+        }
+    } catch (error) {
+        console.error('Error loading products:', error);
+        notificationManager.addNotification('Ошибка загрузки товаров', 'fail');
     }
   }
 
@@ -31,18 +41,22 @@ export class ShopPage {
   }
 
   private componentWillMount() {
-    const addToCartButtons = document.querySelectorAll('.add-to-cart-button') as NodeListOf<HTMLElement>;
+    const addToCartButtons = document.querySelectorAll('.buy-button') as NodeListOf<HTMLElement>;
     
     addToCartButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
         const productId = (event.target as HTMLElement).dataset.productId;
-        this.addToCart(productId);
+        this.buyBoost(productId);
       });
     });
   }
 
-  private addToCart(productId: string): void {
-    // Реализация добавления товара в корзину
-    notificationManager.addNotification(`Товар с ID ${productId} добавлен в корзину!`, 'success');
+  private buyBoost(productId: string): void {
+    const product = this.products.find(p => p.id === productId);
+    if (product) {
+        createPayment(product.price, product.name).then(() => {
+            notificationManager.addNotification(`Товар ${product.name} куплен!`, 'success');
+        });
+    }
   }
 }

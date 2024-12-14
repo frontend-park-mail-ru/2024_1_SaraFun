@@ -80,9 +80,7 @@ export class RegistrationPage {
 			if (valid) {
 				try {
 					const isSignedUp = await signupUser(login, password, gender, age);
-					if (!isSignedUp) {
-						document.getElementById('login-password-error').style.display = 'block';            
-					} else { 
+					if (isSignedUp) { 
 						this.parent.setAuth(true);
 						this.parent.navigateTo('/feed');
 					}
