@@ -173,7 +173,7 @@ export class ProfilePage {
   
   private getInfoFromPdata() {
     this.first_name = (document.getElementById('first_name') as HTMLInputElement).value;
-    this.last_name = (document.getElementById('last_name') as HTMLInputElement).value;
+    //this.last_name = (document.getElementById('last_name') as HTMLInputElement).value;
     this.gender = (document.querySelector('input[name="gender"]:checked') as HTMLSelectElement).value;
     this.birth_date = (document.getElementById('birth_date') as HTMLInputElement).value;
     this.target = (document.getElementById('target') as HTMLTextAreaElement).value;
