@@ -3,7 +3,7 @@ import { getProducts } from '../api/getProducts';
 import { Router } from '../../../app/Router';
 import { Product } from '../lib/product';
 import { notificationManager } from '../../../widgets/Notification/notification';
-import { createPayment } from '../../../shared/api/yookassaApi'; 
+// import { createPayment } from '../../../shared/api/yookassaApi'; 
 
 export class ShopPage {
   private parent: Router;
@@ -56,13 +56,14 @@ export class ShopPage {
             const amount = product.price; 
             const description = `Оплата за товар: ${product.name}`; 
 
-            const payment = await createPayment(amount, description);
+            // const payment = await createPayment(amount, description);
 
-            if (payment.confirmation && payment.confirmation.confirmation_url) {
-                window.location.href = payment.confirmation.confirmation_url;
-            } else {
-                notificationManager.addNotification('Не удалось получить URL подтверждения', 'fail');
-            }
+            // if (payment.confirmation && payment.confirmation.confirmation_url) {
+            //     window.location.href = payment.confirmation.confirmation_url;
+            // } else {
+            //     notificationManager.addNotification('Не удалось получить URL подтверждения', 'fail');
+            // }
+            notificationManager.addNotification(`Товар ${product.name} успешно куплен`, 'success');
         } catch (error) {
             console.error('Ошибка при создании платежа:', error);
             notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
