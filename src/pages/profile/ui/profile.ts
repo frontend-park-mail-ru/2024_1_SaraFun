@@ -147,10 +147,14 @@ export class ProfilePage {
 
       document.querySelectorAll('.password__icon').forEach(icon => {
         icon.addEventListener('click', (event) => {
-          const passwordInput = (icon.closest('.input') as HTMLInputElement);
-          if (passwordInput) {
-              passwordInput.setAttribute('type', passwordInput.type === 'password' ? 'text' : 'password');
-              icon.setAttribute('src', passwordInput.type === 'password' ? './img/eye-x.svg' : './img/eye.svg');
+          const passwordWrapper = icon.closest('.password__wrapper');
+          if (passwordWrapper) {
+            const passwordInput = passwordWrapper.querySelector('input[type="password"], input[type="text"]') as HTMLInputElement;
+            if (passwordInput) {
+                const newType = passwordInput.type === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', newType);
+                icon.setAttribute('src', newType === 'password' ? '/img/eye-x.svg' : '/img/eye.svg');
+            }
           }
         });
       });
