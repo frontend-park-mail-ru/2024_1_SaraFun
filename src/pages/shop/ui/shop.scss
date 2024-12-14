@@ -49,7 +49,7 @@
                 height: auto; // Убираем фиксированную высоту для названия
                 overflow: hidden; // Скрыть переполнение
                 text-overflow: ellipsis; // Добавить многоточие, если текст слишком длинный
-                white-space: nowrap; // Запретить перенос строк
+
             }
 
             .description {
