@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin'); 
 
 module.exports = {
     mode: 'development', 
@@ -97,7 +98,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'SparkIt',
-            filename: 'index.html',
+			filename: 'index.html',
             template: 'src/index.html',
         }),
         new CopyWebpackPlugin({
@@ -108,12 +109,18 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css', 
         }),
+        new CompressionPlugin({
+            algorithm: 'zstd', 
+            test: /.(js|css|html|svg|png|jpg|jpeg|gif)$/i, 
+            threshold: 10240, 
+            minRatio: 0.8, 
+        }),
     ],
     optimization: {
         minimize: true,
         minimizer: [
             new TerserPlugin(), 
-			new CssMinimizerPlugin(), 
+            new CssMinimizerPlugin(), 
         ],
     },
 };
