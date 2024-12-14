@@ -1,4 +1,10 @@
-import config from '../../../yookassa.config';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
+const shopId = process.env.YOOKASSA_SHOP_ID;
+const secretKey = process.env.YOOKASSA_SECRET_KEY;
+
 
 const YOOKASSA_API_URL = 'https://api.yookassa.ru/v3/payments';
 
@@ -20,7 +26,7 @@ export async function createPayment(amount: number, description: string) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Basic ${btoa(`${config.shopId}:${config.secretKey}`)}`, // Базовая авторизация
+            'Authorization': `Basic ${btoa(`${shopId}:${secretKey}`)}`, // Базовая авторизация
         },
         body: JSON.stringify(paymentData),
     });
