@@ -144,6 +144,16 @@ export class ProfilePage {
           });
         });
       }
+
+      document.querySelectorAll('.password__icon').forEach(icon => {
+        icon.addEventListener('click', (event) => {
+          const passwordInput = (icon.closest('.input') as HTMLInputElement);
+          if (passwordInput) {
+              passwordInput.setAttribute('type', passwordInput.type === 'password' ? 'text' : 'password');
+              icon.setAttribute('src', passwordInput.type === 'password' ? './img/eye-x.svg' : './img/eye.svg');
+          }
+        });
+      });
     }
     
 

@@ -3,15 +3,18 @@ mixin password-change
         h2 Смена пароля
         label
             | Старый пароль:
-            input(type="password" class='input' id="OldPassword" name="old-password" required autocomplete="current-password")
+            input(type="password" class='input' id="OldPassword" name="old-password" required autocomplete="current-password" placeholder="Введите старый пароль")
+            img(class="password__icon" src='/img/eye-x.svg')
             p.error#old-password-error(style='display:none') Неправильный старый пароль.
         label
             | Новый пароль:
-            input(type="password" class='input' id="NewPassword" name="new-password" required autocomplete="new-password")
+            input(type="password" class='input' id="NewPassword" name="new-password" required autocomplete="new-password" placeholder="Введите новый пароль")
+            img(class="password__icon" src='/img/eye-x.svg')
             p.error#new-password-error(style='display:none') Новый пароль не удовлетворяет условиям.
         label
             | Повторите новый пароль:
-            input(type="password" class='input' id="RepeatNewPassword" name="repeat-new-password" required autocomplete="new-password")
+            input(type="password" class='input' id="RepeatNewPassword" name="repeat-new-password" required autocomplete="new-password" placeholder="Повторите пароль")
+            img(class="password__icon" src='/img/eye-x.svg')
             p.error#repeat-password-error(style='display:none') Новый пароль и его повторение не совпадают.
         div.button-wrapper
             button.new-password Сменить пароль
