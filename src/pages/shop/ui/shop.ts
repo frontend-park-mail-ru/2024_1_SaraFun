@@ -10,7 +10,7 @@ import { apiKey, shopId} from '../../../../config'
 
 const yookassa = new YooKassa({
   shopId: '999343',
-  secretKey: 'test_OAoflJGu_Lt1iG8Wik83Ab8izO0jP7dyPIBx6Wt_rL8'
+  secretKey: 'test_Hnb4H0VC35HsFRpUs-aj5SDUIgIppYWtOEHgmNGq-cs'
 });
 
 export class ShopPage {
