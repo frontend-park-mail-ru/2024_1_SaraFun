@@ -110,7 +110,7 @@ module.exports = {
             filename: '[name].[contenthash].css', 
         }),
         new CompressionPlugin({
-            algorithm: 'gzip', // Изменено на gzip
+            algorithm: 'gzip', 
             test: /.(js|css|html|svg|png|jpg|jpeg|gif)$/i, 
             threshold: 10240, 
             minRatio: 0.8, 
