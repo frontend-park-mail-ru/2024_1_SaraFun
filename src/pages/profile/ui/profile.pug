@@ -17,7 +17,7 @@ mixin getRublesWordForm(amount)
             - wordForm = 'рубля';
         - }
     - }
-    = `${amount} ${wordForm}`
+    = ` ${amount} ${wordForm}`
 
 div.profile
   div.profile-card
@@ -68,13 +68,13 @@ div.profile
           p Цель: #{target}
           p О себе: #{about}
       div
-        h3 Фотографии
+        h2 Баланс
         p Текущий баланс:
           +getRublesWordForm(moneyBalance)
         p Осталось бесплатных реакций на сегодня: #{dailyLikes}
         p Осталось купленных реакций: #{purchasedLikes}
       div
-        h3 Фотографии
+        h2 Фотографии
         .image-section-profile
           if imagesURLs && imagesURLs.length > 0
             each image in imagesURLs
