@@ -1,7 +1,7 @@
 import notificationTemplate from './notification.pug';
 
 interface Notification {
-    id: string; // Уникальный идентификатор
+    id: string; 
     message: string;
     type: 'success' | 'fail';
 }
