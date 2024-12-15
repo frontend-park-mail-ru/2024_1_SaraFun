@@ -9,6 +9,7 @@ import { limitInput, limitText } from '../../../features/limitInput';
 import { PasswordChanger } from '../lib/changePassword';
 import { notificationManager } from '../../../widgets/Notification/notification';
 import { WsMessage } from '../../../entities/WsMessage/WsMessage';
+import { isValidBirthDate } from "../../../shared/utils/validation";
 
 export class ProfilePage {
   private imagesDel: number[] = [];
@@ -70,6 +71,15 @@ export class ProfilePage {
   }
 
   private componentWillMount() {
+    const dateInput = document.getElementById('birth_date');
+		if (dateInput) {
+			const today = new Date();
+			const minDate = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
+			const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+
+			dateInput.setAttribute('min', minDate.toISOString().split('T')[0]);
+			dateInput.setAttribute('max', maxDate.toISOString().split('T')[0]);
+		}
 
     const settingsButton = document.querySelector('.settings-button') as HTMLElement;
     if (settingsButton) {
@@ -92,10 +102,22 @@ export class ProfilePage {
       const passwordChanger = new PasswordChanger(newPasswordButton);
     }
 
-    
-
-
     if (this.isEditing) {
+      const birthDateInput = document.getElementById('birth_date') as HTMLInputElement;
+
+      birthDateInput?.addEventListener('input', () => {
+        const errorElement = document.getElementById('date-error');
+        if (errorElement) {
+            errorElement.textContent = '';
+            errorElement.style.display = 'none';
+        }
+        const isValid = isValidBirthDate(birthDateInput);
+        if (!isValid) {
+            document.getElementById('date-error').style.display = 'block';
+            document.getElementById(`date-error`).innerText = 'Вам должно быть от 18 до 120 лет';
+        }
+      });
+
       const imageContainers = document.querySelectorAll('.image-container') as NodeListOf<HTMLElement>;
 
       if (imageContainers) {
@@ -243,6 +265,11 @@ export class ProfilePage {
 	}
   
   private async saveSettings(): Promise<void> {
+    if (!isValidBirthDate(document.getElementById('birth_date') as HTMLInputElement)) {
+      notificationManager.addNotification('Неверная дата рождения!', 'fail');
+      return;
+    }
+    
     this.getInfoFromPdata()
 
     const profileData: UserProfile = {
