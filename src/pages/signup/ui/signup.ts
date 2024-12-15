@@ -99,9 +99,7 @@ export class RegistrationPage {
 			if (valid) {
 				try {
 					const isSignedUp = await signupUser(login, password, first_name, gender, birth_date);
-					if (!isSignedUp) {
-						notificationManager.addNotification('Ошибка при регистрации. Попробуйте ещё раз.', 'fail'); 
-					} else { 
+					if (isSignedUp) {
 						notificationManager.addNotification('Успешная регистрация', 'success');
 						this.parent.setAuth(true);
 						this.parent.navigateTo('/feed');
