@@ -86,6 +86,6 @@ export class ShopPage {
 }
 }
 
-function toBase64(arg0: string): string {
-  throw new Error('Function not implemented.');
+function toBase64(str: string): string {
+  return btoa(String.fromCharCode(...new Uint8Array(new TextEncoder().encode(str))));
 }
