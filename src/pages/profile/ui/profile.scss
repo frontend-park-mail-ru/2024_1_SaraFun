@@ -74,7 +74,7 @@
             flex-wrap: wrap; 
             gap: 16px;
             padding-bottom: 20px;
-            padding-top: 20px;
+            padding-top: 15px;
 
             .image-container {
                 display: flex;
@@ -174,6 +174,12 @@
     }
 }
 
+.field {
+    gap: 10px;
+    display: grid;
+    width: 100%; 
+}
+
 .settings-form {
     display: flex;
     flex-direction: column;
@@ -182,9 +188,6 @@
     padding-bottom: 10px;
 
     .field {
-        gap: 10px;
-        display: grid;
-        width: 100%; 
 
         input,
         select,
