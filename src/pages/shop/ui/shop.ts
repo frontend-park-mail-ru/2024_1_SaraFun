@@ -63,7 +63,7 @@ export class ShopPage {
           const response = await post('/api/payments/buy', body);
           const redirectURL = await response.json();
           window.location.href = redirectURL.redirect_link;
-          notificationManager.addNotification(`Товар ${product.name} успешно куплен `, 'success');
+          // notificationManager.addNotification(`Товар ${product.name} успешно куплен `, 'success');
         } catch (error) {
             console.error('Ошибка при создании платежа:', error);
             notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
