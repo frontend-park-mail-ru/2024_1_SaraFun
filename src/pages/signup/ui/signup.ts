@@ -1,4 +1,4 @@
-import { isValidPassword, isValidLogin } from '../../../shared/utils/validation';
+import { isValidPassword, isValidLogin, isValidBirthDate } from '../../../shared/utils/validation';
 import { signupUser } from '../api/signupUser';
 import template from './signup.pug';
 import { Router } from '../../../app/Router';
@@ -33,6 +33,16 @@ export class RegistrationPage {
    * Adds event listeners to the registration page elements.
    */
 	addEventListeners(): void {
+		const dateInput = document.getElementById('birth_date');
+		if (dateInput) {
+			const today = new Date();
+			const minDate = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
+			const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+
+			dateInput.setAttribute('min', minDate.toISOString().split('T')[0]);
+			dateInput.setAttribute('max', maxDate.toISOString().split('T')[0]);
+		}
+
 		document.getElementById('link').addEventListener('click', (event) => {
 			event.preventDefault();
 			const url = new URL((event.target as HTMLAnchorElement).href);
@@ -57,13 +67,23 @@ export class RegistrationPage {
 			const password = (document.getElementById('password') as HTMLInputElement).value;
 			const first_name = (document.getElementById('first_name') as HTMLInputElement).value; 
 			const gender = (document.querySelector('input[name="gender"]:checked') as HTMLInputElement).value;
-			const birth_date = (document.getElementById('birth_date') as HTMLInputElement).value; 
+			const birth_date_element = document.getElementById('birth_date') as HTMLInputElement; 
+			const birth_date = (document.getElementById('birth_date') as HTMLInputElement).value;
 			let valid = true;
 			
 			if (!/\d{4}-\d{2}-\d{2}/.test(birth_date)) {
 				valid = false;
 				notificationManager.addNotification('Некорректный формат даты. Используйте YYYY-MM-DD.', 'fail');
 				return;
+			}
+
+			if (birth_date_element) {
+				const isValidDate = isValidBirthDate(birth_date_element);
+				if (!isValidDate) {
+					document.getElementById(`date-error`).style.display = 'block';
+					document.getElementById(`date-error`).innerText = 'Вам должно быть от 18 до 120 лет';
+					valid = false;
+				}
 			}
 
 			if (first_name === '') {
@@ -89,7 +109,7 @@ export class RegistrationPage {
 			}
 			 
 			
-			if (loginErrors.length > 0 || passwordErrors.length > 0 || first_name === '') {
+			if (loginErrors.length > 0 || passwordErrors.length > 0 || first_name === '' || !valid) {
 				notificationManager.addNotification('Пожалуйста, исправьте ошибки в форме.', 'fail');
 				valid = false;
 			}
@@ -126,6 +146,7 @@ export class RegistrationPage {
 		const loginInput = document.getElementById('login') as HTMLInputElement;
 		const passwordInput = document.getElementById('password') as HTMLInputElement;
 		const firstNameInput = document.getElementById('first_name') as HTMLInputElement;
+		const birthDateInput = document.getElementById('birth_date') as HTMLInputElement;
 	
 		const clearError = (errorElementId: string): void => {
 			const errorElement = document.getElementById(errorElementId);
@@ -158,6 +179,15 @@ export class RegistrationPage {
 					document.getElementById(`password-error-${index + 1}`).innerText = error;
 					document.getElementById(`password-error-${index + 1}`).style.display = 'block';
 				});
+			}
+		});
+
+		birthDateInput?.addEventListener('input', () => {
+			clearError('date-error');
+			const isValid = isValidBirthDate(birthDateInput);
+			if (!isValid) {
+				document.getElementById('date-error').style.display = 'block';
+				document.getElementById(`date-error`).innerText = 'Вам должно быть от 18 до 120 лет';
 			}
 		});
 	
