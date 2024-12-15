@@ -3,15 +3,7 @@ import { getProducts } from '../api/getProducts';
 import { Router } from '../../../app/Router';
 import { Product } from '../lib/product';
 import { notificationManager } from '../../../widgets/Notification/notification';
-import YooKassa from 'yookassa-ts/lib/yookassa'
-import { CurrencyEnum } from 'yookassa-ts/lib/types/Common';
-import { ConfirmationTypesEnum } from 'yookassa-ts/lib/types/Payment';
-import { apiKey, shopId} from '../../../../config'
-
-const yookassa = new YooKassa({
-  shopId: '999343',
-  secretKey: 'test_tg4qykklfcjLeOx-oMnv0jBUTKu6Cr7-FVqkG1-O1IY'
-});
+import { post } from '../../../shared/api/api';
 
 export class ShopPage {
   private parent: Router;
@@ -64,21 +56,15 @@ export class ShopPage {
     const product = this.products.find(p => p.id === productId);
     if (product) {
         try {
-            const payment = await yookassa.createPayment({
-                amount: {
-                    value: '100.00',
-                    currency: CurrencyEnum.RUB,
-                },
-                confirmation: {
-                    type: "redirect",
-                    return_url: ('https://spark-it.site/'), 
-                    confirmation_url: ('https://spark-it.site/'), 
-                },
-                capture: true,
-                description: (`Заказ №${product.id}`), 
-            });
+          const body = {
+            title: `${product.name}`,
+            price: `${product.price.toFixed(2)}`
+          }
+          const response = await post('/api/payment/buy', body);
+          const redirectURL = await response.json();
 
-            notificationManager.addNotification(`Товар ${product.name} успешно куплен ${payment}`, 'success');
+
+          notificationManager.addNotification(`Товар ${product.name} успешно куплен ${redirectURL.redirect_link}`, 'success');
         } catch (error) {
             console.error('Ошибка при создании платежа:', error);
             notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
