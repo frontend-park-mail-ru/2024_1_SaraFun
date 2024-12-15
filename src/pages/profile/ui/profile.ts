@@ -19,7 +19,6 @@ export class ProfilePage {
   private ID: number;
   private imagesIndexes: number[];
   private first_name: string;
-  private last_name: string;
   private birth_date: string;
   private gender: string;
   private target: string;
@@ -48,7 +47,6 @@ export class ProfilePage {
       this.ID = profileData.ID || -1;
       this.imagesIndexes = profileData.imagesIndexes || [];
       this.first_name = profileData.first_name || '';
-      this.last_name = profileData.last_name || '';
       this.birth_date = profileData.birth_date || '2000-01-01';
       this.gender = profileData.gender || 'male';
       this.target = profileData.target || '';
@@ -61,7 +59,6 @@ export class ProfilePage {
     this.parent.root.innerHTML = template({
       isEditing: this.isEditing,
       first_name: this.first_name,
-      last_name: this.last_name,
       birth_date: this.birth_date,
       gender: this.gender,
       target: this.target,
@@ -239,11 +236,6 @@ export class ProfilePage {
       limitInput(first_nameInput); 
     }
 
-    const last_nameInput = document.getElementById('last_name') as HTMLInputElement; 
-    if (last_nameInput) {
-      limitInput(last_nameInput); 
-    }
-
     textarea.addEventListener('input', () => {
       textarea.style.height = 'auto'; 
       textarea.style.height = `${textarea.scrollHeight}px`; 
@@ -257,7 +249,6 @@ export class ProfilePage {
       ID: this.ID, 
       imagesIndexes: this.imagesIndexes,
       first_name: this.first_name,
-      last_name: this.last_name,
       birth_date: this.birth_date,
       gender: this.gender,
       target: this.target,

@@ -119,11 +119,6 @@ export class RegistrationPage {
 		if (first_nameInput) {
 			limitInput(first_nameInput); 
 		}
-		
-		const last_nameInput = document.getElementById('last_name') as HTMLInputElement; 
-		if (last_nameInput) {
-			limitInput(last_nameInput); 
-		}
 	}
 
 	private addInputListeners(): void {
@@ -133,7 +128,6 @@ export class RegistrationPage {
 		const loginInput = document.getElementById('login') as HTMLInputElement;
 		const passwordInput = document.getElementById('password') as HTMLInputElement;
 		const firstNameInput = document.getElementById('first_name') as HTMLInputElement;
-		const lastNameInput = document.getElementById('last_name') as HTMLInputElement;
 	
 		const clearError = (errorElementId: string): void => {
 			const errorElement = document.getElementById(errorElementId);
@@ -170,8 +164,6 @@ export class RegistrationPage {
 		});
 	
 		firstNameInput?.addEventListener('input', () => clearError('first-name-error')); 
-		
-		lastNameInput?.addEventListener('input', () => clearError('last-name-error')); 
 	}
 	
 	private showError(errorElementId: string, message: string): void {

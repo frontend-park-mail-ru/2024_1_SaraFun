@@ -22,7 +22,6 @@ export async function getProfile(): Promise<UserProfile | null> {
       ID: data.profile.id,
       imagesIndexes: images.map((image: { id: string }) => image.id),
       first_name: data.profile.first_name,
-      last_name: data.profile.last_name,
       gender: data.profile.gender,
       birth_date: data.profile.birthday_date,
       target: data.profile.target,
