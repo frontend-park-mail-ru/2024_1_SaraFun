@@ -77,15 +77,11 @@ export class ShopPage {
                 description: (`Заказ №${product.id}`), 
             });
 
-            notificationManager.addNotification(`Товар ${product.name} успешно куплен`, 'success');
+            notificationManager.addNotification(`Товар ${product.name} успешно куплен ${payment}`, 'success');
         } catch (error) {
             console.error('Ошибка при создании платежа:', error);
             notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
         }
     }
   }
-}
-
-function toBase64(str: string): string {
-  return btoa(unescape(encodeURIComponent(str)));
 }
