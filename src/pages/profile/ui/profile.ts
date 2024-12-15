@@ -8,6 +8,7 @@ import { Router } from '../../../app/Router';
 import { limitInput, limitText } from '../../../features/limitInput';
 import { PasswordChanger } from '../lib/changePassword';
 import { notificationManager } from '../../../widgets/Notification/notification';
+import { WsMessage } from '../../../entities/WsMessage/WsMessage';
 
 export class ProfilePage {
   private imagesDel: number[] = [];
@@ -17,12 +18,12 @@ export class ProfilePage {
   private username: string;
   private ID: number;
   private imagesIndexes: number[];
-  private FirstName: string;
-  private LastName: string;
-  private Age: number;
-  private Gender: string;
-  private Target: string;
-  private About: string;
+  private first_name: string;
+  private last_name: string;
+  private birth_date: string;
+  private gender: string;
+  private target: string;
+  private about: string;
   private imagesURLs: string[];
 
   constructor(parent: Router) {
@@ -33,17 +34,25 @@ export class ProfilePage {
     });
   }
 
+  handleMessage(data: WsMessage) {
+		if (data.type === "message") {
+			notificationManager.addNotification(`Новое сообщение от ${data.username}: ${data.message}`, 'info');
+		} else {
+			notificationManager.addNotification(`У вас новый мэтч с пользователем ${data.username}`, 'info');
+		}
+	}
+
   private async loadProfile(): Promise<void> {
     const profileData = await getProfile();
     if (profileData) {
       this.ID = profileData.ID || -1;
       this.imagesIndexes = profileData.imagesIndexes || [];
-      this.FirstName = profileData.FirstName || '';
-      this.LastName = profileData.LastName || '';
-      this.Age = profileData.Age || 21;
-      this.Gender = profileData.Gender || 'male';
-      this.Target = profileData.Target || '';
-      this.About = profileData.About || '';
+      this.first_name = profileData.first_name || '';
+      this.last_name = profileData.last_name || '';
+      this.birth_date = profileData.birth_date || '2000-01-01';
+      this.gender = profileData.gender || 'male';
+      this.target = profileData.target || '';
+      this.about = profileData.about || '';
       this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
     }    
   }
@@ -51,12 +60,12 @@ export class ProfilePage {
   public render(): void {
     this.parent.root.innerHTML = template({
       isEditing: this.isEditing,
-      FirstName: this.FirstName,
-      LastName: this.LastName,
-      Age: this.Age,
-      Gender: this.Gender,
-      Target: this.Target,
-      About: this.About,
+      first_name: this.first_name,
+      last_name: this.last_name,
+      birth_date: this.birth_date,
+      gender: this.gender,
+      target: this.target,
+      about: this.about,
       imagesURLs: this.imagesURLs,
     });
 
@@ -82,7 +91,6 @@ export class ProfilePage {
 
     const newPasswordButton = document.querySelector('.new-password') as HTMLElement;
 
-    // Инициализация класса PasswordChanger
     if (newPasswordButton) {
       const passwordChanger = new PasswordChanger(newPasswordButton);
     }
@@ -91,17 +99,6 @@ export class ProfilePage {
 
 
     if (this.isEditing) {
-      const rangeInput = document.getElementById('Age') as HTMLInputElement;
-      const output = rangeInput.nextElementSibling as HTMLOutputElement;
-
-      const updateOutput = () => {
-        const value = rangeInput.value;
-        output.value = value === '100' ? '100+' : value;
-      };
-
-      updateOutput();
-      rangeInput.addEventListener('input', updateOutput);
-
       const imageContainers = document.querySelectorAll('.image-container') as NodeListOf<HTMLElement>;
 
       if (imageContainers) {
@@ -120,12 +117,12 @@ export class ProfilePage {
             const dragIndex = parseInt(event.dataTransfer?.getData('text/plain') || '0');
 
             if (dragIndex !== index) {
-              const draggedImage = this.imagesURLs[dragIndex];
-              const dragedId = this.imagesIndexes[dragIndex];
+              const draggedimage = this.imagesURLs[dragIndex];
+              const drdatadId = this.imagesIndexes[dragIndex];
               this.imagesURLs.splice(dragIndex, 1); 
               this.imagesIndexes.splice(dragIndex, 1);
-              this.imagesURLs.splice(index, 0, draggedImage); 
-              this.imagesIndexes.splice(index, 0, dragedId); 
+              this.imagesURLs.splice(index, 0, draggedimage); 
+              this.imagesIndexes.splice(index, 0, drdatadId); 
               
               this.imagesNew.forEach((image, i) => { //мне кажется, что непонятный код, поэтому есть комменты
                 if (image.index === dragIndex) {
@@ -141,12 +138,26 @@ export class ProfilePage {
               });
         
 
-              this.getInfoFromPage();
+              this.getInfoFromPdata();
               this.render();
             }
           });
         });
       }
+
+      document.querySelectorAll('.password__icon').forEach(icon => {
+        icon.addEventListener('click', (event) => {
+          const passwordWrapper = icon.closest('.password__wrapper');
+          if (passwordWrapper) {
+            const passwordInput = passwordWrapper.querySelector('input[type="password"], input[type="text"]') as HTMLInputElement;
+            if (passwordInput) {
+                const newType = passwordInput.type === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', newType);
+                icon.setAttribute('src', newType === 'password' ? '/img/eye-x.svg' : '/img/eye.svg');
+            }
+          }
+        });
+      });
     }
     
 
@@ -154,7 +165,7 @@ export class ProfilePage {
     const delButtons = document.querySelectorAll('.delete-button');
     delButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
-            this.deleteImage(index);
+            this.deleteimage(index);
         });
     });
 
@@ -166,48 +177,30 @@ export class ProfilePage {
 
 
     if (this.isEditing) {
-      const textarea = document.getElementById('About') as HTMLTextAreaElement; 
-      limitText(textarea, 10); 
-
-      const firstNameInput = document.getElementById('FirstName') as HTMLInputElement; 
-      if (firstNameInput) {
-        limitInput(firstNameInput); 
-      }
-      
-
-      const lastNameInput = document.getElementById('LastName') as HTMLInputElement; 
-      if (lastNameInput) {
-        limitInput(lastNameInput); 
-      }
-
-      textarea.addEventListener('input', () => {
-        textarea.style.height = 'auto'; 
-        textarea.style.height = `${textarea.scrollHeight}px`; 
-      });
+      this.limits();
     }
   }
 
   private handleUploadImg() {
-    uploadImg(this.imagesNew, this.imagesURLs, this.imagesIndexes, () => this.getInfoFromPage(), () => this.render());
+    uploadImg(this.imagesNew, this.imagesURLs, this.imagesIndexes, () => this.getInfoFromPdata(), () => this.render());
   }
   
-  private getInfoFromPage() {
-    this.FirstName = (document.getElementById('FirstName') as HTMLInputElement).value;
-    this.LastName = (document.getElementById('LastName') as HTMLInputElement).value;
-    this.Gender = (document.querySelector('input[name="gender"]:checked') as HTMLSelectElement).value;
-    this.Age = parseInt((document.getElementById('Age') as HTMLInputElement).value, 10);
-    this.Target = (document.getElementById('Target') as HTMLTextAreaElement).value;
-    this.About = (document.getElementById('About') as HTMLTextAreaElement).value;
+  private getInfoFromPdata() {
+    this.first_name = (document.getElementById('first_name') as HTMLInputElement).value;
+    this.gender = (document.querySelector('input[name="gender"]:checked') as HTMLSelectElement).value;
+    this.birth_date = (document.getElementById('birth_date') as HTMLInputElement).value;
+    this.target = (document.getElementById('target') as HTMLTextAreaElement).value;
+    this.about = (document.getElementById('about') as HTMLTextAreaElement).value;
     return;
   }
 
 
-  private deleteImage(index: number): void {
+  private deleteimage(index: number): void {
     const imageIndex = this.imagesIndexes[index];
     
-    const isNewImage = this.imagesNew.some(img => img.index === index);
+    const isNewimage = this.imagesNew.some(img => img.index === index);
     
-    if (isNewImage) {
+    if (isNewimage) {
         this.imagesNew = this.imagesNew.filter(img => img.index !== index);
     } else {
         this.imagesDel.push(imageIndex);
@@ -225,7 +218,7 @@ export class ProfilePage {
     this.imagesIndexes.splice(index, 1);
     this.imagesURLs.splice(index, 1);
 
-    this.getInfoFromPage();
+    this.getInfoFromPdata();
     this.render();
   }
 
@@ -236,19 +229,39 @@ export class ProfilePage {
       this.render();
     });
   }
+
+  private limits(): void {
+    const textarea = document.getElementById('about') as HTMLTextAreaElement; 
+    limitText(textarea, 10); 
+
+    const first_nameInput = document.getElementById('first_name') as HTMLInputElement; 
+    if (first_nameInput) {
+      limitInput(first_nameInput); 
+    }
+
+    const last_nameInput = document.getElementById('last_name') as HTMLInputElement; 
+    if (last_nameInput) {
+      limitInput(last_nameInput); 
+    }
+
+    textarea.addEventListener('input', () => {
+      textarea.style.height = 'auto'; 
+      textarea.style.height = `${textarea.scrollHeight}px`; 
+    });
+	}
   
   private async saveSettings(): Promise<void> {
-    this.getInfoFromPage()
+    this.getInfoFromPdata()
 
     const profileData: UserProfile = {
       ID: this.ID, 
       imagesIndexes: this.imagesIndexes,
-      FirstName: this.FirstName,
-      LastName: this.LastName,
-      Age: this.Age,
-      Gender: this.Gender,
-      Target: this.Target,
-      About: this.About,
+      first_name: this.first_name,
+      last_name: this.last_name,
+      birth_date: this.birth_date,
+      gender: this.gender,
+      target: this.target,
+      about: this.about,
       imagesURLs: this.imagesURLs,
     };
 

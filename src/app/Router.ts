@@ -100,11 +100,11 @@ export class Router {
 		const view = route.view;
     	if (view) {
 			this.curRoute = path;
-			this.parent.setCurRoute(path);
 			if (addToHistory) {
 				history.pushState({}, '', path);
 			}
-      		new view(this);
+      		let curView = new view(this);
+			this.parent.setCurRoute(path, curView);
     	} 
 	}
 

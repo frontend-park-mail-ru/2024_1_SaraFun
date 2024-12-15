@@ -19,7 +19,6 @@ export const ROUTES = new Map([
 	[ROUTES_NAME.FEED, { path: '/feed', view: FeedPage, isPublic: false, useParams: false, params: null }],
 	[ROUTES_NAME.MATCHES, { path: '/matches', view: MatchesPage, isPublic: false, useParams: false, params: null }],
 	[ROUTES_NAME.CHATS, { path: '/chats', view: ChatsPage, isPublic: false, useParams: true, params: { chat: '' } }],
-	//[ROUTES_NAME.CHATS, { path: '/chats/:chat', view: ChatsPage, isPublic: false }],
 	[ROUTES_NAME.SIGNUP, { path: '/signup', view: RegistrationPage, isPublic: true, useParams: false, params: null }],
 	[ROUTES_NAME.PROFILE, { path: '/profile', view: ProfilePage, isPublic: false, useParams: false, params: null }],
 ]);
