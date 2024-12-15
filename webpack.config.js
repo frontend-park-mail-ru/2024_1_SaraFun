@@ -98,7 +98,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'SparkIt',
-			filename: 'index.html',
+            filename: 'index.html',
             template: 'src/index.html',
         }),
         new CopyWebpackPlugin({
@@ -110,7 +110,7 @@ module.exports = {
             filename: '[name].[contenthash].css', 
         }),
         new CompressionPlugin({
-            algorithm: 'zstd', 
+            algorithm: 'gzip', // Изменено на gzip
             test: /.(js|css|html|svg|png|jpg|jpeg|gif)$/i, 
             threshold: 10240, 
             minRatio: 0.8, 
