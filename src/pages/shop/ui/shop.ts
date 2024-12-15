@@ -70,11 +70,11 @@ export class ShopPage {
                 },
                 confirmation: {
                     type: ConfirmationTypesEnum.redirect,
-                    return_url: toBase64('https://www.example.com/return_url'), // Кодируем URL
-                    confirmation_url: toBase64('https://www.example.com/return_url'), // Кодируем URL
+                    return_url: ('https://spark-it.site/'), 
+                    confirmation_url: ('https://spark-it.site/'), 
                 },
                 capture: true,
-                description: toBase64(`Заказ №${product.id}`), // Кодируем описание
+                description: (`Заказ №${product.id}`), 
             });
 
             notificationManager.addNotification(`Товар ${product.name} успешно куплен`, 'success');
