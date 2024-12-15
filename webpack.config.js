@@ -66,11 +66,13 @@ module.exports = {
     },
     resolve: {
         fallback: {
-            "os": require.resolve("os-browserify/browser"),
+            "path": require.resolve("path-browserify"),
+            "stream": require.resolve("stream-browserify"),
             "crypto": require.resolve("crypto-browserify"),
             "http": require.resolve("stream-http"),
             "https": require.resolve("https-browserify"),
             "assert": require.resolve("assert/"),
+            "os": require.resolve("os-browserify/browser"),
         },
         alias: {
             '@img': path.resolve(__dirname, 'src/shared/assets/img')
