@@ -8,8 +8,8 @@ import { CurrencyEnum } from 'yookassa-ts/lib/types/Common';
 import { ConfirmationTypesEnum } from 'yookassa-ts/lib/types/Payment';
 
 const yookassa = new YooKassa({
-  shopId: '<Идентификатор магазина>',
-  secretKey: '<Секретный ключ>'
+  shopId: '999290',
+  secretKey: 'test_OAoflJGu_Lt1iG8Wik83Ab8izO0jP7dyPIBx6Wt_rL8'
 });
 
 export class ShopPage {
