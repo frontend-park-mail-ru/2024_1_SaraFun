@@ -182,6 +182,8 @@
     padding-bottom: 10px;
 
     .field {
+        gap: 10px;
+        display: grid;
         width: 100%; 
 
         input,
