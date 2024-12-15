@@ -2,16 +2,14 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import cors from 'cors'; // Импортируйте cors
+import cors from 'cors';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
 
-// Используйте CORS middleware
-app.use(cors()); // Разрешить все источники
-// Или более строго: app.use(cors({ origin: 'https://ваш-домен.com' }));
+app.use(cors({ origin: 'https://spark-it.site' }));
 
 app.use(express.static(path.join(__dirname, '../dist')));
 
