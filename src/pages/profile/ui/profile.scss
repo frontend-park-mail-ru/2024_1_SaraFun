@@ -172,20 +172,20 @@
         }
     }
 }
+
 .settings-form {
     display: flex;
     flex-direction: column;
     width: 100%; 
+    gap: 10px;
 
     label {
-        margin-bottom: 10px;
         width: 100%; 
 
         input,
         select,
         textarea {
             margin-left: 0; 
-            padding: 5px;
             border-radius: 5px;
             border: 1px solid #ccc;
             width: 100%; 

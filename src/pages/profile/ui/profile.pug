@@ -11,8 +11,7 @@ div.profile
     if isEditing
       h1 Редактирование профиля
       .settings-form
-        label
-          +name(first_name)
+        +name(first_name)
         +birth_date(birth_date)
         +genderSelection(gender)
         +target(target)
