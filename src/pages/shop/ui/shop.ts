@@ -60,11 +60,10 @@ export class ShopPage {
             title: `${product.name}`,
             price: `${product.price.toFixed(2)}`
           }
-          const response = await post('/api/payment/buy', body);
-          const redirectURL = await response.json();
-
-
-          notificationManager.addNotification(`Товар ${product.name} успешно куплен ${redirectURL.redirect_link}`, 'success');
+          // const response = await post('/api/payment/buy', body);
+          // const redirectURL = await response.json();
+          // console.log(redirectURL.redirect_link);
+          notificationManager.addNotification(`Товар ${product.name} успешно куплен `, 'success');
         } catch (error) {
             console.error('Ошибка при создании платежа:', error);
             notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
