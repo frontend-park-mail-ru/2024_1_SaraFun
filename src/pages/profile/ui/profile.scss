@@ -178,14 +178,6 @@
     gap: 10px;
     display: grid;
     width: 100%; 
-}
-
-.settings-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%; 
-    gap: 10px;
-    padding-bottom: 10px;
 
     .field {
 
@@ -197,6 +189,7 @@
             border: 1px solid #ccc;
             width: 100%; 
             resize: none; 
+            padding: 5px;
         }
         
         textarea {
@@ -205,6 +198,14 @@
             overflow-y: hidden
         }
     }
+}
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    gap: 10px;
+    padding-bottom: 10px;
 }
 
 .button-wrapper {
