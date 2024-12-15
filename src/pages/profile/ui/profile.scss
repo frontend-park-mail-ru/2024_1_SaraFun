@@ -179,24 +179,22 @@
     display: grid;
     width: 100%; 
 
-    .field {
 
-        input,
-        select,
-        textarea {
-            margin-left: 0; 
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            width: 100%; 
-            resize: none; 
-            padding: 5px;
-        }
-        
-        textarea {
-            min-height: 50px; 
-            max-height: 200px; 
-            overflow-y: hidden
-        }
+    input,
+    select,
+    textarea {
+        margin-left: 0; 
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 100%; 
+        resize: none; 
+        padding: 5px;
+    }
+    
+    textarea {
+        min-height: 50px; 
+        max-height: 200px; 
+        overflow-y: hidden
     }
 }
 
