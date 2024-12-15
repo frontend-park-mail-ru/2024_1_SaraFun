@@ -12,5 +12,8 @@ if (!apiKey) {
 if (!shopId) {
     throw new Error('ShopId is not defined in the environment variables.');
 }
+else {
+    console.log(shopId);
+}
 
 export { apiKey, shopId };
