@@ -87,5 +87,9 @@ export class ShopPage {
 }
 
 function toBase64(str: string): string {
-  return btoa(String.fromCharCode(...new Uint8Array(new TextEncoder().encode(str))));
+  const utf8Bytes = new TextEncoder().encode(str); // Кодируем строку в массив байтов
+  const binaryString = Array.from(utf8Bytes) // Преобразуем массив байтов в бинарную строку
+      .map(byte => String.fromCharCode(byte))
+      .join('');
+  return btoa(binaryString); // Кодируем бинарную строку в Base64
 }
