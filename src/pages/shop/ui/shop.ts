@@ -87,9 +87,10 @@ export class ShopPage {
 }
 
 function toBase64(str: string): string {
-  const utf8Bytes = new TextEncoder().encode(str); // Кодируем строку в массив байтов
-  const binaryString = Array.from(utf8Bytes) // Преобразуем массив байтов в бинарную строку
-      .map(byte => String.fromCharCode(byte))
-      .join('');
-  return btoa(binaryString); // Кодируем бинарную строку в Base64
+  const utf8Bytes = new TextEncoder().encode(str);
+  let binaryString = '';
+  for (let i = 0; i < utf8Bytes.length; i++) {
+      binaryString += String.fromCharCode(utf8Bytes[i]);
+  }
+  return btoa(binaryString);
 }
