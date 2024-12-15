@@ -70,11 +70,11 @@ export class ShopPage {
                 },
                 confirmation: {
                     type: ConfirmationTypesEnum.redirect,
-                    return_url: toBase64('https://spark-it.site/shop'), 
-                    confirmation_url: toBase64('https://spark-it.site/shop'), 
+                    return_url: toBase64('https://www.example.com/return_url'), // Кодируем URL
+                    confirmation_url: toBase64('https://www.example.com/return_url'), // Кодируем URL
                 },
                 capture: true,
-                description: toBase64(`Заказ №${product.id}`), 
+                description: toBase64(`Заказ №${product.id}`), // Кодируем описание
             });
 
             notificationManager.addNotification(`Товар ${product.name} успешно куплен`, 'success');
@@ -83,14 +83,11 @@ export class ShopPage {
             notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
         }
     }
-}
+  }
 }
 
 function toBase64(str: string): string {
   const utf8Bytes = new TextEncoder().encode(str);
-  let binaryString = '';
-  for (let i = 0; i < utf8Bytes.length; i++) {
-      binaryString += String.fromCharCode(utf8Bytes[i]);
-  }
-  return btoa(binaryString);
+  const binaryString = Array.from(utf8Bytes).map(byte => String.fromCharCode(byte)).join('');
+  return window.btoa(binaryString);
 }
