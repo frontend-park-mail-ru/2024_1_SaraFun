@@ -14,7 +14,11 @@
       "./node_modules/@types", 
       "./@types" 
     ],
-    "allowJs": true
+    "allowJs": true,
+    "strict": false,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+
   },
   "include": ["src/**/*", "@types/pug.d.ts"]
 }

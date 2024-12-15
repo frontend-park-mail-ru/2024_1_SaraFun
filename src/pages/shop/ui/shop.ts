@@ -3,6 +3,14 @@ import { getProducts } from '../api/getProducts';
 import { Router } from '../../../app/Router';
 import { Product } from '../lib/product';
 import { notificationManager } from '../../../widgets/Notification/notification';
+import YooKassa from 'yookassa-ts/lib/yookassa'
+import { CurrencyEnum } from 'yookassa-ts/lib/types/Common';
+import { ConfirmationTypesEnum } from 'yookassa-ts/lib/types/Payment';
+
+const yookassa = new YooKassa({
+  shopId: '<Идентификатор магазина>',
+  secretKey: '<Секретный ключ>'
+});
 
 export class ShopPage {
   private parent: Router;
@@ -43,7 +51,10 @@ export class ShopPage {
     buyBoostButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
         const productId = (event.target as HTMLElement).dataset.productId;
-        this.buyBoost(productId);
+        if (productId) {
+          this.buyBoost(productId);
+        }
+        
       });
     });
   }
@@ -52,21 +63,25 @@ export class ShopPage {
     const product = this.products.find(p => p.id === productId);
     if (product) {
         try {
-            const amount = product.price; 
-            const description = `Оплата за товар: ${product.name}`; 
+            const payment = await yookassa.createPayment({
+                amount: {
+                    value: '100.00',
+                    currency: CurrencyEnum.RUB,
+                },
+                confirmation: {
+                    type: ConfirmationTypesEnum.redirect, // Обратите внимание на регистр
+                    return_url: 'https://www.example.com/return_url', // URL для возврата
+                    confirmation_url: 'https://www.example.com/return_url',
+                },
+                capture: true,
+                description: 'Заказ №1',
+            });
 
-            // const payment = await createPayment(amount, description);
-
-            // if (payment.confirmation && payment.confirmation.confirmation_url) {
-            //     window.location.href = payment.confirmation.confirmation_url;
-            // } else {
-            //     notificationManager.addNotification('Не удалось получить URL подтверждения', 'fail');
-            // }
             notificationManager.addNotification(`Товар ${product.name} успешно куплен`, 'success');
         } catch (error) {
             console.error('Ошибка при создании платежа:', error);
             notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
         }
     }
-}
+  }
 }

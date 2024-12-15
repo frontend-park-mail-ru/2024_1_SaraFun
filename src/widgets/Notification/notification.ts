@@ -40,15 +40,17 @@ class NotificationManager {
         modals.forEach((modal) => {
             const notificationId = (modal as HTMLElement).dataset.id;
 
-            modal.addEventListener('click', () => {
-                this.removeNotification(notificationId);
-            });
-
-            const timeoutId = setTimeout(() => {
-                this.removeNotification(notificationId);
-            }, 5000);
-
-            this.timeoutIds[notificationId] = timeoutId;
+            if (notificationId) {
+                modal.addEventListener('click', () => {
+                    this.removeNotification(notificationId);
+                });
+    
+                const timeoutId = setTimeout(() => {
+                    this.removeNotification(notificationId);
+                }, 5000);
+    
+                this.timeoutIds[notificationId] = timeoutId;
+            }
         });
     }
 

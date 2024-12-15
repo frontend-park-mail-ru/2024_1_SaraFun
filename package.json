@@ -31,7 +31,8 @@
     "process": "^0.11.10",
     "stream-http": "^3.2.0",
     "util": "^0.12.5",
-    "yookassa": "^0.1.1"
+    "yookassa": "^0.1.1",
+    "yookassa-ts": "^0.1.14"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
