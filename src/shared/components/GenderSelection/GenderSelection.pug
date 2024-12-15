@@ -5,6 +5,6 @@ mixin genderSelection(Gender)
             input(class="radio-input__radio" type="radio" id="male" name="gender" value="male" checked=Gender === 'male')
             label(class="radio-input__label" for="male") Мужской
         .radio-input
-            input(class="radio-input__radio" type="radio" id="female" name="gender" value="female" checked=Gender != 'male')
+            input(class="radio-input__radio" type="radio" id="female" name="gender" value="female" checked=Gender !== 'male')
             label(class="radio-input__label" for="female") Женский
         p.error(id="gender-error" style="display:none;") Выберите пол

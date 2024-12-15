@@ -5,6 +5,8 @@ import { Router } from '../../../app/Router';
 import { initCards } from '../lib/initCards';
 import { addCarousel } from '../../../shared/lib/carousel/addCarousel';
 import { createButtonListener } from '../lib/createButtonListener';
+import { notificationManager } from '../../../widgets/Notification/notification';
+import { WsMessage } from '../../../entities/WsMessage/WsMessage';
 
 
 /**
@@ -20,6 +22,14 @@ export class FeedPage {
 		this.parent = parent;
 		this.parent.root.innerHTML = '';
 		this.render();
+	}
+
+	handleMessage(data: WsMessage) {
+		if (data.type === "message") {
+			notificationManager.addNotification(`Новое сообщение от ${data.username}: ${data.message}`, 'info');
+		} else {
+			notificationManager.addNotification(`У вас новый мэтч с пользователем ${data.username}`, 'info');
+		}
 	}
 
 	/**

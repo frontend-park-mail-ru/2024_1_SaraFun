@@ -3,7 +3,7 @@ import notificationTemplate from './notification.pug';
 interface Notification {
     id: string; 
     message: string;
-    type: 'success' | 'fail';
+    type: 'success' | 'fail' | 'info';
 }
 
 class NotificationManager {
@@ -17,12 +17,8 @@ class NotificationManager {
         document.body.appendChild(this.notificationsContainer);
     }
 
-    public addNotification(message: string, type: 'success' | 'fail'): void {
-        const notification: Notification = { 
-            id: this.generateId(),
-            message, 
-            type 
-        };
+    public addNotification(message: string, type: 'success' | 'fail' | 'info'): void {
+        const notification: Notification = { message, type };
         this.notifications.push(notification);
         this.render();
     }

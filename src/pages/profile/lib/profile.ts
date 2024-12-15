@@ -2,12 +2,12 @@ export interface UserProfile {
 
   ID: number,
   imagesIndexes: number[],
-  FirstName: string,
-  LastName: string,
-  Age: number,
-  Gender: string,
-  Target: string,
-  About: string,
+  first_name: string,
+  last_name: string,
+  birth_date: string,
+  gender: string,
+  target: string,
+  about: string,
   imagesURLs: string[],
 }
 
