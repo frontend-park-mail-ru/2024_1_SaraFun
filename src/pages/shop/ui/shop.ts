@@ -9,8 +9,8 @@ import { ConfirmationTypesEnum } from 'yookassa-ts/lib/types/Payment';
 import { apiKey, shopId} from '../../../../config'
 
 const yookassa = new YooKassa({
-  shopId: shopId,
-  secretKey: apiKey
+  shopId: 999343,
+  secretKey: 'test_wsCOWHLfHzUumXMHaMk6sp0CtAZ-Eqeze7KXrQXiGcU'
 });
 
 export class ShopPage {
