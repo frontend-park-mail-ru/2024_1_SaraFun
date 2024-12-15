@@ -87,7 +87,5 @@ export class ShopPage {
 }
 
 function toBase64(str: string): string {
-  const utf8Bytes = new TextEncoder().encode(str);
-  const binaryString = Array.from(utf8Bytes).map(byte => String.fromCharCode(byte)).join('');
-  return window.btoa(binaryString);
+  return btoa(unescape(encodeURIComponent(str)));
 }
