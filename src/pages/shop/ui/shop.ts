@@ -69,12 +69,12 @@ export class ShopPage {
                     currency: CurrencyEnum.RUB,
                 },
                 confirmation: {
-                    type: ConfirmationTypesEnum.redirect, // Обратите внимание на регистр
-                    return_url: 'https://www.example.com/return_url', // URL для возврата
-                    confirmation_url: 'https://www.example.com/return_url',
+                    type: ConfirmationTypesEnum.redirect,
+                    return_url: toBase64('https://spark-it.site/shop'), 
+                    confirmation_url: toBase64('https://spark-it.site/shop'), 
                 },
                 capture: true,
-                description: 'Заказ №1',
+                description: toBase64(`Заказ №${product.id}`), 
             });
 
             notificationManager.addNotification(`Товар ${product.name} успешно куплен`, 'success');
@@ -83,5 +83,9 @@ export class ShopPage {
             notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
         }
     }
-  }
+}
+}
+
+function toBase64(arg0: string): string {
+  throw new Error('Function not implemented.');
 }
