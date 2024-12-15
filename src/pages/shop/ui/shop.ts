@@ -64,7 +64,6 @@ export class ShopPage {
           const redirectURL = await response.json();
           if(redirectURL.redirect_link) {
             window.location.href = redirectURL.redirect_link;
-            notificationManager.addNotification(`Товар ${product.name} успешно куплен `, 'success');
           }
         } catch (error) {
             console.error('Ошибка при создании платежа:', error);
