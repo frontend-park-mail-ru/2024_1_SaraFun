@@ -9,8 +9,6 @@ const __dirname = dirname(__filename);
 
 const app = express();
 
-app.use(cors({ origin: 'https://spark-it.site' }));
-
 app.use(express.static(path.join(__dirname, '../dist')));
 
 app.get(/^(?!.*.(css|js|img|png|webp|webm|svg)).*$/, (req, res) => {
