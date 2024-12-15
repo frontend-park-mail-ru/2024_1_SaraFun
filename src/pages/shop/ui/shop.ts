@@ -60,7 +60,7 @@ export class ShopPage {
             title: `${product.name}`,
             price: `${product.price.toFixed(2)}`
           }
-          const response = await post('/api/payment/buy', body);
+          const response = await post('/api/payments/buy', body);
           const redirectURL = await response.json();
           console.log(redirectURL.redirect_link);
           notificationManager.addNotification(`Товар ${product.name} успешно куплен `, 'success');
