@@ -11,8 +11,9 @@ const app = express();
 const PORT = process.argv[2] || 3000;
 
 app.use(express.static(path.join(__dirname, '../dist')));
-app.use(express.json()); 
+app.use(express.json()); // Для обработки JSON-тел
 
+// Прокси для запросов к YooKassa
 app.post('/api/yookassa/payments', async (req, res) => {
 	try {
 		const response = await axios.post('https://api.yookassa.ru/v3/payments', req.body, {
