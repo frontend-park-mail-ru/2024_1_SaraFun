@@ -9,6 +9,9 @@ export interface UserProfile {
   target: string,
   about: string,
   imagesURLs: string[],
+  moneyBalance: number,
+  dailyLikes: number,
+  purchasedLikes: number,
 }
 
 export interface ImgData {

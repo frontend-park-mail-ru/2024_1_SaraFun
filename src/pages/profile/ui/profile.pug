@@ -6,6 +6,19 @@ include ../../../shared/components/Target/target.pug
 include ../../../shared/components/PassChange/passChange.pug
 include ../../../shared/components/About/about.pug
 
+mixin getRublesWordForm(amount)
+    - const lastDigit = amount % 10;
+    - const lastTwoDigits = amount % 100;
+    - let wordForm = 'рублей';
+    - if (lastTwoDigits < 11 || lastTwoDigits > 19) {
+        - if (lastDigit === 1) {
+            - wordForm = 'рубль';
+        - } else if (lastDigit >= 2 && lastDigit <= 4) {
+            - wordForm = 'рубля';
+        - }
+    - }
+    = `${amount} ${wordForm}`
+
 div.profile
   div.profile-card
     if isEditing
@@ -54,6 +67,12 @@ div.profile
           p Дата рождения: #{birth_date}
           p Цель: #{target}
           p О себе: #{about}
+      div
+        h3 Фотографии
+        p Текущий баланс:
+          +getRublesWordForm(moneyBalance)
+        p Осталось бесплатных реакций на сегодня: #{dailyLikes}
+        p Осталось купленных реакций: #{purchasedLikes}
       div
         h3 Фотографии
         .image-section-profile

@@ -31,6 +31,9 @@ export async function getProfile(): Promise<UserProfile | null> {
         const fileName = image.link.substring(image.link.lastIndexOf('/') + 1);
         return `https://spark-it.site/${fileName}`;
       }),
+      moneyBalance: data.money_balance,
+      dailyLikes: data.daily_likes_balance,
+      purchasedLikes: data.purchased_likes_balance,
     };
     return userProfile;
   } catch (error) {

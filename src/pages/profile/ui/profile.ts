@@ -25,6 +25,9 @@ export class ProfilePage {
   private target: string;
   private about: string;
   private imagesURLs: string[];
+  private moneyBalance: number;
+  private dailyLikes: number;
+  private purchasedLikes: number;
 
   constructor(parent: Router) {
     this.parent = parent;
@@ -54,6 +57,9 @@ export class ProfilePage {
       this.target = profileData.target || '';
       this.about = profileData.about || '';
       this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
+      this.moneyBalance = profileData.moneyBalance || 0;
+      this.dailyLikes = profileData.dailyLikes || 0;
+      this.purchasedLikes = profileData.purchasedLikes || 0;
     }    
   }
 
@@ -67,6 +73,9 @@ export class ProfilePage {
       target: this.target,
       about: this.about,
       imagesURLs: this.imagesURLs,
+      moneyBalance: this.moneyBalance,
+      dailyLikes: this.dailyLikes,
+      purchasedLikes: this.purchasedLikes,
     });
 
     this.componentWillMount();
@@ -94,9 +103,6 @@ export class ProfilePage {
     if (newPasswordButton) {
       const passwordChanger = new PasswordChanger(newPasswordButton);
     }
-
-    
-
 
     if (this.isEditing) {
       const imageContainers = document.querySelectorAll('.image-container') as NodeListOf<HTMLElement>;
@@ -260,6 +266,9 @@ export class ProfilePage {
       target: this.target,
       about: this.about,
       imagesURLs: this.imagesURLs,
+      moneyBalance: this.moneyBalance,
+      dailyLikes: this.dailyLikes,
+      purchasedLikes: this.purchasedLikes,
     };
 
     const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel, this.imagesURLs, this.imagesIndexes);
