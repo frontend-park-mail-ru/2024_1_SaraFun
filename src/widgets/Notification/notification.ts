@@ -18,7 +18,11 @@ class NotificationManager {
     }
 
     public addNotification(message: string, type: 'success' | 'fail' | 'info'): void {
-        const notification: Notification = { message, type };
+        const notification: Notification = { 
+            id: this.generateId(),
+            message, 
+            type 
+        };
         this.notifications.push(notification);
         this.render();
     }
