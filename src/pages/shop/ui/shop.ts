@@ -69,7 +69,7 @@ export class ShopPage {
                     currency: CurrencyEnum.RUB,
                 },
                 confirmation: {
-                    type: ConfirmationTypesEnum.redirect,
+                    type: "redirect",
                     return_url: ('https://spark-it.site/'), 
                     confirmation_url: ('https://spark-it.site/'), 
                 },
