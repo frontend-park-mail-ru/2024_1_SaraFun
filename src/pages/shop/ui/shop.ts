@@ -6,10 +6,11 @@ import { notificationManager } from '../../../widgets/Notification/notification'
 import YooKassa from 'yookassa-ts/lib/yookassa'
 import { CurrencyEnum } from 'yookassa-ts/lib/types/Common';
 import { ConfirmationTypesEnum } from 'yookassa-ts/lib/types/Payment';
+import { apiKey, shopId} from '../../../../config'
 
 const yookassa = new YooKassa({
-  shopId: '999290',
-  secretKey: 'test_OAoflJGu_Lt1iG8Wik83Ab8izO0jP7dyPIBx6Wt_rL8'
+  shopId: shopId,
+  secretKey: apiKey
 });
 
 export class ShopPage {
