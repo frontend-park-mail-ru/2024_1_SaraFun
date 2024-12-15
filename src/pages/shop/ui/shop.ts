@@ -60,7 +60,7 @@ export class ShopPage {
             title: `${product.name}`,
             price: `${product.price.toFixed(2)}`
           }
-          const response = await post('/api/payments/buy', body);
+          const response = await post('/api/payments/topup', body);
           const redirectURL = await response.json();
           if(redirectURL.redirect_link) {
             window.location.href = redirectURL.redirect_link;
