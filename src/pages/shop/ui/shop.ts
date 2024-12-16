@@ -21,6 +21,7 @@ export class ShopPage {
       const productData = await getProducts();
       if (productData) {
         this.products = productData;
+        notificationManager.addNotification(`${this.products[0].imageURL}`, 'success');
       } else {
         throw new Error('No products found');
       }
