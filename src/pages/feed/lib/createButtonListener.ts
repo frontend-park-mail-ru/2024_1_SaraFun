@@ -17,7 +17,6 @@ export function createButtonListener(love: boolean, tinderContainer: HTMLElement
         let response = await putLikeOrDislike(love, parseInt(userId));
         if ((response as string).trim() === 'у вас нет лайков') {
             openNotificationModal();
-            //alert('У вас нет лайков');
             return;
         }
 

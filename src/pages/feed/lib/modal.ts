@@ -6,7 +6,6 @@ export function openNotificationModal(): void {
     modal.innerHTML = template();
     
     document.body.appendChild(modal);
-    console.log('modal', modal);
     
     modal.classList.add('opening');
     modal.addEventListener('animationend', () => {

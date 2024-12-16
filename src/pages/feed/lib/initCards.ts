@@ -109,7 +109,6 @@ export function initCards(tinderContainer: HTMLElement): void {
 
             let response = await putLikeOrDislike(love, parseInt(userId));
             if ((response as string).trim() === 'у вас нет лайков') {
-                //alert('У вас нет лайков');
                 openNotificationModal();
                 firstCard.style.transform = '';
                 return;
