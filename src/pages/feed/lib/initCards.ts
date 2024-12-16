@@ -111,6 +111,7 @@ export function initCards(tinderContainer: HTMLElement): void {
                 alert('У вас нет лайков');
                 firstCard.style.transition = 'transform 0.3s ease';
                 firstCard.style.transform = 'translate(0px, 0px) rotate(0deg)';
+                initCards(tinderContainer);
                 return;
             }
 
