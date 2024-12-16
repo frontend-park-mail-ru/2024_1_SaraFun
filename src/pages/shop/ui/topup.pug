@@ -2,6 +2,11 @@
     .modal-content
         span.close() &times;
         h2 Пополнение счета
-        label(for="topupAmount") Введите сумму:
-        input#topupAmount(type="number", min="1", required)
+        label(for="topupAmount") Выберите сумму:
+        select#topupAmount(required)
+            option(value="50") 50 рублей
+            option(value="100") 100 рублей
+            option(value="150") 150 рублей
+            option(value="300") 300 рублей
+            option(value="1000") 1000 рублей
         button() Пополнить
