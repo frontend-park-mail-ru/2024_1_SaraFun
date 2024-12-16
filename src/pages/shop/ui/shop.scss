@@ -83,3 +83,20 @@
         }
     }
 }
+
+.topup-button {
+    position: absolute; /* Позиционирование относительно родителя */
+    top: 20px; /* Отступ сверху */
+    right: 20px; /* Отступ справа */
+    background-color: #007bff; /* Цвет фона кнопки */
+    color: white; /* Цвет текста */
+    border: none; /* Без границы */
+    padding: 10px 20px; /* Отступы внутри кнопки */
+    border-radius: 5px; /* Скругленные углы */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+.topup-button:hover {
+    background-color: #0056b3; /* Цвет фона при наведении */
+}

@@ -1,0 +1,7 @@
+.modal#topupModal(style="display: none;")
+    .modal-content
+        span.close() &times;
+        h2 Пополнение счета
+        label(for="topupAmount") Введите сумму:
+        input#topupAmount(type="number", min="1", required)
+        button() Пополнить
