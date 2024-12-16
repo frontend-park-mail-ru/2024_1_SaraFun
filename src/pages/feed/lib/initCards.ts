@@ -1,5 +1,6 @@
 import { putLikeOrDislike } from '../api/putLikeOrDislike';
 import { openReportModal } from '../../../features/report';
+import { openNotificationModal } from './modal';
 
 export function initCards(tinderContainer: HTMLElement): void { 
     let newCards = document.querySelectorAll('.tinder__card:not(.removed)') as NodeListOf<HTMLElement>;
@@ -108,7 +109,8 @@ export function initCards(tinderContainer: HTMLElement): void {
 
             let response = await putLikeOrDislike(love, parseInt(userId));
             if ((response as string).trim() === 'у вас нет лайков') {
-                alert('У вас нет лайков');
+                //alert('У вас нет лайков');
+                openNotificationModal();
                 firstCard.style.transform = '';
                 return;
             }
