@@ -14,7 +14,7 @@ export function createButtonListener(love: boolean, tinderContainer: HTMLElement
         let userId = card.getAttribute('data-item-id');
 
         let response = await putLikeOrDislike(love, parseInt(userId));
-
+        console.log(response);
         if (response === 'у вас нет лайков') {
             alert('У вас нет лайков');
             return;
