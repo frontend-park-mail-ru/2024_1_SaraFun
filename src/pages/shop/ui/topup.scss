@@ -1,0 +1,68 @@
+.modal {
+    display: none; // Скрыто по умолчанию
+    position: fixed; // Зафиксировано на экране
+    z-index: 1000; // На переднем плане
+    left: 0;
+    top: 0;
+    width: 100%; // Ширина на весь экран
+    height: 100%; // Высота на весь экран
+    overflow: auto; // Прокрутка при необходимости
+    background-color: rgba(0, 0, 0, 0.5); // Полупрозрачный фон
+  
+    &-content {
+      background-color: #fff; // Белый фон для содержимого модального окна
+      margin: 15% auto; // Центрирование по вертикали и горизонтали
+      padding: 20px; // Отступы внутри модального окна
+      border: 1px solid #888; // Рамка
+      width: 80%; // Ширина модального окна
+  
+      h2 {
+        margin-top: 0; // Убираем верхний отступ у заголовка
+      }
+  
+      .close {
+        color: #aaa; // Цвет крестика
+        float: right; // Справа от содержимого
+        font-size: 28px; // Размер шрифта
+        font-weight: bold; // Жирный шрифт
+  
+        &:hover,
+        &:focus {
+          color: black; // Цвет при наведении или фокусе
+          text-decoration: none; // Убираем подчеркивание
+          cursor: pointer; // Курсор указателя
+        }
+      }
+  
+      label {
+        display: block; // Блок для метки
+        margin-bottom: 10px; // Отступ снизу
+      }
+  
+      input[type="number"] {
+        width: calc(100% - 20px); // Полная ширина с учетом отступов
+        padding: 10px; // Внутренние отступы
+        border: 1px solid #ccc; // Рамка
+        border-radius: 4px; // Закругленные углы
+        font-size: 16px; // Размер шрифта
+  
+        &:focus {
+          border-color: #007bff; // Цвет рамки при фокусе
+          outline: none; // Убираем стандартный контур
+        }
+      }
+  
+      button {
+        background-color: #007bff; // Цвет кнопки
+        color: white; // Цвет текста кнопки
+        padding: 10px 15px; // Внутренние отступы
+        border: none; // Убираем рамку
+        border-radius: 4px; // Закругленные углы
+        cursor: pointer; // Курсор указателя
+  
+        &:hover {
+          background-color: #0056b3; // Цвет кнопки при наведении
+        }
+      }
+    }
+  }
