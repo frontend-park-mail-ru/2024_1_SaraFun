@@ -6,6 +6,7 @@ export function openNotificationModal(): void {
     modal.innerHTML = template();
     
     document.body.appendChild(modal);
+    console.log('modal', modal);
     
     modal.classList.add('opening');
     modal.addEventListener('animationend', () => {
@@ -16,8 +17,8 @@ export function openNotificationModal(): void {
     const closeModal = () => {
         modal.classList.add('closing');
         modal.addEventListener('animationend', () => {
-            modal.style.display = 'none';
             modal.classList.remove('closing');
+            document.body.removeChild(modal);
         }, { once: true });
     };
 
