@@ -102,7 +102,7 @@ export class RegistrationPage {
 					if (!isSignedUp) {
 						notificationManager.addNotification('Ошибка при регистрации. Попробуйте ещё раз.', 'fail'); 
 					} else { 
-						notificationManager.addNotification('Успешная регистрация', 'success');
+						notificationManager.addNotification('Удачных Вам знакомств!', 'success');
 						this.parent.setAuth(true);
 						this.parent.navigateTo('/feed');
 					}
