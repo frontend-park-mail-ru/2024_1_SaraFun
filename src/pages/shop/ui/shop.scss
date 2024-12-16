@@ -1,6 +1,6 @@
 .shop-container {
     position: relative;
-    max-width: 1000px;
+    width: 80%;
     margin: 0 auto;
     padding: 20px;
     min-height: calc(100vh - 150px);
@@ -14,7 +14,7 @@
         justify-content: flex-start;
         max-height: calc(100vh - 200px);
         overflow-y: auto;
-        gap: 20px; /* Используйте gap для отступов */
+        gap: 20px;
     }
 
     .product-card {
@@ -22,7 +22,7 @@
         background-color: #fff;
         border: 1px solid #ddd;
         border-radius: 8px;
-        width: calc(25% - 20px); /* Измените ширину */
+        width: calc(25% - 20px); 
         padding: 15px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         transition: transform 0.2s;
@@ -30,7 +30,7 @@
         flex-direction: column;
 
         &:nth-child(3n) {
-            margin-right: 0; /* Это больше не нужно с использованием gap */
+            margin-right: 0;
         }
 
         &:hover {
