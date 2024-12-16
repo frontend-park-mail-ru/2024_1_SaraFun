@@ -13,5 +13,5 @@
     "typeRoots": ["./node_modules/@types"], 
     "allowJs": true
   },
-  "include": ["src/**/*", "pug.d.ts"]
+  "include": ["src/**/*", "@types/pug.d.ts"]
 }

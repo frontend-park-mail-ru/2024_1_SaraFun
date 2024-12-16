@@ -1,0 +1,10 @@
+.shop-container
+    h1 Магазин
+    .product-list
+        each product in products
+            .product-card
+                img(src=product.imageURL, alt=product.name)
+                h2= product.name
+                p.description #{product.description} 
+                p.price Цена: #{product.price}₽
+                button.buy-button(data-product-name=product.name, data-product-price=product.price) Купить

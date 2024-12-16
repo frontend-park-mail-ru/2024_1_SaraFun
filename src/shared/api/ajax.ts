@@ -26,7 +26,7 @@ export async function ajax(url: string, method: string, body: any = null): Promi
 		const response = await fetch(`${BASE_URL}${url}`, options);
 
 		if (!response.ok) {
-			throw new Error(`${response.status}: ${response.statusText}`);
+			throw new Error(`${response.status}: ${response.statusText}, ${await response.text()}`);
 		}
 
 		return response;
@@ -46,9 +46,6 @@ export async function ajax(url: string, method: string, body: any = null): Promi
  * @throws {Error} - Throws an error if the response is not ok.
  */
 export async function ajaxMultipartForm(url: string, method: string, formData: FormData): Promise<Response> {
-	//const formData = new FormData();
-	//formData.append('file', file);
-
 	const options: RequestInit = {
 		method: method,
 		body: formData,

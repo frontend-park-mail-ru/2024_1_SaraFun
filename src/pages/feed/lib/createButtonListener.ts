@@ -1,5 +1,6 @@
 import { putLikeOrDislike } from "../api/putLikeOrDislike";
 import { initCards } from "./initCards";
+import { openNotificationModal } from './modal';
 
 export function createButtonListener(love: boolean, tinderContainer: HTMLElement) {
     return async function (event: Event) {
@@ -13,8 +14,12 @@ export function createButtonListener(love: boolean, tinderContainer: HTMLElement
         let card = cards[0];
         let userId = card.getAttribute('data-item-id');
 
-        await putLikeOrDislike(love, parseInt(userId));
-    
+        let response = await putLikeOrDislike(love, parseInt(userId));
+        if ((response as string).trim() === 'у вас нет лайков') {
+            openNotificationModal();
+            return;
+        }
+
         card.classList.add('removed');
     
         if (love) {

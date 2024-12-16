@@ -6,12 +6,13 @@ import { getChatPreviews } from '../api/getChatPreviews';
 import { postMessage } from '../api/postMessage';
 import { getFilteredChatPreviews } from '../api/getFilteredChatPreviews';
 import { getChat } from '../api/getChat';
-import { createWebSocket } from '../api/ws';
+import { WsMessage } from '../../../entities/WsMessage/WsMessage';
 import template from './chats.pug';
 import templateChat from '../../../widgets/Chat/Chat.pug';
 import templateChatsPreviews from '../../../widgets/ChatPreviews/ChatPreviews.pug';
 import templatePlaceholder from '../../../shared/components/ChatPlaceholder/ChatPlaceholder.pug';
 import templateMessage from '../../../shared/components/Message/AddMessage.pug';
+import { notificationManager } from '../../../widgets/Notification/notification';
 
 export class ChatsPage {
 	private parent: Router;
@@ -29,7 +30,7 @@ export class ChatsPage {
 		this.parent = parent;
 		this.params = getParams();
 		this.parent.root.innerHTML = '';
-		this.initWebSocket();
+		//this.initWebSocket();
 		this.render();
 		window.addEventListener('resize', this.handleResize);
 	}
@@ -50,43 +51,13 @@ export class ChatsPage {
         }
     }
 
-	initWebSocket(): void {
-		this.socket = createWebSocket();
-		
-		this.socket.addEventListener('open', () => {
-			this.startPing();
-		});
-	
-		this.socket.addEventListener('message', (event) => {
-			const message = JSON.parse(event.data);
-			this.handleNewMessage(message, new Date().toISOString(), false);
-		});
-	
-		this.socket.addEventListener('close', () => {
-			this.stopPing();
-		});
-	
-		this.socket.addEventListener('error', (error) => {
-			console.error('WebSocket error:', error);
-			this.stopPing();
-		});
-    }
-
-	startPing(): void {
-        this.pingInterval = window.setInterval(() => {
-            if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-                this.socket.send(JSON.stringify({ type: 'ping' }));
-
-            }
-        }, 29000);
-    }
-
-	stopPing(): void {
-        if (this.pingInterval) {
-            clearInterval(this.pingInterval);
-            this.pingInterval = undefined;
-        }
-    }
+	handleMessage(data: WsMessage) {
+		if (data.type === "message") {
+			this.handleNewMessage(data, new Date().toISOString(), false);
+		} else {
+			notificationManager.addNotification(`У вас новый мэтч с пользователем ${data.username}`, 'info');
+		}
+	}
 
     async render(): Promise<void> {
 		const chatIdParam = this.params['param'];

@@ -21,16 +21,18 @@ export async function getProfile(): Promise<UserProfile | null> {
     const userProfile: UserProfile = {
       ID: data.profile.id,
       imagesIndexes: images.map((image: { id: string }) => image.id),
-      FirstName: data.profile.first_name,
-      LastName: data.profile.last_name,
-      Gender: data.profile.gender,
-      Age: data.profile.age,
-      Target: data.profile.target,
-      About: data.profile.about,
+      first_name: data.profile.first_name,
+      gender: data.profile.gender,
+      birth_date: data.profile.birthday_date,
+      target: data.profile.target,
+      about: data.profile.about,
       imagesURLs: images.map((image: { link: string }) => {
         const fileName = image.link.substring(image.link.lastIndexOf('/') + 1);
         return `https://spark-it.site/${fileName}`;
       }),
+      moneyBalance: data.money_balance,
+      dailyLikes: data.daily_likes_balance,
+      purchasedLikes: data.purchased_likes_balance,
     };
     return userProfile;
   } catch (error) {

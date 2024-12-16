@@ -1,0 +1,4 @@
+mixin birth_date(birth_date)
+    text(for="age" class="text-base") Возраст
+    input(class="date-input" type="date" id="birth_date" name="birth_date" value=birth_date)
+    p.error#date-error(style='display:none') Вам должно быть больше 18 лет

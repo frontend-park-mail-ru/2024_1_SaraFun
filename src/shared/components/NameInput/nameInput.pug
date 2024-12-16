@@ -1,0 +1,5 @@
+mixin name(first_name)
+
+    | Имя
+    input(type="text" class='input' id="first_name" maxlength="50" value=first_name required)
+    p.error#first-name-error(style='display:none')

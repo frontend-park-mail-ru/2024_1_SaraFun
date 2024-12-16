@@ -3,17 +3,20 @@ import { ROUTES, ROUTES_NAME } from '../shared/constants/routes';
 import { Router } from './Router';
 import Navbar from '../widgets/Navbar/navbar';
 import template from './layouts/baseLayout.pug';
+import { WebSocketManager } from '../features/WebSocket';
+import { BASE_URL } from "../shared/constants/baseURL";
 
 /**
  * Class representing the main application.
  */
 export default class App {
-	private state: { isAuthenticated: boolean, currentRoute: any } = { isAuthenticated: false, currentRoute: null };
+	private state: { isAuthenticated: boolean, currentRoute: any, currentView: any } = { isAuthenticated: false, currentRoute: null, currentView: null };
 	private root: HTMLElement;
 	private contentRoot: HTMLElement;
 	private navbarRoot: HTMLElement;
 	private router: Router;
 	private navbar: Navbar;
+	private webSocketManager: WebSocketManager | null = null;
 
 	/**
      * Creates an instance of App.
@@ -37,6 +40,11 @@ export default class App {
 			this.registerServiceWorker();
 	
 			this.state.isAuthenticated = await checkAuth();
+
+			if (this.state.isAuthenticated) {
+				this.openWebSocket();
+			}
+
 			ROUTES.forEach(({ path, view, isPublic, useParams, params })=> {
 				this.router.register(path, view, isPublic, useParams, params);
 			});
@@ -58,10 +66,19 @@ export default class App {
 		this.navbarRoot.innerHTML = '';
 		this.navbarRoot.innerHTML = this.navbar.render();
 		this.navbar.componentDidUpdate();
+		if (isAuth) {
+			this.openWebSocket();
+		} else {
+			this.closeWebSocket();
+		}
 	}
 
-	setCurRoute(route: string): void {
+	setCurRoute(route: string, view: any): void {
 		this.state.currentRoute = route;
+		this.state.currentView = view;
+		if (this.webSocketManager) {
+			this.webSocketManager.handler = view;
+		}
 		this.navbar.setCurRoute(route);
 		this.navbar.componentDidUpdateActiveLink();
 	}
@@ -78,9 +95,6 @@ export default class App {
 		if ('serviceWorker' in navigator) {
 			window.addEventListener('load', () => {
 			  navigator.serviceWorker.register('/sw.js')
-				.then(registration => {
-				  console.log('Service Worker registered with scope:', registration.scope);
-				})
 				.catch(error => {
 				  console.error('Service Worker registration failed:', error);
 				});
@@ -89,4 +103,14 @@ export default class App {
 			console.warn('Service workers are not supported in this browser.');
 		}
 	}
+
+	openWebSocket() {
+		const wsUrl = `${BASE_URL.replace(/^https/, 'wss')}/api/ws`;
+		this.webSocketManager = new WebSocketManager(wsUrl);
+	}
+
+	closeWebSocket() {
+        this.webSocketManager.close();
+        this.webSocketManager = null;
+    }
 }
