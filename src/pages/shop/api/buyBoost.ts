@@ -4,7 +4,7 @@ export const buyBoostApi = async (productName: string, productPrice: number): Pr
     try {
         const body = {
             title: productName,
-            price: productPrice.toFixed(2)
+            price: productPrice
         };
         const response = await post('/api/payments/buy', body);
         return true;
