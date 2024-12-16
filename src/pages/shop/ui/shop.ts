@@ -43,32 +43,33 @@ export class ShopPage {
     
     buyBoostButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
-        const productId = (event.target as HTMLElement).dataset.productId;
-        if (productId) {
-          this.buyBoost(productId);
-        }
+        const productName = (event.target as HTMLElement).dataset.productName || '';
+        const productPrice = parseFloat((event.target as HTMLElement).dataset.productPrice || '0');
         
+        if (productName && productPrice) {
+          this.buyBoost(productName, productPrice);
+        }
       });
     });
   }
 
-  private async buyBoost(productId: string): Promise<void> {
-    const product = this.products.find(p => p.id === productId);
-    if (product) {
-      try {
-        const body = {
-          title: `${product.name}`,
-          price: `${product.price.toFixed(2)}`
-        }
-        const response = await post('/api/payments/topup', body);
-        const redirectURL = await response.json();
-        if(redirectURL.redirect_link) {
-          window.location.href = redirectURL.redirect_link;
-        }
-      } catch (error) {
-          console.error('Ошибка при создании платежа:', error);
-          notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
+  private async buyBoost(productName: string, productPrice: number): Promise<void> {
+    try {
+      notificationManager.addNotification(`${productName} | ${productPrice}`, 'success');
+
+      const body = {
+        title: productName,
+        price: productPrice.toFixed(2) 
+      };
+
+      const response = await post('/api/payments/topup', body);
+      const redirectURL = await response.json();
+      if (redirectURL.redirect_link) {
+        window.location.href = redirectURL.redirect_link;
       }
+    } catch (error) {
+      console.error('Ошибка при создании платежа:', error);
+      notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
     }
   }
 }

@@ -7,4 +7,4 @@
                 h2= product.name
                 p.description #{product.description} 
                 p.price Цена: #{product.price}₽
-                button.buy-button(data-product-id=product.id) Купить
+                button.buy-button(data-product-name=product.name, data-product-price=product.price) Купить
