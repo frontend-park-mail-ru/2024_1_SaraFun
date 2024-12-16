@@ -100,7 +100,7 @@ export class RegistrationPage {
 				try {
 					const isSignedUp = await signupUser(login, password, first_name, gender, birth_date);
 					if (!isSignedUp) {
-						notificationManager.addNotification('Ошибка при регистрации. Попробуйте ещё раз.', 'fail'); 
+						notificationManager.addNotification('Логин уже занят, попробуйте другой', 'fail'); 
 					} else { 
 						notificationManager.addNotification('Удачных Вам знакомств!', 'success');
 						this.parent.setAuth(true);
