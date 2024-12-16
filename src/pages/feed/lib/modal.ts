@@ -2,7 +2,7 @@ import template from '../../../widgets/LimitNotification/LimitNotification.pug';
 
 export function openNotificationModal(): void {
     const modal = document.createElement('div');
-    modal.classList.add('notification-modal');
+    modal.classList.add('profile-modal');
     modal.innerHTML = template();
     
     document.body.appendChild(modal);
