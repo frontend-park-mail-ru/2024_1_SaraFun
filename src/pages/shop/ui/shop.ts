@@ -55,20 +55,20 @@ export class ShopPage {
   private async buyBoost(productId: string): Promise<void> {
     const product = this.products.find(p => p.id === productId);
     if (product) {
-        try {
-          const body = {
-            title: `${product.name}`,
-            price: `${product.price.toFixed(2)}`
-          }
-          const response = await post('/api/payments/topup', body);
-          const redirectURL = await response.json();
-          if(redirectURL.redirect_link) {
-            window.location.href = redirectURL.redirect_link;
-          }
-        } catch (error) {
-            console.error('Ошибка при создании платежа:', error);
-            notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
+      try {
+        const body = {
+          title: `${product.name}`,
+          price: `${product.price.toFixed(2)}`
         }
+        const response = await post('/api/payments/topup', body);
+        const redirectURL = await response.json();
+        if(redirectURL.redirect_link) {
+          window.location.href = redirectURL.redirect_link;
+        }
+      } catch (error) {
+          console.error('Ошибка при создании платежа:', error);
+          notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
+      }
     }
   }
 }
