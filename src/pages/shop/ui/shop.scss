@@ -84,6 +84,12 @@
     }
 }
 
+@media (max-width: 450px) { 
+    .product-card {
+        width: 100%; 
+    }
+}
+
 .topup-button {
     position: absolute; /* Позиционирование относительно родителя */
     top: 20px; /* Отступ сверху */
