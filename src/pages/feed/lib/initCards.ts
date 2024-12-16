@@ -110,7 +110,6 @@ export function initCards(tinderContainer: HTMLElement): void {
             if ((response as string).trim() === 'у вас нет лайков') {
                 alert('У вас нет лайков');
                 firstCard.style.transform = '';
-                initCards(tinderContainer);
                 return;
             }
 
