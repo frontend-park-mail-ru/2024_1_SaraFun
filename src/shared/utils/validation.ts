@@ -55,3 +55,13 @@ export function isValidLogin(login: string): string[] {
 
     return errors;
 }
+
+export function isValidBirthDate(birth_date_element: HTMLInputElement): boolean {
+    const date = new Date(birth_date_element.value);
+    const minDate = new Date(birth_date_element.getAttribute('min'));
+    const maxDate = new Date(birth_date_element.getAttribute('max'));
+    if (date < minDate || date > maxDate) {
+        return false;
+    }
+    return true;
+}

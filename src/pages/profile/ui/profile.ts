@@ -9,6 +9,7 @@ import { limitInput, limitText } from '../../../features/limitInput';
 import { PasswordChanger } from '../lib/changePassword';
 import { notificationManager } from '../../../widgets/Notification/notification';
 import { WsMessage } from '../../../entities/WsMessage/WsMessage';
+import { isValidBirthDate } from "../../../shared/utils/validation";
 
 export class ProfilePage {
   private imagesDel: number[] = [];
@@ -19,7 +20,6 @@ export class ProfilePage {
   private ID: number;
   private imagesIndexes: number[];
   private first_name: string;
-  private last_name: string;
   private birth_date: string;
   private gender: string;
   private target: string;
@@ -51,7 +51,6 @@ export class ProfilePage {
       this.ID = profileData.ID || -1;
       this.imagesIndexes = profileData.imagesIndexes || [];
       this.first_name = profileData.first_name || '';
-      this.last_name = profileData.last_name || '';
       this.birth_date = profileData.birth_date || '2000-01-01';
       this.gender = profileData.gender || 'male';
       this.target = profileData.target || '';
@@ -67,7 +66,6 @@ export class ProfilePage {
     this.parent.root.innerHTML = template({
       isEditing: this.isEditing,
       first_name: this.first_name,
-      last_name: this.last_name,
       birth_date: this.birth_date,
       gender: this.gender,
       target: this.target,
@@ -82,6 +80,15 @@ export class ProfilePage {
   }
 
   private componentWillMount() {
+    const dateInput = document.getElementById('birth_date');
+		if (dateInput) {
+			const today = new Date();
+			const minDate = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
+			const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+
+			dateInput.setAttribute('min', minDate.toISOString().split('T')[0]);
+			dateInput.setAttribute('max', maxDate.toISOString().split('T')[0]);
+		}
 
     const settingsButton = document.querySelector('.settings-button') as HTMLElement;
     if (settingsButton) {
@@ -105,6 +112,21 @@ export class ProfilePage {
     }
 
     if (this.isEditing) {
+      const birthDateInput = document.getElementById('birth_date') as HTMLInputElement;
+
+      birthDateInput?.addEventListener('input', () => {
+        const errorElement = document.getElementById('date-error');
+        if (errorElement) {
+            errorElement.textContent = '';
+            errorElement.style.display = 'none';
+        }
+        const isValid = isValidBirthDate(birthDateInput);
+        if (!isValid) {
+            document.getElementById('date-error').style.display = 'block';
+            document.getElementById(`date-error`).innerText = 'Вам должно быть от 18 до 120 лет';
+        }
+      });
+
       const imageContainers = document.querySelectorAll('.image-container') as NodeListOf<HTMLElement>;
 
       if (imageContainers) {
@@ -242,11 +264,6 @@ export class ProfilePage {
       limitInput(first_nameInput); 
     }
 
-    const last_nameInput = document.getElementById('last_name') as HTMLInputElement; 
-    if (last_nameInput) {
-      limitInput(last_nameInput); 
-    }
-
     textarea.addEventListener('input', () => {
       textarea.style.height = 'auto'; 
       textarea.style.height = `${textarea.scrollHeight}px`; 
@@ -254,13 +271,17 @@ export class ProfilePage {
 	}
   
   private async saveSettings(): Promise<void> {
+    if (!isValidBirthDate(document.getElementById('birth_date') as HTMLInputElement)) {
+      notificationManager.addNotification('Неверная дата рождения!', 'fail');
+      return;
+    }
+    
     this.getInfoFromPdata()
 
     const profileData: UserProfile = {
       ID: this.ID, 
       imagesIndexes: this.imagesIndexes,
       first_name: this.first_name,
-      last_name: this.last_name,
       birth_date: this.birth_date,
       gender: this.gender,
       target: this.target,

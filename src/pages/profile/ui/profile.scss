@@ -70,10 +70,11 @@
         }
 
         .image-section-profile {
-
             display: flex; 
             flex-wrap: wrap; 
             gap: 16px;
+            padding-bottom: 20px;
+            padding-top: 15px;
 
             .image-container {
                 display: flex;
@@ -172,37 +173,41 @@
         }
     }
 }
+
+.field {
+    gap: 10px;
+    display: grid;
+    width: 100%; 
+
+
+    input,
+    select,
+    textarea {
+        margin-left: 0; 
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 100%; 
+        resize: none; 
+        padding: 5px;
+    }
+    
+    textarea {
+        min-height: 50px; 
+        max-height: 200px; 
+        overflow-y: hidden
+    }
+}
+
 .settings-form {
     display: flex;
     flex-direction: column;
     width: 100%; 
-
-    label {
-        margin-bottom: 10px;
-        width: 100%; 
-
-        input,
-        select,
-        textarea {
-            margin-left: 0; 
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            width: 100%; 
-            resize: none; 
-        }
-        
-        textarea {
-            min-height: 50px; 
-            max-height: 200px; 
-            overflow-y: hidden
-        }
-    }
+    gap: 10px;
+    padding-bottom: 10px;
 }
 
 .button-wrapper {
     display: flex;
-    margin-top: 20px; 
     align-items: center;
     flex-direction: column; 
   

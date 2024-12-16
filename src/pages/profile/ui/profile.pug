@@ -24,8 +24,7 @@ div.profile
     if isEditing
       h1 Редактирование профиля
       .settings-form
-        label
-          +name(first_name, last_name)
+        +name(first_name)
         +birth_date(birth_date)
         +genderSelection(gender)
         +target(target)
@@ -34,7 +33,7 @@ div.profile
       +password-change
 
       div 
-        h3 Фотографии
+        h2 Фотографии
         .image-section-profile
           if imagesURLs && imagesURLs.length > 0
             each image, index in imagesURLs
@@ -62,7 +61,6 @@ div.profile
           | #{username}
         .info-section
           p Имя: #{first_name}
-          p Фамилия: #{last_name}
           p Пол: #{gender === 'male' ? 'Мужской' : 'Женский'}
           p Дата рождения: #{birth_date}
           p Цель: #{target}
