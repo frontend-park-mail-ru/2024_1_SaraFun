@@ -3,7 +3,7 @@ import { Product } from "../lib/product";
 
 export const getProducts = async (): Promise<Product[]> => {
     try {
-        const response = await get('api/payments/products');
+        const response = await get('/api/payments/products');
         const data = await response.json();
 
         const products: Product[] = data.responses.map((item: any) => ({
