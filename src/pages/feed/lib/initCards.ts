@@ -105,7 +105,13 @@ export function initCards(tinderContainer: HTMLElement): void {
 
             let love = deltaX > 0;
             let userId = firstCard.getAttribute('data-item-id');
-            await putLikeOrDislike(love, parseInt(userId));
+
+            let response = await putLikeOrDislike(love, parseInt(userId));
+
+            if (response === 'у вас нет лайков') {
+                alert('У вас нет лайков');
+                return;
+            }
 
             initCards(tinderContainer);
           }

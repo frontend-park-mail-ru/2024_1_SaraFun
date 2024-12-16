@@ -10,7 +10,6 @@ export async function putLikeOrDislike(like: boolean, userID: number): Promise<s
 		console.error(error);
 		if (error instanceof Error) {
             const errorMessage = error.message.split(', ').pop();
-            console.error('Сообщение об ошибке:', errorMessage);
             return errorMessage;
         }
 		return false;

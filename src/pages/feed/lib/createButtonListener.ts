@@ -13,8 +13,13 @@ export function createButtonListener(love: boolean, tinderContainer: HTMLElement
         let card = cards[0];
         let userId = card.getAttribute('data-item-id');
 
-        await putLikeOrDislike(love, parseInt(userId));
-    
+        let response = await putLikeOrDislike(love, parseInt(userId));
+
+        if (response === 'у вас нет лайков') {
+            alert('У вас нет лайков');
+            return;
+        }
+
         card.classList.add('removed');
     
         if (love) {
