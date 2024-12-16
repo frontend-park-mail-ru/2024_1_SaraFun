@@ -104,8 +104,7 @@ export class ShopPage {
     const response = await topupApi(amount);
     
     if (response) {
-      notificationManager.addNotification('Платеж успешно выполнен', 'success');
-      this.closeTopupModal(); // Закрыть модальное окно после успешного пополнения
+      this.closeTopupModal(); 
     } else {
       notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
     }
