@@ -25,6 +25,9 @@ export class ProfilePage {
   private target: string;
   private about: string;
   private imagesURLs: string[];
+  private moneyBalance: number;
+  private dailyLikes: number;
+  private purchasedLikes: number;
 
   constructor(parent: Router) {
     this.parent = parent;
@@ -53,6 +56,9 @@ export class ProfilePage {
       this.target = profileData.target || '';
       this.about = profileData.about || '';
       this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
+      this.moneyBalance = profileData.moneyBalance || 0;
+      this.dailyLikes = profileData.dailyLikes || 0;
+      this.purchasedLikes = profileData.purchasedLikes || 0;
     }    
   }
 
@@ -65,6 +71,9 @@ export class ProfilePage {
       target: this.target,
       about: this.about,
       imagesURLs: this.imagesURLs,
+      moneyBalance: this.moneyBalance,
+      dailyLikes: this.dailyLikes,
+      purchasedLikes: this.purchasedLikes,
     });
 
     this.componentWillMount();
@@ -143,15 +152,12 @@ export class ProfilePage {
               this.imagesURLs.splice(index, 0, draggedimage); 
               this.imagesIndexes.splice(index, 0, drdatadId); 
               
-              this.imagesNew.forEach((image, i) => { //мне кажется, что непонятный код, поэтому есть комменты
+              this.imagesNew.forEach((image, i) => { 
                 if (image.index === dragIndex) {
-                  // Если индекс совпадает с перетаскиваемым, обновляем его на новый индекс
                   image.index = index;
                 } else if (dragIndex < index && image.index > dragIndex && image.index <= index) {
-                  // Если элемент находится между старым и новым индексами, уменьшаем индекс на 1
                   image.index -= 1;
                 } else if (dragIndex > index && image.index < dragIndex && image.index >= index) {
-                  // Если элемент находится между новым и старым индексами, увеличиваем индекс на 1
                   image.index += 1;
                 }
               });
@@ -281,6 +287,9 @@ export class ProfilePage {
       target: this.target,
       about: this.about,
       imagesURLs: this.imagesURLs,
+      moneyBalance: this.moneyBalance,
+      dailyLikes: this.dailyLikes,
+      purchasedLikes: this.purchasedLikes,
     };
 
     const updateSuccess = await updProfile(profileData, this.imagesNew, this.imagesDel, this.imagesURLs, this.imagesIndexes);

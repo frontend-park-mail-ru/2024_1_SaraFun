@@ -1,10 +1,10 @@
 const CACHE_NAME = 'my-cache-v1';
 const URLS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/offline.html', // Страница для отображения в оффлайне
+	'/',
+	'/index.html',
+	'/styles.css',
+	'/script.js',
+	'/offline.html',
 ];
 
 self.addEventListener('install', (event) => {

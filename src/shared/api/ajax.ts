@@ -26,7 +26,7 @@ export async function ajax(url: string, method: string, body: any = null): Promi
 		const response = await fetch(`${BASE_URL}${url}`, options);
 
 		if (!response.ok) {
-			throw new Error(`${response.status}: ${response.statusText}`);
+			throw new Error(`${response.status}: ${response.statusText}, ${await response.text()}`);
 		}
 
 		return response;

@@ -1,5 +1,6 @@
 import { putLikeOrDislike } from '../api/putLikeOrDislike';
 import { openReportModal } from '../../../features/report';
+import { openNotificationModal } from './modal';
 
 export function initCards(tinderContainer: HTMLElement): void { 
     let newCards = document.querySelectorAll('.tinder__card:not(.removed)') as NodeListOf<HTMLElement>;
@@ -90,7 +91,7 @@ export function initCards(tinderContainer: HTMLElement): void {
         let deltaY = currentY - startY;
         let moveOutWidth = document.body.clientWidth;
         let keep = Math.abs(deltaX) < 80;
-        firstCard.classList.toggle('removed', !keep);
+        //firstCard.classList.toggle('removed', !keep);
     
         if (keep) {
             firstCard.style.transform = '';
@@ -105,10 +106,18 @@ export function initCards(tinderContainer: HTMLElement): void {
 
             let love = deltaX > 0;
             let userId = firstCard.getAttribute('data-item-id');
-            await putLikeOrDislike(love, parseInt(userId));
+
+            let response = await putLikeOrDislike(love, parseInt(userId));
+            if ((response as string).trim() === 'у вас нет лайков') {
+                openNotificationModal();
+                firstCard.style.transform = '';
+                return;
+            }
+
+            firstCard.classList.toggle('removed', !keep);
 
             initCards(tinderContainer);
-          }
+        }
     }
 
     firstCard.addEventListener('mousedown', startDrag);

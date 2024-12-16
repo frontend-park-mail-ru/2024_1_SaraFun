@@ -21,6 +21,7 @@ import '@img/search.svg';
 import '@img/HeartBroken.svg';
 import '@img/LogReg.svg';
 import '@img/ban-icon.svg';
+import '@img/cart.svg';
 
 
 const root = document.querySelector('#root') as HTMLElement;

@@ -119,8 +119,10 @@ export class RegistrationPage {
 			if (valid) {
 				try {
 					const isSignedUp = await signupUser(login, password, first_name, gender, birth_date);
-					if (isSignedUp) {
-						notificationManager.addNotification('Успешная регистрация', 'success');
+					if (!isSignedUp) {
+						notificationManager.addNotification('Логин уже занят, попробуйте другой', 'fail'); 
+					} else { 
+						notificationManager.addNotification('Удачных Вам знакомств!', 'success');
 						this.parent.setAuth(true);
 						this.parent.navigateTo('/feed');
 					}

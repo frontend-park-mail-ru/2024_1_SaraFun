@@ -1,6 +1,6 @@
 div.notifications-container
   if notifications.length > 0
     each notification, index in notifications
-      div.notification-container(class=notification.type)
+      div.notification-container(class=notification.type, data-id=notification.id) 
         div.notification
           | #{notification.message}
