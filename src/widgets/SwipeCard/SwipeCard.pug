@@ -1,5 +1,25 @@
 include ../../shared/components/Carousel/Carousel.pug
 
+- const getAgeSuffix = (age) => {
+    const lastDigit = age % 10;
+    const lastTwoDigits = age % 100;
+
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
+      return 'лет';
+    }
+
+    switch (lastDigit) {
+      case 1:
+        return 'год';
+      case 2:
+      case 3:
+      case 4:
+        return 'года';
+      default:
+        return 'лет';
+    }
+  }
+
 mixin card(user)
   .tinder__card
     .image-section
@@ -19,7 +39,7 @@ mixin card(user)
         h3 Пол: мужской
       else
         h3 Пол: женский
-      h3 Возраст: !{user.profile.age}
+      h3 Возраст: !{user.profile.age} !{getAgeSuffix(user.profile.age)}
       if (user.profile.target != "-" && user.profile.target != null)
         h3 Цель знакомства: !{user.profile.target}
       if (user.profile.about != "-" && user.profile.about != null)
