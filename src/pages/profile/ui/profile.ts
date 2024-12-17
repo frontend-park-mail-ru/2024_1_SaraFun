@@ -123,7 +123,7 @@ export class ProfilePage {
         const isValid = isValidBirthDate(birthDateInput);
         if (!isValid) {
             document.getElementById('date-error').style.display = 'block';
-            document.getElementById(`date-error`).innerText = 'Вам должно быть от 18 до 120 лет';
+            document.getElementById(`date-error`).innerText = 'Вам должно быть от 18 до 100 лет';
         }
       });
 
