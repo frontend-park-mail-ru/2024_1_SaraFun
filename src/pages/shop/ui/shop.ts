@@ -1,10 +1,8 @@
 import template from './shop.pug';
-import topupTemplate from './topup.pug'; // Импортируйте шаблон пополнения
 import { getProducts } from '../api/getProducts';
 import { Router } from '../../../app/Router';
 import { Product } from '../lib/product';
 import { notificationManager } from '../../../widgets/Notification/notification';
-import { post } from '../../../shared/api/api';
 import { buyBoostApi } from '../api/buyBoost';
 import { topupApi } from '../api/topup';
 
@@ -20,16 +18,11 @@ export class ShopPage {
   }
 
   private async loadProducts(): Promise<void> {
-    try {
-      const productData = await getProducts();
-      if (productData) {
-        this.products = productData;
-      } else {
-        throw new Error('No products found');
-      }
-    } catch (error) {
-      console.error('Error loading products:', error);
-      notificationManager.addNotification('Ошибка загрузки товаров', 'fail');
+    const productData = await getProducts();
+    if (productData) {
+      this.products = productData;
+    } else {
+      notificationManager.addNotification('Пока товаров нет', 'fail');
     }
   }
 
@@ -55,13 +48,11 @@ export class ShopPage {
       });
     });
 
-    // Обработка пополнения счета
     const topupButton = document.querySelector('.topup-button') as HTMLElement;
     topupButton.addEventListener('click', () => {
       this.openTopupModal();
     });
 
-    // Закрытие модального окна при нажатии на крестик
     const closeButton = document.querySelector('.modal .close') as HTMLElement;
     closeButton.addEventListener('click', () => {
       this.closeTopupModal();
@@ -93,10 +84,11 @@ export class ShopPage {
   private async buyBoost(productName: string, productPrice: number): Promise<void> {
     const response = await buyBoostApi(productName, productPrice);
 
-    if (response) {
+    if (response === 'true') {
       notificationManager.addNotification('Покупка успешно выполнена', 'success');
     } else {
-      notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
+      notificationManager.addNotification(response, 'fail');
+      this.openTopupModal();
     }
   }
 
