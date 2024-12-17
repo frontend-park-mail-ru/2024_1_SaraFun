@@ -299,7 +299,7 @@ export class ChatsPage {
 				lastDate = new Date(lastMessageDateElement.textContent.trim());
 			}
 
-			const formattedDate = message.time.toLocaleDateString();
+			const formattedDate = (message.time as Date).toLocaleDateString();
 
 			if (!lastDate || lastDate.toLocaleDateString() !== formattedDate) {
 				const dateHtml = `<div class="chat__messages__date">${formattedDate}</div>`;
