@@ -35,11 +35,12 @@
         }
   
         select {
-            width: calc(100% - 20px);
+            width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 16px;
+            font-family: 'Rubik';
   
             &:focus {
                 border-color: #007bff;
