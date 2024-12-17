@@ -1,9 +1,12 @@
 import template from './shop.pug';
+import topupTemplate from './topup.pug'; // Импортируйте шаблон пополнения
 import { getProducts } from '../api/getProducts';
 import { Router } from '../../../app/Router';
 import { Product } from '../lib/product';
 import { notificationManager } from '../../../widgets/Notification/notification';
 import { post } from '../../../shared/api/api';
+import { buyBoostApi } from '../api/buyBoost';
+import { topupApi } from '../api/topup';
 
 export class ShopPage {
   private parent: Router;
@@ -51,24 +54,58 @@ export class ShopPage {
         }
       });
     });
+
+    // Обработка пополнения счета
+    const topupButton = document.querySelector('.topup-button') as HTMLElement;
+    topupButton.addEventListener('click', () => {
+      this.openTopupModal();
+    });
+
+    // Закрытие модального окна при нажатии на крестик
+    const closeButton = document.querySelector('.modal .close') as HTMLElement;
+    closeButton.addEventListener('click', () => {
+      this.closeTopupModal();
+    });
+
+    const topupConfirmButton = document.querySelector('#topupModal button') as HTMLElement;
+    topupConfirmButton.addEventListener('click', () => {
+      const amountInput = document.getElementById('topupAmount') as HTMLInputElement;
+      const amount = parseFloat(amountInput.value);
+      if (amount > 0) {
+        this.topup(amount);
+        amountInput.value = ''; 
+      } else {
+        notificationManager.addNotification('Введите корректную сумму', 'fail');
+      }
+    });
+  }
+
+  private openTopupModal(): void {
+    const modal = document.getElementById('topupModal') as HTMLElement;
+    modal.style.display = 'block';
+  }
+
+  private closeTopupModal(): void {
+    const modal = document.getElementById('topupModal') as HTMLElement;
+    modal.style.display = 'none';
   }
 
   private async buyBoost(productName: string, productPrice: number): Promise<void> {
-    try {
-      notificationManager.addNotification(`${productName} | ${productPrice}`, 'success');
+    const response = await buyBoostApi(productName, productPrice);
 
-      const body = {
-        title: productName,
-        price: productPrice.toFixed(2) 
-      };
+    if (response) {
+      notificationManager.addNotification('Покупка успешно выполнена', 'success');
+    } else {
+      notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
+    }
+  }
 
-      const response = await post('/api/payments/topup', body);
-      const redirectURL = await response.json();
-      if (redirectURL.redirect_link) {
-        window.location.href = redirectURL.redirect_link;
-      }
-    } catch (error) {
-      console.error('Ошибка при создании платежа:', error);
+  private async topup(amount: number): Promise<void> {
+    const response = await topupApi(amount);
+    
+    if (response) {
+      this.closeTopupModal(); 
+    } else {
       notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
     }
   }
