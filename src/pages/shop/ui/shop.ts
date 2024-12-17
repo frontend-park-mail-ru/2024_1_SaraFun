@@ -48,13 +48,11 @@ export class ShopPage {
       });
     });
 
-    // Обработка пополнения счета
     const topupButton = document.querySelector('.topup-button') as HTMLElement;
     topupButton.addEventListener('click', () => {
       this.openTopupModal();
     });
 
-    // Закрытие модального окна при нажатии на крестик
     const closeButton = document.querySelector('.modal .close') as HTMLElement;
     closeButton.addEventListener('click', () => {
       this.closeTopupModal();
