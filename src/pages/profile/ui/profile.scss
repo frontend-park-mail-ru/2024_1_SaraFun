@@ -188,10 +188,10 @@
         border-radius: 5px;
         border: 1px solid #ccc;
         width: 100%; 
-        resize: none; 
+        resize: vertical; 
         padding: 5px;
+        min-height: 50px; /* Задайте минимальную высоту по вашему усмотрению */
     }
-    
     textarea {
         min-height: 50px; 
         max-height: 200px; 
