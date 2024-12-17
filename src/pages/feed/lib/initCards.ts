@@ -145,6 +145,7 @@ export function initCards(tinderContainer: HTMLElement): void {
             firstCard.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
             initCards(tinderContainer);
         }, 500);
+        reportForm.remove();
     });
         
     tinderContainer.classList.add('loaded');
