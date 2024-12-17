@@ -26,7 +26,7 @@ export default class Navbar {
 
 	componentDidMount(): void {
 		this.addEventListeners();
-		this.getUserAvatar();
+		this.getUserInfo();
 		this.componentDidUpdateActiveLink();
 	}
 
@@ -41,7 +41,7 @@ export default class Navbar {
 	componentDidUpdate(): void {
 		this.isAuth = this.parent.getAuth();
 		this.curRoute = this.parent.getCurRoute();
-		this.getUserAvatar();
+		this.getUserInfo();
 		this.addEventListeners();
 	}
 
@@ -56,15 +56,51 @@ export default class Navbar {
 		}
 	}
 
-	async getUserAvatar(): Promise<void> {
+	async getUserInfo(): Promise<void> {
 		if (!this.isAuth) {
 			return;
 		}
-
+	
 		const userData = await getProfile();
 		const avatarSrc = userData?.imagesURLs?.[0] ?? '/img/user.svg';
 		const avatarImg = document.querySelector('.user-avatar__image');
 		avatarImg.setAttribute('src', avatarSrc);
+
+		const moneyBalance = userData?.moneyBalance ?? 0;
+		const dailyLikes = userData?.dailyLikes ?? 0;
+		const purchasedLikes = userData?.purchasedLikes ?? 0;
+	
+	
+		// Создаем всплывающее окно с данными пользователя
+		this.createUserBalancePopup(moneyBalance, dailyLikes, purchasedLikes);
+
+
+	
+
+		const avatarContainer = document.querySelector('.user-avatar') as HTMLElement; 
+    	const popup = document.querySelector('.user-balance-popup') as HTMLElement
+	
+		avatarContainer.addEventListener('mouseenter', () => {
+			popup.style.display = 'block'; 
+		});
+	
+		avatarContainer.addEventListener('mouseleave', () => {
+			popup.style.display = 'none'; 
+		});
+	}
+	
+	createUserBalancePopup(balance: number, dailyLikes: number, purchasedLikes: number): void {
+		const popup = document.querySelector('.user-balance-popup');
+		if (popup) {
+			popup.innerHTML = `
+				<p>Баланс: ${balance}</p>
+				<p>Бесплатные реакции на сегодня: ${dailyLikes}</p>
+				<p>Купленные реакции: ${purchasedLikes}</p>`
+			;
+		} else {
+			console.log("Всплывающее окно не найдено.");
+		}
+	
 	}
   
 	/**
