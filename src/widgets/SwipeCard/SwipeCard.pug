@@ -1,26 +1,17 @@
 include ../../shared/components/Carousel/Carousel.pug
 
-mixin getAgeSuffix(age)
-  - const lastDigit = age % 10;
-  - const lastTwoDigits = age % 100;
-  - let suffix = 'лет';
-  - if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
-    - suffix = 'лет';
-  - } else {
-    - switch (lastDigit) {
-      - case 1:
-        - suffix = 'год';
-        - break;
-      - case 2:
-      - case 3:
-      - case 4:
-        - suffix = 'года';
-        - break;
-      - default:
-        - suffix = 'лет';
+mixin getRublesWordForm(amount)
+    - const lastDigit = amount % 10;
+    - const lastTwoDigits = amount % 100;
+    - let wordForm = 'рублей';
+    - if (lastTwoDigits < 11 || lastTwoDigits > 19) {
+        - if (lastDigit === 1) {
+            - wordForm = 'рубль';
+        - } else if (lastDigit >= 2 && lastDigit <= 4) {
+            - wordForm = 'рубля';
+        - }
     - }
-  - }
-  = suffix
+    = ` ${amount} ${wordForm}`
 
 mixin card(user)
   .tinder__card
@@ -41,7 +32,8 @@ mixin card(user)
         h3 Пол: мужской
       else
         h3 Пол: женский
-      h3 Возраст: !{user.profile.age} !{+getAgeSuffix(user.profile.age)}
+      h3 Возраст:
+        +getRublesWordForm(user.profile.age)
       if (user.profile.target != "-" && user.profile.target != null)
         h3 Цель знакомства: !{user.profile.target}
       if (user.profile.about != "-" && user.profile.about != null)
