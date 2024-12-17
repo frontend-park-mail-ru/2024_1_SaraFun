@@ -299,6 +299,10 @@ export class ChatsPage {
 				lastDate = new Date(lastMessageDateElement.textContent.trim());
 			}
 
+		  	const messageHtml = templateMessage({ message });
+		  	chatMessagesContainer.insertAdjacentHTML('beforeend', messageHtml);
+		  	chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+
 			const chatId = chatMessagesContainer.getAttribute('data-id');
 			if (chatId) {
 				this.previews.find(preview => preview.id === parseInt(chatId)).last_message = message.body;
