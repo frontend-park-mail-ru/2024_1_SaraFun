@@ -77,14 +77,14 @@
 button.report { 
     display: flex;
     border: none; 
-    border-radius: 10px; 
+    border-radius: 12px; 
     cursor: pointer; 
     transition: background-color 0.3s ease; 
     padding: 15px;
     background-color: var(--grey1);
 
     &:hover {
-        background-color: var(--grey1);
+        background-color: var(--grey2);
     }
 
     &:focus {
