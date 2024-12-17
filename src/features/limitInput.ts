@@ -7,6 +7,16 @@ export function limitText(textarea: HTMLTextAreaElement, limit: number): void {
   };
 
   limitLines();
+  textarea.addEventListener("input", limitLines);
+
+  textarea.addEventListener("keydown", (event) => {
+    const lines = textarea.value.split("\n");
+    if (event.key === "Enter" && lines.length >= limit) {
+      // Предотвращаем ввод новой строки, если достигнут лимит
+      event.preventDefault();
+    }
+  });
+
 
   let timeout: NodeJS.Timeout;
   textarea.addEventListener("input", () => {
