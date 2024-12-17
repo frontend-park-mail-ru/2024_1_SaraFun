@@ -36,7 +36,7 @@ export class RegistrationPage {
 		const dateInput = document.getElementById('birth_date');
 		if (dateInput) {
 			const today = new Date();
-			const minDate = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
+			const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate());
 			const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
 
 			dateInput.setAttribute('min', minDate.toISOString().split('T')[0]);
