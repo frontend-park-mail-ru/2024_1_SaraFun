@@ -1,24 +1,26 @@
 include ../../shared/components/Carousel/Carousel.pug
 
-- const getAgeSuffix = (age) => {
-    const lastDigit = age % 10;
-    const lastTwoDigits = age % 100;
-
-    if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
-      return 'лет';
-    }
-
-    switch (lastDigit) {
-      case 1:
-        return 'год';
-      case 2:
-      case 3:
-      case 4:
-        return 'года';
-      default:
-        return 'лет';
-    }
-  }
+mixin getAgeSuffix(age)
+  - const lastDigit = age % 10;
+  - const lastTwoDigits = age % 100;
+  - let suffix = 'лет';
+  - if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
+    - suffix = 'лет';
+  - } else {
+    - switch (lastDigit) {
+      - case 1:
+        - suffix = 'год';
+        - break;
+      - case 2:
+      - case 3:
+      - case 4:
+        - suffix = 'года';
+        - break;
+      - default:
+        - suffix = 'лет';
+    - }
+  - }
+  = suffix
 
 mixin card(user)
   .tinder__card
