@@ -17,19 +17,19 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        position: relative; // Добавлено для правильного позиционирования дочерних элементов
+        position: relative; 
     
         .user-balance-popup {
             display: none;
-            position: absolute; // Изменено на absolute
-            top: 48px; // Отступ от верхнего края родительского элемента
-            left: 50%; // Центрируем по горизонтали
-            transform: translateX(-50%); // Смещение для центрирования
-            width: 250px; // Ширина окна
-            background: white; // Цвет фона
-            border: 1px solid #ccc; // Цвет и стиль границы
-            padding: 10px; // Внутренний отступ
-            z-index: 2000; // Порядок наложения, чтобы окно было поверх других элементов
+            position: absolute; 
+            top: 48px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 250px; 
+            background: white; 
+            border: 1px solid #ccc; 
+            padding: 10px; 
+            z-index: 2000; 
             p {
                 font-size: 12px;
             }
