@@ -32,8 +32,6 @@ export function openReportModal(userId: number): void {
   
   closeModalButton.addEventListener('click', () => {
     modal.remove();
-    console.log('close');
-    console.log(modal);
   });
 
   const commentTextarea = document.getElementById('comment') as HTMLTextAreaElement;

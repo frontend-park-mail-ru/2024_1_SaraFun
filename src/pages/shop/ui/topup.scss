@@ -40,14 +40,13 @@
       }
 
       select {
-          width: calc(100% - 20px); // Полная ширина с учетом отступов
+          width: 100%; // Полная ширина с учетом отступов
           padding: 10px; // Внутренние отступы
           border: 1px solid #ccc; // Рамка
           border-radius: 4px; // Закругленные углы
-          font-size: 16px; // Размер шрифта
 
           &:focus {
-              border-color: #007bff; // Цвет рамки при фокусе
+              border-color: var(--secondary); // Цвет рамки при фокусе
               outline: none; // Убираем стандартный контур
           }
       }
