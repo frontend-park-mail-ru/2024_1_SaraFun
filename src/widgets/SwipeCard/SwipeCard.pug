@@ -1,17 +1,17 @@
 include ../../shared/components/Carousel/Carousel.pug
 
-mixin getRublesWordForm(amount)
-    - const lastDigit = amount % 10;
-    - const lastTwoDigits = amount % 100;
-    - let wordForm = 'рублей';
-    - if (lastTwoDigits < 11 || lastTwoDigits > 19) {
-        - if (lastDigit === 1) {
-            - wordForm = 'рубль';
-        - } else if (lastDigit >= 2 && lastDigit <= 4) {
-            - wordForm = 'рубля';
-        - }
-    - }
-    = ` ${amount} ${wordForm}`
+mixin getAgeWordForm(age)
+    - const lastDigit = age % 10;
+    - const lastTwoDigits = age % 100;
+    - let wordForm = 'лет';
+    - if (lastTwoDigits > 10 && lastTwoDigits < 20) {
+        - wordForm = 'лет';
+    - } else if (lastDigit === 1) {
+        - wordForm = 'год';
+    - } else if (lastDigit >= 2 && lastDigit <= 4) {
+        - wordForm = 'года';
+    - } 
+    = ` ${age} ${wordForm}`
 
 mixin card(user)
   .tinder__card
