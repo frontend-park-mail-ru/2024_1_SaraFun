@@ -11,7 +11,7 @@ export function openReportModal(userId: number): void {
         'reason': reason,
         'body': comment
       };
-      const response = await post('api/report', body);
+      const response = await post('/api/report', body);
 
       if (!response.ok) {
         notificationManager.addNotification('Ошибка при отправке жалобы. Попробуйте позже.', 'fail');
