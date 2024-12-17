@@ -88,6 +88,7 @@ export class ShopPage {
       notificationManager.addNotification('Покупка успешно выполнена', 'success');
     } else {
       notificationManager.addNotification(response, 'fail');
+      this.openTopupModal();
     }
   }
 
