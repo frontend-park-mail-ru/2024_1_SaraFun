@@ -27,14 +27,13 @@ export function openReportModal(userId: number): void {
   document.body.insertAdjacentHTML('beforeend', modalHTML);
 
   const modal = document.getElementById('reportModal') as HTMLElement;
-  console.log(modal);
   modal.style.display = 'block';
   const closeModalButton = modal.querySelector('.close-modal') as HTMLElement;
-  console.log(closeModalButton);
-  
   
   closeModalButton.addEventListener('click', () => {
     modal.remove();
+    console.log('close');
+    console.log(modal);
   });
 
   const commentTextarea = document.getElementById('comment') as HTMLTextAreaElement;
