@@ -4,13 +4,13 @@ mixin getAgeWordForm(age)
     - const lastDigit = age % 10;
     - const lastTwoDigits = age % 100;
     - let wordForm = 'лет';
-    - if (lastTwoDigits > 10 && lastTwoDigits < 20) {
+    //- if (lastTwoDigits > 10 && lastTwoDigits < 20) {
         - wordForm = 'лет';
-    - } else if (lastDigit === 1) {
+    //- } else if (lastDigit === 1) {
         - wordForm = 'год';
-    - } else if (lastDigit >= 2 && lastDigit <= 4) {
+    //- } else if (lastDigit >= 2 && lastDigit <= 4) {
         - wordForm = 'года';
-    - } 
+    //- } 
     = ` ${age} ${wordForm}`
 
 mixin card(user)
