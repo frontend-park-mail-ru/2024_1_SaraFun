@@ -1,10 +1,8 @@
 import template from './shop.pug';
-import topupTemplate from './topup.pug'; // Импортируйте шаблон пополнения
 import { getProducts } from '../api/getProducts';
 import { Router } from '../../../app/Router';
 import { Product } from '../lib/product';
 import { notificationManager } from '../../../widgets/Notification/notification';
-import { post } from '../../../shared/api/api';
 import { buyBoostApi } from '../api/buyBoost';
 import { topupApi } from '../api/topup';
 

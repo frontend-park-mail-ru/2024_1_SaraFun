@@ -52,14 +52,16 @@ export class ProfilePage {
       this.imagesIndexes = profileData.imagesIndexes || [];
       this.first_name = profileData.first_name || '';
       this.birth_date = profileData.birth_date || '2000-01-01';
-      this.gender = profileData.gender || 'male';
+      this.gender = profileData.gender || 'female';
       this.target = profileData.target || '';
       this.about = profileData.about || '';
       this.imagesURLs = profileData.imagesURLs || ['./img/image.svg'];
       this.moneyBalance = profileData.moneyBalance || 0;
       this.dailyLikes = profileData.dailyLikes || 0;
       this.purchasedLikes = profileData.purchasedLikes || 0;
-    }    
+    } else {
+      notificationManager.addNotification('Не удалось получить информацию профиля', 'fail');
+    }
   }
 
   public render(): void {
