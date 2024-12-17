@@ -20,16 +20,11 @@ export class ShopPage {
   }
 
   private async loadProducts(): Promise<void> {
-    try {
-      const productData = await getProducts();
-      if (productData) {
-        this.products = productData;
-      } else {
-        throw new Error('No products found');
-      }
-    } catch (error) {
-      console.error('Error loading products:', error);
-      notificationManager.addNotification('Ошибка загрузки товаров', 'fail');
+    const productData = await getProducts();
+    if (productData) {
+      this.products = productData;
+    } else {
+      notificationManager.addNotification('Пока товаров нет', 'fail');
     }
   }
 
@@ -93,10 +88,10 @@ export class ShopPage {
   private async buyBoost(productName: string, productPrice: number): Promise<void> {
     const response = await buyBoostApi(productName, productPrice);
 
-    if (response) {
+    if (response === 'true') {
       notificationManager.addNotification('Покупка успешно выполнена', 'success');
     } else {
-      notificationManager.addNotification('Ошибка при обработке платежа', 'fail');
+      notificationManager.addNotification(response, 'fail');
     }
   }
 
