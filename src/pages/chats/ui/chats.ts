@@ -293,6 +293,18 @@ export class ChatsPage {
       		if (noMessagesElement) {
         		noMessagesElement.remove(); 
       		}
+			const lastMessageDateElement = chatMessagesContainer.querySelector('.chat__messages__date:last-of-type');
+			let lastDate = null;
+			if (lastMessageDateElement) {
+				lastDate = new Date(lastMessageDateElement.textContent.trim());
+			}
+
+			const formattedDate = message.time.toLocaleDateString();
+
+			if (!lastDate || lastDate.toLocaleDateString() !== formattedDate) {
+				const dateHtml = `<div class="chat__messages__date">${formattedDate}</div>`;
+				chatMessagesContainer.insertAdjacentHTML('beforeend', dateHtml);
+			}
 		  	const messageHtml = templateMessage({ message });
 		  	chatMessagesContainer.insertAdjacentHTML('beforeend', messageHtml);
 		  	chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
