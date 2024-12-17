@@ -265,6 +265,19 @@ export class ChatsPage {
 				}
 				const chatId = chatMessagesContainer.getAttribute('data-id');
 				if (chatId && parseInt(chatId) === message.author_id) {
+					const lastMessageDateElement = chatMessagesContainer.querySelector('.chat__messages__date:last-of-type');
+					let lastDate = null;
+					if (lastMessageDateElement) {
+						lastDate = new Date(lastMessageDateElement.textContent.trim());
+					}
+
+					const messageDate = new Date(time);
+					const formattedDate = messageDate.toLocaleDateString();
+
+					if (!lastDate || lastDate.toLocaleDateString() !== formattedDate) {
+						const dateHtml = `<div class="chat__messages__date">${formattedDate}</div>`;
+						chatMessagesContainer.insertAdjacentHTML('beforeend', dateHtml);
+					}
 					const messageHtml = templateMessage({ message: { body: message.message, time, self } });
 					chatMessagesContainer.insertAdjacentHTML('beforeend', messageHtml);
 					chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
