@@ -22,10 +22,11 @@
     }
 }
 
-.profile-header {
+.card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: row;
 }
 
 @media (max-width: 700px) {

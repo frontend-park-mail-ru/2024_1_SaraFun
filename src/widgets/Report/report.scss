@@ -81,10 +81,10 @@ button.report {
     cursor: pointer; 
     transition: background-color 0.3s ease; 
     padding: 15px;
-    background-color: #8d8787;
+    background-color: var(--grey1);
 
     &:hover {
-        background-color: #8d8787; 
+        background-color: var(--grey1);
     }
 
     &:focus {
