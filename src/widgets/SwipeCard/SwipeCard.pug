@@ -8,10 +8,13 @@ mixin card(user)
       else
         img(class="img image-section__img_static" src="/img/image.svg" alt="Image" draggable="false")
     .form-section
-      if (user.profile.first_name == null || user.profile.first_name == '-')
-        h1 !{user.username}
-      else 
-        h1 !{user.profile.first_name}
+      .card-header
+        if (user.profile.first_name == null || user.profile.first_name == '-')
+          h1 !{user.username}
+        else 
+          h1 !{user.profile.first_name}
+        button.report
+          img(src="/img/ban-icon.svg" alt="Пожаловаться" class="report-icon")
       if (user.profile.gender == "male")
         h3 Пол: мужской
       else
@@ -21,6 +24,4 @@ mixin card(user)
         h3 Цель знакомства: !{user.profile.target}
       if (user.profile.about != "-" && user.profile.about != null)
         h3 О себе: !{user.profile.about}
-      button.report
-        img(src="/img/ban-icon.svg" alt="Пожаловаться" class="report-icon")
   include ../Report/report.pug
