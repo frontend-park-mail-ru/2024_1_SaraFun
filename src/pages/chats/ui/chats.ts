@@ -299,16 +299,6 @@ export class ChatsPage {
 				lastDate = new Date(lastMessageDateElement.textContent.trim());
 			}
 
-			const formattedDate = (message.time as Date).toLocaleDateString();
-
-			if (!lastDate || lastDate.toLocaleDateString() !== formattedDate) {
-				const dateHtml = `<div class="chat__messages__date">${formattedDate}</div>`;
-				chatMessagesContainer.insertAdjacentHTML('beforeend', dateHtml);
-			}
-		  	const messageHtml = templateMessage({ message });
-		  	chatMessagesContainer.insertAdjacentHTML('beforeend', messageHtml);
-		  	chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
-
 			const chatId = chatMessagesContainer.getAttribute('data-id');
 			if (chatId) {
 				this.previews.find(preview => preview.id === parseInt(chatId)).last_message = message.body;
