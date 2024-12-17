@@ -1,5 +1,18 @@
 include ../../shared/components/Carousel/Carousel.pug
 
+mixin getAgeWordForm(age)
+    - const lastDigit = age % 10;
+    - const lastTwoDigits = age % 100;
+    - let wordForm = 'лет';
+    - if (lastTwoDigits > 10 && lastTwoDigits < 20) {
+        - wordForm = 'лет';
+    - } else if (lastDigit === 1) {
+        - wordForm = 'год';
+    - } else if (lastDigit >= 2 && lastDigit <= 4) {
+        - wordForm = 'года';
+    - } 
+    = ` ${age} ${wordForm}`
+
 mixin card(user)
   .tinder__card
     .image-section
@@ -8,19 +21,21 @@ mixin card(user)
       else
         img(class="img image-section__img_static" src="/img/image.svg" alt="Image" draggable="false")
     .form-section
-      if (user.profile.first_name == null || user.profile.first_name == '-')
-        h1 !{user.username}
-      else 
-        h1 !{user.profile.first_name}
+      .card-header
+        if (user.profile.first_name == null || user.profile.first_name == '-')
+          h1 !{user.username}
+        else 
+          h1 !{user.profile.first_name}
+        button.report
+          img(src="/img/ban-icon.svg" alt="Пожаловаться" class="report-icon")
       if (user.profile.gender == "male")
         h3 Пол: мужской
       else
         h3 Пол: женский
-      h3 Возраст: !{user.profile.age}
+      h3 Возраст:
+        +getAgeWordForm(user.profile.age)
       if (user.profile.target != "-" && user.profile.target != null)
         h3 Цель знакомства: !{user.profile.target}
       if (user.profile.about != "-" && user.profile.about != null)
         h3 О себе: !{user.profile.about}
-      button.report
-        img(src="/img/ban-icon.svg" alt="Пожаловаться" class="report-icon")
   include ../Report/report.pug

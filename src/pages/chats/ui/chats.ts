@@ -39,16 +39,18 @@ export class ChatsPage {
         const width = window.innerWidth;
 		const chatContainer = document.querySelector('.chat') as HTMLElement;
 		const chatPreviewsContainer = document.querySelector('.chats-list') as HTMLElement;
-        if (width < 800) {
-			if (chatContainer.classList.contains('chat--active')) {
-				chatPreviewsContainer.style.display = 'none';
+		if (chatContainer && chatPreviewsContainer) {
+			if (width < 800) {
+				if (chatContainer.classList.contains('chat--active')) {
+					chatPreviewsContainer.style.display = 'none';
+				} else {
+					chatContainer.style.display = 'none';
+				}
 			} else {
-				chatContainer.style.display = 'none';
+				chatContainer.style.display = 'flex';
+				chatPreviewsContainer.style.display = 'flex';
 			}
-        } else {
-            chatContainer.style.display = 'flex';
-			chatPreviewsContainer.style.display = 'flex';
-        }
+		}
     }
 
 	handleMessage(data: WsMessage) {
@@ -263,6 +265,19 @@ export class ChatsPage {
 				}
 				const chatId = chatMessagesContainer.getAttribute('data-id');
 				if (chatId && parseInt(chatId) === message.author_id) {
+					const lastMessageDateElement = chatMessagesContainer.querySelector('.chat__messages__date:last-of-type');
+					let lastDate = null;
+					if (lastMessageDateElement) {
+						lastDate = new Date(lastMessageDateElement.textContent.trim());
+					}
+
+					const messageDate = new Date(time);
+					const formattedDate = messageDate.toLocaleDateString();
+
+					if (!lastDate || lastDate.toLocaleDateString() !== formattedDate) {
+						const dateHtml = `<div class="chat__messages__date">${formattedDate}</div>`;
+						chatMessagesContainer.insertAdjacentHTML('beforeend', dateHtml);
+					}
 					const messageHtml = templateMessage({ message: { body: message.message, time, self } });
 					chatMessagesContainer.insertAdjacentHTML('beforeend', messageHtml);
 					chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
@@ -278,9 +293,11 @@ export class ChatsPage {
       		if (noMessagesElement) {
         		noMessagesElement.remove(); 
       		}
-		  	const messageHtml = templateMessage({ message });
-		  	chatMessagesContainer.insertAdjacentHTML('beforeend', messageHtml);
-		  	chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+			const lastMessageDateElement = chatMessagesContainer.querySelector('.chat__messages__date:last-of-type');
+			let lastDate = null;
+			if (lastMessageDateElement) {
+				lastDate = new Date(lastMessageDateElement.textContent.trim());
+			}
 
 			const chatId = chatMessagesContainer.getAttribute('data-id');
 			if (chatId) {

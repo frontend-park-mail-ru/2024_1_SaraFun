@@ -11,7 +11,7 @@ export function openReportModal(userId: number): void {
         'reason': reason,
         'body': comment
       };
-      const response = await post('/report', body);
+      const response = await post('/api/message/report', body);
 
       if (!response.ok) {
         notificationManager.addNotification('Ошибка при отправке жалобы. Попробуйте позже.', 'fail');
@@ -29,7 +29,6 @@ export function openReportModal(userId: number): void {
   const modal = document.getElementById('reportModal') as HTMLElement;
   modal.style.display = 'block';
   const closeModalButton = modal.querySelector('.close-modal') as HTMLElement;
-  
   
   closeModalButton.addEventListener('click', () => {
     modal.remove();
