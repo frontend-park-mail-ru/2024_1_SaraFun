@@ -39,16 +39,18 @@ export class ChatsPage {
         const width = window.innerWidth;
 		const chatContainer = document.querySelector('.chat') as HTMLElement;
 		const chatPreviewsContainer = document.querySelector('.chats-list') as HTMLElement;
-        if (width < 800) {
-			if (chatContainer.classList.contains('chat--active')) {
-				chatPreviewsContainer.style.display = 'none';
+		if (chatContainer && chatPreviewsContainer) {
+			if (width < 800) {
+				if (chatContainer.classList.contains('chat--active')) {
+					chatPreviewsContainer.style.display = 'none';
+				} else {
+					chatContainer.style.display = 'none';
+				}
 			} else {
-				chatContainer.style.display = 'none';
+				chatContainer.style.display = 'flex';
+				chatPreviewsContainer.style.display = 'flex';
 			}
-        } else {
-            chatContainer.style.display = 'flex';
-			chatPreviewsContainer.style.display = 'flex';
-        }
+		}
     }
 
 	handleMessage(data: WsMessage) {
