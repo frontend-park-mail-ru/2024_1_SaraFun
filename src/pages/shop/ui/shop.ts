@@ -5,13 +5,17 @@ import { Product } from '../lib/product';
 import { notificationManager } from '../../../widgets/Notification/notification';
 import { buyBoostApi } from '../api/buyBoost';
 import { topupApi } from '../api/topup';
+import Navbar from '../../../widgets/Navbar/navbar';
 
 export class ShopPage {
   private parent: Router;
   private products: Product[] = [];
+  private navbar: Navbar; 
 
-  constructor(parent: Router) {
+  constructor(parent: Router, navbar: Navbar) {
     this.parent = parent;
+    this.navbar = navbar;
+
     this.loadProducts().then(() => {
       this.render();
     });
@@ -86,6 +90,7 @@ export class ShopPage {
 
     if (response === 'true') {
       notificationManager.addNotification('Покупка успешно выполнена', 'success');
+      await this.navbar.getUserInfo();
     } else {
       notificationManager.addNotification(response, 'fail');
       this.openTopupModal();
