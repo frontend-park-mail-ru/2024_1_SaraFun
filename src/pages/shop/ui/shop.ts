@@ -5,13 +5,17 @@ import { Product } from '../lib/product';
 import { notificationManager } from '../../../widgets/Notification/notification';
 import { buyBoostApi } from '../api/buyBoost';
 import { topupApi } from '../api/topup';
+import Navbar  from '../../../widgets/Navbar/navbar';
 
 export class ShopPage {
   private parent: Router;
   private products: Product[] = [];
+  private navbar: Navbar;
 
-  constructor(parent: Router) {
+  constructor(parent: Router, navbar: Navbar) {
     this.parent = parent;
+    this.navbar = new Navbar(this.parent);
+
     this.loadProducts().then(() => {
       this.render();
     });
@@ -32,6 +36,18 @@ export class ShopPage {
     });
 
     this.componentWillMount();
+  }
+
+  private async buyBoost(productName: string, productPrice: number): Promise<void> {
+    const response = await buyBoostApi(productName, productPrice);
+
+    if (response === 'true') {
+      notificationManager.addNotification('Покупка успешно выполнена', 'success');
+      await this.navbar.getUserInfo(); 
+    } else {
+      notificationManager.addNotification(response, 'fail');
+      this.openTopupModal();
+    }
   }
 
   private componentWillMount() {
@@ -81,16 +97,7 @@ export class ShopPage {
     modal.style.display = 'none';
   }
 
-  private async buyBoost(productName: string, productPrice: number): Promise<void> {
-    const response = await buyBoostApi(productName, productPrice);
-
-    if (response === 'true') {
-      notificationManager.addNotification('Покупка успешно выполнена', 'success');
-    } else {
-      notificationManager.addNotification(response, 'fail');
-      this.openTopupModal();
-    }
-  }
+  
 
   private async topup(amount: number): Promise<void> {
     const response = await topupApi(amount);
