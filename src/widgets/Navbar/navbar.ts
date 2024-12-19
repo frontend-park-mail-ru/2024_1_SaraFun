@@ -70,12 +70,7 @@ export default class Navbar {
 		const dailyLikes = userData?.dailyLikes ?? 0;
 		const purchasedLikes = userData?.purchasedLikes ?? 0;
 	
-	
-		// Создаем всплывающее окно с данными пользователя
 		this.createUserBalancePopup(moneyBalance, dailyLikes, purchasedLikes);
-
-
-	
 
 		const avatarContainer = document.querySelector('.user-avatar') as HTMLElement; 
     	const popup = document.querySelector('.user-balance-popup') as HTMLElement
@@ -100,7 +95,6 @@ export default class Navbar {
 		} else {
 			console.log("Всплывающее окно не найдено.");
 		}
-	
 	}
   
 	/**
