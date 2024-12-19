@@ -40,16 +40,10 @@ export class ShopPage {
 
   private async buyBoost(productName: string, productPrice: number): Promise<void> {
     const response = await buyBoostApi(productName, productPrice);
-    if (this.navbar && typeof this.navbar.getUserInfo === 'function') {
-      await this.navbar.getUserInfo(); // Обновляем информацию о пользователе
-    } else {
-        console.error('Метод getUserInfo не найден в Navbar или navbar равен undefined');
-    }
 
-  
     if (response === 'true') {
       notificationManager.addNotification('Покупка успешно выполнена', 'success');
-      
+      await this.navbar.getUserInfo(); 
     } else {
       notificationManager.addNotification(response, 'fail');
       this.openTopupModal();
