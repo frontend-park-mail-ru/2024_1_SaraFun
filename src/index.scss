@@ -138,6 +138,7 @@ body {
     cursor: pointer;
     color: var(--white1);
     transition: background-color 0.3s;
+    font-family: 'Rubik';
 
     &:hover {
         background-color: var(--success);
