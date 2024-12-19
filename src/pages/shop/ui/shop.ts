@@ -87,10 +87,10 @@ export class ShopPage {
 
   private async buyBoost(productName: string, productPrice: number): Promise<void> {
     const response = await buyBoostApi(productName, productPrice);
-
+    await this.navbar.getUserInfo();
     if (response === 'true') {
       notificationManager.addNotification('Покупка успешно выполнена', 'success');
-      await this.navbar.getUserInfo();
+      
     } else {
       notificationManager.addNotification(response, 'fail');
       this.openTopupModal();
