@@ -11,10 +11,6 @@
   
     &-content {
   
-        h2 {
-            margin-top: 0;
-        }
-  
         .close {
             color: #aaa;
             float: right;
@@ -32,20 +28,6 @@
         label {
             display: block;
             margin-bottom: 10px;
-        }
-  
-        select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            font-family: 'Rubik';
-  
-            &:focus {
-                border-color: #007bff;
-                outline: none;
-            }
         }
   
         button {
