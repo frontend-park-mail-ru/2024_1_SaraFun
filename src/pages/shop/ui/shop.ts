@@ -5,7 +5,7 @@ import { Product } from '../lib/product';
 import { notificationManager } from '../../../widgets/Notification/notification';
 import { buyBoostApi } from '../api/buyBoost';
 import { topupApi } from '../api/topup';
-import Navbar from '../../../widgets/Navbar/navbar';
+import Navbar  from '../../../widgets/Navbar/navbar';
 
 export class ShopPage {
   private parent: Router;
@@ -36,6 +36,24 @@ export class ShopPage {
     });
 
     this.componentWillMount();
+  }
+
+  private async buyBoost(productName: string, productPrice: number): Promise<void> {
+    const response = await buyBoostApi(productName, productPrice);
+    if (this.navbar && typeof this.navbar.getUserInfo === 'function') {
+      await this.navbar.getUserInfo(); // Обновляем информацию о пользователе
+    } else {
+        console.error('Метод getUserInfo не найден в Navbar или navbar равен undefined');
+    }
+
+  
+    if (response === 'true') {
+      notificationManager.addNotification('Покупка успешно выполнена', 'success');
+      
+    } else {
+      notificationManager.addNotification(response, 'fail');
+      this.openTopupModal();
+    }
   }
 
   private componentWillMount() {
@@ -85,22 +103,7 @@ export class ShopPage {
     modal.style.display = 'none';
   }
 
-  private async buyBoost(productName: string, productPrice: number): Promise<void> {
-    const response = await buyBoostApi(productName, productPrice);
-    if (typeof this.navbar.getUserInfo === 'function') {
-      await this.navbar.getUserInfo();
-    } else {
-      console.error('Метод getUserInfo не найден в Navbar');
-    }
   
-    if (response === 'true') {
-      notificationManager.addNotification('Покупка успешно выполнена', 'success');
-      
-    } else {
-      notificationManager.addNotification(response, 'fail');
-      this.openTopupModal();
-    }
-  }
 
   private async topup(amount: number): Promise<void> {
     const response = await topupApi(amount);
