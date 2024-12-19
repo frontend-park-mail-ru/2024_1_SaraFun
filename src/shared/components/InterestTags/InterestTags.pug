@@ -1,0 +1,7 @@
+- const { INTEREST_TAGS } = require('../../../shared/constants/interests.ts')
+
+block interestTags
+    text(class=".text-base label") Тэги интересов
+    .interests-container
+        each interest in INTEREST_TAGS
+            .interest-tag(data-interest=interest) #{interest}

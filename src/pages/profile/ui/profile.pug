@@ -6,6 +6,8 @@ include ../../../shared/components/Target/target.pug
 include ../../../shared/components/PassChange/passChange.pug
 include ../../../shared/components/About/about.pug
 
+- const { INTEREST_TAGS } = require('../../../shared/constants/interests.ts')
+
 mixin getRublesWordForm(amount)
     - const lastDigit = amount % 10;
     - const lastTwoDigits = amount % 100;
@@ -29,6 +31,10 @@ div.profile
         +genderSelection(gender)
         +target(target)
         +about(about)
+        text(class=".text-base label") Тэги интересов
+        .interests-container
+          each interest in INTEREST_TAGS
+            .interest-tag(data-interest=interest) #{interest}
 
       +password-change
 
@@ -65,6 +71,12 @@ div.profile
           p Дата рождения: #{birth_date}
           p Цель: #{target}
           p О себе: #{about}
+
+      div 
+        h3 Ваши интересы
+        .interests-container
+          each interest in INTEREST_TAGS
+            .interest-tag(data-interest=interest) #{interest}
 
       div
         h3 Баланс
