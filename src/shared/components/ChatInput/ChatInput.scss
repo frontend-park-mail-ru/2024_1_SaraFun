@@ -23,6 +23,8 @@
       border: 1px solid var(--grey1);
       border-radius: 10px;
       margin-right: 10px;
+      font-family: 'Rubik';
+      font-size: 1em;
     }
 
     &__button {
@@ -33,6 +35,8 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.3s;
+      font-family: 'Rubik';
+      font-size: 1em;
 
       &:hover {
         background-color: var(--success);
