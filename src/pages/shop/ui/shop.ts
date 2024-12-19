@@ -10,11 +10,11 @@ import Navbar  from '../../../widgets/Navbar/navbar';
 export class ShopPage {
   private parent: Router;
   private products: Product[] = [];
-  private navbar: Navbar; 
+  private navbar: Navbar;
 
   constructor(parent: Router, navbar: Navbar) {
     this.parent = parent;
-    this.navbar = navbar;
+    this.navbar = new Navbar(this.parent);
 
     this.loadProducts().then(() => {
       this.render();
